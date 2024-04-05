@@ -1,5 +1,5 @@
 export default {
-  index: "Intro",
+  intro: "Intro",
   start: "Get Started",
   guide: "User Guide",
   install: "Installation",

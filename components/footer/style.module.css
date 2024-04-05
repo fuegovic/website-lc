@@ -29,3 +29,7 @@
 @media (max-width: 1024px) {
   .w-3-4{display: none;}
 }
+
+.socialIconLink {
+  margin-right: 0.5rem; /* Adjust the value to your desired spacing */
+}

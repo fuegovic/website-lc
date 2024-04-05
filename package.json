@@ -41,7 +41,8 @@
     "react-icons": "^5.0.1",
     "react-responsive-carousel": "^3.2.23",
     "react-transition-group": "^4.4.5",
-    "sharp": "^0.33.3"
+    "sharp": "^0.33.3",
+    "tailwind-merge": "^2.2.2"
   },
   "devDependencies": {
     "@types/glidejs__glide": "^3.6.5",

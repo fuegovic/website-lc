@@ -1,7 +1,5 @@
 import type { AppProps } from 'next/app'
 import localFont from 'next/font/local'
-// import '../components/carousel/carousel.css'
-import '../components/callouts/style.module.css'
 import type { ReactElement } from 'react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 

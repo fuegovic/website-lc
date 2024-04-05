@@ -27,8 +27,12 @@ export default function Hero(locate: string) {
 
   return (
     <div className={styles.root}>
-      <div className={styles.tilesBg}></div>
-      <div className={styles.tiles}></div>
+   <div className="overlay">
+        <div className={styles.grid}>
+            <div className={styles.gridfade}></div>
+            <div className={styles.gridlines}></div>
+        </div>
+    </div>
       <div className={styles.content}>
       <h1 className={styles.headline}>
           <p className={styles.head}>
@@ -57,7 +61,7 @@ export default function Hero(locate: string) {
           {heroMap[locate].subtitleFour}
         </p>
         <div className={styles.actions}>
-          <Link className={styles.cta} href={`${locate}/docs/start`}>
+          <Link className={styles.cta} href={`${locate}/docs/intro`}>
             {heroMap[locate].cta} <span>→</span>
           </Link>
           <a

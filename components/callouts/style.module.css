@@ -41,6 +41,10 @@
   justify-content: space-between; /* Ensures elements are spaced out */
   align-items: center;
   width: 100%; /* Fills the parent container's width */
+  color: #000000;
+}
+
+:global(.dark) .callout-title {
   color: #ffffff;
 }
 
@@ -53,7 +57,7 @@
 }
 
 
-.light .callout {
+.callout {
   --content-background-color: #ffffff;
 
   --default-border-color: #d1d5db;
@@ -96,7 +100,7 @@
   --quote-background-color: #ffd5f9;
 }
 
-.callout {
+:global(.dark) .callout {
   --content-background-color: #111111;
 
   --default-border-color: #9e9e9e;

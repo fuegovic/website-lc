@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import styles from './style.module.css';
 
-// TODO: Implement theme detection and dynamic style application
-
 const TypeToEmoji = {
   default: '🪶',
   note: '✏️',

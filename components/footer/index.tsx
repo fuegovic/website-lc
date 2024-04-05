@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTwitter, faLinkedin, faYoutube, faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+import { faXTwitter, faLinkedin, faYoutube, faDiscord, faGithub } from '@fortawesome/free-brands-svg-icons';
 import styles from './style.module.css'
 
 
@@ -57,38 +58,48 @@ export default function Footer(locale: string) {
     },
     {
       name: locale === '/en' ? 'Socials' : 'Socials',
-      list: [
-        // {
-        //   name: <FontAwesomeIcon icon={faTwitter} />,
-        //   url: 'https://twitter.com/your-twitter-account',
-        //   newWindow: true
-        // },
-        // {
-        //   name: <FontAwesomeIcon icon={faLinkedin} />,
-        //   url: 'https://www.linkedin.com/in/your-linkedin-account',
-        //   newWindow: true
-        // },
-        // {
-        //   name: <FontAwesomeIcon icon={faYoutube} />,
-        //   url: 'https://www.youtube.com/your-youtube-channel',
-        //   newWindow: true
-        // },
-        // {
-        //   name: <FontAwesomeIcon icon={faDiscord} />,
-        //   url: 'https://discord.gg/your-discord-server',
-        //   newWindow: true
-        // },
-        // {
-        //   name: <FontAwesomeIcon icon={faGithub} />,
-        //   url: 'https://github.com/your-github-account',
-        //   newWindow: true
-        // },
-        // {
-        //   name: <FontAwesomeIcon icon={faHuggingFace} />,
-        //   url: 'https://huggingface.co/your-huggingface-account',
-        //   newWindow: true
-        // }
-      ]
+      items: (
+        <div className="socialIconList">
+          <ul>
+          {[
+  {
+    name: <FontAwesomeIcon icon={faXTwitter} />,
+    url: 'https://x.com/LibreChatAI',
+    newWindow: true
+  },
+  {
+    name: <FontAwesomeIcon icon={faLinkedin} />,
+    url: 'https://linkedin.librechat.ai/',
+    newWindow: true
+  },
+  {
+    name: <FontAwesomeIcon icon={faYoutube} />,
+    url: 'https://www.youtube.com/@LibreChat',
+    newWindow: true
+  },
+  {
+    name: <FontAwesomeIcon icon={faDiscord} />,
+    url: 'https://discord.librechat.ai',
+    newWindow: true
+  },
+  {
+    name: <FontAwesomeIcon icon={faGithub} />,
+    url: 'https://github.librechat.ai',
+    newWindow: true
+  },
+].map((item, index) => (
+  <a
+    key={index}
+    href={item.url}
+    target={item.newWindow ? "_blank" : "_self"}
+    className={`_text-gray-500 hover:_text-gray-900 dark:_text-neutral-400 dark:hover:_text-gray-50 ${styles.socialIconLink}`}
+  >
+    {item.name}
+  </a>
+))}
+          </ul>
+        </div>
+      )
     }
   ]
 
@@ -102,20 +113,32 @@ export default function Footer(locale: string) {
     </div>
       <div className={`${styles.columns} ${styles['w-3-4']}`}>
       {listMap.map((list, index) => {
-        return (
-          <section key={index}>
-            <h3 className="_text-sm _font-semibold _text-gray-900 first:_mt-0 dark:_text-gray-100">{list.name}</h3>
-            <ul>
-              {list.list.map((item, index) => {
-                return (
-                  <li key={index}>
-                    <a href={item.url} target={item.newWindow ? "_blank" : "_self"} className="_text-gray-500 hover:_text-gray-900 dark:_text-neutral-400 dark:hover:_text-gray-50">{item.name}</a>
-                  </li>
-                )
-              })}
-            </ul>
+  return (
+    <section key={index}>
+      <h3 className="_text-sm _font-semibold _text-gray-900 first:_mt-0 dark:_text-gray-100">
+        {list.name}
+            </h3>
+            {list.items ? (
+              list.items
+            ) : list.list ? (
+              <ul>
+                {list.list.map((item, index) => {
+                  return (
+                    <li key={index}>
+                      <a
+                        href={item.url}
+                        target={item.newWindow ? "_blank" : "_self"}
+                        className="_text-gray-500 hover:_text-gray-900 dark:_text-neutral-400 dark:hover:_text-gray-50"
+                      >
+                        {item.name}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : null}
           </section>
-        )
+        );
       })}
       </div>
     </div>

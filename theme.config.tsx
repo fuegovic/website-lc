@@ -18,6 +18,9 @@ const config: DocsThemeConfig = {
   project: {
     link: 'https://github.com/danny-avila/LibreChat',
   },
+  chat: {
+    link: 'https:discord.librechat.ai'
+  },
   docsRepositoryBase: 'https://github.com/danny-avila/LibreChat/tree/docs',
   head: () => {
     const config = useConfig()

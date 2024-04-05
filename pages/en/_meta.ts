@@ -13,6 +13,6 @@ export default {
   },
   blog: {
     type: "page",
-    title: "Blog"
+    title: "Blog",
   }
 }
