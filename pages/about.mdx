@@ -4,28 +4,28 @@ description: "LibreChat: Every AI in One Place, Built for Everyone"
 ---
 import LCLogo from '/components/lcLogo'
 import Carousel from '/components/carousel/Carousel'
-import IconGithub from "@/components/icons/github";
-import IconDiscord from "@/components/icons/discord";
-import { Mail, UsersRound } from "lucide-react";
+import Github from "@/components/icons/GitHub";
+import Discord from "@/components/icons/Discord";
+import { Mail } from "lucide-react";
+
+<div style={{marginBottom: "-10px", marginTop: "20px" }}>
+  <LCLogo />
+</div>
 
 # LibreChat
+**Every AI in One Place, Built for Everyone**
 
-<div style={{ textAlign: "center" }}>
-  Every AI in One Place, Built for Everyone
-</div >
-<div style={{ display: "flex", justifyContent: "center" }} >
-  <p className="_flex _h-6 _mt-4 _gap-2">
-      <a href="https://discord.librechat.ai" target="_blank">
-          <img alt="discord" src="https://img.shields.io/discord/1086345563026489514?label=&logo=discord&style=for-the-badge&logoWidth=20&logoColor=white&labelColor=000000&color=blueviolet" loading="lazy" decoding="async"></img>
-      </a>
-      <a href="https://github.com/danny-avila/LibreChat/blob/main/LICENSE" target="_blank">
-          <img alt="license" src="https://img.shields.io/github/license/danny-avila/LibreChat?style=for-the-badge&logo=github&logoColor=white&labelColor=000000" loading="lazy" decoding="async"></img>
-      </a>
-      <a aria-label="Sponsors" href="https://github.com/sponsors/danny-avila" target="_blank">
-          <img alt="sponsors" src="https://img.shields.io/badge/SPONSORS-red.svg?style=for-the-badge&logo=github-sponsors&logoColor=white&labelColor=000000&logoWidth=20" loading="lazy" decoding="async"></img>
-      </a>
-  </p>
-</div >
+<p className="_flex _h-6 _mt-4 _gap-2">
+    <a href="https://discord.librechat.ai" target="_blank">
+        <img alt="discord" src="https://img.shields.io/discord/1086345563026489514?label=&logo=discord&style=for-the-badge&logoWidth=20&logoColor=white&labelColor=000000&color=blueviolet" loading="lazy" decoding="async"></img>
+    </a>
+    <a href="https://github.com/danny-avila/LibreChat/blob/main/LICENSE" target="_blank">
+        <img alt="license" src="https://img.shields.io/github/license/danny-avila/LibreChat?style=for-the-badge&logo=github&logoColor=white&labelColor=000000" loading="lazy" decoding="async"></img>
+    </a>
+    <a aria-label="Sponsors" href="https://github.com/sponsors/danny-avila" target="_blank">
+        <img alt="sponsors" src="https://img.shields.io/badge/SPONSORS-red.svg?style=for-the-badge&logo=github-sponsors&logoColor=white&labelColor=000000&logoWidth=20" loading="lazy" decoding="async"></img>
+    </a>
+</p>
 
 **LibreChat** is a free, open-source AI chat platform that empowers you to harness the capabilities of cutting-edge language models from multiple providers in a unified interface. With its vast customization options, innovative enhancements, and seamless integration of AI services, LibreChat offers an unparalleled conversational experience.
 
@@ -36,17 +36,17 @@ import { Mail, UsersRound } from "lucide-react";
     <img
       src="https://github.com/danny-avila/LibreChat/assets/32828263/9b260f59-6acc-4fac-83b9-9d123d6b4a35"
       alt="Slide 1"
-      style={{ maxWidth: '40%', height: 'auto' }}
+      style={{ maxWidth: '40%', height: 'auto', borderRadius: '20px' }}
     />
     <img
       src="https://github.com/danny-avila/LibreChat/assets/32828263/d742c488-963a-4011-86f2-b6df184b70d1"
       alt="Slide 2"
-      style={{ maxWidth: '40%', height: 'auto' }}
+      style={{ maxWidth: '40%', height: 'auto', borderRadius: '20px' }}
     />
     <img
       src="https://github.com/danny-avila/LibreChat/assets/32828263/5a338731-eb95-41ea-8327-f5e78b8cc157"
       alt="Slide 3"
-      style={{ maxWidth: '40%', height: 'auto' }}
+      style={{ maxWidth: '40%', height: 'auto', borderRadius: '20px' }}
     />
   </Carousel>
 </div>
@@ -105,9 +105,9 @@ Released under the MIT License.
   <Cards.Card
     title="GitHub Discussions"
     href="/gh-discussions"
-    icon={<IconGithub />}
+    icon={<Github />}
   />
-  <Cards.Card title="Discord" href="/discord" icon={<IconDiscord />} />
+  <Cards.Card title="Discord" href="/discord" icon={<Discord />} />
   <Cards.Card
     title="contact@librechat.ai"
     href="mailto:contact@librechat.ai"

@@ -1,3 +1,0 @@
-# Specific settings for the .mdx file you want to format as JavaScript
-[pages/_app.mdx]
-language = javascript

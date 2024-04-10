@@ -3,22 +3,35 @@ import Link from "next/link";
 import Image from "next/image";
 import { type Page } from "nextra";
 import { Video } from "../Video";
+import { useState } from 'react';
 
-export const ChangelogIndex = ({ maxItems }: { maxItems?: number }) => (
-  <div className="mt-12 max-w-6xl mx-auto divide-y divide-primary/10">
-    {(getPagesUnderRoute("/changelog") as Array<Page & { frontMatter: any }>)
-      .slice(0, maxItems)
-      .sort(
-        (a, b) =>
-          new Date(b.frontMatter.date).getTime() -
-          new Date(a.frontMatter.date).getTime()
-      )
-      .map((page, i) => (
-        <div
-          className="md:grid md:grid-cols-4 md:gap-5 py-16 transition-all"
-          id={page.route.replace("/changelog/", "")}
-          key={page.route.replace("/changelog/", "")}
-        >
+
+export const ChangelogIndex = ({ maxItems }: { maxItems?: number }) => {
+  // Define an array to hold the hover states for each image
+  const [isHoveredStates, setIsHoveredStates] = useState<Array<boolean>>([]);
+
+  // Function to handle hover state for a specific index
+  const handleHover = (index: number, isHovered: boolean) => {
+    const newHoverStates = [...isHoveredStates];
+    newHoverStates[index] = isHovered;
+    setIsHoveredStates(newHoverStates);
+  };
+
+  return (
+    <div className="mt-12 max-w-6xl mx-auto divide-y divide-primary/10">
+      {(getPagesUnderRoute("/changelog") as Array<Page & { frontMatter: any }>)
+        .slice(0, maxItems)
+        .sort(
+          (a, b) =>
+            new Date(b.frontMatter.date).getTime() -
+            new Date(a.frontMatter.date).getTime()
+        )
+        .map((page, i) => (
+          <div
+            className="md:grid md:grid-cols-4 md:gap-5 py-16 transition-all"
+            id={page.route.replace("/changelog/", "")}
+            key={page.route.replace("/changelog/", "")}
+          >
           <div className="hidden md:block opacity-80 text-lg group-hover:opacity-100 sticky top-24 self-start">
             {page.frontMatter?.date
               ? new Date(page.frontMatter.date).toLocaleDateString("en-US", {
@@ -38,8 +51,13 @@ export const ChangelogIndex = ({ maxItems }: { maxItems?: number }) => (
                   className="mb-14 rounded relative overflow-hidden shadow-md group-hover:shadow-lg ring-0 border-0"
                 />
               ) : page.frontMatter?.ogImage ? (
-                <div className="mb-14 rounded relative aspect-video overflow-hidden shadow-md group-hover:shadow-lg border">
+                  <div
+                  className={`mb-14 rounded relative aspect-video overflow-hidden shadow-md ${isHoveredStates[i] ? 'scale-105 transition-transform duration-300' : 'transition-transform duration-300'}`}
+                  onMouseEnter={() => handleHover(i, true)}
+                  onMouseLeave={() => handleHover(i, false)}
+                  >
                   <Image
+                    style={{ borderRadius: '20px' }}
                     src={page.frontMatter.gif ?? page.frontMatter.ogImage}
                     className="object-cover"
                     alt={page.frontMatter?.title ?? "Blog post image"}
@@ -78,3 +96,4 @@ export const ChangelogIndex = ({ maxItems }: { maxItems?: number }) => (
       ))}
   </div>
 );
+};

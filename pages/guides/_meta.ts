@@ -1,9 +1,0 @@
-export default {
-  "-- Switcher": {
-    "type": "separator",
-    "title": "Switcher"
-  },
-  "index": "Overview",
-  "cookbook": "Cookbooks",
-  "videos": "Videos"
-}

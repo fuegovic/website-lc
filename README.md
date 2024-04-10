@@ -38,3 +38,83 @@ Interested in stack of Q&A docs chatbot? Checkout the [blog post](https://langfu
 ## Bundle analysis
 
 Run `pnpm run analyze` to analyze the bundle size of the production build using `@next/bundle-analyzer`.
+
+## Notes
+
+Signup -> `components\productUpdateSignup.tsx`
+
+
+Authors Info in : `components\Authors.tsx`
+
+
+### Author profiles ✔️ 
+Authors Profile pics in: `public\images\people`
+supported socials for authors (react-social-icons):
+![Socials](https://camo.githubusercontent.com/bb10ce76806a2db855ae9411682342b31f2857ce8ab62b8c0a46d3c3cdb77fdf/68747470733a2f2f7374617469632e72656163742d736f6369616c2d69636f6e732e636f6d2f726561646d652d696d6167652e706e67)
+
+
+
+### Changelogs/Blog Headers example
+
+⚠️ Title, Screenshot and authot is automatically populated in the doc
+
+```markdown
+---
+date: 2024-04-01
+title: LibreChat v0.7.0
+description: The v0.7.0 release of LibreChat
+author: Danny
+ogImage: /images/changelog/2024-04-01-v0.7.0.png
+---
+
+import { ChangelogHeader } from "@/components/changelog/ChangelogHeader";
+
+<ChangelogHeader />
+```
+
+
+Test Authors Profile pages:
+- pages/authors/name.mdx
+
+make sure you can build locally without error before submiting
+
+### Main Content wrapper
+
+`components\MainContentWrapper.tsx`
+
+disabled in `theme.config.tsx`, could be useful but pretty intrusive as-is
+
+### Email
+- UI: `pages\api\productUpdateSignup.ts`
+- sends a POST request to `pages\api\productUpdateSignup.ts` with the email and source data, and handles the response accordingly.
+    - emails are sends to: `process.env.SLACK_WEBHOOK_URL`
+
+### Feedbacks
+- see: `pages\api\feedback.ts` 
+    - sends to: `process.env.SLACK_WEBHOOK_URL`
+
+### Q&A Chatbot
+- see: `pages\api\qa-chatbot.ts`
+
+### Pricing template page
+- see: `pages\pricing.mdx`
+- see also: `pages\pricing.mdx`
+    - (AI generated content)
+
+
+## //TODO: 
+// logo svg + docs logo png
+// clean up `/public`
+// Get Started link
+// Footer update
+// Blog update
+// Import authors !important
+// tweak fallback icon for author's socials
+// Light Mode
+// double check mobile view (*authors)
+// global import useful components
+// subscribe to newsletter (unsubscribe)
+// update github URLs
+// remove .bak files
+// tweak 404
+// fix social cards in `about`

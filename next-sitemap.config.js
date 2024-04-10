@@ -1,5 +1,3 @@
-const cookbookRoutes = require("./cookbook/_routes.json");
-
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
     siteUrl: 'https://librechat.ai',
@@ -11,9 +9,4 @@ module.exports = {
         changefreq: 'daily',
         lastmod: new Date().toISOString()
     }],
-    exclude: [
-        // Exclude non-canonical pages from sitemap which are also part of the docs
-        ...cookbookRoutes
-            .filter(({ docsPath }) => !!docsPath)
-            .map(({ notebook }) => `/guides/cookbook/${notebook.replace(".ipynb", "")}`)],
 }

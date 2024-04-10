@@ -117,7 +117,7 @@ export default {
     "type": "page",
     "display": "hidden",
     "theme": {
-      "typesetting": "article",
+      // "typesetting": "article",
       "timestamp": false
     }
   },

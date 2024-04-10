@@ -5,78 +5,33 @@ const menuItems: {
   items: { name: string; href: string }[];
 }[] = [
   {
-    heading: "Platform",
+    heading: "Documentation",
     items: [
       {
-        name: "LLM Tracing",
-        href: "/docs/tracing/overview",
-      },
-      {
-        name: "Prompt Management",
-        href: "/docs/prompts/get-started",
-      },
-      {
-        name: "Evaluation",
-        href: "/docs/scores/overview",
-      },
-      {
-        name: "Datasets",
-        href: "/docs/datasets/overview",
-      },
-      {
-        name: "Metrics",
-        href: "/docs/analytics",
+        name: "Self-hosting",
+        href: "/docs/deployment/self-host",
       },
     ],
   },
   {
-    heading: "Integrations",
+    heading: "Blog",
     items: [
-      {
-        name: "Python SDK",
-        href: "/docs/sdk/python",
+      { name: "Blog", 
+      href: "/blog" 
       },
-      {
-        name: "JS/TS SDK",
-        href: "/docs/sdk/typescript/guide",
-      },
-      {
-        name: "OpenAI SDK",
-        href: "/docs/integrations/openai/get-started",
-      },
-      {
-        name: "Langchain",
-        href: "/docs/integrations/langchain/tracing",
-      },
-      {
-        name: "Llama-Index",
-        href: "/docs/integrations/llama-index/get-started",
-      },
-      {
-        name: "Litellm",
-        href: "/docs/integrations/litellm",
-      },
-      {
-        name: "Flowise",
-        href: "/docs/integrations/flowise",
-      },
-      {
-        name: "Langflow",
-        href: "/docs/integrations/langflow",
-      },
-      {
-        name: "API",
-        href: "https://api.reference.langfuse.com/",
+      { name: "Authors", 
+      href: "/authors/librechat" 
       },
     ],
   },
   {
     heading: "Resources",
     items: [
-      { name: "Documentation", href: "/docs" },
-      {
-        name: "Demo",
-        href: "https://demo.librechat.cfd/",
+      { name: "Documentation",
+        href: "/docs" 
+      },
+      { name: "Blog", 
+      href: "/blog" 
       },
       {
         name: "Changelog",
@@ -87,38 +42,23 @@ const menuItems: {
         href: "/docs/roadmap",
       },
       {
-        name: "Pricing",
-        href: "/pricing",
+        name: "Demo",
+        href: "https://demo.librechat.cfd/",
       },
       {
         name: "Status",
         href: "https://status.librechat.ai/",
-      },
-      {
-        name: "Self-hosting",
-        href: "/docs/deployment/self-host",
-      },
-      {
-        name: "Open Source",
-        href: "/docs/open-source",
       },
     ],
   },
   {
     heading: "About",
     items: [
-      { name: "Blog", 
-      href: "/blog" 
-      },
       {
-        name: "About us",
+        name: "About",
         href: "/about",
       },
-      {
-        name: "Demo",
-        href: "https://demo.librechat.cfd/",
-      },
-      { name: "Contact", 
+      { name: "📧 Contact", 
       href: "mailto:contact@librechat.ai" 
       },
     ],

@@ -6,6 +6,8 @@ import Link from "next/link";
 import { Author } from "../Authors";
 import { Video } from "../Video";
 
+//TODO: hover and border radius on videos, remove shadows?
+
 export const ChangelogHeader = () => {
   const router = useRouter();
   const changelogPages = getPagesUnderRoute("/changelog");
@@ -13,7 +15,7 @@ export const ChangelogHeader = () => {
     (page) => page.route === router.pathname
   ) as Page & { frontMatter: any };
 
-  const { title, description, ogImage, ogVideo, gif, date, author } =
+  const { title, description, ogImage, ogVideo, gif, date, authorid } =
     page.frontMatter;
 
   return (
@@ -42,10 +44,9 @@ export const ChangelogHeader = () => {
               {title}
             </h1>
           </div>
-          <Author author={author} />
+          <Author authorid={authorid} />
         </div>
       </div>
-
       {ogVideo ? (
         <Video src={ogVideo} gifStyle />
       ) : ogImage ? (

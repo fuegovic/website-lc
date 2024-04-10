@@ -66,6 +66,9 @@
   }
 }
 
+.social-svg {
+  border-radius: 10px !important;
+}
 
 @layer base {
   * {

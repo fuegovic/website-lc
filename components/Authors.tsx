@@ -1,78 +1,45 @@
 import Image from "next/image";
+import { getPagesUnderRoute } from "nextra/context";
+import { Page } from "nextra";
 
-export const allAuthors = {
-  maxdeichmann: {
-    firstName: "Max",
-    name: "Max Deichmann",
-    image: "/images/people/maxdeichmann.jpg",
-    twitter: "maxdeichmann",
-  },
-  marcklingen: {
-    firstName: "Marc",
-    name: "Marc Klingen",
-    image: "/images/people/marcklingen.jpg",
-    twitter: "marcklingen",
-  },
-  clemensrawert: {
-    firstName: "Clemens",
-    name: "Clemens Rawert",
-    image: "/images/people/clemensrawert.jpg",
-    twitter: "rawert",
-  },
-  hassiebpakzad: {
-    firstName: "Hassieb",
-    name: "Hassieb Pakzad",
-    image: "/images/people/hassiebpakzad.jpg",
-    twitter: "hassiebpakzad",
-  },
-  richardkruemmel: {
-    firstName: "Richard",
-    name: "Richard Krümmel",
-    image: "/images/people/richardkruemmel.jpg",
-    twitter: "RichardKrue",
-  },
-} as const;
-
-export const Authors = (props: { authors: (keyof typeof allAuthors)[] }) => {
-  const authors = props.authors.filter((author) => author in allAuthors);
-
-  if (authors.length === 0) return null;
-  return (
-    <div className="flex flex-wrap gap-5 sm:gap-10 justify-center py-7">
-      {authors.map((author) => (
-        <Author author={author} />
-      ))}
-    </div>
-  );
+type AuthorPage = Page & {
+  frontMatter: {
+    name: string;
+    image: string;
+    authorid: string;
+  };
 };
 
-export const Author = (props: { author: string }) => {
-  const author =
-    allAuthors[props.author] ??
-    Object.values(allAuthors).find(
-      (author) => author.firstName === props.author
-    );
+export const Author = ({ authorid }: { authorid: string }) => {
+  const authorPages = getPagesUnderRoute("/authors");
+  const page = authorPages?.find(
+    (page) => (page as AuthorPage).frontMatter.authorid === authorid
+  ) as AuthorPage;
 
-  if (!author) return null;
+  if (!page) {
+    // Handle the case when the author page is not found
+    console.error("Author page not found for authorid:", authorid);
+    return null;
+  }
+
+  const { name, ogImage } = page.frontMatter;
 
   return (
     <a
-      href={`https://twitter.com/${author.twitter}`}
+      href={`/authors/${authorid}`}
       className="group shrink-0"
-      target="_blank"
-      key={author.twitter}
       rel="noopener noreferrer"
     >
-      <div className="flex items-center gap-4" key={author.name}>
+      <div className="flex items-center gap-4" key={name}>
         <Image
-          src={author.image}
+          src={ogImage}
           width={40}
           height={40}
           className="rounded-full"
-          alt={`Picture ${author.name}`}
+          alt={`Picture ${name}`}
         />
         <span className="text-primary/60 group-hover:text-primary whitespace-nowrap">
-          {author.name}
+          {name}
         </span>
       </div>
     </a>

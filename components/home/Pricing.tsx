@@ -13,181 +13,147 @@ function classNames(...classes) {
 
 const tiers = [
   {
-    name: "Hobby",
-    id: "tier-hobby",
-    href: "https://cloud.langfuse.com",
+    name: "Starter",
+    id: "tier-starter",
+    href: "https://example.com",
     featured: false,
     description:
-      "Get started, no credit card required. Great for hobby projects and POCs.",
-    price: "Free",
+      "Ideal for small teams and personal projects.",
+    price: "$1K",
     mainFeatures: [
-      "No credit card required",
-      "All platform features",
-      "50k observations / month included",
-      "Community support (Discord & GitHub)",
+      "Role-based access",
+      "Basic analytics",
+      "Community support",
     ],
     cta: "Sign up",
   },
   {
-    name: "Pro",
-    id: "tier-pro",
-    href: "https://cloud.langfuse.com",
+    name: "Professional",
+    id: "tier-professional",
+    href: "https://example.com",
     featured: true,
     description:
-      "For serious projects. Includes access to full history and higher usage.",
-    price: "$59",
+      "For growing teams and businesses.",
+    price: "$1M",
     mainFeatures: [
-      "100k observations / month included, additional: $10 / 100k observations",
-      "Unlimited data access",
-      "Unlimited users",
+      "Advanced analytics",
       "Dedicated support",
+      "Custom configurations",
     ],
     cta: "Sign up",
   },
   {
-    name: "Team",
-    id: "tier-team",
-    href: "/schedule-demo",
+    name: "Enterprise",
+    id: "tier-enterprise",
+    href: "/contact-sales",
     featured: false,
-    price: "Starts at $499",
+    price: "Contact Sales",
     description:
-      "Dedicated solutions and support for your team. Contact us for pricing.",
+      "Tailored solutions for large organizations.",
     mainFeatures: [
-      "Unlimited ingestion throughput",
-      "Support SLAs",
-      "SSO enforcement and custom roles",
-      "Additional security and compliance features",
+      "Custom roles and permissions",
+      "Enterprise-grade security",
+      "24/7 support",
     ],
-    cta: "Talk to founders",
+    cta: "Contact sales",
   },
 ] as const;
+
 const sections = [
   {
-    name: "Tracing",
+    name: "Access Control",
     features: [
       {
-        name: "Included usage",
+        name: "Role-based access",
         tiers: {
-          Hobby: "50k observations",
-          Pro: "100k observations",
-          Team: "Custom",
+          Starter: true,
+          Professional: true,
+          Enterprise: true,
         },
       },
       {
-        name: "Additional usage",
+        name: "Custom permissions",
         tiers: {
-          Hobby: false,
-          Pro: "$10 / 100k observations",
-          Team: "Custom",
-        },
-      },
-      {
-        name: "Data access",
-        tiers: {
-          Hobby: "30 days",
-          Pro: "Unlimited",
-          Team: "Unlimited",
-        },
-      },
-      {
-        name: "Ingestion throughput",
-        tiers: {
-          Hobby: "1000 requests / min",
-          Pro: "1000 requests / min",
-          Team: "Custom",
+          Starter: false,
+          Professional: true,
+          Enterprise: true,
         },
       },
     ],
   },
   {
-    name: "Collaboration",
+    name: "Analytics & Reporting",
     features: [
       {
-        name: "Projects",
-        tiers: { Hobby: "3", Pro: "Unlimited", Team: "Unlimited" },
-      },
-      {
-        name: "Members / project",
-        tiers: { Hobby: "3", Pro: "Unlimited", Team: "Unlimited" },
-      },
-    ],
-  },
-  {
-    name: "Support",
-    features: [
-      {
-        name: "Community (GitHub, Discord)",
-        tiers: { Hobby: true, Pro: true, Team: true },
-      },
-      {
-        name: "Dedicated (Slack, Discord, Email)",
-        tiers: { Hobby: false, Pro: true, Team: true },
-      },
-      {
-        name: "Phone",
-        tiers: { Hobby: false, Pro: false, Team: true },
-      },
-      {
-        name: "SLAs",
-        tiers: { Hobby: false, Pro: false, Team: "Available" },
-      },
-    ],
-  },
-  {
-    name: "Security",
-    features: [
-      {
-        name: "SSO",
-        tiers: { Hobby: true, Pro: true, Team: true },
-      },
-      {
-        name: "SSO enforcement",
-        tiers: { Hobby: false, Pro: false, Team: true },
-      },
-      {
-        name: "Role-based access control",
+        name: "Basic analytics",
         tiers: {
-          Hobby: "Standard roles",
-          Pro: "Standard roles",
-          Team: "Custom roles",
+          Starter: true,
+          Professional: false,
+          Enterprise: true,
         },
       },
       {
-        name: "Data retention",
+        name: "Advanced analytics",
         tiers: {
-          Hobby: false,
-          Pro: false,
-          Team: true,
-        },
-      },
-      {
-        name: "Data region",
-        tiers: {
-          Hobby: "US or EU",
-          Pro: "US or EU",
-          Team: "Custom regions available",
+          Starter: false,
+          Professional: true,
+          Enterprise: true,
         },
       },
     ],
   },
   {
-    name: "Compliance",
+    name: "Integration",
     features: [
       {
-        name: "Data processing agreement (GDPR)",
-        tiers: { Hobby: false, Pro: true, Team: true },
+        name: "Integration with external tools",
+        tiers: {
+          Starter: true,
+          Professional: true,
+          Enterprise: true,
+        },
       },
       {
-        name: "SOC2 Type II and ISO27001 reports",
-        tiers: { Hobby: false, Pro: false, Team: "April 2024" },
+        name: "Custom API endpoints",
+        tiers: {
+          Starter: false,
+          Professional: true,
+          Enterprise: true,
+        },
+      },
+    ],
+  },
+  {
+    name: "Support & Maintenance",
+    features: [
+      {
+        name: "Community support",
+        tiers: {
+          Starter: true,
+          Professional: true,
+          Enterprise: false,
+        },
       },
       {
-        name: "Security reviews",
-        tiers: { Hobby: false, Pro: false, Team: true },
+        name: "Dedicated support",
+        tiers: {
+          Starter: false,
+          Professional: true,
+          Enterprise: true,
+        },
+      },
+      {
+        name: "24/7 support",
+        tiers: {
+          Starter: false,
+          Professional: false,
+          Enterprise: true,
+        },
       },
     ],
   },
 ];
+
 
 export default function Pricing({
   isPricingPage = false,
@@ -201,7 +167,7 @@ export default function Pricing({
           <div className="mx-auto max-w-7xl">
             <Header
               title="Simple pricing for projects of all sizes"
-              description="Get started on the Hobby plan for free. No credit card required."
+              description="Effortless pricing designed for every project size. Initiate your journey with our Starter plan, featuring essential tools for effective administration."
               h="h1"
             />
 
@@ -241,24 +207,6 @@ export default function Pricing({
                         >
                           {tier.price}
                         </p>
-                        {tier.name === "Pro" && (
-                          <div className="text-sm leading-5">
-                            <p
-                              className={
-                                tier.featured ? "text-gray-900" : "text-white"
-                              }
-                            >
-                              USD
-                            </p>
-                            <p
-                              className={
-                                tier.featured
-                                  ? "text-gray-500"
-                                  : "text-gray-400"
-                              }
-                            >{`Billed monthly`}</p>
-                          </div>
-                        )}
                       </div>
                       <Button
                         asChild
@@ -302,7 +250,6 @@ export default function Pricing({
         </div>
         {isPricingPage ? (
           <>
-            <SelfHost className="mt-10" />
             <div className="relative">
               <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
                 {/* Feature comparison (up to lg) */}
@@ -599,52 +546,39 @@ export default function Pricing({
               </Link>
               .
             </div>
-            <SelfHost className="mt-3" />
           </>
         )}
       </div>
     </HomeSection>
   );
 }
-const SelfHost = ({ className }: { className?: string }) => (
-  <div className={cn("text-center", className)}>
-    Langfuse is also easy to{" "}
-    <Link href="/docs/deployment/local" className="underline">
-      run locally
-    </Link>{" "}
-    and{" "}
-    <Link href="/docs/deployment/self-host" className="underline">
-      self-host
-    </Link>
-    .
-  </div>
-);
+
 
 const faqs = [
   {
-    question: "What is the easiest way to try Langfuse?",
+    question: "What is the LibreChat Admin Panel?",
     answer:
-      "You can view the <a class='underline' href='/demo'>public demo project</a> or sign up for a <a class='underline' href='https://cloud.langfuse.com'>free account</a> to try Langfuse with your own data. The Hobby plan is completeley free and does not require a credit card.",
+      "The LibreChat Admin Panel is a powerful tool designed to provide administrators with extensive control and management capabilities over their LibreChat instance. It allows you to configure roles, manage users, access advanced analytics, and more.",
   },
   {
-    question: "What is an observation?",
+    question: "How can I access the Admin Panel?",
     answer:
-      "Traces in Langfuse include a set of observations. An observation is a single event that occurred in your system. For example, a single LLM call, a single HTTP request, a single log object, or a database query. Check out the <a class='underline' href='/docs/tracing'>Langfuse Tracing docs<a/> for more details.",
+      "To access the LibreChat Admin Panel, you will need to subscribe to the paid plan that includes access to this feature. Once subscribed, you will receive credentials and instructions on how to access and utilize the Admin Panel.",
   },
   {
-    question: "Can I self-host Langfuse?",
+    question: "What features are available in the Admin Panel?",
     answer:
-      "Yes, Langfuse is open source and you can run Langfuse <a class='underline' href='/docs/deployment/local'>locally using docker compose<a/> or for <a class='underline' href='/docs/deployment/self-host'>production use via docker<a/> and a standalone database.",
+      "The Admin Panel offers features such as role-based access control, project configurations, user management with real-time data, analytics, integration with external tools, and more. It serves as a comprehensive tool for managing your LibreChat environment efficiently.",
   },
   {
-    question: "Where is the data stored?",
+    question: "Is the Admin Panel included in the free plan?",
     answer:
-      "Langfuse Cloud is hosted on AWS and data is stored in the US or EU depending on your selection. See our <a class='underline' href='/docs/data-security-privacy'>security and privacy documentation</a> for more details.",
+      "No, the Admin Panel is a premium feature available with paid subscriptions. The free plan of LibreChat includes core functionalities but does not grant access to the advanced capabilities offered by the Admin Panel.",
   },
   {
-    question: "Do you offer discounts?",
+    question: "Can I customize the Admin Panel according to my needs?",
     answer:
-      "Yes, we offer discounts for students, academics and open-source projects. If you believe your situation warrants a discount, please contact us at sales@langfuse.com with details about your project.",
+      "Yes, the Admin Panel allows for customization and configuration based on your specific requirements. You can set up custom roles, configure project settings, integrate with external services, and tailor the panel to suit your workflow.",
   },
 ];
 

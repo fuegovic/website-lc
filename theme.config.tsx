@@ -4,6 +4,9 @@ import {
   useConfig,
   ThemeSwitch,
 } from "nextra-theme-docs";
+
+import { Callout } from '@/components/callouts/callout'
+
 import { 
   Steps,
   Tabs,
@@ -12,21 +15,18 @@ import {
 } from 'nextra/components'
 import { Logo } from "@/components/logo";
 import { useRouter } from "next/router";
-import { MainContentWrapper } from "./components/MainContentWrapper";
+// import { MainContentWrapper } from "./components/MainContentWrapper";
 import { Frame } from "./components/Frame";
-import { GithubMenuBadge } from "./components/GitHubBadge";
-import { ToAppButton } from "./components/ToAppButton";
-import { COOKBOOK_ROUTE_MAPPING } from "./lib/cookbook_route_mapping";
+// import { ToAppButton } from "./components/ToAppButton";
+// import { COOKBOOK_ROUTE_MAPPING } from "./lib/cookbook_route_mapping";
 import { GeistSans } from "geist/font/sans";
-import IconDiscord from "./components/icons/discord";
 import FooterMenu from "./components/FooterMenu";
 import Link from "next/link";
 import { FileCode, LibraryBig } from "lucide-react";
-// import { LogoTitle } from './components/logo'
 
 const config: DocsThemeConfig = {
   logo: <Logo />,
-  logoLink: false,
+  logoLink: "/",
   project: {
     link: 'https://github.com/danny-avila/LibreChat',
   },
@@ -34,7 +34,7 @@ const config: DocsThemeConfig = {
     link: 'https:discord.librechat.ai'
   },
 
-  main: MainContentWrapper,
+  // main: MainContentWrapper,
   search: {
     placeholder: "Search...",
   },
@@ -85,7 +85,7 @@ const config: DocsThemeConfig = {
       : "";
 
     const image = frontMatter.ogImage
-      ? "https://librechat.ai" + frontMatter.ogImage
+      ? "https://nextra.librechat.cfd" + frontMatter.ogImage //TODO Update URL
       : `https://langfuse.com/api/og?title=${encodeURIComponent(
           title
         )}&description=${encodeURIComponent(
@@ -93,7 +93,7 @@ const config: DocsThemeConfig = {
         )}&section=${encodeURIComponent(section)}`;
 
     const video = frontMatter.ogVideo
-      ? "https://librechat.ai" + frontMatter.ogVideo
+      ? "https://nextra.librechat.cfd" + frontMatter.ogVideo //TODO Update URL
       : null;
 
     return (
@@ -101,6 +101,9 @@ const config: DocsThemeConfig = {
         <meta name="theme-color" content="#000" />
         <meta property="og:url" content={url} />
         <meta httpEquiv="Content-Language" content="en" />
+
+        <meta name="title" content={title} />
+        <meta property="og:title" content={title} />
 
         <meta name="description" content={description} />
         <meta property="og:description" content={description} />
@@ -145,6 +148,8 @@ const config: DocsThemeConfig = {
     Tabs,
     Steps,
     Cards,
+    FileTree,
+    Callout,
   },
   banner: {
     key: "new-docs",

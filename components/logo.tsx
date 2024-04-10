@@ -19,14 +19,14 @@ export function Logo() {
   >
     {/* Image */}
     <Image
-      src="/librechat_docs_logo.svg"
+      src="/librechat_docs.svg"
       alt="LibreChat Docs Logo"
       width={30}
       height={30}
       className="hidden dark:block"
     />
     <Image
-      src="/libreChat_docs_logo.svg"
+      src="/libreChat_docs.svg"
       alt="LibreChat Docs Logo"
       width={30}
       height={30}
