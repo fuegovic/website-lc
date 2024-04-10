@@ -104,17 +104,20 @@ disabled in `theme.config.tsx`, could be useful but pretty intrusive as-is
 
 ## //TODO: 
 // logo svg + docs logo png
-// clean up `/public`
+✔️ Import authors for changelogs
+✔️ clean up `/public`
+✔️ double check mobile view (*authors)
+✔️ global import useful components
+✔️ tweak 404
+✔️ fix social cards in `about`
 // Get Started link
 // Footer update
 // Blog update
-// Import authors !important
+// Import authors for blogs
 // tweak fallback icon for author's socials
 // Light Mode
-// double check mobile view (*authors)
-// global import useful components
 // subscribe to newsletter (unsubscribe)
 // update github URLs
 // remove .bak files
-// tweak 404
-// fix social cards in `about`
+// Self-hosting
+// `ProductUpdateSignup`

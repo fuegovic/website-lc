@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev -p 3333",
     "build": "next build",
-    "postbuild": "node scripts/clean-cache.js",
+    "postbuild": "node scripts/clean-cache.ts",
     "start": "next start -p 3333",
     "analyze": "cross-env ANALYZE=true next build",
     "postbuild:old": "next-sitemap && echo 'Removing .next/cache to resolve Nextra caching bug' && rm -rf .next/cache"

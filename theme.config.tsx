@@ -1,28 +1,24 @@
 import React from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { GeistSans } from "geist/font/sans";
 import {
   DocsThemeConfig,
   useConfig,
   ThemeSwitch,
 } from "nextra-theme-docs";
-
-import { Callout } from '@/components/callouts/callout'
-
 import { 
   Steps,
   Tabs,
   Cards,
   FileTree,
+  Button,
 } from 'nextra/components'
+import { Callout } from '@/components/callouts/callout'
+import Carousel from '@/components/carousel/Carousel'
 import { Logo } from "@/components/logo";
-import { useRouter } from "next/router";
-// import { MainContentWrapper } from "./components/MainContentWrapper";
 import { Frame } from "./components/Frame";
-// import { ToAppButton } from "./components/ToAppButton";
-// import { COOKBOOK_ROUTE_MAPPING } from "./lib/cookbook_route_mapping";
-import { GeistSans } from "geist/font/sans";
 import FooterMenu from "./components/FooterMenu";
-import Link from "next/link";
-import { FileCode, LibraryBig } from "lucide-react";
 
 const config: DocsThemeConfig = {
   logo: <Logo />,
@@ -33,8 +29,6 @@ const config: DocsThemeConfig = {
   chat: {
     link: 'https:discord.librechat.ai'
   },
-
-  // main: MainContentWrapper,
   search: {
     placeholder: "Search...",
   },
@@ -43,7 +37,6 @@ const config: DocsThemeConfig = {
       return (
         <>
           {ThemeSwitch({ lite: true, className: 'button-switch theme-switch' })}
-          {/* {LocaleSwitch({ lite: true, className: 'button-switch' })} */}
         </>
       )
     }
@@ -59,12 +52,11 @@ const config: DocsThemeConfig = {
   toc: {
     backToTop: true
   },
-  docsRepositoryBase: "https://github.com/danny-avila/LibreChat-Docs/tree/main",
+  docsRepositoryBase: "https://github.com/danny-avila/LibreChat-Docs/tree/main", //TODO: Update URL
   footer: {
     content: <FooterMenu />,
   },
 
-  
   head: () => {
     const { asPath, defaultLocale, locale } = useRouter();
     const { frontMatter, title: pageTitle } = useConfig();
@@ -78,19 +70,15 @@ const config: DocsThemeConfig = {
 
     const section = asPath.startsWith("/docs")
       ? "Docs"
+      : asPath.startsWith("/blog/")
+      ? "Blog"
       : asPath.startsWith("/changelog/")
       ? "Changelog"
-      : asPath.startsWith("/cookbook/")
-      ? "Cookbook"
       : "";
 
     const image = frontMatter.ogImage
       ? "https://nextra.librechat.cfd" + frontMatter.ogImage //TODO Update URL
-      : `https://langfuse.com/api/og?title=${encodeURIComponent(
-          title
-        )}&description=${encodeURIComponent(
-          description
-        )}&section=${encodeURIComponent(section)}`;
+      : `/images/banner.png`;
 
     const video = frontMatter.ogVideo
       ? "https://nextra.librechat.cfd" + frontMatter.ogVideo //TODO Update URL
@@ -150,6 +138,8 @@ const config: DocsThemeConfig = {
     Cards,
     FileTree,
     Callout,
+    Button,
+    Carousel,
   },
   banner: {
     key: "new-docs",

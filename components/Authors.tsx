@@ -5,7 +5,7 @@ import { Page } from "nextra";
 type AuthorPage = Page & {
   frontMatter: {
     name: string;
-    image: string;
+    ogImage: string;
     authorid: string;
   };
 };
