@@ -112,7 +112,6 @@ disabled in `theme.config.tsx`, could be useful but pretty intrusive as-is
 ✔️ fix social cards in `about`
 // Get Started link
 // Footer update
-// Blog update
 // Import authors for blogs
 // tweak fallback icon for author's socials
 // Light Mode
@@ -121,3 +120,11 @@ disabled in `theme.config.tsx`, could be useful but pretty intrusive as-is
 // remove .bak files
 // Self-hosting
 // `ProductUpdateSignup`
+WIP: // Blog update
+✔️ fix "blog header" (make it look basically like the changelog header)
+- blog index
+- multiple tag support
+- search by tag / author
+- round preview corned
+- add author
+- remove subscribe...

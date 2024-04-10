@@ -50,7 +50,7 @@ export function Hero() {
         </p>
         <br className="max-md:_hidden" />
         <div className={styles.actions}>
-          <Link className={styles.cta} href={`/docs/intro`}>
+          <Link className={styles.cta} href={`/docs`}>
             {heroMap.cta} <span>→</span>
           </Link>
           <a
