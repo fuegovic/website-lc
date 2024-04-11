@@ -27,22 +27,6 @@ const cspHeader = `
   block-all-mixed-content;
 `;
 
-const nonPermanentRedirects = [
-  // Up to date Redirects:
-  ["/discord", "https://discord.librechat.ai"],
-  ["/demo", "https://demo.librechat.cfd"],
-  ["/issue", "https://github.com/danny-avila/LibreChat/issues/new/choose"],
-  ["/new-issue", "https://github.com/danny-avila/LibreChat/issues/new/choose"],
-  ["/issues", "https://github.com/danny-avila/LibreChat/issues"],
-  ["/gh-support", "https://github.com/danny-avila/LibreChat/discussions/categories/support"],
-  ["/gh-discussions", "https://github.com/danny-avila/LibreChat/discussions"],
-  ["/roadmap", "/docs/roadmap"],
-  // Redirect to overview pages
-  ...[].map((path) => [path, path + "/overview"]),
-];
-
-const permanentRedirects = [];
-
 // nextra config
 const withNextra = nextra({
   theme: 'nextra-theme-docs',
@@ -122,5 +106,8 @@ const nextraConfig = withNextra({
     })),
   ]
 });
+
+const permanentRedirects = []
+
 
 export default withBundleAnalyzer(nextraConfig);
