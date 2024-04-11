@@ -1,6 +1,6 @@
-# Langfuse Docs
+# LibreChat Docs
 
-Repo for [langfuse.com](https://langfuse.com), based on [Nextra](https://nextra.site/)
+Based on [Nextra](https://nextra.site/)
 
 ## Local Development
 
@@ -22,10 +22,6 @@ Steps after updating notebooks:
 2. Run `bash scripts/update_cookbook_docs.sh`
 3. Commit the changed markdown files
 
-## API Reference (Swagger)
-
-API reference is automatically generated based on the OpenAPI spec of the current production deployment of Langfuse Cloud.
-
 ## Stack
 
 - [Nextra](https://nextra.site/)
@@ -33,13 +29,14 @@ API reference is automatically generated based on the OpenAPI spec of the curren
 - [shadcn/ui](https://ui.shadcn.com)
 - [Tailwind CSS](https://tailwindcss.com/)
 
-Interested in stack of Q&A docs chatbot? Checkout the [blog post](https://langfuse.com/blog/qa-chatbot-for-langfuse-docs) for implementation details (all open source)
 
 ## Bundle analysis
 
 Run `pnpm run analyze` to analyze the bundle size of the production build using `@next/bundle-analyzer`.
 
 ## Notes
+
+Interested in stack of Q&A docs chatbot? Checkout the [blog post](https://langfuse.com/blog/qa-chatbot-for-langfuse-docs) for implementation details (all open source)
 
 Signup -> `components\productUpdateSignup.tsx`
 
@@ -56,14 +53,14 @@ supported socials for authors (react-social-icons):
 
 ### Changelogs/Blog Headers example
 
-⚠️ Title, Screenshot and authot is automatically populated in the doc
+⚠️ Title, Screenshot and author is automatically populated in the changelog/blog
 
 ```markdown
 ---
 date: 2024-04-01
 title: LibreChat v0.7.0
 description: The v0.7.0 release of LibreChat
-author: Danny
+authorid: danny
 ogImage: /images/changelog/2024-04-01-v0.7.0.png
 ---
 
@@ -71,10 +68,10 @@ import { ChangelogHeader } from "@/components/changelog/ChangelogHeader";
 
 <ChangelogHeader />
 ```
-
+//TODO: instruction for blog posts
 
 Test Authors Profile pages:
-- pages/authors/name.mdx
+- pages/authors/authorid.mdx
 
 make sure you can build locally without error before submiting
 
@@ -85,9 +82,23 @@ make sure you can build locally without error before submiting
 disabled in `theme.config.tsx`, could be useful but pretty intrusive as-is
 
 ### Email
-- UI: `pages\api\productUpdateSignup.ts`
-- sends a POST request to `pages\api\productUpdateSignup.ts` with the email and source data, and handles the response accordingly.
-    - emails are sends to: `process.env.SLACK_WEBHOOK_URL`
+❌ - UI: `pages\api\productUpdateSignup.ts`
+❌ - sends a POST request to `pages\api\productUpdateSignup.ts` with the email and source data, and handles the response accordingly.
+❌  - emails are sends to: `process.env.SLACK_WEBHOOK_URL`
+
+✅ Replaced with: `utils\dbConnect.js`, `utils\Subscriber.js`, `pages/api/subscribe.js`, 
+        - component: `components\NewsletterForm.js`
+```js
+import NewsletterForm from '@/components/NewsletterForm'
+
+<NewsletterForm />
+```
+
+//TODO: 
+// provide unsubscribe mechanism, 
+// ✔️ make it pretty
+// ✔️ Prevent multiple entries
+// light mode / move styles to dedicated css
 
 ### Feedbacks
 - see: `pages\api\feedback.ts` 
@@ -110,21 +121,24 @@ disabled in `theme.config.tsx`, could be useful but pretty intrusive as-is
 ✔️ global import useful components
 ✔️ tweak 404
 ✔️ fix social cards in `about`
-// Get Started link
+✔️ fix Get Started link
 // Footer update
-// Import authors for blogs
+✔️ Import authors for blogs
 // tweak fallback icon for author's socials
 // Light Mode
-// subscribe to newsletter (unsubscribe)
+// `ProductUpdateSignup` -subscribe to newsletter (unsubscribe) 
 // update github URLs
-// remove .bak files
-// Self-hosting
-// `ProductUpdateSignup`
+✔️ remove .bak files
+// callouts bg in light mode
+
 WIP: // Blog update
 ✔️ fix "blog header" (make it look basically like the changelog header)
 - blog index
 - multiple tag support
-- search by tag / author
-- round preview corned
+- search by tag / author (menu)
+- round preview corners
 - add author
 - remove subscribe...
+
+note:
+Self-hosting

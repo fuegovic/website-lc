@@ -6,7 +6,7 @@ export const FromTheBlog = () => (
   <HomeSection>
     <Header
       title="Blog"
-      description="The latest updates and releases from LibreChat"
+      description="The latest articles from LibreChat"
     />
     <BlogIndex maxItems={3} />
   </HomeSection>

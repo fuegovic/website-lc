@@ -40,6 +40,8 @@ const withNextra = nextra({
 // next config
 const nextraConfig = withNextra({
   experimental: {
+    esmExternals: "loose", // <-- add this
+    serverComponentsExternalPackages: ["mongoose"],
     scrollRestoration: true,
   },
   transpilePackages: [
@@ -51,7 +53,7 @@ const nextraConfig = withNextra({
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'static.langfuse.com',
+        hostname: 'static.librechat.ai',
         port: '',
         pathname: '/**',
       },
@@ -114,78 +116,14 @@ const nonPermanentRedirects = [
   ["/issues", "https://github.com/danny-avila/LibreChat/issues"],
   ["/gh-support", "https://github.com/danny-avila/LibreChat/discussions/categories/support"],
   ["/gh-discussions", "https://github.com/danny-avila/LibreChat/discussions"],
-
-  //TODO Clean Outdated Redirects:
-  ["/analytics", "https://docs.google.com/document/d/1PEFSqn-VWjNXOZZ1U7FC0oH-spDdkKJxLwgp15iK7zY"],
-  ["/video", "/guides/videos/2-min"],
-  ["/docs/video", "/guides/videos/2-min"],
   ["/roadmap", "/docs/roadmap"],
-  ["/ph", "https://www.producthunt.com/posts/langfuse"],
-  ["/loom-gpt4-PR", "https://www.loom.com/share/5c044ca77be44ff7821967834dd70cba"],
-  ["/security", "/docs/data-security-privacy"],
-  ["/idea", "https://github.com/orgs/langfuse/discussions/new?category=ideas"],
-  ["/new-idea", "https://github.com/orgs/langfuse/discussions/new?category=ideas"],
-  ["/ideas", "https://github.com/orgs/langfuse/discussions/categories/ideas"],
-  ["/docs/analytics", "/docs/analytics/overview"],
-
   // Redirect to overview pages
   ...[
-    "/docs/integrations",
-    "/docs/tracing",
-    "/docs/scores",
-    "/docs/datasets",
-  ].map((path) => [path, path + "/overview"]),
 
-  // Redirects to bridge all kinds of old links to new links
-  ["/docs/reference", "https://api.reference.langfuse.com/"],
-  ["/docs/integrations/api", "https://api.reference.langfuse.com/"],
-  ["/docs/integrations/sdk/typescript", "/docs/sdk/typescript"],
-  ["/docs/integrations/sdk/python", "/docs/sdk/python"],
-  ["/docs/langchain", "/docs/integrations/langchain/tracing"],
-  ["/docs/langchain/python", "/docs/integrations/langchain/tracing"],
-  ["/docs/langchain/typescript", "/docs/integrations/langchain/tracing"],
-  ["/docs/integrations/langchain", "/docs/integrations/langchain/tracing"],
-  ["/docs/integrations/langchain/python", "/docs/integrations/langchain/tracing"],
-  ["/docs/integrations/langchain/typescript", "/docs/integrations/langchain/tracing"],
-  ["/docs/integrations/langchain/overview", "/docs/integrations/langchain/tracing"],
-  ["/docs/integrations/llama-index", "/docs/integrations/llama-index/get-started"],
-  ["/docs/integrations/llama-index/overview", "/docs/integrations/llama-index/get-started"],
-  ["/docs/integrations/llama-index/cookbook", "/docs/integrations/llama-index/example-python"],
-  ["/docs/flowise", "/docs/integrations/flowise"],
-  ["/docs/litellm", "/docs/integrations/litellm"],
-  ["/docs/langflow", "/docs/integrations/langflow"],
-  ["/integrations", "/docs/integrations"],
-  ["/docs/local", "/docs/deployment/local"],
-  ["/docs/self-host", "/docs/deployment/self-host"],
-  ["/docs/cloud", "/docs/deployment/cloud"],
-  ["/docs/guides/sdk-integration", "/docs/sdk/overview"],
-  ["/docs/sdk", "/docs/sdk/overview"],
-  ["/docs/sdk/python", "/docs/sdk/python/decorators"],
-  ["/cookbook", "/guides"],
-  ["/cookbook/:path*", "/guides/cookbook/:path*"],
-  ["/docs/sdk/typescript", "/docs/sdk/typescript/guide"],
-  ["/docs/sdk/typescript-web", "/docs/sdk/typescript/guide-web"],
-  ["/docs/scores/evals", "/docs/scores/model-based-evals"],
-  ["/docs/scores/model-based-evals/overview", "/docs/scores/model-based-evals"],
-  ["/docs/scores/model-based-evals/ragas", "/cookbook/evaluation_of_rag_with_ragas"],
-  ["/docs/scores/model-based-evals/langchain", "/cookbook/evaluation_with_langchain"],
-  ["/experimentation", "/docs/experimentation"],
-  ["/docs/token-usage", "/docs/model-usage-and-cost"],
-  ["/docs/debugging-ui", "/docs/tracing/overview"],
-  ["/observability", "/docs/tracing/overview"],
-  ["/docs/openai", "/docs/integrations/openai/get-started"],
-  ["/docs/integrations/openai", "/docs/integrations/openai/get-started"],
-  ["/docs/api", "https://api.reference.langfuse.com/"],
-  ["/docs/qa-chatbot", "/docs/demo"],
-  ["/docs/user-explorer", "/docs/tracing/users"],
-  ["/docs/sessions", "/docs/tracing/sessions"],
-  ["/docs/deployment/cloud", "/security"],
-  ["/docs/schedule-demo", "/schedule-demo"],
-  ["/docs/project-sharing", "/docs/rbac"],
-  ["/docs/prompts", "/docs/prompts/get-started"],
-  ["/changelog/2024-03-03-posthog-integration", "/docs/analytics/posthog"],
+  ].map((path) => [path, path + "/overview"]),
 ];
 
 const permanentRedirects = []
+
 
 export default withBundleAnalyzer(nextraConfig);
