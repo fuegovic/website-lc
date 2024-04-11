@@ -29,22 +29,10 @@ export default {
     }
   },
   "demo": {
+    "type": "page",
     "title": "Demo",
-    "type": "menu",
-    "items": {
-      "try-yourself": {
-        "title": "Interactive demo",
-        "href": "/docs/demo"
-      },
-      "video": {
-        "title": "Video (2 min)",
-        "href": "/guides/videos/2-min"
-      },
-      "schedule-demo": {
-        "title": "Schedule demo",
-        "href": "/schedule-demo"
-      }
-    }
+    "href": "https://demo.librechat.cfd/",
+    "display": "hidden"
   },
   "pricing": {
     "title": "Pricing",
