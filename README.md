@@ -48,9 +48,9 @@ import { ChangelogHeader } from "@/components/changelog/ChangelogHeader";
 //TODO: instruction for blog posts, but basically the same as the changelogs
 
 ### Email
-❌ - UI: `pages\api\productUpdateSignup.ts`
-❌ - sends a POST request to `pages\api\productUpdateSignup.ts` with the email and source data, and handles the response accordingly.
-❌  - emails are sends to: `process.env.SLACK_WEBHOOK_URL`
+- ❌ UI: `pages\api\productUpdateSignup.ts`
+- ❌ sends a POST request to `pages\api\productUpdateSignup.ts` with the email and source data, and handles the response accordingly.
+  - ❌ emails are sends to: `process.env.SLACK_WEBHOOK_URL`
 
 ✅ Replaced with: `utils\dbConnect.js`, `utils\Subscriber.js`, `pages/api/subscribe.js`, 
         - component: `components\NewsletterForm.js`
@@ -61,10 +61,10 @@ import NewsletterForm from '@/components/NewsletterForm'
 ```
 
 //TODO: 
-// provide unsubscribe mechanism, 
-// ✔️ make it pretty
-// ✔️ Prevent multiple entries
-// light mode / move styles to dedicated css
+- // provide unsubscribe mechanism, 
+- // ✔️ make it pretty
+- // ✔️ Prevent multiple entries
+- // light mode / move styles to dedicated css
 
 ### Feedbacks
 - see: `pages\api\feedback.ts` 
@@ -80,31 +80,31 @@ import NewsletterForm from '@/components/NewsletterForm'
 
 
 ## //TODO: 
-// logo svg + docs logo png
-✔️ Import authors for changelogs
-✔️ clean up `/public`
-✔️ double check mobile view (*authors)
-✔️ global import useful components
-✔️ tweak 404
-✔️ fix social cards in `about`
-✔️ fix Get Started link
-// Footer update
-✔️ Import authors for blogs
-// tweak fallback icon for author's socials
-// Light Mode
-// `ProductUpdateSignup` -subscribe to newsletter (unsubscribe) 
-// update github URLs
-✔️ remove .bak files
-// callouts bg in light mode
+- // logo svg + docs logo png
+- ✔️ Import authors for changelogs
+- ✔️ clean up `/public`
+- ✔️ double check mobile view (*authors)
+- ✔️ global import useful components
+- ✔️ tweak 404
+- ✔️ fix social cards in `about`
+- ✔️ fix Get Started link
+- // Footer update
+- ✔️ Import authors for blogs
+- // tweak fallback icon for author's socials
+- // Light Mode
+- // `ProductUpdateSignup` -subscribe to newsletter (unsubscribe) 
+- // update github URLs
+- ✔️ remove .bak files
+- // callouts bg in light mode
 
-WIP: // Blog update
-✔️ fix "blog header" (make it look basically like the changelog header)
+### WIP: // Blog update
+- ✔️ fix "blog header" (make it look basically like the changelog header)
 - blog index
 - multiple tag support
 - search by tag / author (menu)
 - round preview corners
 - add author in the blog cards
-✔️ remove subscribe...
+- ✔️ remove subscribe...
 
-random note:
-Install -> Self-hosting
+### random note:
+- Install -> Self-hosting
