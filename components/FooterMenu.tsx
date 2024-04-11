@@ -58,7 +58,7 @@ const menuItems: {
         name: "About",
         href: "/about",
       },
-      { name: "📧 Contact", 
+      { name: "Contact", 
       href: "mailto:contact@librechat.ai" 
       },
     ],
@@ -74,6 +74,18 @@ const menuItems: {
       {
         name: "Privacy policy",
         href: "/privacy",
+      },
+      {
+        name: "",
+        href: "",
+      },
+      {
+        name: "",
+        href: "",
+      },
+      {
+        name: "Unsubscribe",
+        href: "/unsubscribe",
       },
     ],
   },

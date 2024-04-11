@@ -64,6 +64,11 @@ export default {
       "timestamp": false
     }
   },
+  "unsubscribe": {
+    "title": "Unsubscribe",
+    "type": "page",
+    "display": "hidden"
+  },
   "404": {
     "type": "page",
     "theme": {

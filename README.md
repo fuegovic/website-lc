@@ -18,7 +18,7 @@ Interested in stack of Q&A docs chatbot? Checkout the [blog post](https://langfu
 
 ---
 
-## Notes
+## Notes / TODOs
 
 ### Author profiles
 - Profiles located in `pages\authors`
@@ -60,27 +60,23 @@ import NewsletterForm from '@/components/NewsletterForm'
 <NewsletterForm />
 ```
 
-//TODO: 
-- // provide unsubscribe mechanism, 
-- // ✔️ make it pretty
-- // ✔️ Prevent multiple entries
+//TODO:
+- ✔️ `ProductUpdateSignup` -subscribe to newsletter (unsubscribe)  
+- ✔️ provide unsubscribe mechanism, 
+- ✔️ make it pretty
+- ✔️ Prevent multiple entries
 - // light mode / move styles to dedicated css
-
-### Feedbacks
-- see: `pages\api\feedback.ts` 
-    - sends to: `process.env.SLACK_WEBHOOK_URL`
 
 ### Q&A Chatbot
 - see: `pages\api\qa-chatbot.ts`
 
 ### Pricing template page
+//TODO: Stripe payment support
 - see: `pages\pricing.mdx`
 - see also: `pages\pricing.mdx`
     - (AI generated content)
 
-
 ## //TODO:
-- // Screenshots in `about` 
 - // logo svg + docs logo png
 - ✔️ Import authors for changelogs
 - ✔️ clean up `/public`
@@ -93,10 +89,9 @@ import NewsletterForm from '@/components/NewsletterForm'
 - ✔️ Import authors for blogs
 - // tweak fallback icon for author's socials
 - // Light Mode
-- // `ProductUpdateSignup` -subscribe to newsletter (unsubscribe) 
-- // update github URLs
+- // update github URLs (before publishing)
 - ✔️ remove .bak files
-- // callouts bg in light mode
+- ✔️ callouts bg in light mode
 
 ### WIP: // Blog update
 - ✔️ fix "blog header" (make it look basically like the changelog header)
@@ -107,5 +102,9 @@ import NewsletterForm from '@/components/NewsletterForm'
 - add author in the blog cards
 - ✔️ remove subscribe...
 
-### random note:
-- Install -> Self-hosting
+### random docs note:
+//TODO:
+- // Contact Page?
+- // add and organize docs (once the base properly is set)
+- // Add proper screenshots in `about` 
+- // Install -> Self-hosting

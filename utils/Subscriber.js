@@ -7,6 +7,10 @@ const SubscriberSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
+    status: {
+        type: String,
+        default: 'subscribed',
+    },
 });
 
 const Subscriber = mongoose.models.Subscriber || mongoose.model('Subscriber', SubscriberSchema);

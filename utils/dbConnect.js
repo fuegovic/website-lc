@@ -8,6 +8,7 @@ async function dbConnect() {
         }
 
         console.debug('Connecting to MongoDB...');
+        mongoose.set('debug', true);
         await mongoose.connect(process.env.MONGODB_URI, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
