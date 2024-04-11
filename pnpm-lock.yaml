@@ -81,8 +81,8 @@ dependencies:
     specifier: 3.3.6
     version: 3.3.6
   lucide-react:
-    specifier: ^0.363.0
-    version: 0.363.0(react@18.2.0)
+    specifier: ^0.367.0
+    version: 0.367.0(react@18.2.0)
   mongodb:
     specifier: ^6.5.0
     version: 6.5.0
@@ -111,8 +111,8 @@ dependencies:
     specifier: ^8.4.38
     version: 8.4.38
   posthog-js:
-    specifier: ^1.116.6
-    version: 1.116.6
+    specifier: ^1.121.1
+    version: 1.121.1
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -1957,6 +1957,7 @@ packages:
 
   /ai@3.0.21(react@18.2.0)(solid-js@1.8.16)(svelte@4.2.13)(vue@3.4.21)(zod@3.22.4):
     resolution: {integrity: sha512-ieWylO8pnrIO7tuGMEBUpa1rC+kFdnsdjM1qgO0nAi3INa+5lCB2iLJdTQSnhSZbmWQx3wDlnToaXSZRiZvc+Q==}
+
     engines: {node: '>=14.6'}
     peerDependencies:
       react: ^18.2.0
@@ -3714,8 +3715,8 @@ packages:
       yallist: 4.0.0
     dev: false
 
-  /lucide-react@0.363.0(react@18.2.0):
-    resolution: {integrity: sha512-AlsfPCsXQyQx7wwsIgzcKOL9LwC498LIMAo+c0Es5PkHJa33xwmYAkkSoKoJWWWSYQEStqu58/jT4tL2gi32uQ==}
+  /lucide-react@0.367.0(react@18.2.0):
+    resolution: {integrity: sha512-3FWiBaJiqMrx5a1sjH3CVdPqWnw/Z/PTVeeTDmOeILSs+8Ah+VhCd4FQMeHo6Z0WxHcm9piIOtilQwvceiCCKQ==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
     dependencies:
@@ -4865,7 +4866,10 @@ packages:
       zod: 3.22.4
     dev: false
 
+
+
   /nextra@3.0.0-alpha.22(@types/react@18.2.75)(next@14.1.4)(react-dom@18.2.0)(react@18.2.0)(typescript@5.4.5):
+
     resolution: {integrity: sha512-4V1kLs0MiQ1KE/Dh1cnLc100Ibyo/PY46v1NdRzrYe7uzCBcSGTiG9OwHTE/34wUwbM5N7TptiDOlV79BBZ0Ng==}
     engines: {node: '>=18'}
     peerDependencies:
@@ -5185,11 +5189,11 @@ packages:
       source-map-js: 1.2.0
     dev: false
 
-  /posthog-js@1.116.6:
-    resolution: {integrity: sha512-rvt8HxzJD4c2B/xsUa4jle8ApdqljeBI2Qqjp4XJMohQf18DXRyM6b96H5/UMs8jxYuZG14Er0h/kEIWeU6Fmw==}
+  /posthog-js@1.121.1:
+    resolution: {integrity: sha512-RKVVnhr3Lhs8RWJfkv4S4wdtUOz64wJvFkadG3X5gJ/AB8fB794tB0oK3RG3hNHfXeaA/9dnD6UUgiQLaHKR0w==}
     dependencies:
       fflate: 0.4.8
-      preact: 10.20.1
+      preact: 10.20.2
     dev: false
 
   /preact-render-to-string@5.2.6(preact@10.20.1):
@@ -5203,6 +5207,10 @@ packages:
 
   /preact@10.20.1:
     resolution: {integrity: sha512-JIFjgFg9B2qnOoGiYMVBtrcFxHqn+dNXbq76bVmcaHYJFYR4lW67AOcXgAYQQTDYXDOg/kTZrKPNCdRgJ2UJmw==}
+    dev: false
+
+  /preact@10.20.2:
+    resolution: {integrity: sha512-S1d1ernz3KQ+Y2awUxKakpfOg2CEmJmwOP+6igPx6dgr6pgDvenqYviyokWso2rhHvGtTlWWnJDa7RaPbQerTg==}
     dev: false
 
   /pretty-format@3.8.0:
