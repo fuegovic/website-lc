@@ -10,46 +10,23 @@ Pre-requisites: Node.js 18+, pnpm
 2. Run `pnpm i` to install the dependencies.
 3. Run `pnpm dev` to start the development server on localhost:3333
 
-## Python cookbooks
-
-All Jupyter notebooks are in the `cookbook/` directory.
-
-To render them within the documentation site, we convert them to markdown using `jupyter nbconvert`, move them to right path in the pages/ directory where they are rendered by Nextra (remark).
-
-Steps after updating notebooks:
-
-1. Load python shell/env which has jupyter installed, e.g. `poetry install && poetry shell`
-2. Run `bash scripts/update_cookbook_docs.sh`
-3. Commit the changed markdown files
-
-## Stack
-
-- [Nextra](https://nextra.site/)
-- [Next.js](https://nextjs.org/)
-- [shadcn/ui](https://ui.shadcn.com)
-- [Tailwind CSS](https://tailwindcss.com/)
-
-
 ## Bundle analysis
 
 Run `pnpm run analyze` to analyze the bundle size of the production build using `@next/bundle-analyzer`.
 
-## Notes
-
 Interested in stack of Q&A docs chatbot? Checkout the [blog post](https://langfuse.com/blog/qa-chatbot-for-langfuse-docs) for implementation details (all open source)
 
-Signup -> `components\productUpdateSignup.tsx`
+---
 
+## Notes
 
-Authors Info in : `components\Authors.tsx`
-
-
-### Author profiles ✔️ 
-Authors Profile pics in: `public\images\people`
-supported socials for authors (react-social-icons):
+### Author profiles
+- Profiles located in `pages\authors`
+  - create a mdx file named with your authorid
+  - look at the other profiles for examples
+- Authors Profile pics in: `public\images\people`
+- Supported socials for authors (react-social-icons):
 ![Socials](https://camo.githubusercontent.com/bb10ce76806a2db855ae9411682342b31f2857ce8ab62b8c0a46d3c3cdb77fdf/68747470733a2f2f7374617469632e72656163742d736f6369616c2d69636f6e732e636f6d2f726561646d652d696d6167652e706e67)
-
-
 
 ### Changelogs/Blog Headers example
 
@@ -68,18 +45,7 @@ import { ChangelogHeader } from "@/components/changelog/ChangelogHeader";
 
 <ChangelogHeader />
 ```
-//TODO: instruction for blog posts
-
-Test Authors Profile pages:
-- pages/authors/authorid.mdx
-
-make sure you can build locally without error before submiting
-
-### Main Content wrapper
-
-`components\MainContentWrapper.tsx`
-
-disabled in `theme.config.tsx`, could be useful but pretty intrusive as-is
+//TODO: instruction for blog posts, but basically the same as the changelogs
 
 ### Email
 ❌ - UI: `pages\api\productUpdateSignup.ts`
@@ -137,8 +103,8 @@ WIP: // Blog update
 - multiple tag support
 - search by tag / author (menu)
 - round preview corners
-- add author
-- remove subscribe...
+- add author in the blog cards
+✔️ remove subscribe...
 
-note:
-Self-hosting
+random note:
+Install -> Self-hosting
