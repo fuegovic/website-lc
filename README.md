@@ -79,7 +79,8 @@ import NewsletterForm from '@/components/NewsletterForm'
     - (AI generated content)
 
 
-## //TODO: 
+## //TODO:
+- // Screenshots in `about` 
 - // logo svg + docs logo png
 - ✔️ Import authors for changelogs
 - ✔️ clean up `/public`
@@ -87,7 +88,7 @@ import NewsletterForm from '@/components/NewsletterForm'
 - ✔️ global import useful components
 - ✔️ tweak 404
 - ✔️ fix social cards in `about`
-- ✔️ fix Get Started link
+- // fix Get Started link
 - // Footer update
 - ✔️ Import authors for blogs
 - // tweak fallback icon for author's socials
