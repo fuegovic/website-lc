@@ -77,6 +77,7 @@ import NewsletterForm from '@/components/NewsletterForm'
     - (AI generated content)
 
 ## //TODO:
+- // fix tests 💀
 - // logo svg + docs logo png
 - ✔️ Import authors for changelogs
 - ✔️ clean up `/public`
