@@ -2,6 +2,15 @@ import remarkGfm from 'remark-gfm';
 import nextra from 'nextra';
 import NextBundleAnalyzer from '@next/bundle-analyzer'
 
+const isProd = process.env.NODE_ENV === 'production'
+
+module.exports = {
+  assetPrefix: isProd ? '/docs/' : '',
+  images: {
+    unoptimized: true,
+  },
+}
+
 const withBundleAnalyzer = NextBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 })
