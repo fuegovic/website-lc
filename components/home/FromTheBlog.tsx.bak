@@ -5,7 +5,7 @@ import { Header } from "../Header";
 export const FromTheBlog = () => (
   <HomeSection>
     <Header
-      title="Blog"
+      title="LibreChat's Blog"
       description="The latest articles from LibreChat"
     />
     <BlogIndex maxItems={3} />

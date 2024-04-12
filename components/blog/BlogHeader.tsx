@@ -47,7 +47,7 @@ export const BlogHeader = () => {
           <Author authorid={authorid} />
         </div>
         <p className="md:text-lg mb-6 md:mb-10 font-medium" style={{ fontSize: '1.3rem', fontWeight: 'bold' }}>{description}</p>
-      {ogVideo ? (
+        {ogVideo ? (
         <Video src={ogVideo} gifStyle />
       ) : ogImage ? (
         <Image
@@ -55,7 +55,7 @@ export const BlogHeader = () => {
           alt={title}
           width={1200}
           height={630}
-          style={{ borderRadius: '20px' }}
+          className="rounded border"
           unoptimized={
             page.frontMatter.gif !== undefined ||
             page.frontMatter.ogImage?.endsWith(".gif")

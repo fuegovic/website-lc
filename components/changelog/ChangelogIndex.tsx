@@ -60,7 +60,7 @@ export const ChangelogIndex = ({ maxItems }: { maxItems?: number }) => {
                     style={{ borderRadius: '20px' }}
                     src={page.frontMatter.gif ?? page.frontMatter.ogImage}
                     className="object-cover"
-                    alt={page.frontMatter?.title ?? "Blog post image"}
+                    alt={page.frontMatter?.title ?? "Changelog post image"}
                     fill={true}
                     sizes="(min-width: 1024px) 1000px, 100vw"
                     priority={i < 3}
