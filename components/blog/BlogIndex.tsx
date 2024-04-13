@@ -1,8 +1,10 @@
-import Image from "next/image";
-import { Video } from "../Video";
+import React, { useState } from "react";
 import { getPagesUnderRoute } from "nextra/context";
 import { Page } from "nextra";
 import { useRouter } from "next/router";
+import Image from "next/image";
+import { Video } from "../Video";
+import { Button } from "@/components/ui/button";
 
 type AuthorPage = Page & {
   frontMatter: {
@@ -10,6 +12,7 @@ type AuthorPage = Page & {
     ogImage: string;
     authorid: string;
     date: string;
+    tags: string[];
   };
 };
 
@@ -48,7 +51,7 @@ export const Author = ({ authorid }: { authorid: string }) => {
   );
 };
 
-const BlogCard = ({ page }) => {
+const BlogCard = ({ page, handleTagClick, handleAuthorClick, selectedTag, selectedAuthor }) => {
   const router = useRouter();
 
   const handleCardClick = () => {
@@ -64,8 +67,11 @@ const BlogCard = ({ page }) => {
 
   return (
     <div className="bg-gray-900 rounded-lg shadow-md overflow-hidden">
-      <div className="relative h-52 md:h-64 mb-1 overflow-hidden transform scale-100 transition-transform hover:scale-105 cursor-pointer" onClick={handleCardClick}>
-      {page.frontMatter?.ogVideo ? (
+      <div
+        className="relative h-52 md:h-64 mb-1 overflow-hidden transform scale-100 transition-transform hover:scale-105 cursor-pointer"
+        onClick={handleCardClick}
+      >
+        {page.frontMatter?.ogVideo ? (
           <Video
             src={page.frontMatter.ogVideo}
             gifStyle
@@ -86,18 +92,24 @@ const BlogCard = ({ page }) => {
         ) : null}
       </div>
       <div className="p-4 pt-2 h-56 overflow-hidden relative">
-        <div className="flex items-center justify-between mb-2">
-          {page.frontMatter?.tag && (
-            <span className="text-xs py-1 px-2 ring-1 ring-gray-300 rounded-md ml-1 mr-1">
-              {page.frontMatter.tag}
+        <div className="items-center justify-between mb-2">
+          {page.frontMatter?.tags?.map((tag) => (
+            <span
+              key={tag}
+              className={`cursor-pointer text-xs py-1 px-2 ring-1 ring-gray-300 rounded-md ml-1 mr-1 ${
+                tag === selectedTag ? 'bg-blue-500 text-white' : ''
+              }`}
+              onClick={() => handleTagClick(tag)}
+            >
+              {tag}
             </span>
-          )}
+          ))}
         </div>
         <h2 className="font-mono text-xl mb-2 ml-1 mr-1 font-bold">
           {page.meta?.title || page.frontMatter?.title || page.name}
         </h2>
         <div className="mb-2 ml-1 mr-1">
-          {truncateDescription(page.frontMatter?.description || "", 160)} 
+          {truncateDescription(page.frontMatter?.description || "", 160)}
         </div>
         <div className="flex items-center justify-between absolute bottom-4 left-4 right-4">
           <Author authorid={page.frontMatter.authorid} />
@@ -108,12 +120,70 @@ const BlogCard = ({ page }) => {
   );
 };
 
-export const BlogIndex = ({ maxItems }: { maxItems?: number }) => (
-  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-7">
-    {(getPagesUnderRoute("/blog") as Array<Page & { frontMatter: any }>)
-      .slice(0, maxItems)
-      .map((page) => (
-        <BlogCard key={page.route} page={page} />
-      ))}
-  </div>
-);
+export const BlogIndex = ({ maxItems }: { maxItems?: number }) => {
+  const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  const [selectedAuthor, setSelectedAuthor] = useState<string | null>(null);
+
+  const allPages = getPagesUnderRoute("/blog") as Array<Page & { frontMatter: any }>;
+  const allTags = Array.from(new Set(allPages.flatMap((page) => page.frontMatter.tags || []))).sort();
+  const allAuthors = Array.from(new Set(allPages.map((page) => page.frontMatter.authorid))).sort();
+  const sortedPages = allPages.sort(
+    (a, b) =>
+      new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime()
+  ).slice(0, maxItems);
+
+  const handleTagClick = (tag: string) => {
+    setSelectedTag(tag === selectedTag ? null : tag);
+  };
+
+  const handleAuthorClick = (author: string) => {
+    setSelectedAuthor(author === selectedAuthor ? null : author);
+  };
+
+  const filteredPages = selectedTag
+    ? sortedPages.filter((page) => page.frontMatter.tags && page.frontMatter.tags.includes(selectedTag))
+    : sortedPages;
+
+  const finalFilteredPages = selectedAuthor
+    ? filteredPages.filter((page) => page.frontMatter.authorid === selectedAuthor)
+    : filteredPages;
+
+  return (
+    <div>
+      <select
+        className="tags-menu"
+        onChange={(e) => handleTagClick(e.target.value)}
+        value={selectedTag || 'all'}
+        style={{ width: "200px", height: "35px", borderRadius: "5px", marginBottom: "20px", marginRight: "10px" }}
+      >
+        <option value="all">All Tags</option>
+        {allTags.map(tag => (
+          <option key={tag} value={tag} style={{ marginBottom: "20px" }}>{tag}</option>
+        ))}
+      </select>
+      <select
+        className="authors-menu"
+        onChange={(e) => handleAuthorClick(e.target.value)}
+        value={selectedAuthor || 'all'}
+        style={{ width: "200px", height: "35px", borderRadius: "5px", marginBottom: "20px" }}
+      >
+        <option value="all">All Authors</option>
+        {allAuthors.map(author => (
+          <option key={author} value={author} style={{ marginBottom: "20px" }}>{author}</option>
+        ))}
+      </select>
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-7">
+        {finalFilteredPages.map((page) => (
+          <BlogCard
+            key={page.route}
+            page={page}
+            handleTagClick={handleTagClick}
+            handleAuthorClick={handleAuthorClick}
+            selectedTag={selectedTag}
+            selectedAuthor={selectedAuthor}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
