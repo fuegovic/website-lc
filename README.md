@@ -83,9 +83,9 @@ import NewsletterForm from '@/components/NewsletterForm'
 - ✔️ ~~Import authors for blogs~~
 - ✔️ ~~remove .bak files~~
 - ✔️ ~~callouts bg in light mode~~
-- // instruction for blog posts, (basically the same as the changelogs)
-- // add logo.svg + docs-logo.png
-- // fix Get Started link (aka create get started page)
+- // 📝 instruction for blog posts, (basically the same as the changelogs)
+- // 🖼️ add logo.svg + docs-logo.png
+- // 📝 fix Get Started link (aka create get started page)
 - // 🧑‍🦯 Light Mode / move styles to dedicated css?
 
 ### Pricing template page
@@ -101,14 +101,14 @@ import NewsletterForm from '@/components/NewsletterForm'
 - ✔️ ~~add author in the blog cards~~
 - ✔️ ~~remove subscribe...~~
 - ✔️ ~~reverse the chronological order~~ 🙃
-- // 🧑‍🦯 light mode 🕶️
 - // 💅 make it prettier
 - // 🥸 fallback anon author ?
+- // 🧑‍🦯 light mode (as always) 🕶️
 
 ### Authors
-- // update frontmatter social array (see blog tags)
-- // show blog posts by under bio
-- // tweak fallback icon for author's socials
+- // 💳 update frontmatter social array (see blog tags)
+- // 👀 show blog posts by under bio
+- // 🪁 tweak fallback icon for author's socials
 
 ### changelogs
 - ✔️ ~~use transform on images instead of whatever is in place, see blogindex for example~~
