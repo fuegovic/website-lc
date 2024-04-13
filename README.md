@@ -12,11 +12,13 @@ Pre-requisites: Node.js 18+, pnpm
 4. Run `pnpm build` to build...
 5. Run `pnpm start` to start the production server on localhost:3333
 
-Note: try building prod before making a PR
+⚠️ **Note: try building prod before making a PR**
 
 ## Bundle analysis
 
 Run `pnpm run analyze` to analyze the bundle size of the production build using `@next/bundle-analyzer`.
+
+## Q&A docs chatbot
 
 Interested in stack of Q&A docs chatbot? Checkout the [blog post](https://langfuse.com/blog/qa-chatbot-for-langfuse-docs) for implementation details (all open source)
 
