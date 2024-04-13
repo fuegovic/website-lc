@@ -67,7 +67,10 @@ const BlogCard = ({ page }) => {
 
   return (
     <div className="bg-gray-900 rounded-lg shadow-md overflow-hidden">
-      <div className="relative h-52 md:h-64 mb-1 overflow-hidden transform scale-100 transition-transform hover:scale-105 cursor-pointer" onClick={handleCardClick}>
+      <div
+        className="relative h-52 md:h-64 mb-1 overflow-hidden transform scale-100 transition-transform hover:scale-105 cursor-pointer"
+        onClick={handleCardClick}
+      >
         {page.frontMatter?.ogVideo ? (
           <Video
             src={page.frontMatter.ogVideo}
@@ -91,7 +94,10 @@ const BlogCard = ({ page }) => {
       <div className="p-4 pt-2 h-56 overflow-hidden relative">
         <div className="items-center justify-between mb-2">
           {page.frontMatter?.tags?.map((tag) => (
-            <span key={tag} className="text-xs py-1 px-2 ring-1 ring-gray-300 rounded-md ml-1 mr-1">
+            <span
+              key={tag}
+              className="text-xs py-1 px-2 ring-1 ring-gray-300 rounded-md ml-1 mr-1"
+            >
               {tag}
             </span>
           ))}
@@ -100,7 +106,7 @@ const BlogCard = ({ page }) => {
           {page.meta?.title || page.frontMatter?.title || page.name}
         </h2>
         <div className="mb-2 ml-1 mr-1">
-          {truncateDescription(page.frontMatter?.description || "", 160)} 
+          {truncateDescription(page.frontMatter?.description || "", 160)}
         </div>
         <div className="flex items-center justify-between absolute bottom-4 left-4 right-4">
           <Author authorid={page.frontMatter.authorid} />
@@ -113,31 +119,63 @@ const BlogCard = ({ page }) => {
 
 export const BlogIndex = ({ maxItems }: { maxItems?: number }) => {
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  const [selectedAuthor, setSelectedAuthor] = useState<string | null>(null);
 
   const allPages = getPagesUnderRoute("/blog") as Array<Page & { frontMatter: any }>;
-  const allTags = Array.from(new Set(allPages.flatMap(page => page.frontMatter.tags || []))).sort();
-  const sortedPages = allPages.sort((a, b) => new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime()).slice(0, maxItems);
+  const allTags = Array.from(new Set(allPages.flatMap((page) => page.frontMatter.tags || []))).sort();
+  const allAuthors = Array.from(new Set(allPages.map((page) => page.frontMatter.authorid))).sort();
+  const sortedPages = allPages.sort(
+    (a, b) =>
+      new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime()
+  ).slice(0, maxItems);
 
   const handleTagChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedTag = event.target.value === "all" ? null : event.target.value;
     setSelectedTag(selectedTag);
   };
 
-  const filteredPages = selectedTag ? sortedPages.filter(page => page.frontMatter.tags && page.frontMatter.tags.includes(selectedTag)) : sortedPages;
+  const handleAuthorChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedAuthor = event.target.value === "all" ? null : event.target.value;
+    setSelectedAuthor(selectedAuthor);
+  };
 
-  return (
-    <div>
-      <select className="tags-menu" onChange={handleTagChange} value={selectedTag || 'all'} style={{ width: "200px", height: "35px", borderRadius: "5px", marginBottom: "20px" }}>
-        <option value="all">All Tags</option>
-        {allTags.map(tag => (
-    <option key={tag} value={tag} style={{ marginBottom: "20px" }}>{tag}</option>
-        ))}
-      </select>
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-7">
-        {filteredPages.map((page) => (
-          <BlogCard key={page.route} page={page} />
-        ))}
+  const filteredPages = selectedTag
+    ? sortedPages.filter((page) => page.frontMatter.tags && page.frontMatter.tags.includes(selectedTag))
+    : sortedPages;
+
+  const finalFilteredPages = selectedAuthor
+    ? filteredPages.filter((page) => page.frontMatter.authorid === selectedAuthor)
+    : filteredPages;
+
+    return (
+      <div>
+        <select
+          className="tags-menu"
+          onChange={handleTagChange}
+          value={selectedTag || 'all'}
+          style={{ width: "200px", height: "35px", borderRadius: "5px", marginBottom: "20px", marginRight: "10px" }}
+        >
+          <option value="all">All Tags</option>
+          {allTags.map(tag => (
+            <option key={tag} value={tag} style={{ marginBottom: "20px" }}>{tag}</option>
+          ))}
+        </select>
+        <select
+          className="authors-menu"
+          onChange={handleAuthorChange}
+          value={selectedAuthor || 'all'}
+          style={{ width: "200px", height: "35px", borderRadius: "5px", marginBottom: "20px" }}
+        >
+          <option value="all">All Authors</option>
+          {allAuthors.map(author => (
+            <option key={author} value={author} style={{ marginBottom: "20px" }}>{author}</option>
+          ))}
+        </select>
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-7">
+          {finalFilteredPages.map((page) => (
+            <BlogCard key={page.route} page={page} />
+          ))}
+        </div>
       </div>
-    </div>
-  );
+    );
 };
