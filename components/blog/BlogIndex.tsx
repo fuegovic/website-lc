@@ -70,12 +70,13 @@ const BlogCard = ({ page, handleTagClick, handleAuthorClick, selectedTag, select
       <div
         className="relative h-52 md:h-64 mb-1 overflow-hidden transform scale-100 transition-transform hover:scale-105 cursor-pointer"
         onClick={handleCardClick}
+        style={{ transformOrigin: 'bottom center' }}
       >
         {page.frontMatter?.ogVideo ? (
           <Video
             src={page.frontMatter.ogVideo}
             gifStyle
-            className="object-cover w-full h-full"
+            className="object-cover w-full h-full mt-0"
           />
         ) : page.frontMatter?.ogImage ? (
           <Image
@@ -133,11 +134,11 @@ export const BlogIndex = ({ maxItems }: { maxItems?: number }) => {
   ).slice(0, maxItems);
 
   const handleTagClick = (tag: string) => {
-    setSelectedTag(tag === selectedTag ? null : tag);
+    setSelectedTag(tag === 'all' ? null : tag);
   };
-
+  
   const handleAuthorClick = (author: string) => {
-    setSelectedAuthor(author === selectedAuthor ? null : author);
+    setSelectedAuthor(author === 'all' ? null : author);
   };
 
   const filteredPages = selectedTag
