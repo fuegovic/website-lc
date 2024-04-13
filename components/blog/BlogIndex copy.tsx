@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { getPagesUnderRoute } from "nextra/context";
 import { Page } from "nextra";
+import { useRouter } from "next/router";
 import Image from "next/image";
-import BlogCard from "./BlogCard";
+import { Video } from "../Video";
 
 type AuthorPage = Page & {
   frontMatter: {
@@ -14,38 +15,40 @@ type AuthorPage = Page & {
   };
 };
 
-export const Author = ({ authorid }: { authorid: string }) => {
-  const authorPages = getPagesUnderRoute("/authors");
-  const page = authorPages?.find(
-    (page) => (page as AuthorPage).frontMatter.authorid === authorid
-  ) as AuthorPage;
+type BlogCardProps = {
+  page: AuthorPage;
+  handleTagClick: (tag: string) => void;
+  handleAuthorClick: (author: string) => void;
+  selectedTag: string | null;
+  selectedAuthor: string | null;
+};
 
-  if (!page) {
-    console.error("Author page not found for authorid:", authorid);
-    return null;
-  }
+const BlogCard = ({
+  page,
+  handleTagClick,
+  handleAuthorClick,
+  selectedTag,
+  selectedAuthor
+}: BlogCardProps) => {
+  const router = useRouter();
 
-  const { name, ogImage } = page.frontMatter;
+  const handleCardClick = () => {
+    router.push(page.route);
+  };
 
   return (
-    <a
-      href={`/authors/${authorid}`}
-      className="group shrink-0"
-      rel="noopener noreferrer"
-    >
-      <div className="flex items-center gap-2" key={name}>
-        <Image
-          src={ogImage}
-          width={40}
-          height={40}
-          className="rounded-full"
-          alt={`Picture ${name}`}
-        />
-        <span className="text-sm text-primary/60 group-hover:text-primary whitespace-nowrap">
-          {name}
-        </span>
+    <div className="bg-gray-900 rounded-lg shadow-md overflow-hidden">
+      <div
+        className="relative h-52 md:h-64 mb-1 overflow-hidden transform scale-100 transition-transform hover:scale-105 cursor-pointer"
+        onClick={handleCardClick}
+        style={{ transformOrigin: "bottom center" }}
+      >
+        {/* Image or Video component */}
       </div>
-    </a>
+      <div className="p-4 pt-2 h-56 overflow-hidden relative">
+        {/* Tags, Title, Description, Author */}
+      </div>
+    </div>
   );
 };
 
@@ -64,7 +67,7 @@ export const BlogIndex = ({ maxItems }: { maxItems?: number }) => {
   const handleTagClick = (tag: string) => {
     setSelectedTag(tag === 'all' ? null : tag);
   };
-  
+
   const handleAuthorClick = (author: string) => {
     setSelectedAuthor(author === 'all' ? null : author);
   };
@@ -107,7 +110,9 @@ export const BlogIndex = ({ maxItems }: { maxItems?: number }) => {
             key={page.route}
             page={page}
             handleTagClick={handleTagClick}
+            handleAuthorClick={handleAuthorClick}
             selectedTag={selectedTag}
+            selectedAuthor={selectedAuthor}
           />
         ))}
       </div>
