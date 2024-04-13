@@ -73,33 +73,30 @@ import NewsletterForm from '@/components/NewsletterForm'
 - ✔️ ~~make it pretty~~
 - ✔️ ~~Prevent multiple entries~~
 ### global 
-- // instruction for blog posts, (basically the same as the changelogs)
 - ✔️  ~~fix tests 💀~~ (removed broken tests, lol)
-- // add logo.svg + docs-logo.png
 - ✔️ ~~Import authors for changelogs~~
 - ✔️ ~~clean up `/public`~~
 - ✔️ ~~double check mobile view (*authors)~~
 - ✔️ ~~global import useful components~~
 - ✔️ ~~tweak 404~~
 - ✔️ ~~fix social cards in `about`~~
-- // fix Get Started link (aka create get started page)
-- // Footer update
 - ✔️ ~~Import authors for blogs~~
-- // tweak fallback icon for author's socials
-- // 🧑‍🦯 Light Mode / move styles to dedicated css
-- // update github URLs (before publishing)
 - ✔️ ~~remove .bak files~~
 - ✔️ ~~callouts bg in light mode~~
+- // instruction for blog posts, (basically the same as the changelogs)
+- // add logo.svg + docs-logo.png
+- // fix Get Started link (aka create get started page)
+- // 🧑‍🦯 Light Mode / move styles to dedicated css?
 
 ### Pricing template page
-- // Stripe payment support?
 - ✔️ ~~template pricing page~~
+- // (Stripe?) payment support
 
 ### WIP: // Blog update
 - ✔️ ~~fix "blog header" (make it look basically like the changelog header)~~
 - ✔️ ~~blog index~~
-- ✔️ multiple tag support
-- ✔️ search by tag / author (menu)
+- ✔️ ~~multiple tag support~~
+- ✔️ ~~search by tag / author (menu)~~
 - ✔️ ~~round preview corners~~
 - ✔️ ~~add author in the blog cards~~
 - ✔️ ~~remove subscribe...~~
@@ -111,12 +108,15 @@ import NewsletterForm from '@/components/NewsletterForm'
 ### Authors
 - // update frontmatter social array (see blog tags)
 - // show blog posts by under bio
+- // tweak fallback icon for author's socials
 
 ### changelogs
 - ✔️ ~~use transform on images instead of whatever is in place, see blogindex for example~~
 
 ### random docs note:
 - // Contact Page?
+- // Footer update
 - // add and organize docs (once the base properly is set)
 - // Add proper screenshots in `about` 
 - // Install -> Self-hosting
+- // update github URLs (when it's ready, before publishing)
