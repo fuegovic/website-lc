@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Image from "next/image";
-import { Video } from "../Video";
 import { getPagesUnderRoute } from "nextra/context";
 import { Page } from "nextra";
 import { useRouter } from "next/router";
-import { Button } from "@/components/ui/button"
+import Image from "next/image";
+import { Video } from "../Video";
+import { Button } from "@/components/ui/button";
 
 type AuthorPage = Page & {
   frontMatter: {
@@ -48,29 +48,6 @@ export const Author = ({ authorid }: { authorid: string }) => {
         </span>
       </div>
     </a>
-  );
-};
-
-interface TagMenuProps {
-  tags: string[];
-  selectedTag: string | null;
-  onSelectTag: (tag: string) => void;
-}
-
-const TagMenu: React.FC<TagMenuProps> = ({ tags, selectedTag, onSelectTag }) => {
-  return (
-    <div className="tags-menu">
-      {tags.map(tag => (
-        <Button
-          variant= "ghost"
-          key={tag}
-          onClick={() => onSelectTag(tag)}
-          className={tag === selectedTag ? 'active' : ''}
-        >
-          {tag}
-        </Button>
-      ))}
-    </div>
   );
 };
 
@@ -138,23 +115,26 @@ export const BlogIndex = ({ maxItems }: { maxItems?: number }) => {
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
   const allPages = getPagesUnderRoute("/blog") as Array<Page & { frontMatter: any }>;
-  const allTags = Array.from(new Set(allPages.flatMap(page => page.frontMatter.tags || [])));
-  const filteredPages = allPages.filter((page) => !selectedTag || (page.frontMatter.tags && page.frontMatter.tags.includes(selectedTag)));
-  const sortedPages = filteredPages.sort((a, b) => new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime()).slice(0, maxItems);
+  const allTags = Array.from(new Set(allPages.flatMap(page => page.frontMatter.tags || []))).sort();
+  const sortedPages = allPages.sort((a, b) => new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime()).slice(0, maxItems);
 
-  const handleTagClick = (tag: string) => {
-    setSelectedTag(tag === selectedTag ? null : tag);
+  const handleTagChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedTag = event.target.value === "all" ? null : event.target.value;
+    setSelectedTag(selectedTag);
   };
+
+  const filteredPages = selectedTag ? sortedPages.filter(page => page.frontMatter.tags && page.frontMatter.tags.includes(selectedTag)) : sortedPages;
 
   return (
     <div>
-      <TagMenu
-        tags={allTags}
-        selectedTag={selectedTag}
-        onSelectTag={handleTagClick}
-      />
+      <select className="tags-menu" onChange={handleTagChange} value={selectedTag || 'all'} style={{ width: "200px", height: "35px", borderRadius: "5px", marginBottom: "20px" }}>
+        <option value="all">All Tags</option>
+        {allTags.map(tag => (
+    <option key={tag} value={tag} style={{ marginBottom: "20px" }}>{tag}</option>
+        ))}
+      </select>
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-7">
-        {sortedPages.map((page) => (
+        {filteredPages.map((page) => (
           <BlogCard key={page.route} page={page} />
         ))}
       </div>
