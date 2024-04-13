@@ -13,7 +13,7 @@ interface AuthorMetadata {
   name: string;
   bio: string;
   ogImage: string;
-  socials: Record<string, string>; // Dynamically match social media platforms
+  socials: string[]; // Dynamically match social media platforms
 }
 
 interface AuthorProfileProps {
