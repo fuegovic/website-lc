@@ -1,3 +1,4 @@
+import React from "react";
 import Image from "next/image";
 import { Video } from "../Video";
 import { getPagesUnderRoute } from "nextra/context";
@@ -10,6 +11,7 @@ type AuthorPage = Page & {
     ogImage: string;
     authorid: string;
     date: string;
+    tags: string[];
   };
 };
 
@@ -86,12 +88,12 @@ const BlogCard = ({ page }) => {
         ) : null}
       </div>
       <div className="p-4 pt-2 h-56 overflow-hidden relative">
-        <div className="flex items-center justify-between mb-2">
-          {page.frontMatter?.tag && (
-            <span className="text-xs py-1 px-2 ring-1 ring-gray-300 rounded-md ml-1 mr-1">
-              {page.frontMatter.tag}
+        <div className="items-center justify-between mb-2">
+          {page.frontMatter?.tags?.map((tag) => (
+            <span key={tag} className="text-xs py-1 px-2 ring-1 ring-gray-300 rounded-md ml-1 mr-1">
+              {tag}
             </span>
-          )}
+          ))}
         </div>
         <h2 className="font-mono text-xl mb-2 ml-1 mr-1 font-bold">
           {page.meta?.title || page.frontMatter?.title || page.name}
@@ -108,12 +110,16 @@ const BlogCard = ({ page }) => {
   );
 };
 
-export const BlogIndex = ({ maxItems }: { maxItems?: number }) => (
-  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-7">
-    {(getPagesUnderRoute("/blog") as Array<Page & { frontMatter: any }>)
-      .slice(0, maxItems)
-      .map((page) => (
+export const BlogIndex = ({ maxItems }: { maxItems?: number }) => {
+  const sortedPages = (getPagesUnderRoute("/blog") as Array<Page & { frontMatter: any }>)
+    .sort((a, b) => new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime())
+    .slice(0, maxItems);
+
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-7">
+      {sortedPages.map((page) => (
         <BlogCard key={page.route} page={page} />
       ))}
-  </div>
-);
+    </div>
+  );
+};

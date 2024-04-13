@@ -92,7 +92,7 @@ import NewsletterForm from '@/components/NewsletterForm'
 - ✔️ ~~callouts bg in light mode~~
 
 ### Pricing template page
-- // Stripe payment support
+- // Stripe payment support?
 - ✔️ ~~template pricing page~~
 
 ### WIP: // Blog update
@@ -105,6 +105,7 @@ import NewsletterForm from '@/components/NewsletterForm'
 - ✔️ ~~remove subscribe...~~
 - // 🧑‍🦯 light mode 🕶️ 
 - // 🥸 fallback anon author
+- ✔️ ~~reverse the chronological order~~ 🙃
 
 ### changelogs
 - ✔️ ~~use transform on images instead of whatever is in place, see blogindex for example~~
