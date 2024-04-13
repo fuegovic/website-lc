@@ -73,7 +73,7 @@ export const Video = ({
       playsinline={gifStyle}
       aspectRatio={aspectRatio}
       className={cn(
-        "my-4 overflow-hidden rounded shadow-lg ring-1 ring-slate-700 bg-cover object-cover",
+        "my-4 overflow-hidden shadow-lg ring-1 ring-slate-700 bg-cover object-cover",
         className
       )}
     >
