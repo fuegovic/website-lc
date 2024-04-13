@@ -23,6 +23,18 @@ module.exports = {
         mono: ['var(--font-geist-mono)'],
       },
       colors: {
+        gray: {
+          50: '#F9F9F9',
+          100: '#F3F3F3',
+          200: '#E7E7E7',
+          300: '#DADADA',
+          400: '#CECECE',
+          500: '#C2C2C2',
+          600: '#9B9B9B',
+          700: '#747474',
+          800: '#4E4E4E',
+          900: '#272727',
+        },
         blackish: '#111111',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -59,7 +71,7 @@ module.exports = {
         },
       },
       borderRadius: {
-        lg: "var(--radius)",
+        lg: "20px",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },

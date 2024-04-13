@@ -45,7 +45,7 @@ import { ChangelogHeader } from "@/components/changelog/ChangelogHeader";
 
 <ChangelogHeader />
 ```
-//TODO: instruction for blog posts, but basically the same as the changelogs
+
 
 ### Email
 - ❌ UI: `pages\api\productUpdateSignup.ts`
@@ -66,6 +66,8 @@ import NewsletterForm from '@/components/NewsletterForm'
 - ✔️ make it pretty
 - ✔️ Prevent multiple entries
 - // light mode / move styles to dedicated css
+- // instruction for blog posts, but basically the same as the changelogs
+- // use transform on images instead of whatever is in place, see blogindex for example
 
 ### Q&A Chatbot
 - see: `pages\api\qa-chatbot.ts`
@@ -96,12 +98,13 @@ import NewsletterForm from '@/components/NewsletterForm'
 
 ### WIP: // Blog update
 - ✔️ fix "blog header" (make it look basically like the changelog header)
-- blog index
+- ✔️ blog index
 - multiple tag support
 - search by tag / author (menu)
-- round preview corners
-- add author in the blog cards
+- ✔️ round preview corners
+- ✔️ add author in the blog cards
 - ✔️ remove subscribe...
+- // 🧑‍🦯 light mode 🕶️ 
 
 ### random docs note:
 //TODO:
