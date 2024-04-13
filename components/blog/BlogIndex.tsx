@@ -133,11 +133,11 @@ export const BlogIndex = ({ maxItems }: { maxItems?: number }) => {
   ).slice(0, maxItems);
 
   const handleTagClick = (tag: string) => {
-    setSelectedTag(tag === selectedTag ? null : tag);
+    setSelectedTag(tag === 'all' ? null : tag);
   };
-
+  
   const handleAuthorClick = (author: string) => {
-    setSelectedAuthor(author === selectedAuthor ? null : author);
+    setSelectedAuthor(author === 'all' ? null : author);
   };
 
   const filteredPages = selectedTag
