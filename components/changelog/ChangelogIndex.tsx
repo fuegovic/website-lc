@@ -7,15 +7,6 @@ import { useState } from 'react';
 
 
 export const ChangelogIndex = ({ maxItems }: { maxItems?: number }) => {
-  // Define an array to hold the hover states for each image
-  const [isHoveredStates, setIsHoveredStates] = useState<Array<boolean>>([]);
-
-  // Function to handle hover state for a specific index
-  const handleHover = (index: number, isHovered: boolean) => {
-    const newHoverStates = [...isHoveredStates];
-    newHoverStates[index] = isHovered;
-    setIsHoveredStates(newHoverStates);
-  };
 
   return (
     <div className="mt-12 max-w-6xl mx-auto divide-y divide-primary/10">
@@ -48,13 +39,12 @@ export const ChangelogIndex = ({ maxItems }: { maxItems?: number }) => {
                 <Video
                   src={page.frontMatter.ogVideo}
                   gifStyle
-                  className="mb-14 rounded relative overflow-hidden shadow-md group-hover:shadow-lg ring-0 border-0"
+                  className="mb-14 rounded relative overflow-hidden shadow-md group-hover:shadow-lg ring-0 border-0 transform scale-100 transition-transform hover:scale-105 cursor-pointer"
                 />
               ) : page.frontMatter?.ogImage ? (
                   <div
-                  className={`mb-14 rounded relative aspect-video overflow-hidden shadow-md ${isHoveredStates[i] ? 'scale-105 transition-transform duration-300' : 'transition-transform duration-300'}`}
-                  onMouseEnter={() => handleHover(i, true)}
-                  onMouseLeave={() => handleHover(i, false)}
+                  className="mb-14 rounded relative aspect-video overflow-hidden shadow-md transform scale-100 transition-transform hover:scale-105 cursor-pointer"
+
                   >
                   <Image
                     style={{ borderRadius: '20px' }}
