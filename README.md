@@ -98,18 +98,22 @@ import NewsletterForm from '@/components/NewsletterForm'
 ### WIP: // Blog update
 - ✔️ ~~fix "blog header" (make it look basically like the changelog header)~~
 - ✔️ ~~blog index~~
-- // multiple tag support
-- // search by tag / author (menu)
+- ✔️ multiple tag support
+- ✔️ search by tag / author (menu)
 - ✔️ ~~round preview corners~~
 - ✔️ ~~add author in the blog cards~~
 - ✔️ ~~remove subscribe...~~
-- // 🧑‍🦯 light mode 🕶️ 
-- // 🥸 fallback anon author
 - ✔️ ~~reverse the chronological order~~ 🙃
+- // 🧑‍🦯 light mode 🕶️
+- // 💅 make it prettier
+- // 🥸 fallback anon author ?
+
+### Authors
+- // update frontmatter social array (see blog tags)
+- // show blog posts by under bio
 
 ### changelogs
 - ✔️ ~~use transform on images instead of whatever is in place, see blogindex for example~~
-- // update social array (see blog tags)
 
 ### random docs note:
 - // Contact Page?
