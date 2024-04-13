@@ -51,7 +51,7 @@ export const Author = ({ authorid }: { authorid: string }) => {
   );
 };
 
-const BlogCard = ({ page }) => {
+const BlogCard = ({ page, handleTagClick, handleAuthorClick, selectedTag, selectedAuthor }) => {
   const router = useRouter();
 
   const handleCardClick = () => {
@@ -96,7 +96,10 @@ const BlogCard = ({ page }) => {
           {page.frontMatter?.tags?.map((tag) => (
             <span
               key={tag}
-              className="text-xs py-1 px-2 ring-1 ring-gray-300 rounded-md ml-1 mr-1"
+              className={`cursor-pointer text-xs py-1 px-2 ring-1 ring-gray-300 rounded-md ml-1 mr-1 ${
+                tag === selectedTag ? 'bg-blue-500 text-white' : ''
+              }`}
+              onClick={() => handleTagClick(tag)}
             >
               {tag}
             </span>
@@ -129,14 +132,12 @@ export const BlogIndex = ({ maxItems }: { maxItems?: number }) => {
       new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime()
   ).slice(0, maxItems);
 
-  const handleTagChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedTag = event.target.value === "all" ? null : event.target.value;
-    setSelectedTag(selectedTag);
+  const handleTagClick = (tag: string) => {
+    setSelectedTag(tag === selectedTag ? null : tag);
   };
 
-  const handleAuthorChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedAuthor = event.target.value === "all" ? null : event.target.value;
-    setSelectedAuthor(selectedAuthor);
+  const handleAuthorClick = (author: string) => {
+    setSelectedAuthor(author === selectedAuthor ? null : author);
   };
 
   const filteredPages = selectedTag
@@ -147,35 +148,42 @@ export const BlogIndex = ({ maxItems }: { maxItems?: number }) => {
     ? filteredPages.filter((page) => page.frontMatter.authorid === selectedAuthor)
     : filteredPages;
 
-    return (
-      <div>
-        <select
-          className="tags-menu"
-          onChange={handleTagChange}
-          value={selectedTag || 'all'}
-          style={{ width: "200px", height: "35px", borderRadius: "5px", marginBottom: "20px", marginRight: "10px" }}
-        >
-          <option value="all">All Tags</option>
-          {allTags.map(tag => (
-            <option key={tag} value={tag} style={{ marginBottom: "20px" }}>{tag}</option>
-          ))}
-        </select>
-        <select
-          className="authors-menu"
-          onChange={handleAuthorChange}
-          value={selectedAuthor || 'all'}
-          style={{ width: "200px", height: "35px", borderRadius: "5px", marginBottom: "20px" }}
-        >
-          <option value="all">All Authors</option>
-          {allAuthors.map(author => (
-            <option key={author} value={author} style={{ marginBottom: "20px" }}>{author}</option>
-          ))}
-        </select>
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-7">
-          {finalFilteredPages.map((page) => (
-            <BlogCard key={page.route} page={page} />
-          ))}
-        </div>
+  return (
+    <div>
+      <select
+        className="tags-menu"
+        onChange={(e) => handleTagClick(e.target.value)}
+        value={selectedTag || 'all'}
+        style={{ width: "200px", height: "35px", borderRadius: "5px", marginBottom: "20px", marginRight: "10px" }}
+      >
+        <option value="all">All Tags</option>
+        {allTags.map(tag => (
+          <option key={tag} value={tag} style={{ marginBottom: "20px" }}>{tag}</option>
+        ))}
+      </select>
+      <select
+        className="authors-menu"
+        onChange={(e) => handleAuthorClick(e.target.value)}
+        value={selectedAuthor || 'all'}
+        style={{ width: "200px", height: "35px", borderRadius: "5px", marginBottom: "20px" }}
+      >
+        <option value="all">All Authors</option>
+        {allAuthors.map(author => (
+          <option key={author} value={author} style={{ marginBottom: "20px" }}>{author}</option>
+        ))}
+      </select>
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-7">
+        {finalFilteredPages.map((page) => (
+          <BlogCard
+            key={page.route}
+            page={page}
+            handleTagClick={handleTagClick}
+            handleAuthorClick={handleAuthorClick}
+            selectedTag={selectedTag}
+            selectedAuthor={selectedAuthor}
+          />
+        ))}
       </div>
-    );
+    </div>
+  );
 };
