@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { Video } from "../Video";
 import { getPagesUnderRoute } from "nextra/context";
 import { Page } from "nextra";
 import { useRouter } from "next/router";
+import { Button } from "@/components/ui/button"
 
 type AuthorPage = Page & {
   frontMatter: {
@@ -50,6 +51,29 @@ export const Author = ({ authorid }: { authorid: string }) => {
   );
 };
 
+interface TagMenuProps {
+  tags: string[];
+  selectedTag: string | null;
+  onSelectTag: (tag: string) => void;
+}
+
+const TagMenu: React.FC<TagMenuProps> = ({ tags, selectedTag, onSelectTag }) => {
+  return (
+    <div className="tags-menu">
+      {tags.map(tag => (
+        <Button
+          variant= "ghost"
+          key={tag}
+          onClick={() => onSelectTag(tag)}
+          className={tag === selectedTag ? 'active' : ''}
+        >
+          {tag}
+        </Button>
+      ))}
+    </div>
+  );
+};
+
 const BlogCard = ({ page }) => {
   const router = useRouter();
 
@@ -67,7 +91,7 @@ const BlogCard = ({ page }) => {
   return (
     <div className="bg-gray-900 rounded-lg shadow-md overflow-hidden">
       <div className="relative h-52 md:h-64 mb-1 overflow-hidden transform scale-100 transition-transform hover:scale-105 cursor-pointer" onClick={handleCardClick}>
-      {page.frontMatter?.ogVideo ? (
+        {page.frontMatter?.ogVideo ? (
           <Video
             src={page.frontMatter.ogVideo}
             gifStyle
@@ -111,15 +135,29 @@ const BlogCard = ({ page }) => {
 };
 
 export const BlogIndex = ({ maxItems }: { maxItems?: number }) => {
-  const sortedPages = (getPagesUnderRoute("/blog") as Array<Page & { frontMatter: any }>)
-    .sort((a, b) => new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime())
-    .slice(0, maxItems);
+  const [selectedTag, setSelectedTag] = useState<string | null>(null);
+
+  const allPages = getPagesUnderRoute("/blog") as Array<Page & { frontMatter: any }>;
+  const allTags = Array.from(new Set(allPages.flatMap(page => page.frontMatter.tags || [])));
+  const filteredPages = allPages.filter((page) => !selectedTag || (page.frontMatter.tags && page.frontMatter.tags.includes(selectedTag)));
+  const sortedPages = filteredPages.sort((a, b) => new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime()).slice(0, maxItems);
+
+  const handleTagClick = (tag: string) => {
+    setSelectedTag(tag === selectedTag ? null : tag);
+  };
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-7">
-      {sortedPages.map((page) => (
-        <BlogCard key={page.route} page={page} />
-      ))}
+    <div>
+      <TagMenu
+        tags={allTags}
+        selectedTag={selectedTag}
+        onSelectTag={handleTagClick}
+      />
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-7">
+        {sortedPages.map((page) => (
+          <BlogCard key={page.route} page={page} />
+        ))}
+      </div>
     </div>
   );
 };

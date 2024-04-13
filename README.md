@@ -109,6 +109,7 @@ import NewsletterForm from '@/components/NewsletterForm'
 
 ### changelogs
 - ✔️ ~~use transform on images instead of whatever is in place, see blogindex for example~~
+- // update social array (see blog tags)
 
 ### random docs note:
 - // Contact Page?
