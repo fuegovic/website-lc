@@ -4,6 +4,8 @@ import { Page } from "nextra";
 import Image from "next/image";
 import BlogCard from "./BlogCard";
 
+//TODO: Light Mode
+
 type AuthorPage = Page & {
   frontMatter: {
     name: string;
@@ -62,7 +64,7 @@ export const BlogIndex = ({ maxItems }: { maxItems?: number }) => {
   ).slice(0, maxItems);
 
   const handleTagClick = (tag: string) => {
-    setSelectedTag(tag === 'all' ? null : tag);
+    setSelectedTag((prevTag) => (prevTag === tag || tag === 'all' ? null : tag));
   };
   
   const handleAuthorClick = (author: string) => {
@@ -80,10 +82,10 @@ export const BlogIndex = ({ maxItems }: { maxItems?: number }) => {
   return (
     <div>
       <select
-        className="tags-menu"
+        className="tags-menu rounded-xl"
         onChange={(e) => handleTagClick(e.target.value)}
         value={selectedTag || 'all'}
-        style={{ width: "200px", height: "35px", borderRadius: "5px", marginBottom: "20px", marginRight: "10px" }}
+        style={{ width: "200px", height: "35px", marginBottom: "20px", marginRight: "10px" }}
       >
         <option value="all">All Tags</option>
         {allTags.map(tag => (
@@ -91,10 +93,10 @@ export const BlogIndex = ({ maxItems }: { maxItems?: number }) => {
         ))}
       </select>
       <select
-        className="authors-menu"
+        className="authors-menu rounded-xl"
         onChange={(e) => handleAuthorClick(e.target.value)}
         value={selectedAuthor || 'all'}
-        style={{ width: "200px", height: "35px", borderRadius: "5px", marginBottom: "20px" }}
+        style={{ width: "200px", height: "35px", marginBottom: "20px" }}
       >
         <option value="all">All Authors</option>
         {allAuthors.map(author => (
