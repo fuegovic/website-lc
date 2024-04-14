@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { getPagesUnderRoute } from 'nextra/context';
 import { type Page } from 'nextra';
 import { SocialIcon } from 'react-social-icons';
+import BlogCard from './blog/BlogCard';
 
 //TODO: Fix Mobile view to better handle more than 4 socials;
 //TODO: Light mode social icons
 //TODO: Better fallback social icon (the default one is the "share" icon)
+//TODO: Tag selection on "Recent Posts by"
 
 interface AuthorMetadata {
   authorid: string;
@@ -23,6 +25,13 @@ interface AuthorProfileProps {
 const AuthorProfile: React.FC<AuthorProfileProps> = ({ authorId }) => {
   const authors = getPagesUnderRoute('/authors') as Array<Page & { frontMatter: AuthorMetadata }>;
   const author = authors.find((a) => a.frontMatter.authorid === authorId)?.frontMatter;
+  const blogPosts = getPagesUnderRoute('/blog') as Array<Page & { frontMatter: any }>;
+
+  // Filter posts by the current authorId
+  const authorPosts = blogPosts.filter(post => post.frontMatter.authorid === authorId);
+  const sortedAuthorPosts = authorPosts.sort(
+    (a, b) => new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime()
+  );
 
   if (!author) {
     return <div>Author not found!</div>;
@@ -39,7 +48,7 @@ const AuthorProfile: React.FC<AuthorProfileProps> = ({ authorId }) => {
 
   return (
     <>
-      <section className="max-w-3xl mx-auto flex flex-col md:flex-row gap-8 mt-12 mb-24 md:mb-32">
+      <section className="max-w-4xl mx-auto flex flex-col md:flex-row gap-8 mt-12 mb-24 md:mb-32">
         <div>
           <h1 className="font-extrabold text-3xl lg:text-5xl tracking-tight mb-2">
             {author.name}
@@ -79,6 +88,18 @@ const AuthorProfile: React.FC<AuthorProfileProps> = ({ authorId }) => {
                 </a>
               ))}
           </div>
+        </div>
+        </section>
+      <section className="max-w-4xl mx-auto mt-8">
+        <h2 className="font-bold text-2xl mb-4">Recent Posts by {author.name}</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-7">
+          {sortedAuthorPosts.map((post) => (
+            <BlogCard
+              key={post.route}
+              page={post}
+              // Define or import these handlers appropriately for BlogCard interaction
+              handleTagClick={(tag) => console.log('Tag clicked:', tag)} selectedTag={undefined} />
+          ))}
         </div>
       </section>
     </>
