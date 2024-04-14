@@ -73,11 +73,7 @@ import NewsletterForm from '@/components/NewsletterForm'
 
 ## //TODO:
 //TODO:
-### newsletter
-- ✔️ ~~`ProductUpdateSignup` -subscribe to newsletter (unsubscribe)~~  
-- ✔️ ~~provide unsubscribe mechanism,~~ 
-- ✔️ ~~make it pretty~~
-- ✔️ ~~Prevent multiple entries~~
+
 ### global 
 - ✔️  ~~fix tests 💀~~ (removed broken tests, lol)
 - ✔️ ~~Import authors for changelogs~~
@@ -89,14 +85,19 @@ import NewsletterForm from '@/components/NewsletterForm'
 - ✔️ ~~Import authors for blogs~~
 - ✔️ ~~remove .bak files~~
 - ✔️ ~~callouts bg in light mode~~
-- // 📝 instruction for blog posts, (basically the same as the changelogs)
 - // 🖼️ add logo.svg + docs-logo.png
 - // 📝 fix Get Started link (aka create get started page)
-- // 🧑‍🦯 Light Mode / move styles to dedicated css?
+- // 🧑‍🦯 fix Light Mode
+
+### newsletter
+- ✔️ ~~`ProductUpdateSignup` -subscribe to newsletter (unsubscribe)~~  
+- ✔️ ~~provide unsubscribe mechanism,~~ 
+- ✔️ ~~make it pretty~~
+- ✔️ ~~Prevent multiple entries~~
 
 ### Pricing template page
 - ✔️ ~~template pricing page~~
-- // (Stripe?) payment support
+- // ❔add payment support 💰 (Stripe?) 
 
 ### WIP: // Blog update
 - ✔️ ~~fix "blog header" (make it look basically like the changelog header)~~
@@ -112,9 +113,9 @@ import NewsletterForm from '@/components/NewsletterForm'
 - // 🧑‍🦯 light mode (as always) 🕶️
 
 ### Authors
-- // 💳 update frontmatter social array (see blog tags)
-- // 👀 show blog posts by under bio
-- // 🪁 tweak fallback icon for author's socials
+- ✔️ ~~👀 show blog posts by under bio~~
+- ❌ ~~🪁 tweak fallback icon for author's socials~~ Can't get any other icons to display properly 🤷‍♂️
+- ✔️ ~~☀️ light mode~~
 
 ### changelogs
 - ✔️ ~~use transform on images instead of whatever is in place, see blogindex for example~~
@@ -122,6 +123,8 @@ import NewsletterForm from '@/components/NewsletterForm'
 ### random docs note:
 - // Contact Page?
 - // Footer update
+- // 📝 instruction for blog posts, (basically the same as the changelogs)
+- // Hide "Pricing"
 - // add and organize docs (once the base properly is set)
 - // Add proper screenshots in `about` 
 - // Install -> Self-hosting
