@@ -4,6 +4,8 @@ import { Page } from "nextra";
 import Image from "next/image";
 import BlogCard from "./BlogCard";
 
+//TODO: Light Mode
+
 type AuthorPage = Page & {
   frontMatter: {
     name: string;

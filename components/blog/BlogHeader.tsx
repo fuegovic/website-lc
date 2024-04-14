@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { Page } from "nextra";
 import { getPagesUnderRoute } from "nextra/context";
 import Link from "next/link";
-import { Author } from "../Authors";
+import { Author } from "../Author/Authors";
 import { Video } from "../Video";
 
 export const BlogHeader = () => {

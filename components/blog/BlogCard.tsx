@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { Video } from '../Video';
-import { Author } from '../Authors';
+import { Author } from '../Author/Authors';
+
+//TODO: Light Mode
 
 const BlogCard = ({
   page,
