@@ -82,8 +82,8 @@ const AuthorProfile: React.FC<AuthorProfileProps> = ({ authorId }) => {
                   <SocialIcon
                     url={value}
                     className="absolute inset-0 w-full h-full transform scale-100 transition-transform opacity-100 hover:scale-90"
-                    bgColor="#74747460"
-                    fgColor="#00000070"
+                    bgColor="#9B9B9B80"
+                    fgColor="background"
                     // fallback={{ path: 'M32 2 A30 30 0 0 1 62 32 A30 30 0 0 1 32 62 A30 30 0 0 1 2 32 A30 30 0 0 1 32 2 Z' }}
                   />
                 </a>
