@@ -9,7 +9,7 @@ import { Author } from '../Author/Authors';
 const BlogCard = ({
   page,
   handleTagClick,
-  selectedTag
+  selectedTags
 }) => {
   const router = useRouter();
   const [cardWidth, setCardWidth] = useState(0);
@@ -70,17 +70,17 @@ const BlogCard = ({
       </div>
       <div className="p-4 pt-2 h-56 overflow-hidden relative">
         <div className="items-center justify-between mb-2">
-          {page.frontMatter?.tags?.map((tag) => (
-            <span
-              key={tag}
-              className={`cursor-pointer text-xs py-1 px-2 bg-gray-700 rounded-md ml-1 mr-1 ${
-                tag === selectedTag ? 'bg-gray-800 text-white' : ''
-              }`}
-              onClick={() => handleTagClick(tag)}
-            >
-              {tag}
-            </span>
-          ))}
+        {page.frontMatter?.tags?.map((tag) => (
+          <span
+            key={tag}
+            className={`cursor-pointer text-xs py-1 px-2 bg-gray-700 rounded-md ml-1 mr-1 ${
+              selectedTags.includes(tag) ? 'bg-gray-800 text-white' : ''
+            }`}
+            onClick={() => handleTagClick(tag)}
+          >
+            {tag}
+          </span>
+        ))}
         </div>
         <h2 className="font-mono text-xl mb-2 ml-1 mr-1 font-bold">
           {page.meta?.title || page.frontMatter?.title || page.name}
