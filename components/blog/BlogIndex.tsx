@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getPagesUnderRoute } from "nextra/context";
 import { Page } from "nextra";
 import Image from "next/image";
 import BlogCard from "./BlogCard";
+import Select from 'react-select';
+import { AuthorSmall } from '../Author/AuthorsSmall'; // Import the Author component
 
 //TODO: Light Mode
 
@@ -14,41 +16,6 @@ type AuthorPage = Page & {
     date: string;
     tags: string[];
   };
-};
-
-export const Author = ({ authorid }: { authorid: string }) => {
-  const authorPages = getPagesUnderRoute("/authors");
-  const page = authorPages?.find(
-    (page) => (page as AuthorPage).frontMatter.authorid === authorid
-  ) as AuthorPage;
-
-  if (!page) {
-    console.error("Author page not found for authorid:", authorid);
-    return null;
-  }
-
-  const { name, ogImage } = page.frontMatter;
-
-  return (
-    <a
-      href={`/authors/${authorid}`}
-      className="group shrink-0"
-      rel="noopener noreferrer"
-    >
-      <div className="flex items-center gap-2" key={name}>
-        <Image
-          src={ogImage}
-          width={40}
-          height={40}
-          className="rounded-full"
-          alt={`Picture ${name}`}
-        />
-        <span className="text-sm text-primary/60 group-hover:text-primary whitespace-nowrap">
-          {name}
-        </span>
-      </div>
-    </a>
-  );
 };
 
 export const BlogIndex = ({ maxItems }: { maxItems?: number }) => {
@@ -64,7 +31,7 @@ export const BlogIndex = ({ maxItems }: { maxItems?: number }) => {
   ).slice(0, maxItems);
 
   const handleTagClick = (tag: string) => {
-    setSelectedTag((prevTag) => (prevTag === tag || tag === 'all' ? null : tag));
+    setSelectedTag((prevTag) => (prevTag === tag ? null : tag));
   };
   
   const handleAuthorClick = (author: string) => {
@@ -79,30 +46,55 @@ export const BlogIndex = ({ maxItems }: { maxItems?: number }) => {
     ? filteredPages.filter((page) => page.frontMatter.authorid === selectedAuthor)
     : filteredPages;
 
+    const [menuPortalTarget, setMenuPortalTarget] = useState(null);
+
+    useEffect(() => {
+      setMenuPortalTarget(document.body);
+    }, []);
+
   return (
     <div>
-      <select
-        className="tags-menu rounded-xl"
-        onChange={(e) => handleTagClick(e.target.value)}
-        value={selectedTag || 'all'}
-        style={{ width: "200px", height: "35px", marginBottom: "20px", marginRight: "10px" }}
-      >
-        <option value="all">All Tags</option>
-        {allTags.map(tag => (
-          <option key={tag} value={tag} style={{ marginBottom: "20px" }}>{tag}</option>
-        ))}
-      </select>
-      <select
-        className="authors-menu rounded-xl"
-        onChange={(e) => handleAuthorClick(e.target.value)}
-        value={selectedAuthor || 'all'}
-        style={{ width: "200px", height: "35px", marginBottom: "20px" }}
-      >
-        <option value="all">All Authors</option>
-        {allAuthors.map(author => (
-          <option key={author} value={author} style={{ marginBottom: "20px" }}>{author}</option>
-        ))}
-      </select>
+        <Select
+          className="tags-menu"
+          options={allTags.map(tag => ({ value: tag, label: tag }))}
+          onChange={selectedOption => {
+            console.log('Selected Option:', selectedOption);
+            handleTagClick(selectedOption ? selectedOption.value : null);
+          }}
+          value={selectedTag ? { value: selectedTag, label: selectedTag } : null}
+          placeholder="Select tags..."
+          styles={{
+            control: provided => ({
+              ...provided,
+              width: 250,
+              height: 35,
+              marginBottom: 20,
+              marginRight: 10,
+            }),
+          }}
+          menuPortalTarget={menuPortalTarget}
+          isClearable // Enables the clearable option
+          hideSelectedOptions // Hides selected options in the dropdown
+          isSearchable={false}
+        />
+        <Select
+          className="authors-menu"
+          options={allAuthors.map(author => ({ value: author, label: <AuthorSmall authorid={author} /> }))} // Update options for authors
+          onChange={selectedOption => handleAuthorClick(selectedOption ? selectedOption.value : null)}
+          value={selectedAuthor ? { value: selectedAuthor, label: <AuthorSmall authorid={selectedAuthor} /> } : null} // Update selected value
+          placeholder="Select author..."
+          isSearchable={false}
+          isClearable
+          menuPortalTarget={menuPortalTarget}
+          styles={{
+            control: provided => ({
+              ...provided,
+              width: 250,
+              height: 35,
+              marginBottom: 20,
+            }),
+          }}
+        />
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-7">
         {finalFilteredPages.map((page) => (
           <BlogCard

@@ -86,8 +86,8 @@ import NewsletterForm from '@/components/NewsletterForm'
 - ✔️ ~~remove .bak files~~
 - ✔️ ~~callouts bg in light mode~~
 - // 🖼️ add logo.svg + docs-logo.png
-- // 📝 fix Get Started link (aka create get started page)
 - // 🧑‍🦯 fix Light Mode
+- // 📱 Double check mobile view
 
 ### newsletter
 - ✔️ ~~`ProductUpdateSignup` -subscribe to newsletter (unsubscribe)~~  
@@ -109,7 +109,7 @@ import NewsletterForm from '@/components/NewsletterForm'
 - ✔️ ~~remove subscribe...~~
 - ✔️ ~~reverse the chronological order~~ 🙃
 - // 💅 make it prettier
-- // 🥸 fallback anon author ?
+- // 🥸 fallback anon author profile?
 - // 🧑‍🦯 light mode (as always) 🕶️
 
 ### Authors
@@ -120,7 +120,7 @@ import NewsletterForm from '@/components/NewsletterForm'
 ### changelogs
 - ✔️ ~~use transform on images instead of whatever is in place, see blogindex for example~~
 
-### random docs note:
+### random docs //TODO and Notes:
 - // Contact Page?
 - // Footer update
 - // 📝 instruction for blog posts, (basically the same as the changelogs)
