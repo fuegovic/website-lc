@@ -42,7 +42,7 @@ const BlogCard = ({
   };
 
   return (
-    <div className="bg-gray-900 rounded-lg shadow-md overflow-hidden blog-card">
+    <div className="bg-popover rounded-lg shadow-md overflow-hidden blog-card">
       <div
         className="relative h-52 md:h-64 mb-1 overflow-hidden transform scale-100 transition-transform hover:scale-105 cursor-pointer"
         onClick={handleCardClick}
@@ -73,7 +73,7 @@ const BlogCard = ({
         {page.frontMatter?.tags?.map((tag) => (
           <span
             key={tag}
-            className={`cursor-pointer text-xs py-1 px-2 bg-gray-700 rounded-md ml-1 mr-1 ${
+            className={`cursor-pointer text-xs py-1 px-2 bg-background/80 shadow-md rounded-md ml-1 mr-1 ${
               selectedTags.includes(tag) ? 'bg-gray-800 text-white' : ''
             }`}
             onClick={() => handleTagClick(tag)}
