@@ -58,8 +58,8 @@ export const BlogIndex = ({ maxItems }: { maxItems?: number }) => {
         styles={{
           control: provided => ({
             ...provided,
-            width: 250,
-            height: 35,
+            maxWidth: 250,
+            minHeight: 35,
             marginBottom: 20,
             marginRight: 10,
           }),
