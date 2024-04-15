@@ -99,7 +99,7 @@ const AuthorProfile: React.FC<AuthorProfileProps> = ({ authorId }) => {
               key={post.route}
               page={post}
               // Define or import these handlers appropriately for BlogCard interaction
-              handleTagClick={(tag) => console.log('Tag clicked:', tag)} selectedTag={undefined} />
+              handleTagClick={(tag) => console.log('Tag clicked:', tag)} selectedTags={undefined} />
           ))}
         </div>
       </section>

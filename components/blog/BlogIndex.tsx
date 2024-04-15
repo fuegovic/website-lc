@@ -3,7 +3,7 @@ import { getPagesUnderRoute } from "nextra/context";
 import { Page } from "nextra";
 import BlogCard from "./BlogCard";
 import Select from 'react-select';
-import { AuthorSmall } from '../Author/AuthorsSmall'; // Import the Author component
+import { AuthorSmall } from '../Author/AuthorsSmall';
 
 export const BlogIndex = ({ maxItems }: { maxItems?: number }) => {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -46,48 +46,51 @@ export const BlogIndex = ({ maxItems }: { maxItems?: number }) => {
   }, []);
 
   return (
-    <div>
-      <Select
-        className="tags-menu"
-        options={allTags.map(tag => ({ value: tag, label: tag }))}
-        onChange={(selectedOptions) => {
-          setSelectedTags(selectedOptions ? selectedOptions.map(opt => opt.value) : []);
-        }}
-        value={selectedTags.map(tag => ({ value: tag, label: tag }))}
-        placeholder="Select tags..."
-        styles={{
-          control: provided => ({
-            ...provided,
-            maxWidth: 250,
-            minHeight: 35,
-            marginBottom: 20,
-            marginRight: 10,
-          }),
-        }}
-        menuPortalTarget={menuPortalTarget}
-        isClearable // Enables the clearable option
-        hideSelectedOptions={false} // Show selected options in the dropdown
-        isSearchable={false}
-        isMulti // Enable multiple selection
-      />
-      <Select
-        className="authors-menu"
-        options={allAuthors.map(author => ({ value: author, label: <AuthorSmall authorid={author} /> }))}
-        onChange={(selectedOption) => handleAuthorClick(selectedOption ? selectedOption.value : null)}
-        value={selectedAuthor ? { value: selectedAuthor, label: <AuthorSmall authorid={selectedAuthor} /> } : null}
-        placeholder="Select author..."
-        isSearchable={false}
-        isClearable
-        menuPortalTarget={menuPortalTarget}
-        styles={{
-          control: provided => ({
-            ...provided,
-            width: 250,
-            height: 35,
-            marginBottom: 20,
-          }),
-        }}
-      />
+    <div className="flex flex-col items-start bg-background">
+      <div className="flex mb-4">
+        <Select
+          // className={styles["tags-menu"]}
+          options={allTags.map(tag => ({ value: tag, label: tag }))}
+          onChange={(selectedOptions) => {
+            setSelectedTags(selectedOptions ? selectedOptions.map(opt => opt.value) : []);
+          }}
+          value={selectedTags.map(tag => ({ value: tag, label: tag }))}
+          placeholder="Select tags..."
+          styles={{
+            control: provided => ({
+              ...provided,
+              width: "100%",
+              minHeight: 35,
+              marginBottom: 20,
+              
+            }),
+          }}
+          menuPortalTarget={menuPortalTarget}
+          isClearable // Enables the clearable option
+          hideSelectedOptions={false} // Show selected options in the dropdown
+          isSearchable={false}
+          isMulti // Enable multiple selection
+        />
+        <Select
+          // className={styles["authors-menu"]}
+          options={allAuthors.map(author => ({ value: author, label: <AuthorSmall authorid={author} /> }))}
+          onChange={(selectedOption) => handleAuthorClick(selectedOption ? selectedOption.value : null)}
+          value={selectedAuthor ? { value: selectedAuthor, label: <AuthorSmall authorid={selectedAuthor} /> } : null}
+          placeholder="Select author..."
+          isSearchable={false}
+          isClearable
+          menuPortalTarget={menuPortalTarget}
+          styles={{
+            control: provided => ({
+              ...provided,
+              width: "100%",
+              height: 35,
+              marginBottom: 20,
+              marginLeft: 10,
+            }),
+          }}
+        />
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-7">
         {finalFilteredPages.map((page) => (
           <BlogCard

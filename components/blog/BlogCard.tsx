@@ -9,12 +9,12 @@ import { Author } from '../Author/Authors';
 const BlogCard = ({
   page,
   handleTagClick,
-  selectedTags
+  selectedTags = []
 }) => {
   const router = useRouter();
   const [cardWidth, setCardWidth] = useState(0);
   const [maxDescriptionLength, setMaxDescriptionLength] = useState(160);
-
+  console.log('selectedTags:', selectedTags);
   const handleCardClick = () => {
     router.push(page.route);
   };
