@@ -74,7 +74,7 @@ const BlogCard = ({
           <span
             key={tag}
             className={`cursor-pointer text-xs py-1 px-2 bg-background/80 shadow-md rounded-md ml-1 mr-1 ${
-              selectedTags.includes(tag) ? 'bg-gray-800 text-white' : ''
+              selectedTags.includes(tag) ? 'bg-gray-700/20' : ''
             }`}
             onClick={() => handleTagClick(tag)}
           >
