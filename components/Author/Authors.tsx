@@ -30,7 +30,7 @@ export const Author = ({ authorid }: { authorid: string }) => {
       className="group shrink-0"
       rel="noopener noreferrer"
     >
-      <div className="flex items-center gap-4" key={name}>
+      <div className="flex items-center gap-2" key={name}>
         <Image
           src={ogImage}
           width={40}

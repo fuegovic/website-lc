@@ -57,12 +57,32 @@ export const BlogIndex = ({ maxItems }: { maxItems?: number }) => {
           value={selectedTags.map(tag => ({ value: tag, label: tag }))}
           placeholder="Select tags..."
           styles={{
-            control: provided => ({
-              ...provided,
+            control: (baseStyles, state) => ({
+              ...baseStyles,
+              borderColor: 'grey',
+              backgroundColor: state.isFocused ? 'background' : 'background',
+              borderRadius: 8,
               width: "100%",
               minHeight: 35,
               marginBottom: 20,
-              
+            }),
+            option: (baseStyles, state) => ({
+              ...baseStyles,
+              backgroundColor: state.isFocused ? 'grey' : 'background',
+            }),
+            menu: (baseStyles) => ({
+              ...baseStyles,
+              borderRadius: 8,
+              backgroundColor: 'background',
+            }),
+            menuList: (baseStyles) => ({
+              ...baseStyles,
+              borderRadius: 8,
+              border: '1px solid grey',
+            }),
+            multiValue: (baseStyles) => ({
+              ...baseStyles,
+              color:"black",
             }),
           }}
           menuPortalTarget={menuPortalTarget}
@@ -71,25 +91,41 @@ export const BlogIndex = ({ maxItems }: { maxItems?: number }) => {
           isSearchable={false}
           isMulti // Enable multiple selection
         />
-        <Select
-          // className={styles["authors-menu"]}
-          options={allAuthors.map(author => ({ value: author, label: <AuthorSmall authorid={author} /> }))}
-          onChange={(selectedOption) => handleAuthorClick(selectedOption ? selectedOption.value : null)}
-          value={selectedAuthor ? { value: selectedAuthor, label: <AuthorSmall authorid={selectedAuthor} /> } : null}
-          placeholder="Select author..."
-          isSearchable={false}
-          isClearable
-          menuPortalTarget={menuPortalTarget}
-          styles={{
-            control: provided => ({
-              ...provided,
-              width: "100%",
-              height: 35,
-              marginBottom: 20,
-              marginLeft: 10,
-            }),
-          }}
-        />
+<Select
+  options={allAuthors.map(author => ({ value: author, label: <AuthorSmall authorid={author} /> }))}
+  onChange={(selectedOption) => handleAuthorClick(selectedOption ? selectedOption.value : null)}
+  value={selectedAuthor ? { value: selectedAuthor, label: <AuthorSmall authorid={selectedAuthor} /> } : null}
+  placeholder="Select author..."
+  isSearchable={false}
+  isClearable
+  menuPortalTarget={menuPortalTarget}
+  styles={{
+    control: (baseStyles, state) => ({
+      ...baseStyles,
+      borderColor: state.isFocused ? 'grey' : 'grey',
+      backgroundColor: state.isFocused ? 'background' : 'background',
+      borderRadius: 8,
+      width: "100%",
+      minHeight: 35,
+      marginBottom: 20,
+      marginLeft: 10,
+    }),
+    option: (baseStyles, state) => ({
+      ...baseStyles,
+      backgroundColor: state.isFocused ? 'grey' : 'background',
+    }),
+    menu: (baseStyles) => ({
+      ...baseStyles,
+      borderRadius: 8,
+      backgroundColor: 'background',
+    }),
+    menuList: (baseStyles) => ({
+      ...baseStyles,
+      borderRadius: 8,
+      border: '1px solid grey',
+    }),
+  }}
+/>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-7">
         {finalFilteredPages.map((page) => (

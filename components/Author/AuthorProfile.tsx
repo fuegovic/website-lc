@@ -15,7 +15,7 @@ interface AuthorMetadata {
   name: string;
   bio: string;
   ogImage: string;
-  socials: Record<string, string>; // Dynamically match social media platforms
+  socials?: Record<string, string>; // Dynamically match social media platforms
 }
 
 interface AuthorProfileProps {
@@ -37,7 +37,7 @@ const AuthorProfile: React.FC<AuthorProfileProps> = ({ authorId }) => {
     return <div>Author not found!</div>;
   }
 
-  const socialsEntries = Object.entries(author.socials).filter(([, value]) => !!value);
+  const socialsEntries = Object.entries(author.socials ?? {}).filter(([, value]) => !!value);
 
   // State to track whether the component is rendered on the client side
   const [isClient, setIsClient] = useState(false);
@@ -92,7 +92,7 @@ const AuthorProfile: React.FC<AuthorProfileProps> = ({ authorId }) => {
         </div>
         </section>
       <section className="max-w-4xl mx-auto mt-8">
-        <h2 className="font-bold text-2xl mb-4">Recent Posts by {author.name}</h2>
+        <h2 className="font-bold text-2xl mb-4 text-center">Recent Posts by {author.name}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-7">
           {sortedAuthorPosts.map((post) => (
             <BlogCard
