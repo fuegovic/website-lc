@@ -10,7 +10,7 @@ type AuthorPage = Page & {
   };
 };
 
-export const Author = ({ authorid }: { authorid: string }) => {
+export const AuthorSmall = ({ authorid }: { authorid: string }) => {
   const authorPages = getPagesUnderRoute("/authors");
   const page = authorPages?.find(
     (page) => (page as AuthorPage).frontMatter.authorid === authorid
@@ -25,23 +25,17 @@ export const Author = ({ authorid }: { authorid: string }) => {
   const { name, ogImage } = page.frontMatter;
 
   return (
-    <a
-      href={`/authors/${authorid}`}
-      className="group shrink-0"
-      rel="noopener noreferrer"
-    >
-      <div className="flex items-center gap-2" key={name}>
+    <div className="group shrink-0" key={name}>
+      <div className="flex items-center gap-4">
         <Image
           src={ogImage}
-          width={40}
-          height={40}
+          width={20}
+          height={20}
           className="rounded-full"
           alt={`Picture ${name}`}
         />
-        <span className="text-primary/60 group-hover:text-primary whitespace-nowrap">
-          {name}
-        </span>
+        <span className="text-primary/60 whitespace-nowrap">{name}</span>
       </div>
-    </a>
+    </div>
   );
 };

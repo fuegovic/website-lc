@@ -1,58 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getPagesUnderRoute } from "nextra/context";
 import { Page } from "nextra";
-import Image from "next/image";
 import BlogCard from "./BlogCard";
-
-//TODO: Light Mode
-
-type AuthorPage = Page & {
-  frontMatter: {
-    name: string;
-    ogImage: string;
-    authorid: string;
-    date: string;
-    tags: string[];
-  };
-};
-
-export const Author = ({ authorid }: { authorid: string }) => {
-  const authorPages = getPagesUnderRoute("/authors");
-  const page = authorPages?.find(
-    (page) => (page as AuthorPage).frontMatter.authorid === authorid
-  ) as AuthorPage;
-
-  if (!page) {
-    console.error("Author page not found for authorid:", authorid);
-    return null;
-  }
-
-  const { name, ogImage } = page.frontMatter;
-
-  return (
-    <a
-      href={`/authors/${authorid}`}
-      className="group shrink-0"
-      rel="noopener noreferrer"
-    >
-      <div className="flex items-center gap-2" key={name}>
-        <Image
-          src={ogImage}
-          width={40}
-          height={40}
-          className="rounded-full"
-          alt={`Picture ${name}`}
-        />
-        <span className="text-sm text-primary/60 group-hover:text-primary whitespace-nowrap">
-          {name}
-        </span>
-      </div>
-    </a>
-  );
-};
+import Select from 'react-select';
+import { AuthorSmall } from '../Author/AuthorsSmall';
 
 export const BlogIndex = ({ maxItems }: { maxItems?: number }) => {
-  const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [selectedAuthor, setSelectedAuthor] = useState<string | null>(null);
 
   const allPages = getPagesUnderRoute("/blog") as Array<Page & { frontMatter: any }>;
@@ -64,52 +18,122 @@ export const BlogIndex = ({ maxItems }: { maxItems?: number }) => {
   ).slice(0, maxItems);
 
   const handleTagClick = (tag: string) => {
-    setSelectedTag((prevTag) => (prevTag === tag || tag === 'all' ? null : tag));
+    setSelectedTags((prevTags) => {
+      if (prevTags.includes(tag)) {
+        return prevTags.filter((t) => t !== tag);
+      } else {
+        return [...prevTags, tag];
+      }
+    });
   };
   
   const handleAuthorClick = (author: string) => {
     setSelectedAuthor(author === 'all' ? null : author);
   };
 
-  const filteredPages = selectedTag
-    ? sortedPages.filter((page) => page.frontMatter.tags && page.frontMatter.tags.includes(selectedTag))
+  const filteredPages = selectedTags.length
+    ? sortedPages.filter((page) => page.frontMatter.tags && selectedTags.every(tag => page.frontMatter.tags.includes(tag)))
     : sortedPages;
 
   const finalFilteredPages = selectedAuthor
     ? filteredPages.filter((page) => page.frontMatter.authorid === selectedAuthor)
     : filteredPages;
 
+  const [menuPortalTarget, setMenuPortalTarget] = useState(null);
+
+  useEffect(() => {
+    setMenuPortalTarget(document.body);
+  }, []);
+
   return (
-    <div>
-      <select
-        className="tags-menu rounded-xl"
-        onChange={(e) => handleTagClick(e.target.value)}
-        value={selectedTag || 'all'}
-        style={{ width: "200px", height: "35px", marginBottom: "20px", marginRight: "10px" }}
-      >
-        <option value="all">All Tags</option>
-        {allTags.map(tag => (
-          <option key={tag} value={tag} style={{ marginBottom: "20px" }}>{tag}</option>
-        ))}
-      </select>
-      <select
-        className="authors-menu rounded-xl"
-        onChange={(e) => handleAuthorClick(e.target.value)}
-        value={selectedAuthor || 'all'}
-        style={{ width: "200px", height: "35px", marginBottom: "20px" }}
-      >
-        <option value="all">All Authors</option>
-        {allAuthors.map(author => (
-          <option key={author} value={author} style={{ marginBottom: "20px" }}>{author}</option>
-        ))}
-      </select>
+    <div className="flex flex-col items-start bg-background">
+      <div className="flex mb-4">
+        <Select
+          // className={styles["tags-menu"]}
+          options={allTags.map(tag => ({ value: tag, label: tag }))}
+          onChange={(selectedOptions) => {
+            setSelectedTags(selectedOptions ? selectedOptions.map(opt => opt.value) : []);
+          }}
+          value={selectedTags.map(tag => ({ value: tag, label: tag }))}
+          placeholder="Select tags..."
+          styles={{
+            control: (baseStyles, state) => ({
+              ...baseStyles,
+              borderColor: 'grey',
+              backgroundColor: state.isFocused ? 'background' : 'background',
+              borderRadius: 8,
+              width: "100%",
+              minHeight: 35,
+              marginBottom: 20,
+            }),
+            option: (baseStyles, state) => ({
+              ...baseStyles,
+              backgroundColor: state.isFocused ? 'grey' : 'background',
+            }),
+            menu: (baseStyles) => ({
+              ...baseStyles,
+              borderRadius: 8,
+              backgroundColor: 'background',
+            }),
+            menuList: (baseStyles) => ({
+              ...baseStyles,
+              borderRadius: 8,
+              border: '1px solid grey',
+            }),
+            multiValue: (baseStyles) => ({
+              ...baseStyles,
+              color:"black",
+            }),
+          }}
+          menuPortalTarget={menuPortalTarget}
+          isClearable // Enables the clearable option
+          hideSelectedOptions={false} // Show selected options in the dropdown
+          isSearchable={false}
+          isMulti // Enable multiple selection
+        />
+<Select
+  options={allAuthors.map(author => ({ value: author, label: <AuthorSmall authorid={author} /> }))}
+  onChange={(selectedOption) => handleAuthorClick(selectedOption ? selectedOption.value : null)}
+  value={selectedAuthor ? { value: selectedAuthor, label: <AuthorSmall authorid={selectedAuthor} /> } : null}
+  placeholder="Select author..."
+  isSearchable={false}
+  isClearable
+  menuPortalTarget={menuPortalTarget}
+  styles={{
+    control: (baseStyles, state) => ({
+      ...baseStyles,
+      borderColor: state.isFocused ? 'grey' : 'grey',
+      backgroundColor: state.isFocused ? 'background' : 'background',
+      borderRadius: 8,
+      width: "100%",
+      minHeight: 35,
+      marginBottom: 20,
+      marginLeft: 10,
+    }),
+    option: (baseStyles, state) => ({
+      ...baseStyles,
+      backgroundColor: state.isFocused ? 'grey' : 'background',
+    }),
+    menu: (baseStyles) => ({
+      ...baseStyles,
+      borderRadius: 8,
+      backgroundColor: 'background',
+    }),
+    menuList: (baseStyles) => ({
+      ...baseStyles,
+      borderRadius: 8,
+      border: '1px solid grey',
+    }),
+  }}
+/>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-7">
         {finalFilteredPages.map((page) => (
           <BlogCard
             key={page.route}
             page={page}
             handleTagClick={handleTagClick}
-            selectedTag={selectedTag}
+            selectedTags={selectedTags}
           />
         ))}
       </div>

@@ -73,11 +73,7 @@ import NewsletterForm from '@/components/NewsletterForm'
 
 ## //TODO:
 //TODO:
-### newsletter
-- ✔️ ~~`ProductUpdateSignup` -subscribe to newsletter (unsubscribe)~~  
-- ✔️ ~~provide unsubscribe mechanism,~~ 
-- ✔️ ~~make it pretty~~
-- ✔️ ~~Prevent multiple entries~~
+
 ### global 
 - ✔️  ~~fix tests 💀~~ (removed broken tests, lol)
 - ✔️ ~~Import authors for changelogs~~
@@ -89,14 +85,20 @@ import NewsletterForm from '@/components/NewsletterForm'
 - ✔️ ~~Import authors for blogs~~
 - ✔️ ~~remove .bak files~~
 - ✔️ ~~callouts bg in light mode~~
-- // 📝 instruction for blog posts, (basically the same as the changelogs)
-- // 🖼️ add logo.svg + docs-logo.png
-- // 📝 fix Get Started link (aka create get started page)
-- // 🧑‍🦯 Light Mode / move styles to dedicated css?
+- ✔️ ~~🖼️ add logo.svg + docs-logo.png~~
+- ✔️ ~~🧑‍🦯 fix Light Mode (sub/unnsub forms)~~
+- // 📱 Double check mobile view
+
+### newsletter
+- ✔️ ~~`ProductUpdateSignup` -subscribe to newsletter (unsubscribe)~~  
+- ✔️ ~~provide unsubscribe mechanism,~~ 
+- ✔️ ~~make it pretty~~
+- ✔️ ~~Prevent multiple entries~~
 
 ### Pricing template page
 - ✔️ ~~template pricing page~~
-- // (Stripe?) payment support
+- ❔add payment support 💰 (Stripe?) 
+  - ❓ might be best to keep admin+payment on a separate private website
 
 ### WIP: // Blog update
 - ✔️ ~~fix "blog header" (make it look basically like the changelog header)~~
@@ -107,21 +109,24 @@ import NewsletterForm from '@/components/NewsletterForm'
 - ✔️ ~~add author in the blog cards~~
 - ✔️ ~~remove subscribe...~~
 - ✔️ ~~reverse the chronological order~~ 🙃
-- // 💅 make it prettier
-- // 🥸 fallback anon author ?
-- // 🧑‍🦯 light mode (as always) 🕶️
+- ✔️ ~~💅 make it prettier~~
+- ✔️ ~~🧑‍🦯 light mode (as always) 🕶️~~
+- ✔️ ~~🥸 anon author profile~~
 
 ### Authors
-- // 💳 update frontmatter social array (see blog tags)
-- // 👀 show blog posts by under bio
-- // 🪁 tweak fallback icon for author's socials
+- ✔️ ~~👀 show blog posts by under bio~~
+- ❌ ~~🪁 tweak fallback icon for author's socials~~ Can't get any other icons to display properly 🤷‍♂️
+- ✔️ ~~☀️ light mode~~
+- // 🤷‍♂️ fix profile pic position when no bio  
 
 ### changelogs
 - ✔️ ~~use transform on images instead of whatever is in place, see blogindex for example~~
 
-### random docs note:
+### random docs //TODO and Notes:
 - // Contact Page?
 - // Footer update
+- // 📝 instruction for blog posts, (basically the same as the changelogs)
+- // Hide "Pricing"
 - // add and organize docs (once the base properly is set)
 - // Add proper screenshots in `about` 
 - // Install -> Self-hosting

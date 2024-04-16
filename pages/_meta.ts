@@ -1,7 +1,4 @@
 export default {
-  "authors": {
-    "display": "hidden"
-  },
   "index": {
     "type": "page",
     "title": "LibreChat",
