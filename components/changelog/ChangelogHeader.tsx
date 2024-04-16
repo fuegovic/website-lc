@@ -6,8 +6,6 @@ import Link from "next/link";
 import { Author } from "../Author/Authors";
 import { Video } from "../Video";
 
-//TODO: hover and border radius on videos, remove shadows?
-
 export const ChangelogHeader = () => {
   const router = useRouter();
   const changelogPages = getPagesUnderRoute("/changelog");

@@ -4,8 +4,6 @@ import { useRouter } from 'next/router';
 import { Video } from '../Video';
 import { Author } from '../Author/Authors';
 
-//TODO: Light Mode
-
 const BlogCard = ({
   page,
   handleTagClick,
@@ -14,7 +12,6 @@ const BlogCard = ({
   const router = useRouter();
   const [cardWidth, setCardWidth] = useState(0);
   const [maxDescriptionLength, setMaxDescriptionLength] = useState(160);
-  console.log('selectedTags:', selectedTags);
   const handleCardClick = () => {
     router.push(page.route);
   };

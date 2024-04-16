@@ -8,6 +8,7 @@ import styles from './AuthorProfile.module.css';
 //TODO: Fix Mobile view to better handle more than 4 socials;
 //TODO: Better fallback social icon (the default one is the "share" icon)
 //TODO: Tag selection on "Recent Posts by"
+//TODO: fix profile pic position when no bio
 
 interface AuthorMetadata {
   authorid: string;
@@ -49,15 +50,17 @@ const AuthorProfile: React.FC<AuthorProfileProps> = ({ authorId }) => {
   return (
     <>
       <section className="max-w-4xl mx-auto flex flex-col md:flex-row gap-8 mt-12 mb-24 md:mb-32">
-        <div>
-          <h1 className="font-extrabold text-3xl lg:text-5xl tracking-tight mb-2">
-            {author.name}
-          </h1>
-          <p className="md:text-lg mb-6 md:mb-10 font-medium" style={{ fontSize: '1.3rem', fontWeight: 'bold' }}>{author.subtitle}</p>
+      <div>
+        <h1 className="font-extrabold text-3xl lg:text-5xl tracking-tight mb-2">
+          {author.name}
+        </h1>
+        <p className="md:text-lg mb-6 md:mb-10 font-medium" style={{ fontSize: '1.3rem', fontWeight: 'bold' }}>{author.subtitle}</p>
+        {author.bio && (
           <p className="md:text-lg text-base-content/80">
             {author.bio}
           </p>
-        </div>
+        )}
+      </div>
 
         <div className="max-md:order-first flex md:flex-col gap-4 shrink-0">
           <img
