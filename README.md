@@ -117,7 +117,7 @@ import NewsletterForm from '@/components/NewsletterForm'
 - ✔️ ~~👀 show blog posts by under bio~~
 - ❌ ~~🪁 tweak fallback icon for author's socials~~ Can't get any other icons to display properly 🤷‍♂️
 - ✔️ ~~☀️ light mode~~
-- // fix profile pic position when no bio  
+- // 🤷‍♂️ fix profile pic position when no bio  
 
 ### changelogs
 - ✔️ ~~use transform on images instead of whatever is in place, see blogindex for example~~
