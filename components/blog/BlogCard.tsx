@@ -4,17 +4,14 @@ import { useRouter } from 'next/router';
 import { Video } from '../Video';
 import { Author } from '../Author/Authors';
 
-//TODO: Light Mode
-
 const BlogCard = ({
   page,
   handleTagClick,
-  selectedTag
+  selectedTags = []
 }) => {
   const router = useRouter();
   const [cardWidth, setCardWidth] = useState(0);
   const [maxDescriptionLength, setMaxDescriptionLength] = useState(160);
-
   const handleCardClick = () => {
     router.push(page.route);
   };
@@ -42,7 +39,7 @@ const BlogCard = ({
   };
 
   return (
-    <div className="bg-gray-900 rounded-lg shadow-md overflow-hidden blog-card">
+    <div className="bg-popover rounded-lg shadow-md overflow-hidden blog-card">
       <div
         className="relative h-52 md:h-64 mb-1 overflow-hidden transform scale-100 transition-transform hover:scale-105 cursor-pointer"
         onClick={handleCardClick}
@@ -70,17 +67,17 @@ const BlogCard = ({
       </div>
       <div className="p-4 pt-2 h-56 overflow-hidden relative">
         <div className="items-center justify-between mb-2">
-          {page.frontMatter?.tags?.map((tag) => (
-            <span
-              key={tag}
-              className={`cursor-pointer text-xs py-1 px-2 bg-gray-700 rounded-md ml-1 mr-1 ${
-                tag === selectedTag ? 'bg-gray-800 text-white' : ''
-              }`}
-              onClick={() => handleTagClick(tag)}
-            >
-              {tag}
-            </span>
-          ))}
+        {page.frontMatter?.tags?.map((tag) => (
+          <span
+            key={tag}
+            className={`cursor-pointer text-xs py-1 px-2 bg-background/80 shadow-md rounded-md ml-1 mr-1 ${
+              selectedTags.includes(tag) ? 'bg-gray-700/20' : ''
+            }`}
+            onClick={() => handleTagClick(tag)}
+          >
+            {tag}
+          </span>
+        ))}
         </div>
         <h2 className="font-mono text-xl mb-2 ml-1 mr-1 font-bold">
           {page.meta?.title || page.frontMatter?.title || page.name}

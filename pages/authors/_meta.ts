@@ -1,12 +1,12 @@
 export default {
-  "librechat": "LibreChat",
-  "-- Team": {
-    "type": "separator",
-  },
-  "danny": "Danny Avila",
-  "berry": "Berry",
-  "fuegovic": "Fuegovic",
-  "-- Others": {
-    "type": "separator",
-  },
+  "*": {
+    "theme": {
+      "toc": false,
+      "sidebar": false,
+      "pagination": true,
+      "layout": "default",
+      "breadcrumb": false,
+      "timestamp": false
+    }
+  }
 }

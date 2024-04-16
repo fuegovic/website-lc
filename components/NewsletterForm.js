@@ -51,37 +51,35 @@ const NewsletterForm = () => {
                 .newsletter-container {
                     text-align: center;
                 }
-
+    
                 .form-wrapper {
-                    max-width: 400px; /* Adjust the max-width as needed */
+                    max-width: 400px;
                     margin: 0 auto;
                     border-radius: 10px;
                     overflow: hidden;
-                    background-color: #171717; /* Dark background color */
+                    background-color: #74747450;
                 }
-
+    
                 .form-title {
                     margin-top: 0;
                     padding: 10px;
-                    background-color: #171717; /* Dark background color for title */
-                    color: #fff; /* Light text color for title */
-                    border-radius: 10px 10px 0 0; /* Rounded corners for top of the form wrapper */
+                    background-color: #4E4E4E00;
+                    border-radius: 10px 10px 0 0;
                 }
-
+    
                 .form-container {
                     padding: 20px;
                 }
-
+    
                 .email-input {
                     padding: 8px;
-                    border: 1px solid #3e3e3e; /* Darker border color for input */
+                    border: 1px solid #3e3e3e;
                     border-radius: 5px;
                     margin-bottom: 10px;
                     width: 100%;
-                    background-color: #3e3e3e; /* Darker background color for input */
-                    color: #fff; /* Light text color for input */
+                    background-color: #4E4E4E50;
                 }
-
+    
                 .subscribe-button {
                     padding: 8px 16px;
                     background: linear-gradient(-45deg, #ffa63d, #ff3d77, #338aff, #3cf0c5);
@@ -93,11 +91,11 @@ const NewsletterForm = () => {
                     cursor: pointer;
                     width: 100%;
                 }
-
+    
                 .subscribe-button:hover {
                     filter: brightness(110%);
                 }
-
+    
                 @keyframes anime {
                     0% {
                         background-position: 0% 50%;
