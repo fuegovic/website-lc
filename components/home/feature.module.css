@@ -6,7 +6,7 @@
 }
 
 .panel {
-  background-color: #fff;
+  background-color: #f1f1f1;
   border-radius: 10px;
   padding: 15px 25px;
   position: relative;
@@ -17,7 +17,7 @@
 :global(.dark) .panel {
   --tw-bg-opacity: 1;
   background-color: rgba(23,23,23,var(--tw-bg-opacity));
-  color: hsl(204 10% 70%);
+  color: hsl(204 0% 70%);
 }
 
 .feature-table {
@@ -78,7 +78,7 @@
 @media (min-width: 900px) {
   .feature-plan {
     border-bottom: none;
-    border-right: 1px solid #e1f1ff;
+    border-right: 1px solid #fdfdfd;
     flex-basis: 100%;
     padding: 25px 50px;
   }
@@ -125,7 +125,7 @@
 }
 
 .feature-desc-item {
-  border-top: 1px solid #e1f1ff;
+  border-top: 1px solid #fdfdfd;
   font-size: 12px;
   line-height: 1.5;
   padding: 15px 0;
@@ -139,7 +139,7 @@
 }
 
 .feature-desc-item:last-child {
-  border-bottom: 1px solid #e1f1ff;
+  border-bottom: 1px solid #fdfdfd;
 }
 
 :global(.dark) .feature-desc-item:last-child {
