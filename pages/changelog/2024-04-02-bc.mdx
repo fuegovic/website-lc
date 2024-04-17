@@ -1,0 +1,21 @@
+---
+date: 2024/04/02
+title: ⚠️ Breaking Changes v0.7.0+
+description: Breaking Changes for the v0.7.0+ release of LibreChat
+authorid: librechat
+---
+
+import { ChangelogHeader } from "@/components/changelog/ChangelogHeader";
+
+<ChangelogHeader />
+
+---
+
+<Callout type="warning" title="Google Search Plugin" emoji='🔍'>
+ - **[Google Search Plugin]()**: Changed the environment variable for this plugin from `GOOGLE_API_KEY` to `GOOGLE_SEARCH_API_KEY` due to a conflict with the Google Generative AI library pulling this variable automatically. If you are using this plugin, please update your `.env` file accordingly.
+</Callout>
+
+
+<Callout type="info" title="RAG API (Chat with Files)" emoji='🗃️'>
+- **RAG API Update**: The default Docker compose files now include a Python API and Vector Database for RAG (Retrieval-Augmented Generation). Read more about this in the **[RAG API page]()**
+</Callout>

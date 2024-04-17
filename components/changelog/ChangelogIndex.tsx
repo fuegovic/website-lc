@@ -3,8 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { type Page } from "nextra";
 import { Video } from "../Video";
-import { useState } from 'react';
-
 
 export const ChangelogIndex = ({ maxItems }: { maxItems?: number }) => {
 
