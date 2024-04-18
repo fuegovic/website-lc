@@ -1,5 +1,5 @@
 ---
-title: Contributing to Blog and Changelog
+title: Contributing to Blog (and Changelog)
 date: 2024/04/17
 description: "Quick guide to get you started with the Blog (and Changelog)"
 tags: 
@@ -16,85 +16,70 @@ import { BlogHeader } from "@/components/blog/BlogHeader";
 
 # Contributing to the blog!
 
-- **[Blog Posts](#Blog)**
+- **[Blog Posts](#blog-posts)**
   - [Author Profile](#author-profile)
   - [Make your first blog post!](#make-your-first-blog-post)
   - [Before you submit](#before-you-submit-a-pr-for-your-blog-post-always-test-to-make-sure-everything-looks-fine)
 - **[Changelog and Breaking changes](#changelog-and-breaking-changes)**
 
-## Blog
+## Blog Posts
 
-Everyone is welcome to contribute to the blog! It is the perfect place to gather information that might changes over time, or that can't be maintained by the team. Here's how to get started.
-
+Everyone is welcome to contribute to the blog! It is the perfect place to gather information that might change over time, or that can't be maintained by the team. Here's how to get started.
 
 ### Author Profile
-Before creating your first post you'll need an author profile
+Before creating your first post, you'll need an author profile.
 
 <Callout title="Prefer to stay anonymous?"> 
-If you really don't want to create a user profile there's is an "anon" profile you can attach to your blog post
+If you really don't want to create a user profile, there's an "anon" profile you can attach to your blog post:
 - `authorid: anon`
 </Callout>
 
 To create an author profile:
-- create the profile page in `pages\authors`
-- name the file following this format: `authorid.mdx`
-- add your profile picture in `public\images\people`
+- Create the profile page in `pages/authors`.
+- Name the file following this format: `authorid.mdx`.
+- Add your profile picture in `public/images/people`.
 - Follow this template:
 
 ```mdx filename="authorid.mdx"
 ---
-title: Anonymous Profile
-authorid: anon
-subtitle:
-name: Anon
+title: Your Name Profile
+authorid: your-authorid
+subtitle: Job Title or Short Description
+name: Your Name
 bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla litora ridiculus magna et etiam mi. Dolor etiam id elit morbi ipsum mauris. Non dapibus urna platea elementum fusce vulputate.
-ogImage: "/images/people/anon.png"
-socials:
----
-
-import AuthorProfile from "@/components/Author/AuthorProfile";
-
-<AuthorProfile authorId="anon" />
-```
-
-- title: `<Your name> Profile`
-- authorid: `filename` (without the .mdx extension)
-- subtitle: `job title or short description`
-- name: `display name`  
-- bio: `ideally one or two sentences, tell us a little bit about yourself`
-- ogImage: `your profile picture`
-- socials: (optional) see example below:
-  - all of these socials are supported: [react-social-icons](https://github.com/couetilc/react-social-icons?tab=readme-ov-file#react-social-icons)
-- `<AuthorProfile authorId="authorid" />`: replace "authorid" with your actual author ID
-
-```mdx filename="socials example"
+ogImage: "/images/people/your-image.png"
 socials:
   GitHub: https://github.librechat.ai
   LinkedIn: https://linkedin.librechat.ai/
   X: https://x.com/LibreChatAI
   Discord: https://discord.librechat.ai
   YouTube: https://www.youtube.com/@LibreChat
+---
+
+import AuthorProfile from "@/components/Author/AuthorProfile";
+
+<AuthorProfile authorId="your-authorid" />
 ```
 
 <Callout type="tip" title="Tip">
-Use the other authorid files in `pages\authors` as reference  
+Use the other authorid files in `pages/authors` as reference.
 </Callout>
 
 ### Make your first blog post!
 We are using MDX for the blog. MDX allows you to use JSX in your markdown content. You can import components, such as interactive charts or alerts, and embed them within your content.
 
-For more info, see: https://mdxjs.com/ 
+For more info, see: https://mdxjs.com/
 
 - Blog post thumbnail image (required)
-  - Use either an image hosted on GitHub or place your image(s) in `public\images\blog`
-  - Use the same name for your thumbnail image and your blog post file  
-  - If you want to include more images than just the thumbnail, make a folder of the same name as your blog post mdx file and put all images (including the thumbnail) in that folder
+  - Use either an image hosted on GitHub or place your image(s) in `public/images/blog`.
+  - Use the same name for your thumbnail image and your blog post file.
+  - If you want to include more images than just the thumbnail, make a folder with the same name as your blog post MDX file and put all images (including the thumbnail) in that folder.
 
-- The Blog post are placed in `pages\blog`
-- Use the following naming scheme to keep it organized "date-short_title"
+- The blog posts are placed in `pages/blog`.
+- Use the following naming scheme to keep it organized: "date-short_title".
   - `yyyy-mm-dd_short_title.mdx`
 
-- Add the metadata and the header to your new document
+- Add the metadata and the header to your new document:
 
   ```mdx filename="metadata and header"
     ---
@@ -121,9 +106,9 @@ For more info, see: https://mdxjs.com/
 ### Before you submit a PR for your blog post, **always** test to make sure everything looks fine.
 
 #### Look at:
-- your author profile 
-- the blog landing page
-- your blog post
+- Your author profile 
+- The blog landing page
+- Your blog post
 
 #### How to test:
 - Prepare the environment
@@ -136,21 +121,19 @@ For more info, see: https://mdxjs.com/
 
 </Callout>
 
----
-
 ## Changelog and Breaking Changes
 
-Posting changelog and breaking changes should be reserved to the team and frequent contributors
+Posting changelog and breaking changes should be reserved for the team and frequent contributors.
 
-The procedure is basically the same as with the blog posts wit a couple of notable differences
+The procedure is basically the same as with the blog posts, with a couple of notable differences:
 
-- Post location: `pages\changelog`
-- Thumbnail: optional, but should be included for major releases
-  - Thumbnail location: `public\images\changelog`
+- Post location: `pages/changelog`.
+- Thumbnail: optional, but should be included for major releases.
+  - Thumbnail location: `public/images/changelog`.
 - Filename: 
-  - changelog: `v0.0.0.mdx`
-  - breaking changes: `v0.0.0-breaking-changes.mdx`
-- No author profile necessary
+  - Changelog: `v0.0.0.mdx`.
+  - Breaking changes: `v0.0.0-breaking-changes.mdx`.
+- No author profile necessary.
 
 - Changelog Metadata and Header:
 
@@ -185,9 +168,7 @@ The procedure is basically the same as with the blog posts wit a couple of notab
     ---
   ```
 
----
-
 <Callout type="note" title="Notes:">
-- breaking changes posts are dated one day after the changelog posts
-- use a sepparator: `---` after the header: `<ChangelogHeader />`
+- Breaking changes posts are dated one day after the changelog posts.
+- Use a separator: `---` after the header: `<ChangelogHeader />`.
 </Callout>
