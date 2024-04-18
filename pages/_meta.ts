@@ -33,6 +33,7 @@ export default {
   },
   "pricing": {
     "title": "Pricing",
+    "display": "hidden",
     "type": "page",
     "theme": {
       "layout": "full"

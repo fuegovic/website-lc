@@ -14,7 +14,7 @@ const cspHeader = `
   default-src 'self' https: wss:;
   script-src 'self' 'unsafe-eval' 'unsafe-inline' https:;
   style-src 'self' 'unsafe-inline' https:;
-  img-src 'self' https: blob: data: github.com; // Add github.com to allow images from this domain
+  img-src 'self' https: blob: data:;
   media-src 'self' https: blob: data:;
   font-src 'self' https:;
   frame-src 'self' https:;

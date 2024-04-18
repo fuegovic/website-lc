@@ -13,8 +13,8 @@ export const ChangelogHeader = () => {
     (page) => page.route === router.pathname
   ) as Page & { frontMatter: any };
 
-  const { title, description, ogImage, ogVideo, gif, date, authorid } =
-    page.frontMatter;
+  const { title, description, ogImage, ogVideo, gif, date, authorid = "librechat" } =
+  page.frontMatter;
 
   return (
     <div className="md:mt-10 flex flex-col gap-10">

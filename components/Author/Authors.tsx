@@ -25,23 +25,23 @@ export const Author = ({ authorid }: { authorid: string }) => {
   const { name, ogImage } = page.frontMatter;
 
   return (
-    <a
-      href={`/authors/${authorid}`}
-      className="group shrink-0"
-      rel="noopener noreferrer"
-    >
-      <div className="flex items-center gap-2" key={name}>
-        <Image
-          src={ogImage}
-          width={40}
-          height={40}
-          className="rounded-full"
-          alt={`Picture ${name}`}
-        />
-        <span className="text-primary/60 group-hover:text-primary whitespace-nowrap">
-          {name}
-        </span>
-      </div>
-    </a>
+    <div>
+        <a href={`/authors/${authorid}`} className="group shrink-0" rel="noopener noreferrer">
+          <div className="flex justify-end gap-2" key={name}>
+            <div className="flex items-center gap-2">
+              <Image
+                src={ogImage}
+                width={40}
+                height={40}
+                className="rounded-full"
+                alt={`Picture ${name}`}
+              />
+              <span className="text-primary/60 group-hover:text-primary whitespace-nowrap">
+                {name}
+              </span>
+            </div>
+          </div>
+        </a>
+    </div>
   );
 };
