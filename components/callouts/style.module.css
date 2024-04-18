@@ -3,7 +3,7 @@
   margin-top: 1.5rem;
   display: flex;
   flex-direction: column; /* Makes sure content is organized in a column */
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
   border-width: 1px;
 }
 

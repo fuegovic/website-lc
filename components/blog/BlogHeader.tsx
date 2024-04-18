@@ -42,9 +42,12 @@ export const BlogHeader = () => {
               {title}
             </h1>
           </div>
+        </div>
+        <p className="md:text-lg md:mb-5 font-medium" style={{ fontSize: '1.3rem', fontWeight: 'bold' }}>{description}</p>
+        <div style={{ textAlign: 'right' }}>
           <Author authorid={authorid} />
         </div>
-        <p className="md:text-lg mb-6 md:mb-10 font-medium" style={{ fontSize: '1.3rem', fontWeight: 'bold' }}>{description}</p>
+        <br></br>
         {ogVideo ? (
         <Video src={ogVideo} gifStyle />
       ) : ogImage ? (
