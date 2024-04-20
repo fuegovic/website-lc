@@ -1,53 +1,60 @@
-import { useState } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
+import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 const NewsletterForm = () => {
-    const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await fetch('/api/subscribe', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email }),
-            });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-            if (response.status === 201) {
-                toast.success('Subscription successful');
-                setEmail('');
-            } else if (response.status === 400) {
-                toast.error('Email already subscribed');
-            } else {
-                toast.error('Subscription failed');
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            toast.error('Subscription failed');
-        }
-    };
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      toast.error("Valid email is required");
+      return;
+    }
 
-    return (
-        <div className="newsletter-container">
-            <Toaster position="bottom-center" reverseOrder={false} />
-            <div className="form-wrapper">
-                <h2 className="form-title">Subscribe to Our Newsletter</h2>
-                <form onSubmit={handleSubmit} className="form-container">
-                    <input
-                        type="email"
-                        placeholder="Enter your email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="email-input"
-                    />
-                    <button type="submit" className="subscribe-button">
-                        Subscribe
-                    </button>
-                </form>
-            </div>
-            <style>{`
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (response.status === 201) {
+        toast.success("Subscription successful");
+        setEmail("");
+      } else if (response.status === 409) {
+        toast.error("Email already subscribed");
+      } else {
+        toast.error("Subscription failed");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("Subscription failed");
+    }
+  };
+
+  return (
+    <div className="newsletter-container">
+      <Toaster position="bottom-center" reverseOrder={false} />
+      <div className="form-wrapper">
+        <h2 className="form-title">Subscribe to Our Newsletter</h2>
+        <form onSubmit={handleSubmit} className="form-container">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="email-input"
+          />
+          <button type="submit" className="subscribe-button">
+            Subscribe
+          </button>
+        </form>
+      </div>
+      <style>{`
                 .newsletter-container {
                     text-align: center;
                 }
@@ -108,8 +115,8 @@ const NewsletterForm = () => {
                     }
                 }
             `}</style>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default NewsletterForm;
