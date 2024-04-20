@@ -43,15 +43,26 @@ export function Callout({
     setIsCollapsed(!isCollapsed);
   };
 
+  const [initialMaxHeight, setInitialMaxHeight] = useState(null);
+
   React.useEffect(() => {
     if (contentRef.current) {
       const contentHeight = contentRef.current.scrollHeight;
-      setMaxHeight(isCollapsed ? 0 : contentHeight);
+      if (initialMaxHeight === null) {
+        if (collapsible) {
+          setMaxHeight(0);
+        } else {
+          setMaxHeight(contentHeight);
+        }
+        setInitialMaxHeight(collapsible ? 0 : contentHeight);
+      } else {
+        setMaxHeight(isCollapsed ? 0 : contentHeight);
+      }
     }
-  }, [isCollapsed]);
+  }, [isCollapsed, collapsible, initialMaxHeight]);
 
   const contentStyle = {
-    maxHeight: `${maxHeight}px`,
+    maxHeight: initialMaxHeight === null ? (collapsible ? 0 : 'auto') : `${maxHeight}px`,
     overflow: 'hidden',
     transition: 'max-height 0.8s ease',
   };

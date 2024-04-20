@@ -599,8 +599,8 @@ Inside the `Carousel` component, you can place any content you want to display a
       </Tabs.Tab>
       <Tabs.Tab>
 
-```js copy filename="Card Array"
-import Code from '../components/svg'
+```tsx copy filename="Card Array"
+import { Code } from '@/components/svg/'
 
   <Cards>
     <Cards.Card
@@ -785,15 +785,14 @@ import Code from '../components/svg'
 
       </Tabs.Tab>
       <Tabs.Tab>
-```js copy filename="Single Cards"
-import Code from '../components/svg/Code'
+```tsx copy filename="Single Cards"
+import { Code } from '@/components/svg/'
 
-  <Card
+  <Cards.Card
     icon={<Code />}
     title="Code"
     href="/"
   />
-
 ```
       </Tabs.Tab>
     </Tabs>

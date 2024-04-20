@@ -28,10 +28,25 @@
   width: 100%;
   padding: 0.5rem 1rem; /* Add padding for content */
   min-width: 0;
-  line-height: 1.75rem;
+  line-height: 0.75rem;
   border-radius: 0 0 0.5rem 0.5rem; /* Round bottom corners */
+  background-color: #ffffffcc; /* Separate background color for content */
+  color: #000;
+}
+
+.callout-content p, .callout-content ul {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.callout-content h3 {
+  margin-top: 0;
+  line-height: 1.2; /* adjust the value to your liking */
+}
+
+:global(.dark) .callout-content {
   background-color: #000000cc; /* Separate background color for content */
-  color: #ffffff;
+  color: #fff;
 }
 
 .callout-title {

@@ -18,6 +18,18 @@ export default {
       "layout": "full"
     }
   },
+  "authors": {
+    "title": "Authors",
+    "type": "folder",
+    "theme": {
+      "toc": false,
+      "sidebar": false,
+      "pagination": true,
+      "layout": "default",
+      "breadcrumb": false,
+      "timestamp": false
+    }
+  },
   "changelog": {
     "type": "page",
     "title": "Changelog",

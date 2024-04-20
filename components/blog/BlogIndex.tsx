@@ -82,9 +82,25 @@ export const BlogIndex = ({ maxItems }: { maxItems?: number }) => {
             }),
             multiValue: (baseStyles) => ({
               ...baseStyles,
-              color:"black",
+              color: "white",
+              backgroundColor:"rgba(200, 0, 100, 0.7)",
+              borderRadius: 8
+            }),
+            multiValueRemove: (styles) => ({
+              ...styles,
+              ':hover': {
+                color: 'rgba(0, 0, 0, 0.7)',
+                borderRadius: '50%',
+                borderColor: 'rgba(128, 128, 128, 0.5)',
+              },
+            }),
+            multiValueLabel: (baseStyles) => ({
+              ...baseStyles,
+              color:"white",
+              borderRadius: 8,
             }),
           }}
+          
           menuPortalTarget={menuPortalTarget}
           isClearable // Enables the clearable option
           hideSelectedOptions={false} // Show selected options in the dropdown
