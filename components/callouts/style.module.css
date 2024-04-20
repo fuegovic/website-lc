@@ -30,8 +30,20 @@
   min-width: 0;
   line-height: 1.75rem;
   border-radius: 0 0 0.5rem 0.5rem; /* Round bottom corners */
+  background-color: #ffffffcc; /* Separate background color for content */
+  color: #000;
+}
+
+:global(.dark) .callout-content {
+  overflow: hidden;
+  font-size: 0.8rem;
+  width: 100%;
+  padding: 0.5rem 1rem; /* Add padding for content */
+  min-width: 0;
+  line-height: 1.75rem;
+  border-radius: 0 0 0.5rem 0.5rem; /* Round bottom corners */
   background-color: #000000cc; /* Separate background color for content */
-  color: #ffffff;
+  color: #fff;
 }
 
 .callout-title {

@@ -1,0 +1,41 @@
+---
+title: Get Started
+---
+
+import { Logo } from "@/components/AboutLogo";
+
+# Get Started
+
+<Cards num={4}>
+  <Cards.Card href="/docs/local-install" title="Local Installation" image arrow>
+    ![Local Installation](/images/cards/local.svg)
+  </Cards.Card>
+  <Cards.Card href="/docs/remote-hosting" title="Remote Hosting" image arrow>
+    ![Remote Hosting](/images/cards/remote.svg)
+  </Cards.Card>
+  <Cards.Card href="/docs/configuration" title="Configuration" image arrow>
+    ![Configuration](/images/cards/config.svg)
+  </Cards.Card>  
+  <Cards.Card href="/docs/features" title="Features" image arrow>
+    ![Features](/images/cards/feats.svg)
+  </Cards.Card>
+  <Cards.Card href="/docs/development" title="Development" image arrow>
+    ![Development](/images/cards/coder.svg)
+  </Cards.Card>  
+  <Cards.Card href="/docs/documentation" title="Documentation" image arrow>
+    ![Documentation](/images/cards/docs.svg)
+  </Cards.Card>
+</Cards>
+
+---
+
+<div style={{ display: 'flex', justifyContent: 'center' }}>
+  <Cards num={3}>
+    <Cards.Card
+      title=""
+      href="/about"
+      icon={<Logo />}
+      image
+    />
+  </Cards>
+</div>
