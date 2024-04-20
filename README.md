@@ -4,7 +4,7 @@ Based on [Nextra](https://nextra.site/)
 
 ## Local Development
 
-Pre-requisites: Node.js 18+, pnpm
+Pre-requisites: Node.js 18+, pnpm 9+
 
 1. Optional: Create env based on [.env.template](./.env.template)
 2. Run `pnpm i` to install the dependencies.
@@ -126,8 +126,7 @@ import NewsletterForm from '@/components/NewsletterForm'
 - // Contact Page?
 - // Footer update
 - // 📝 instruction for blog posts, (basically the same as the changelogs)
-- // Hide "Pricing"
+- ✔️ ~~Hide "Pricing"~~
 - // add and organize docs (once the base properly is set)
 - // Add proper screenshots in `about` 
-- // Install -> Self-hosting
 - // update github URLs (when it's ready, before publishing)
