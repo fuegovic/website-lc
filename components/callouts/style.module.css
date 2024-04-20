@@ -39,6 +39,11 @@
   margin-top: 0;
 }
 
+.callout-content h3 {
+  margin-top: 0;
+  line-height: 1.2; /* adjust the value to your liking */
+}
+
 :global(.dark) .callout-content {
   background-color: #000000cc; /* Separate background color for content */
   color: #fff;

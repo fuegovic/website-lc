@@ -59,7 +59,7 @@ ogImage: /images/docs/<category>/image.png (optional)
 
 ## Assets
 
-Whenever possible, upload doc assets on github instead of storing them in the `/public` folder
+Whenever possible, upload assets (e.g., images) to GitHub instead of storing them in the `/public` folder. This helps keep your repository organized and makes it easier to manage your assets.
 
 ### How to Upload Assets on GitHub
 
@@ -74,6 +74,27 @@ Whenever possible, upload doc assets on github instead of storing them in the `/
 
 <Callout title="Method B" emoji="🅱️" collapsible>
     - Upload directly from the web UI:
-    
+
     ![image](https://github.com/danny-avila/LibreChat/assets/32828263/4f138ab4-31a5-4fae-a459-5335e5ff25a8)
+</Callout>
+
+## Test the Docs
+
+<Callout type="warning" title="Before you submit">
+### Review carefully before submitting your PR
+
+Before submitting a PR for your blog post, **always** test to ensure everything looks and functions as intended.
+
+#### Check the following:
+
+* Your new document(s) for layout, accuracy and completeness
+* The document's position in the Table of Contents (ToC)
+* The image and link in your document
+
+#### To test:
+
+1. Prepare the environment by running `pnpm install`
+2. Start the dev server with `pnpm dev`
+3. Test the build by running `pnpm build` followed by `pnpm start`
+
 </Callout>
