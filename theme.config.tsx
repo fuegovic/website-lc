@@ -147,10 +147,10 @@ const config: DocsThemeConfig = {
     content: (
       <Link href="#">
         {/* mobile */}
-        <span className="sm:hidden">Welcome to the new LibreChat docs! 👋</span>
+        <span className="sm:hidden">Welcome to the new LibreChat home! 👋</span>
         {/* desktop */}
         <span className="hidden sm:inline">
-          Welcome to the new LibreChat docs! 👋
+          Welcome to the new LibreChat home! 👋
         </span>
       </Link>
     ),
