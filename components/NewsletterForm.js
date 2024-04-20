@@ -1,17 +1,20 @@
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import validator from "validator";
 
 const NewsletterForm = () => {
   const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
+    if (!validator.isEmail(email)) {
       toast.error("Valid email is required");
       return;
     }
+
+    setIsLoading(true);
 
     try {
       const response = await fetch("/api/subscribe", {
@@ -31,8 +34,9 @@ const NewsletterForm = () => {
         toast.error("Subscription failed");
       }
     } catch (error) {
-      console.error("Error:", error);
       toast.error("Subscription failed");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -49,8 +53,12 @@ const NewsletterForm = () => {
             onChange={(e) => setEmail(e.target.value)}
             className="email-input"
           />
-          <button type="submit" className="subscribe-button">
-            Subscribe
+          <button
+            type="submit"
+            className="subscribe-button"
+            disabled={isLoading}
+          >
+            {isLoading ? "Subscribing..." : "Subscribe"}
           </button>
         </form>
       </div>

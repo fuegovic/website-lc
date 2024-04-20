@@ -1,53 +1,68 @@
-import { useState } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
+import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
+import validator from "validator";
 
 const UnsubscribeForm = () => {
-    const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await fetch('/api/unsubscribe', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email }),
-            });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-            if (response.status === 200) {
-                toast.success('Unsubscription successful');
-                setEmail('');
-            } else if (response.status === 404) {
-                toast.error('Subscriber not found');
-            } else {
-                toast.error('Unsubscription failed');
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            toast.error('Unsubscription failed');
-        }
-    };
+    if (!validator.isEmail(email)) {
+      toast.error("Invalid email format");
+      return;
+    }
 
-    return (
-        <div className="newsletter-container">
-            <Toaster position="bottom-center" reverseOrder={false} />
-            <div className="form-wrapper">
-                <h2 className="form-title">Unsubscribe From Our Newsletter</h2>
-                <form onSubmit={handleSubmit} className="form-container">
-                    <input
-                        type="email"
-                        placeholder="Enter your email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="email-input"
-                    />
-                    <button type="submit" className="subscribe-button">
-                        Unsubscribe
-                    </button>
-                </form>
-            </div>
-            <style>{`
+    setIsLoading(true);
+
+    try {
+      const response = await fetch("/api/unsubscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (response.status === 200) {
+        toast.success("Unsubscription successful");
+        setEmail("");
+      } else if (response.status === 404) {
+        toast.error("Subscriber not found");
+      } else {
+        toast.error("Unsubscription failed");
+      }
+    } catch {
+      toast.error("Unsubscription failed");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <div className="newsletter-container">
+      <Toaster position="bottom-center" reverseOrder={false} />
+      <div className="form-wrapper">
+        <h2 className="form-title">Unsubscribe From Our Newsletter</h2>
+        <form onSubmit={handleSubmit} className="form-container">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="email-input"
+          />
+          <button
+            type="submit"
+            className="subscribe-button"
+            disabled={isLoading}
+          >
+            {isLoading ? "Unsubscribing..." : "Unsubscribe"}
+          </button>
+        </form>
+      </div>
+      <style>{`
                 .newsletter-container {
                     text-align: center;
                 }
@@ -108,8 +123,8 @@ const UnsubscribeForm = () => {
                     }
                 }
             `}</style>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default UnsubscribeForm;
