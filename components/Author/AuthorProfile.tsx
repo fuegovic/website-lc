@@ -3,7 +3,7 @@ import { getPagesUnderRoute } from 'nextra/context';
 import { type Page } from 'nextra';
 import { SocialIcon } from 'react-social-icons';
 import BlogCard from '../blog/BlogCard';
-import styles from './AuthorProfile.module.css';
+import { Bleed } from 'nextra-theme-docs'
 
 //TODO: Fix Mobile view to better handle more than 4 socials;
 //TODO: Better fallback social icon (the default one is the "share" icon)
