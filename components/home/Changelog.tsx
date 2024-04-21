@@ -1,39 +1,30 @@
-import { cn } from "@/lib/utils";
-import Link from "next/link";
-import { Page } from "nextra";
-import { getPagesUnderRoute } from "nextra/context";
+import { cn } from '@/lib/utils'
+import Link from 'next/link'
+import { Page } from 'nextra'
+import { getPagesUnderRoute } from 'nextra/context'
 
-const changelogItems = getPagesUnderRoute("/changelog") as Array<
-  Page & { frontMatter: any }
->;
+const changelogItems = getPagesUnderRoute('/changelog') as Array<Page & { frontMatter: any }>
 
 export default function Changelog({ className }: { className?: string }) {
   const changelog = changelogItems
-    .filter(
-      (page) => page.route && page.frontMatter.title && page.frontMatter.date
-    )
-    .sort(
-      (a, b) =>
-        new Date(b.frontMatter.date).getTime() -
-        new Date(a.frontMatter.date).getTime()
-    )
+    .filter((page) => page.route && page.frontMatter.title && page.frontMatter.date)
+    .sort((a, b) => new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime())
     .slice(0, 20)
     .map(({ route, frontMatter }) => ({
       route,
       title: frontMatter.title ?? null,
       author: frontMatter.author ?? null,
       date: new Date(frontMatter.date),
-    }));
+    }))
 
   return (
     <div
-      className={cn("rounded border p-5 max-w-lg mx-5 sm:mx-auto", className)}
+      className={cn('rounded border p-5 max-w-lg mx-5 sm:mx-auto', className)}
       role="region" // Added role for the container
       aria-labelledby="changelog-heading" // Added aria-labelledby to reference the heading
     >
       <div className="px-5 py-2 text-center -mt-5 -mx-5 mb-5 border-b font-medium">
-        <h3 id="changelog-heading">Changelog</h3>{" "}
-        {/* Added id to the heading */}
+        <h3 id="changelog-heading">Changelog</h3> {/* Added id to the heading */}
       </div>
       <div
         role="list"
@@ -56,9 +47,7 @@ export default function Changelog({ className }: { className?: string }) {
               <div className="h-1.5 w-1.5 rounded-full bg-secondary ring-1 ring-primary/80 opacity-60 group-hover:opacity-100" />
             </div>
             <p className="flex-auto py-0.5 text-sm leading-5 text-primary/70 opacity-80 group-hover:opacity-100">
-              <span className="font-medium text-primary">
-                {activityItem.title}
-              </span>{" "}
+              <span className="font-medium text-primary">{activityItem.title}</span>{' '}
               {activityItem.author ? `by ${activityItem.author}` : null}
             </p>
             {activityItem.date ? (
@@ -88,26 +77,23 @@ export default function Changelog({ className }: { className?: string }) {
           <div className="h-1.5 w-1.5 rounded-full bg-secondary ring-1 ring-primary/80 opacity-60 group-hover:opacity-100" />
         </div>
         <p className="flex-auto py-0.5 text-sm leading-5 text-primary/60 opacity-80 group-hover:opacity-100">
-          <span className="font-medium text-primary">
-            Read the full changelog ...
-          </span>{" "}
-          {null}
+          <span className="font-medium text-primary">Read the full changelog ...</span> {null}
         </p>
       </Link>
     </div>
-  );
+  )
 }
 
 function formatDate(date: Date) {
-  const dayDiff = (Date.now() - date.getTime()) / (1000 * 60 * 60 * 24);
+  const dayDiff = (Date.now() - date.getTime()) / (1000 * 60 * 60 * 24)
 
-  if (dayDiff < 1) return "today";
-  if (dayDiff < 14) return `${Math.round(dayDiff)} days ago`;
+  if (dayDiff < 1) return 'today'
+  if (dayDiff < 14) return `${Math.round(dayDiff)} days ago`
 
   return date.toLocaleDateString(undefined, {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-    timeZone: "UTC",
-  });
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+    timeZone: 'UTC',
+  })
 }

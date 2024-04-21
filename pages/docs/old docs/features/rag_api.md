@@ -16,7 +16,7 @@ It leverages LangChain, PostgresQL + PGVector, and Python FastAPI to index and r
 
 **Currently, this feature is available to all Custom Endpoints, OpenAI, Azure OpenAi, Anthropic, and Google.**
 
-OpenAI Assistants have their own implementation of RAG through the "Retrieval" capability. Learn more about it [here.](https://platform.openai.com/docs/assistants/tools/knowledge-retrieval) 
+OpenAI Assistants have their own implementation of RAG through the "Retrieval" capability. Learn more about it [here.](https://platform.openai.com/docs/assistants/tools/knowledge-retrieval)
 
 It will still be useful to implement usage of the RAG API with the Assistants API since OpenAI charges for both file storage, and use of "Retrieval," and will be introduced in a future update.
 
@@ -67,7 +67,7 @@ The RAG API provides several configuration options that can be set using environ
 Here are some notable configurations:
 
 - `RAG_OPENAI_API_KEY`: The API key for OpenAI API Embeddings (if using default settings).
-    - Note: `OPENAI_API_KEY` will work but `RAG_OPENAI_API_KEY` will override it in order to not conflict with the LibreChat credential.
+  - Note: `OPENAI_API_KEY` will work but `RAG_OPENAI_API_KEY` will override it in order to not conflict with the LibreChat credential.
 - `RAG_PORT`: The port number where the API server will run. Defaults to port 8000.
 - `RAG_HOST`: The hostname or IP address where the API server will run. Defaults to "0.0.0.0"
 - `COLLECTION_NAME`: The name of the collection in the vector store. Default is "testcollection".
@@ -89,16 +89,15 @@ Once the RAG API is set up and running, it seamlessly integrates with LibreChat.
 1. Ensure that the necessary files are uploaded to the conversation in LibreChat. If `RAG_API_URL` is not configured, or is not reachable, the file upload will fail.
 2. As the user interacts with the chatbot, the RAG API will automatically retrieve relevant information from the indexed files based on the user's input.
 3. The retrieved information will be used to augment the user's prompt, enabling LibreChat to generate more accurate and contextually relevant responses.
-4. Craft your prompts carefully when you attach files as the default behavior is to query the vector store upon every new message to a conversation with a file attached. 
-    - You can disable the default behavior by toggling the "Resend Files" option to an "off" state, found in the conversation settings.
-    - Doing so allows for targeted file queries, making it so that the "retrieval" will only be done when files are explicitly attached to a message.
-    - ![image](https://github.com/danny-avila/LibreChat/assets/110412045/29a2468d-85ac-40d7-90be-a945301c5729)
+4. Craft your prompts carefully when you attach files as the default behavior is to query the vector store upon every new message to a conversation with a file attached.
+   - You can disable the default behavior by toggling the "Resend Files" option to an "off" state, found in the conversation settings.
+   - Doing so allows for targeted file queries, making it so that the "retrieval" will only be done when files are explicitly attached to a message.
+   - ![image](https://github.com/danny-avila/LibreChat/assets/110412045/29a2468d-85ac-40d7-90be-a945301c5729)
 5. You only have to upload a file once to use it multiple times for RAG.
-    - You can attach uploaded/indexed files to any new message or conversation using the Side Panel:
-    - ![image](https://github.com/danny-avila/LibreChat/assets/110412045/b40cb3d3-e6e7-46ec-bc74-65d194f55a1e)
-    - Note: The files must be in the "Host" storage, as "OpenAI" files are treated differently and exclusive to Assistants. In other words, they must not have been uploaded when the Assistants endpoint was selected and active. You can view and manage your files by clicking here from the Side Panel.
-    - ![image](https://github.com/danny-avila/LibreChat/assets/110412045/1f27e974-4124-4ee3-8091-13514cb4cbca)
-
+   - You can attach uploaded/indexed files to any new message or conversation using the Side Panel:
+   - ![image](https://github.com/danny-avila/LibreChat/assets/110412045/b40cb3d3-e6e7-46ec-bc74-65d194f55a1e)
+   - Note: The files must be in the "Host" storage, as "OpenAI" files are treated differently and exclusive to Assistants. In other words, they must not have been uploaded when the Assistants endpoint was selected and active. You can view and manage your files by clicking here from the Side Panel.
+   - ![image](https://github.com/danny-avila/LibreChat/assets/110412045/1f27e974-4124-4ee3-8091-13514cb4cbca)
 
 ## Troubleshooting
 

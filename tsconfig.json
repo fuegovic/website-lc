@@ -19,6 +19,15 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.mdx", "utils/Subscriber.js", "utils/dbConnect.js", "pages/api/subscribe.js", "components/NewsletterForm.js"],
-  "exclude": ["node_modules"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.mdx",
+    "utils/Subscriber.js",
+    "utils/dbConnect.js",
+    "pages/api/subscribe.js",
+    "components/NewsletterForm.js"
+  ],
+  "exclude": ["node_modules"]
 }

@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react'
 
 function SvgLightning(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -9,7 +9,7 @@ function SvgLightning(props: React.SVGProps<SVGSVGElement>) {
         clipRule="evenodd"
       />
     </svg>
-  );
+  )
 }
 
-export default SvgLightning;
+export default SvgLightning

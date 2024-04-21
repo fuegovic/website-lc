@@ -16,7 +16,7 @@ weight: -7
 - Prioritize code readability and maintainability over brevity.
 - Use the provided .eslintrc and .prettierrc files for consistent code formatting.
 - Use CommonJS modules (require/exports) for Node.js modules.
-- Organize and modularize the codebase using separate files for different concerns.   
+- Organize and modularize the codebase using separate files for different concerns.
 
 ### API Design
 
@@ -26,12 +26,12 @@ weight: -7
 - Use proper status codes and response structures for consistent API responses (ie. 2xx for success, 4xx for bad request from client, 5xx for server error, etc.).
 - Use try-catch blocks to catch and handle exceptions gracefully.
 - Implement proper error handling and consistently return appropriate error responses.
-- Use the logging system included in the `utils` directory to log important events and errors. 
+- Use the logging system included in the `utils` directory to log important events and errors.
 - Do JWT-based, stateless authentication using the `requireJWTAuth` middleware.
 
 ### File Structure
 
-*Note: The API is undergoing a refactor to separate out the code for improved separation of concerns, testability, and maintainability. Any new APIs must follow the structure using the auth system as an example, which separates out the routes, controllers, services, and models into separate files.*
+_Note: The API is undergoing a refactor to separate out the code for improved separation of concerns, testability, and maintainability. Any new APIs must follow the structure using the auth system as an example, which separates out the routes, controllers, services, and models into separate files._
 
 #### Routes
 
@@ -41,7 +41,7 @@ Specifies each http request method, any middleware to be used, and the controlle
 - Use descriptive route names and adhere to RESTful conventions.
 - Keep routes concise and focused on a single responsibility.
 - Prefix all routes with the /api namespace.
-  
+
 #### Controllers
 
 Contains the logic for each route, including calling the appropriate service functions and returning the appropriate response status code and JSON body.
@@ -58,7 +58,7 @@ Contains complex business logic or operations shared across multiple controllers
 - Name service files using the PascalCase convention and append "Service" to the file name (e.g., AuthService.js).
 - Avoid tightly coupling services to specific models or databases for better reusability.
 - Maintain a single responsibility principle within each service.
-  
+
 #### Models
 
 Defines Mongoose models to represent data entities and their relationships.
@@ -77,7 +77,7 @@ Defines Mongoose models to represent data entities and their relationships.
 
 ### Testing and Documentation
 
-*Note: the repo currently lacks sufficient automated unit and integration tests for both the client and the API. This is a great first issue for new contributors wanting to familiarize with the codebase.*
+_Note: the repo currently lacks sufficient automated unit and integration tests for both the client and the API. This is a great first issue for new contributors wanting to familiarize with the codebase._
 
 - Write unit tests for all critical and complex functionalities using Jest.
 - Write integration tests for all API endpoints using Supertest.
@@ -107,4 +107,4 @@ Use the conventions found in the `data-provider` directory for handling data ser
 
 ### State Management
 
-Use [Recoil](https://recoiljs.org/) for state management, but *DO NOT pollute the global state with unnecessary data*. Instead, use local state or props for data that is only used within a component or passed down from parent to child.
+Use [Recoil](https://recoiljs.org/) for state management, but _DO NOT pollute the global state with unnecessary data_. Instead, use local state or props for data that is only used within a component or passed down from parent to child.

@@ -1,6 +1,6 @@
 ---
 title: 🐋 Docker Compose Override
-description: "How to Use the Docker Compose Override File: In Docker Compose, an override file is a powerful feature that allows you to modify the default configuration provided by the main `docker-compose.yml` without the need to directly edit or duplicate the whole file."
+description: 'How to Use the Docker Compose Override File: In Docker Compose, an override file is a powerful feature that allows you to modify the default configuration provided by the main `docker-compose.yml` without the need to directly edit or duplicate the whole file.'
 weight: -9
 ---
 
@@ -10,7 +10,7 @@ In Docker Compose, an override file is a powerful feature that allows you to mod
 
 Here's a quick guide on how to use the `docker-compose.override.yml`:
 
-> Note: Please consult the `docker-compose.override.yml.example` for more examples 
+> Note: Please consult the `docker-compose.override.yml.example` for more examples
 
 See the official docker documentation for more info:
 
@@ -95,7 +95,6 @@ After starting your services with the modified configuration, you can verify tha
 
 By following these steps and considerations, you can easily and safely modify your Docker Compose configuration without altering the original `docker-compose.yml` file, making it simpler to manage and maintain different environments or local customizations.
 
-
 ## `deploy-compose.yml`
 
 To use an override file with a non-default Docker Compose file, such as `deploy-compose.yml`, you will have to explicitly specify both files when running Docker Compose commands.
@@ -151,6 +150,7 @@ Once running, we will enter the container's terminal and execute `mongosh`:
 ```bash
 docker exec -it chat-mongodb mongosh
 ```
+
 You should see the following output:
 
 ```bash
@@ -162,7 +162,7 @@ Using Mongosh:          2.1.1
 
 For mongosh info see: https://docs.mongodb.com/mongodb-shell/
 
-test> 
+test>
 ```
 
 Optional: While we're here, we can disable telemetry for mongodb if desired, which is anonymous usage data collected and sent to MongoDB periodically:
@@ -170,6 +170,7 @@ Optional: While we're here, we can disable telemetry for mongodb if desired, whi
 Execute the command below.
 
 > Notes:
+>
 > - All subsequent commands should be run in the current terminal session, regardless of the environment (Docker, Linux, `mongosh`, etc.)
 > - I will represent the actual terminal view with # example input/output or simply showing the output in some cases
 
@@ -178,7 +179,9 @@ Command:
 ```bash
 disableTelemetry()
 ```
+
 Example input/output:
+
 ```bash
 # example input/output
 test> disableTelemetry()
@@ -190,6 +193,7 @@ Now, we must access the admin database, which mongodb creates by default to crea
 ```bash
 use admin
 ```
+
 > switched to db admin
 
 Replace the credentials as desired and keep in your secure records for the rest of the guide.
@@ -227,12 +231,14 @@ db.grantRolesToUser("adminUser", ["clusterAdmin", "readAnyDatabase"]);
 ```
 
 Exit the Mongosh/Container Terminal by running `exit`:
+
 ```bash
 # example input/output
 admin> exit
 ```
 
 And shut down the running container:
+
 ```bash
 docker compose down
 ```
@@ -265,6 +271,7 @@ docker exec -it chat-mongodb mongosh -u adminUser -p securePassword --authentica
 ```
 
 Confirm you are authenticated:
+
 ```bash
 db.runCommand({ connectionStatus: 1 })
 ```
@@ -336,8 +343,8 @@ If it's still not persisting, you can try running the commands with all containe
 Finally, we add the new connection string with our newly created credentials to our `docker-compose.override.yml` file under the `api` service:
 
 ```yaml
-    environment:
-      - MONGO_URI=mongodb://user:userpasswd@mongodb:27017/LibreChat
+environment:
+  - MONGO_URI=mongodb://user:userpasswd@mongodb:27017/LibreChat
 ```
 
 So our override file looks like this now:
@@ -358,6 +365,7 @@ services:
 You should now run `docker compose up` successfully authenticated with read/write access to the LibreChat database
 
 Example successful connection:
+
 ```bash
 LibreChat         | 2024-02-04 20:59:43 info: Server listening on all interfaces at port 3080. Use http://localhost:3080 to access it
 chat-mongodb      | {"t":{"$date":"2024-02-04T20:59:53.880+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"192.168.160.4:58114","uuid":{"uuid":{"$uuid":"027bdc7b-a3f4-429a-80ee-36cd172058ec"}},"connectionId":17,"connectionCount":10}}

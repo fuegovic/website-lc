@@ -1,8 +1,8 @@
 export default {
-  "*": {
-    "type": "page",
-    "theme": {
-      "layout": "default"
-    }
-  }
+  '*': {
+    type: 'page',
+    theme: {
+      layout: 'default',
+    },
+  },
 }

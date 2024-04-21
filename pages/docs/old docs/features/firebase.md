@@ -83,18 +83,18 @@ FIREBASE_APP_ID=1:your_app_id #appId
 
 - Select `Rules` and delete `: if false;` on this line: `allow read, write: if false;`
 
-    - your updated rules should look like this:
+  - your updated rules should look like this:
 
-    ```bash
-    rules_version = '2';
-    service firebase.storage {
-      match /b/{bucket}/o {
-        match /{allPaths=**} {
-          allow read, write 
-        }
+  ```bash
+  rules_version = '2';
+  service firebase.storage {
+    match /b/{bucket}/o {
+      match /{allPaths=**} {
+        allow read, write
       }
     }
-    ```
+  }
+  ```
 
 ![image](https://github.com/danny-avila/LibreChat/assets/32828263/c190011f-c1a6-47c7-986e-8d309b5f8704)
 
@@ -107,13 +107,13 @@ FIREBASE_APP_ID=1:your_app_id #appId
 Finally, to enable the app use Firebase, you must set the following in your `librechat.yaml` config file.
 
 ```yaml
-  version: 1.0.1
-  cache: true
-  fileStrategy: "firebase" # This is the field and value you need to add
-  endpoints:
-    custom:
-      - name: "Mistral"
-  # Rest of file omitted
+version: 1.0.1
+cache: true
+fileStrategy: 'firebase' # This is the field and value you need to add
+endpoints:
+  custom:
+    - name: 'Mistral'
+# Rest of file omitted
 ```
 
 For more information about the `librechat.yaml` config file, [see the guide here](../install/configuration/custom_config.md).

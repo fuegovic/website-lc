@@ -3,29 +3,31 @@ title: ☁️ Cloudflare
 description: How to setup a domain with Cloudflare and use Cloudflare Tunnels to securely expose your local web servers or services to the internet.
 weight: 10
 ---
+
 <img src="https://github.com/danny-avila/LibreChat/assets/32828263/cfbc7ca5-b51e-4f1d-aa89-b9b4cb13eead" width="350"/>
 
 # Cloudflare
+
 ### if you are new to domains, here's a quick guide to setup a domain with Cloudflare:
 
 ## Cloudflare Registrar and DNS
 
 - buy a domain on **[https://www.cloudflare.com/products/registrar/](https://www.cloudflare.com/products/registrar)** or the domain provider of your choice
-   - **Note**: If you already own a domain with another registrar, update your `custom name servers` to point to cloudflare using the [Cloudflare onboarding guide](https://dash.cloudflare.com/sign-up)
+  - **Note**: If you already own a domain with another registrar, update your `custom name servers` to point to cloudflare using the [Cloudflare onboarding guide](https://dash.cloudflare.com/sign-up)
 - Once your domain has been added to Cloudflare, navigate to [Manage DNS Records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/)
 - in the `DNS` tab select `Records` and `Add Record`
 
 ![cloudflare-1](https://github.com/danny-avila/LibreChat/assets/32828263/249574b5-a064-4803-8b08-f95804db0719)
 
-  (in the Name section, if you use @ it will use you main domain, but if you want to use a subdomain write it in the Name section)
-   - For example: if you want to acces with chat.yourdomain.com just set in the Name section `chat`
+(in the Name section, if you use @ it will use you main domain, but if you want to use a subdomain write it in the Name section)
+
+- For example: if you want to acces with chat.yourdomain.com just set in the Name section `chat`
 
 **NOTE:** You have to set yourdomain.com the same way in both nginx-proxy-manager and the Cloudflare records. So, if you have set it in the records as chat.yourdomain.com, you will also need to set chat.yourdomain.com in nginx-proxy-manager."
 
 ## Cloudflare Zero Trust extra protection (optional)
 
 If you want to use LibreChat exclusively for yourself or your family and set up an additional layer of protection, you can utilize Cloudflare Zero Trust. Here's how:
-
 
 ### Setup Application Login: (optional)
 
@@ -35,9 +37,9 @@ Setting up application login with Cloudflare Zero Trust adds extra security but 
 - Select **Self-hosted**, provide an **Application name**, and set a **Session Duration**.
 - In the **Application domain** field, enter the same settings you configured in the Tunnels tab. Then, click **Next**.
 - Set the **Policy name** as "auth" and in the **Configure rules** section, you can define variables for granting access to LibreChat for specific users. Here are some examples:
-   - **Emails**: You can add specific email addresses that are allowed to access it.
-   - **Email ending in**: You can add email addresses that end with a custom domain (e.g., @myorganization.com).
-   - **GitHub organization**: You can restrict access to a specific GitHub organization.
+  - **Emails**: You can add specific email addresses that are allowed to access it.
+  - **Email ending in**: You can add email addresses that end with a custom domain (e.g., @myorganization.com).
+  - **GitHub organization**: You can restrict access to a specific GitHub organization.
 - Click **Next** and then **Add application**.
 
 **NOTE:** If you have followed the "Setup Application Login" section, you must read the next part.
@@ -53,6 +55,7 @@ Currently, you can only access Cloudflare Zero Trust using a PIN. Below are guid
 - If you want to use a different authentication method, refer to this list: [Identity Providers Integration](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/)
 
 After adding at least one login method, return to the **Applications** section, select your application, go to **Configure**, and click on **Authentication**.
+
 - Turn off "Accept all available identity providers".
 - Select your social login method and deselect "One-time PIN".
 - Click on **Save application**.
@@ -67,14 +70,12 @@ Here's a straightforward guide on how to install it!
 
 ### Installation Steps
 
-
 1. Go to **[https://dash.cloudflare.com/](https://dash.cloudflare.com/)**.
 2. On the left side, click on **Zero Trust**.
 3. Provide a casual name (which you can change later).
 4. Select the free plan and proceed to payment (if you choose the free plan, you will not be charged).
 5. Open the **Access** tab, navigate to **Tunnels**, and click on **Create a tunnel**.
 6. Set up a tunnel name (e.g., `home`) and save the tunnel.
-
 
 ### Windows Installation
 
@@ -85,7 +86,6 @@ To install Cloudflare Tunnels on Windows, follow these steps:
 3. Copy the command provided in the Windows section under "Install and run a connector." The command should look something like this: `cloudflared.exe service install <your token>`.
 4. Paste the command into the Command Prompt and press Enter.
 5. The installation is now complete! Proceed to the [Tunnel Configuration](#tunnel-configuration) section to continue with the configuration.
-
 
 ### Docker Installation
 

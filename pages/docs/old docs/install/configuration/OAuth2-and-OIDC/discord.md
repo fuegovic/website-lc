@@ -17,8 +17,8 @@ weight: -11
 ## Discord Application Configuration
 
 - In the OAuth2 general settings add a valid redirect URL:
-    - Example for localhost: `http://localhost:3080/oauth/discord/callback`
-    - Example for a domain: `https://example.com/oauth/discord/callback`
+  - Example for localhost: `http://localhost:3080/oauth/discord/callback`
+  - Example for a domain: `https://example.com/oauth/discord/callback`
 
 ![image](https://github.com/danny-avila/LibreChat/assets/32828263/6c56fb92-f4ab-43b9-981b-f98babeeb19d)
 

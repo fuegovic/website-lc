@@ -3,10 +3,10 @@ title: 🔌 Introduction
 description: This doc introduces the plugins endpoint, which enables you to use different LLMs and tools with more flexibility and control. You can change your settings and plugins on the fly, and use plugins to access various sources of information and assistance.
 weight: -10
 ---
+
 # Plugins Endpoint
 
 ![intro-1](https://github.com/danny-avila/LibreChat/assets/32828263/7db788a5-2173-4115-b34b-43ea132dae69)
-
 
 The plugins endpoint opens the door to prompting LLMs in new ways other than traditional input/output prompting.
 
@@ -14,7 +14,7 @@ The first step is using chain-of-thought prompting & **["agency"](https://zapier
 
 More than this, you can use this endpoint for changing your conversation settings mid-conversation. Unlike the official ChatGPT site and all other endpoints, you can switch models, presets, and settings mid-convo, even when you have no plugins selected. This is useful if you first want a creative response from GPT-4, and then a deterministic, lower cost response from GPT-3. Soon, you will be able to use Google, HuggingFace, local models, all in this or a similar endpoint in the same modular manner.
 
-## Using Plugins 
+## Using Plugins
 
 The LLM process when using Plugins is illustrated below.
 
@@ -35,6 +35,7 @@ Clicking on **"Show Agent Settings"** will allow you to modify parameters for th
 - For use of actual **ChatGPT Plugins** (OpenAPI specs), both community-made and official versions, [read here.](./chatgpt_plugins_openapi.md)
 
 ### Notes
+
 - Every additional plugin selected will increase your token usage as there are detailed instructions the LLM needs for each one
 - For best use, be selective with plugins per message and narrow your requests as much as possible
 - If you need help coming up with a good plugin prompt, ask the LLM for suggestions before using one!
@@ -49,6 +50,7 @@ Clicking on **"Show Agent Settings"** will allow you to modify parameters for th
 - ⚠️ The **Browser/Scraper, Serpapi, and Zapier NLA plugins** are official langchain integrations and don't work the best. Improvements to them will be made
 
 ### Plugins Setup Instructions
+
 - **[Google Search](./google_search.md)**
 - **[Stable Diffusion](./stable_diffusion.md)**
 - **[Wolfram](./wolfram.md)**
@@ -56,7 +58,7 @@ Clicking on **"Show Agent Settings"** will allow you to modify parameters for th
 - **Zapier** - You need a Zapier account. Get your **[API key from here](https://nla.zapier.com/credentials/)** after you've made an account
   - Create allowed actions - Follow step 3 in this **[Start Here guide](https://nla.zapier.com/start/)** from Zapier
     - ⚠️ NOTE: zapier is known to be finicky with certain actions. I found that writing email drafts is probably the best use of it
-    -  there are improvements that can be made to override the official NLA integration and that is TBD
+    - there are improvements that can be made to override the official NLA integration and that is TBD
 - **Browser/Scraper** - This is not to be confused with 'browsing' on chat.openai.com (which is technically a plugin suite or multiple plugins)
   - This plugin uses OpenAI embeddings so an OpenAI key is necessary, similar to DALL-E, and it's made distinct from your main API key to make Chats but it can be the same one
   - This plugin will simply scrape html, and will not work with dynamic Javascript pages as that would require a more involved solution
@@ -72,4 +74,3 @@ Clicking on **"Show Agent Settings"** will allow you to modify parameters for th
 ![introduction-5](https://github.com/danny-avila/LibreChat/assets/32828263/40cd1989-437f-49bb-9055-010e3efc468b)
 
 ![introduction-6](https://github.com/danny-avila/LibreChat/assets/32828263/b009a094-7311-45fb-a7ea-f5010f32ec45)
-

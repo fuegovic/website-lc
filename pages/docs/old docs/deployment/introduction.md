@@ -16,24 +16,24 @@ In this guide, you will explore various options to efficiently deploy LibreChat 
 
 ### Hosting Services
 
-| **Service**                        | **Domain**                | **Pros**                                                   | **Cons**                               | **Comments**                                            |      **Recommended**    |
-|------------------------------------|---------------------------|------------------------------------------------------------|----------------------------------------|---------------------------------------------------------|-------------------------|
-| [DigitalOcean](./digitalocean.md)  | Cloud Infrastructure      | Intuitive interface, stable pricing                        | Smaller network footprint              | Optimal for enthusiasts & small to medium businesses    | ✅ Well Known, Reliable |
-| [HuggingFace](./huggingface.md)   | AI/ML Solutions           | ML/NLP specialization                                      | Focused on ML applications             | Excellent for AI/ML initiatives                         | ✅ Free                 |
-| [Azure](./azure-terraform.md)         | Cloud Services            | Comprehensive offerings, Microsoft ecosystem integration   | Can be complex, may incur higher costs | Ideal for large enterprises                             | ✅ Pro                  |
-| [Railway](./railway.md)       | App Deployment            | Simplified app deployment                                  | Emerging service with limited info     | Further evaluation recommended                          | ✅ Easy                 |
-| [Linode](./linode.md)        | Cloud Hosting             | Responsive support, clear pricing                          | Fewer specialized services             | Comparable to DigitalOcean                              |                         |
-| [Hetzner](./hetzner_ubuntu.md)       | Data Hosting              | Emphasizes privacy, economical                             | Primarily European servers             | Suitable for Europe-centric operations                  |                         |
-| [Heroku](./heroku.md)        | Platform as a Service     | User-friendly, scalable                                    | Higher cost potential, less flexibility| A good starting point for startups                      |                         |
-| [Zeabur](./zeabur.md)        | Tech Startups             | Streamlines developer deployment, scalable                 | Limited information due to newness     | Worth exploring for new projects                        |                         |
+| **Service**                       | **Domain**            | **Pros**                                                 | **Cons**                                | **Comments**                                         | **Recommended**         |
+| --------------------------------- | --------------------- | -------------------------------------------------------- | --------------------------------------- | ---------------------------------------------------- | ----------------------- |
+| [DigitalOcean](./digitalocean.md) | Cloud Infrastructure  | Intuitive interface, stable pricing                      | Smaller network footprint               | Optimal for enthusiasts & small to medium businesses | ✅ Well Known, Reliable |
+| [HuggingFace](./huggingface.md)   | AI/ML Solutions       | ML/NLP specialization                                    | Focused on ML applications              | Excellent for AI/ML initiatives                      | ✅ Free                 |
+| [Azure](./azure-terraform.md)     | Cloud Services        | Comprehensive offerings, Microsoft ecosystem integration | Can be complex, may incur higher costs  | Ideal for large enterprises                          | ✅ Pro                  |
+| [Railway](./railway.md)           | App Deployment        | Simplified app deployment                                | Emerging service with limited info      | Further evaluation recommended                       | ✅ Easy                 |
+| [Linode](./linode.md)             | Cloud Hosting         | Responsive support, clear pricing                        | Fewer specialized services              | Comparable to DigitalOcean                           |                         |
+| [Hetzner](./hetzner_ubuntu.md)    | Data Hosting          | Emphasizes privacy, economical                           | Primarily European servers              | Suitable for Europe-centric operations               |                         |
+| [Heroku](./heroku.md)             | Platform as a Service | User-friendly, scalable                                  | Higher cost potential, less flexibility | A good starting point for startups                   |                         |
+| [Zeabur](./zeabur.md)             | Tech Startups         | Streamlines developer deployment, scalable               | Limited information due to newness      | Worth exploring for new projects                     |                         |
 
-### Network Services 
+### Network Services
 
-| **Service**   | **Domain**                | **Pros**                                                   | **Cons**                                         | **Comments**                                   |
-|---------------|---------------------------|------------------------------------------------------------|--------------------------------------------------|------------------------------------------------|
-| [Cloudflare](./cloudflare.md)    | Web Performance & Security| Global CDN, DDoS protection, ease of use                   | Limited free tier, customer support              | Top choice for security enhancements           |
-| [Ngrok](./ngrok.md)         | Secure Tunneling          | Easy to use, free tier available, secure tunneling         | Requires client download, complex domain routing | Handy for local development tests              |
-| [Nginx](./nginx.md)         | Web Server                | High performance, stability, resource efficiency           | Manual setup, limited extensions                 | Widely used for hosting due to its performance |
+| **Service**                   | **Domain**                 | **Pros**                                           | **Cons**                                         | **Comments**                                   |
+| ----------------------------- | -------------------------- | -------------------------------------------------- | ------------------------------------------------ | ---------------------------------------------- |
+| [Cloudflare](./cloudflare.md) | Web Performance & Security | Global CDN, DDoS protection, ease of use           | Limited free tier, customer support              | Top choice for security enhancements           |
+| [Ngrok](./ngrok.md)           | Secure Tunneling           | Easy to use, free tier available, secure tunneling | Requires client download, complex domain routing | Handy for local development tests              |
+| [Nginx](./nginx.md)           | Web Server                 | High performance, stability, resource efficiency   | Manual setup, limited extensions                 | Widely used for hosting due to its performance |
 
 **Cloudflare** is known for its extensive network that speeds up and secures internet services, with an intuitive user interface and robust security options on premium plans.
 
@@ -136,4 +136,3 @@ see also: [Cloudflare Guide](./cloudflare.md)
 In conclusion, the introduction of our deployment guide provides an overview of the various options and considerations for deploying LibreChat. It is important to carefully evaluate your needs and choose the path that best aligns with your organization's goals and objectives. Whether you prioritize ease of use, security, or affordability, our guide provides the necessary information to help you successfully deploy LibreChat and achieve your desired outcome. We hope that this guide will serve as a valuable resource for you throughout your deployment journey.
 
 Remember, our community is here to assist. Should you encounter challenges or have queries, our [Discord channel](https://discord.librechat.ai) and [troubleshooting discussion](https://github.com/danny-avila/LibreChat/discussions/categories/troubleshooting) are excellent resources for support and advice.
-

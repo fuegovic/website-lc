@@ -1,70 +1,55 @@
-import { Check, Plus, Minus, X } from "lucide-react";
-import { Disclosure } from "@headlessui/react";
-import { BorderBeam } from "../magicui/border-beam";
-import Link from "next/link";
-import { Header } from "../Header";
-import { Button } from "../ui/button";
-import { HomeSection } from "./components/HomeSection";
-import { cn } from "@/lib/utils";
+import { Check, Plus, Minus, X } from 'lucide-react'
+import { Disclosure } from '@headlessui/react'
+import { BorderBeam } from '../magicui/border-beam'
+import Link from 'next/link'
+import { Header } from '../Header'
+import { Button } from '../ui/button'
+import { HomeSection } from './components/HomeSection'
+import { cn } from '@/lib/utils'
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(' ')
 }
 
 const tiers = [
   {
-    name: "Starter",
-    id: "tier-starter",
-    href: "https://example.com",
+    name: 'Starter',
+    id: 'tier-starter',
+    href: 'https://example.com',
     featured: false,
-    description:
-      "Ideal for small teams and personal projects.",
-    price: "$1K",
-    mainFeatures: [
-      "Role-based access",
-      "Basic analytics",
-      "Community support",
-    ],
-    cta: "Sign up",
+    description: 'Ideal for small teams and personal projects.',
+    price: '$1K',
+    mainFeatures: ['Role-based access', 'Basic analytics', 'Community support'],
+    cta: 'Sign up',
   },
   {
-    name: "Professional",
-    id: "tier-professional",
-    href: "https://example.com",
+    name: 'Professional',
+    id: 'tier-professional',
+    href: 'https://example.com',
     featured: true,
-    description:
-      "For growing teams and businesses.",
-    price: "$1M",
-    mainFeatures: [
-      "Advanced analytics",
-      "Dedicated support",
-      "Custom configurations",
-    ],
-    cta: "Sign up",
+    description: 'For growing teams and businesses.',
+    price: '$1M',
+    mainFeatures: ['Advanced analytics', 'Dedicated support', 'Custom configurations'],
+    cta: 'Sign up',
   },
   {
-    name: "Enterprise",
-    id: "tier-enterprise",
-    href: "/contact-sales",
+    name: 'Enterprise',
+    id: 'tier-enterprise',
+    href: '/contact-sales',
     featured: false,
-    price: "Contact Sales",
-    description:
-      "Tailored solutions for large organizations.",
-    mainFeatures: [
-      "Custom roles and permissions",
-      "Enterprise-grade security",
-      "24/7 support",
-    ],
-    cta: "Contact sales",
+    price: 'Contact Sales',
+    description: 'Tailored solutions for large organizations.',
+    mainFeatures: ['Custom roles and permissions', 'Enterprise-grade security', '24/7 support'],
+    cta: 'Contact sales',
   },
-] as const;
+] as const
 
 const sections = [
   {
-    name: "Access Control",
+    name: 'Access Control',
     features: [
       {
-        name: "Role-based access",
+        name: 'Role-based access',
         tiers: {
           Starter: true,
           Professional: true,
@@ -72,7 +57,7 @@ const sections = [
         },
       },
       {
-        name: "Custom permissions",
+        name: 'Custom permissions',
         tiers: {
           Starter: false,
           Professional: true,
@@ -82,10 +67,10 @@ const sections = [
     ],
   },
   {
-    name: "Analytics & Reporting",
+    name: 'Analytics & Reporting',
     features: [
       {
-        name: "Basic analytics",
+        name: 'Basic analytics',
         tiers: {
           Starter: true,
           Professional: false,
@@ -93,7 +78,7 @@ const sections = [
         },
       },
       {
-        name: "Advanced analytics",
+        name: 'Advanced analytics',
         tiers: {
           Starter: false,
           Professional: true,
@@ -103,10 +88,10 @@ const sections = [
     ],
   },
   {
-    name: "Integration",
+    name: 'Integration',
     features: [
       {
-        name: "Integration with external tools",
+        name: 'Integration with external tools',
         tiers: {
           Starter: true,
           Professional: true,
@@ -114,7 +99,7 @@ const sections = [
         },
       },
       {
-        name: "Custom API endpoints",
+        name: 'Custom API endpoints',
         tiers: {
           Starter: false,
           Professional: true,
@@ -124,10 +109,10 @@ const sections = [
     ],
   },
   {
-    name: "Support & Maintenance",
+    name: 'Support & Maintenance',
     features: [
       {
-        name: "Community support",
+        name: 'Community support',
         tiers: {
           Starter: true,
           Professional: true,
@@ -135,7 +120,7 @@ const sections = [
         },
       },
       {
-        name: "Dedicated support",
+        name: 'Dedicated support',
         tiers: {
           Starter: false,
           Professional: true,
@@ -143,7 +128,7 @@ const sections = [
         },
       },
       {
-        name: "24/7 support",
+        name: '24/7 support',
         tiers: {
           Starter: false,
           Professional: false,
@@ -152,16 +137,11 @@ const sections = [
       },
     ],
   },
-];
+]
 
-
-export default function Pricing({
-  isPricingPage = false,
-}: {
-  isPricingPage?: boolean;
-}) {
+export default function Pricing({ isPricingPage = false }: { isPricingPage?: boolean }) {
   return (
-    <HomeSection id="pricing" className={cn(isPricingPage && "px-0 sm:px-0")}>
+    <HomeSection id="pricing" className={cn(isPricingPage && 'px-0 sm:px-0')}>
       <div className="isolate overflow-hidden">
         <div className="flow-root pb-16 lg:pb-0">
           <div className="mx-auto max-w-7xl">
@@ -181,9 +161,9 @@ export default function Pricing({
                   key={tier.id}
                   className={classNames(
                     tier.featured
-                      ? "z-10 bg-slate-100 shadow-xl ring-1 ring-gray-900/10"
-                      : "bg-gray-800/80 ring-1 ring-white/10 lg:bg-transparent lg:pb-14 lg:ring-0",
-                    "relative rounded"
+                      ? 'z-10 bg-slate-100 shadow-xl ring-1 ring-gray-900/10'
+                      : 'bg-gray-800/80 ring-1 ring-white/10 lg:bg-transparent lg:pb-14 lg:ring-0',
+                    'relative rounded',
                   )}
                 >
                   {tier.featured && <BorderBeam borderWidth={2} />}
@@ -191,8 +171,8 @@ export default function Pricing({
                     <h3
                       id={tier.id}
                       className={classNames(
-                        tier.featured ? "text-gray-900" : "text-white",
-                        "text-sm font-semibold leading-6"
+                        tier.featured ? 'text-gray-900' : 'text-white',
+                        'text-sm font-semibold leading-6',
                       )}
                     >
                       {tier.name}
@@ -201,8 +181,8 @@ export default function Pricing({
                       <div className="mt-2 flex items-center gap-x-4">
                         <p
                           className={classNames(
-                            tier.featured ? "text-gray-900" : "text-white",
-                            "text-4xl font-bold tracking-tight"
+                            tier.featured ? 'text-gray-900' : 'text-white',
+                            'text-4xl font-bold tracking-tight',
                           )}
                         >
                           {tier.price}
@@ -211,7 +191,7 @@ export default function Pricing({
                       <Button
                         asChild
                         className="z-10"
-                        variant={tier.featured ? "cta" : "secondary"}
+                        variant={tier.featured ? 'cta' : 'secondary'}
                       >
                         <Link href={tier.href}>{tier.cta}</Link>
                       </Button>
@@ -221,19 +201,17 @@ export default function Pricing({
                         role="list"
                         className={classNames(
                           tier.featured
-                            ? "divide-gray-900/5 border-gray-900/5 text-gray-600"
-                            : "divide-white/5 border-white/5 text-white",
-                          "-my-2 divide-y border-t text-sm leading-6 lg:border-t-0"
+                            ? 'divide-gray-900/5 border-gray-900/5 text-gray-600'
+                            : 'divide-white/5 border-white/5 text-white',
+                          '-my-2 divide-y border-t text-sm leading-6 lg:border-t-0',
                         )}
                       >
                         {tier.mainFeatures.map((mainFeature) => (
                           <li key={mainFeature} className="flex gap-x-3 py-2">
                             <Check
                               className={classNames(
-                                tier.featured
-                                  ? "text-indigo-600"
-                                  : "text-gray-500",
-                                "h-6 w-5 flex-none"
+                                tier.featured ? 'text-indigo-600' : 'text-gray-500',
+                                'h-6 w-5 flex-none',
                               )}
                               aria-hidden="true"
                             />
@@ -253,34 +231,26 @@ export default function Pricing({
             <div className="relative">
               <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
                 {/* Feature comparison (up to lg) */}
-                <section
-                  aria-labelledby="mobile-comparison-heading"
-                  className="lg:hidden"
-                >
+                <section aria-labelledby="mobile-comparison-heading" className="lg:hidden">
                   <h2 id="mobile-comparison-heading" className="sr-only">
                     Feature comparison
                   </h2>
 
                   <div className="mx-auto max-w-2xl space-y-16">
                     {tiers.map((tier) => (
-                      <div
-                        key={tier.id}
-                        className="border-t border-gray-900/10"
-                      >
+                      <div key={tier.id} className="border-t border-gray-900/10">
                         <div
                           className={classNames(
-                            tier.featured
-                              ? "border-indigo-600"
-                              : "border-transparent",
-                            "-mt-px w-72 border-t-2 pt-10 md:w-80"
+                            tier.featured ? 'border-indigo-600' : 'border-transparent',
+                            '-mt-px w-72 border-t-2 pt-10 md:w-80',
                           )}
                         >
                           <h3
                             className={classNames(
                               tier.featured
-                                ? "text-indigo-600 dark:text-indigo-400"
-                                : "text-primary",
-                              "text-sm font-semibold leading-6"
+                                ? 'text-indigo-600 dark:text-indigo-400'
+                                : 'text-primary',
+                              'text-sm font-semibold leading-6',
                             )}
                           >
                             {tier.name}
@@ -306,9 +276,9 @@ export default function Pricing({
                                 <div
                                   className={classNames(
                                     tier.featured
-                                      ? "ring-2 ring-indigo-600"
-                                      : "ring-1 ring-gray-900/10",
-                                    "relative rounded bg-white dark:bg-gray-800/80 shadow-sm sm:rounded-none dark:sm:bg-transparent sm:shadow-none sm:ring-0"
+                                      ? 'ring-2 ring-indigo-600'
+                                      : 'ring-1 ring-gray-900/10',
+                                    'relative rounded bg-white dark:bg-gray-800/80 shadow-sm sm:rounded-none dark:sm:bg-transparent sm:shadow-none sm:ring-0',
                                   )}
                                 >
                                   <dl className="divide-y divide-gray-200 text-sm leading-6">
@@ -317,25 +287,21 @@ export default function Pricing({
                                         key={feature.name}
                                         className="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0"
                                       >
-                                        <dt className="pr-4 text-primary/60">
-                                          {feature.name}
-                                        </dt>
+                                        <dt className="pr-4 text-primary/60">{feature.name}</dt>
                                         <dd className="flex items-center justify-end sm:justify-center sm:px-4">
-                                          {typeof feature.tiers[tier.name] ===
-                                          "string" ? (
+                                          {typeof feature.tiers[tier.name] === 'string' ? (
                                             <span
                                               className={
                                                 tier.featured
-                                                  ? "font-semibold text-indigo-600 dark:text-indigo-400"
-                                                  : "text-primary"
+                                                  ? 'font-semibold text-indigo-600 dark:text-indigo-400'
+                                                  : 'text-primary'
                                               }
                                             >
                                               {feature.tiers[tier.name]}
                                             </span>
                                           ) : (
                                             <>
-                                              {feature.tiers[tier.name] ===
-                                              true ? (
+                                              {feature.tiers[tier.name] === true ? (
                                                 <Check
                                                   className="mx-auto h-5 w-5 text-indigo-600 dark:text-indigo-400"
                                                   aria-hidden="true"
@@ -348,10 +314,7 @@ export default function Pricing({
                                               )}
 
                                               <span className="sr-only">
-                                                {feature.tiers[tier.name] ===
-                                                true
-                                                  ? "Yes"
-                                                  : "No"}
+                                                {feature.tiers[tier.name] === true ? 'Yes' : 'No'}
                                               </span>
                                             </>
                                           )}
@@ -366,9 +329,9 @@ export default function Pricing({
                                   aria-hidden="true"
                                   className={classNames(
                                     tier.featured
-                                      ? "ring-2 ring-indigo-600"
-                                      : "ring-1 ring-gray-900/10",
-                                    "pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 rounded sm:block"
+                                      ? 'ring-2 ring-indigo-600'
+                                      : 'ring-1 ring-gray-900/10',
+                                    'pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 rounded sm:block',
                                   )}
                                 />
                               </div>
@@ -381,10 +344,7 @@ export default function Pricing({
                 </section>
 
                 {/* Feature comparison (lg+) */}
-                <section
-                  aria-labelledby="comparison-heading"
-                  className="hidden lg:block"
-                >
+                <section aria-labelledby="comparison-heading" className="hidden lg:block">
                   <h2 id="comparison-heading" className="sr-only">
                     Feature comparison
                   </h2>
@@ -394,18 +354,16 @@ export default function Pricing({
                       <div key={tier.id} aria-hidden="true" className="-mt-px">
                         <div
                           className={classNames(
-                            tier.featured
-                              ? "border-indigo-600"
-                              : "border-transparent",
-                            "border-t-2 pt-10"
+                            tier.featured ? 'border-indigo-600' : 'border-transparent',
+                            'border-t-2 pt-10',
                           )}
                         >
                           <p
                             className={classNames(
                               tier.featured
-                                ? "text-indigo-600 dark:text-indigo-400"
-                                : "text-primary",
-                              "text-sm font-semibold leading-6"
+                                ? 'text-indigo-600 dark:text-indigo-400'
+                                : 'text-primary',
+                              'text-sm font-semibold leading-6',
                             )}
                           >
                             {tier.name}
@@ -443,9 +401,7 @@ export default function Pricing({
                                 </th>
                                 {tiers.map((tier) => (
                                   <th key={tier.id} scope="col">
-                                    <span className="sr-only">
-                                      {tier.name} tier
-                                    </span>
+                                    <span className="sr-only">{tier.name} tier</span>
                                   </th>
                                 ))}
                               </tr>
@@ -458,10 +414,9 @@ export default function Pricing({
                                     className="w-1/4 py-3 pr-4 text-left text-sm font-normal leading-6 text-primary"
                                   >
                                     {feature.name}
-                                    {featureIdx !==
-                                    section.features.length - 1 ? (
+                                    {featureIdx === section.features.length - 1 ? null : (
                                       <div className="absolute inset-x-8 mt-3 h-px bg-gray-200" />
-                                    ) : null}
+                                    )}
                                   </th>
                                   {tiers.map((tier) => (
                                     <td
@@ -469,22 +424,20 @@ export default function Pricing({
                                       className="relative w-1/4 px-4 py-0 text-center"
                                     >
                                       <span className="relative h-full w-full py-3">
-                                        {typeof feature.tiers[tier.name] ===
-                                        "string" ? (
+                                        {typeof feature.tiers[tier.name] === 'string' ? (
                                           <span
                                             className={classNames(
                                               tier.featured
-                                                ? "font-semibold text-indigo-600 dark:text-indigo-400"
-                                                : "text-primary",
-                                              "text-sm leading-6"
+                                                ? 'font-semibold text-indigo-600 dark:text-indigo-400'
+                                                : 'text-primary',
+                                              'text-sm leading-6',
                                             )}
                                           >
                                             {feature.tiers[tier.name]}
                                           </span>
                                         ) : (
                                           <>
-                                            {feature.tiers[tier.name] ===
-                                            true ? (
+                                            {feature.tiers[tier.name] === true ? (
                                               <Check
                                                 className="mx-auto h-5 w-5 text-indigo-600 dark:text-indigo-400"
                                                 aria-hidden="true"
@@ -497,9 +450,7 @@ export default function Pricing({
                                             )}
 
                                             <span className="sr-only">
-                                              {feature.tiers[tier.name] === true
-                                                ? "Yes"
-                                                : "No"}
+                                              {feature.tiers[tier.name] === true ? 'Yes' : 'No'}
                                             </span>
                                           </>
                                         )}
@@ -521,9 +472,9 @@ export default function Pricing({
                                 key={tier.id}
                                 className={classNames(
                                   tier.featured
-                                    ? "ring-2 ring-indigo-600"
-                                    : "ring-1 ring-gray-900/10",
-                                  "rounded"
+                                    ? 'ring-2 ring-indigo-600'
+                                    : 'ring-1 ring-gray-900/10',
+                                  'rounded',
                                 )}
                               />
                             ))}
@@ -540,7 +491,7 @@ export default function Pricing({
         ) : (
           <>
             <div className="text-center mt-10">
-              For a detailed comparison and FAQ, see our{" "}
+              For a detailed comparison and FAQ, see our{' '}
               <Link href="/pricing" className="underline">
                 pricing page
               </Link>
@@ -550,37 +501,36 @@ export default function Pricing({
         )}
       </div>
     </HomeSection>
-  );
+  )
 }
-
 
 const faqs = [
   {
-    question: "What is the LibreChat Admin Panel?",
+    question: 'What is the LibreChat Admin Panel?',
     answer:
-      "The LibreChat Admin Panel is a powerful tool designed to provide administrators with extensive control and management capabilities over their LibreChat instance. It allows you to configure roles, manage users, access advanced analytics, and more.",
+      'The LibreChat Admin Panel is a powerful tool designed to provide administrators with extensive control and management capabilities over their LibreChat instance. It allows you to configure roles, manage users, access advanced analytics, and more.',
   },
   {
-    question: "How can I access the Admin Panel?",
+    question: 'How can I access the Admin Panel?',
     answer:
-      "To access the LibreChat Admin Panel, you will need to subscribe to the paid plan that includes access to this feature. Once subscribed, you will receive credentials and instructions on how to access and utilize the Admin Panel.",
+      'To access the LibreChat Admin Panel, you will need to subscribe to the paid plan that includes access to this feature. Once subscribed, you will receive credentials and instructions on how to access and utilize the Admin Panel.',
   },
   {
-    question: "What features are available in the Admin Panel?",
+    question: 'What features are available in the Admin Panel?',
     answer:
-      "The Admin Panel offers features such as role-based access control, project configurations, user management with real-time data, analytics, integration with external tools, and more. It serves as a comprehensive tool for managing your LibreChat environment efficiently.",
+      'The Admin Panel offers features such as role-based access control, project configurations, user management with real-time data, analytics, integration with external tools, and more. It serves as a comprehensive tool for managing your LibreChat environment efficiently.',
   },
   {
-    question: "Is the Admin Panel included in the free plan?",
+    question: 'Is the Admin Panel included in the free plan?',
     answer:
-      "No, the Admin Panel is a premium feature available with paid subscriptions. The free plan of LibreChat includes core functionalities but does not grant access to the advanced capabilities offered by the Admin Panel.",
+      'No, the Admin Panel is a premium feature available with paid subscriptions. The free plan of LibreChat includes core functionalities but does not grant access to the advanced capabilities offered by the Admin Panel.',
   },
   {
-    question: "Can I customize the Admin Panel according to my needs?",
+    question: 'Can I customize the Admin Panel according to my needs?',
     answer:
-      "Yes, the Admin Panel allows for customization and configuration based on your specific requirements. You can set up custom roles, configure project settings, integrate with external services, and tailor the panel to suit your workflow.",
+      'Yes, the Admin Panel allows for customization and configuration based on your specific requirements. You can set up custom roles, configure project settings, integrate with external services, and tailor the panel to suit your workflow.',
   },
-];
+]
 
 export function PricingFAQ() {
   return (
@@ -597,9 +547,7 @@ export function PricingFAQ() {
                   <>
                     <dt>
                       <Disclosure.Button className="flex w-full items-start justify-between text-left text-primary">
-                        <span className="text-base font-semibold leading-7">
-                          {faq.question}
-                        </span>
+                        <span className="text-base font-semibold leading-7">{faq.question}</span>
                         <span className="ml-6 flex h-7 items-center">
                           {open ? (
                             <Minus className="h-6 w-6" aria-hidden="true" />
@@ -623,5 +571,5 @@ export function PricingFAQ() {
         </div>
       </div>
     </div>
-  );
+  )
 }

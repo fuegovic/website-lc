@@ -3,16 +3,17 @@ title: 🌈 Heroku
 description: Instructions for deploying LibreChat on Heroku
 weight: -1
 ---
+
 # Heroku Deployment
 
-*To run LibreChat on a server, you can use cloud hosting platforms like Heroku, DigitalOcean, or AWS. In this response, I'll provide instructions for deploying the project on Heroku. Other platforms will have slightly different deployment processes.*
+_To run LibreChat on a server, you can use cloud hosting platforms like Heroku, DigitalOcean, or AWS. In this response, I'll provide instructions for deploying the project on Heroku. Other platforms will have slightly different deployment processes._
 
 Heroku only supports running a single process within a Docker container. The Dockerfile for this project has two different processes - one is for serving your Node API and the other for serving your client with Nginx. In the context of Heroku, these should be considered two separate apps.
 
 If you want to deploy both these services to Heroku, you will need to create two separate Dockerfiles: one for the API and one for the client. The heroku.yml should be configured separately for each app, and then you need to create and deploy two different Heroku apps.
 
-  - Sign up for a Heroku account: If you don't already have a Heroku account, sign up at: **[https://signup.heroku.com](https://signup.heroku.com)**
-  - Install the Heroku CLI: Download and install the Heroku CLI from: **[https://devcenter.heroku.com/articles/heroku-cli](https://devcenter.heroku.com/articles/heroku-cli)**
+- Sign up for a Heroku account: If you don't already have a Heroku account, sign up at: **[https://signup.heroku.com](https://signup.heroku.com)**
+- Install the Heroku CLI: Download and install the Heroku CLI from: **[https://devcenter.heroku.com/articles/heroku-cli](https://devcenter.heroku.com/articles/heroku-cli)**
 
 Here are the steps to deploy on Heroku:
 
@@ -127,13 +128,13 @@ Remember to replace `your-api-app-name` and `your-client-app-name` with the actu
 
 ---
 
- ⚠️ If you have issues, see this discussion first: **[https://github.com/danny-avila/LibreChat/discussions/339](https://github.com/danny-avila/LibreChat/discussions/339)**
- 
+⚠️ If you have issues, see this discussion first: **[https://github.com/danny-avila/LibreChat/discussions/339](https://github.com/danny-avila/LibreChat/discussions/339)**
 
 ## Using Heroku Dashboard:
-  - Open the app: After the deployment is complete, you can open the app in your browser by running heroku open or by visiting the app's URL.
 
-*NOTE: If the heroku docker image process still needs an external mongodb/meilisearch, here are the instructions for setting up MongoDB Atlas and deploying MeiliSearch on Heroku:*
+- Open the app: After the deployment is complete, you can open the app in your browser by running heroku open or by visiting the app's URL.
+
+_NOTE: If the heroku docker image process still needs an external mongodb/meilisearch, here are the instructions for setting up MongoDB Atlas and deploying MeiliSearch on Heroku:_
 
 ## Setting up MongoDB Atlas:
 
@@ -157,6 +158,7 @@ Login to Heroku: Open Terminal and run heroku login. Follow the instructions to 
 ```
 heroku create your-meilisearch-app-name
 ```
+
 Replace your-meilisearch-app-name with a unique name for your MeiliSearch app.
 
 ### Set the buildpack:
@@ -182,26 +184,24 @@ git add .
 git commit -m "Initial commit"
 git push heroku master
 ```
+
 ### Get the MeiliSearch URL: After deployment, you can find the MeiliSearch URL by visiting your app's settings page in the Heroku Dashboard. The URL will be displayed under the "Domains" section.
 
 ## Update environment variables in LibreChat:
 
-  - Now that you have your MongoDB Atlas connection string and MeiliSearch URL, update the following environment variables in your Heroku app for LibreChat:
+- Now that you have your MongoDB Atlas connection string and MeiliSearch URL, update the following environment variables in your Heroku app for LibreChat:
 
-  - `MONGODB_URI`: Set the value to the MongoDB Atlas connection string you obtained earlier.
-  - `MEILISEARCH_URL`: Set the value to the MeiliSearch URL you obtained from your MeiliSearch app on Heroku.
-  - `MEILISEARCH_KEY`: Set the value to the MeiliSearch master key you used when setting up the MeiliSearch app.
-  - You can set these environment variables using the Heroku CLI or through the Heroku Dashboard, as described in the previous response.
+- `MONGODB_URI`: Set the value to the MongoDB Atlas connection string you obtained earlier.
+- `MEILISEARCH_URL`: Set the value to the MeiliSearch URL you obtained from your MeiliSearch app on Heroku.
+- `MEILISEARCH_KEY`: Set the value to the MeiliSearch master key you used when setting up the MeiliSearch app.
+- You can set these environment variables using the Heroku CLI or through the Heroku Dashboard, as described in the previous response.
 
-  - Once you've updated the environment variables, LibreChat should be able to connect to MongoDB Atlas and MeiliSearch on Heroku.
+- Once you've updated the environment variables, LibreChat should be able to connect to MongoDB Atlas and MeiliSearch on Heroku.
 
 ```
 heroku config:set KEY_NAME=KEY_VALUE --app your-app-name
 ```
 
-  - Replace KEY_NAME and KEY_VALUE with the appropriate key names and values from your .env file. Repeat this command for each environment variable.
+- Replace KEY_NAME and KEY_VALUE with the appropriate key names and values from your .env file. Repeat this command for each environment variable.
 
-
-  
 ### Note: If you're still having trouble, before creating a new issue, please search for similar ones on our [#issues thread on our discord](https://discord.librechat.ai) or our [troubleshooting discussion](https://github.com/danny-avila/LibreChat/discussions/categories/troubleshooting) on our Discussions page. If you don't find a relevant issue, feel free to create a new one and provide as much detail as possible.
-

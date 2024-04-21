@@ -1,28 +1,28 @@
-import Image from "next/image";
-import { getPagesUnderRoute } from "nextra/context";
-import { Page } from "nextra";
+import Image from 'next/image'
+import { getPagesUnderRoute } from 'nextra/context'
+import { Page } from 'nextra'
 
 type AuthorPage = Page & {
   frontMatter: {
-    name: string;
-    ogImage: string;
-    authorid: string;
-  };
-};
+    name: string
+    ogImage: string
+    authorid: string
+  }
+}
 
 export const AuthorSmall = ({ authorid }: { authorid: string }) => {
-  const authorPages = getPagesUnderRoute("/authors");
+  const authorPages = getPagesUnderRoute('/authors')
   const page = authorPages?.find(
-    (page) => (page as AuthorPage).frontMatter.authorid === authorid
-  ) as AuthorPage;
+    (page) => (page as AuthorPage).frontMatter.authorid === authorid,
+  ) as AuthorPage
 
   if (!page) {
     // Handle the case when the author page is not found
-    console.error("Author page not found for authorid:", authorid);
-    return null;
+    console.error('Author page not found for authorid:', authorid)
+    return null
   }
 
-  const { name, ogImage } = page.frontMatter;
+  const { name, ogImage } = page.frontMatter
 
   return (
     <div className="group shrink-0" key={name}>
@@ -37,5 +37,5 @@ export const AuthorSmall = ({ authorid }: { authorid: string }) => {
         <span className="text-primary/60 whitespace-nowrap">{name}</span>
       </div>
     </div>
-  );
-};
+  )
+}

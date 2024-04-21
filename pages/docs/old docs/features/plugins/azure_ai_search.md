@@ -3,7 +3,9 @@ title: ⚡ Azure AI Search
 description: How to configure Azure AI Search for answers to your questions with assistance from GPT.
 weight: -4
 ---
+
 # Azure AI Search Plugin
+
 Through the plugins endpoint, you can use Azure AI Search for answers to your questions with assistance from GPT.
 
 ## Configurations
@@ -17,6 +19,7 @@ AZURE_AI_SEARCH_SERVICE_ENDPOINT="..."
 AZURE_AI_SEARCH_INDEX_NAME="..."
 AZURE_AI_SEARCH_API_KEY="..."
 ```
+
 Or you need to get an Azure AI Search endpoint URL, index name, and an API Key. You can define them during the installation of the plugin.
 
 ### AZURE_AI_SEARCH_SERVICE_ENDPOINT

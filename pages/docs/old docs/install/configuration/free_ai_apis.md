@@ -1,6 +1,6 @@
 ---
 title: 💸 Free AI APIs
-description: There are APIs offering free/free-trial access to AI APIs via reverse proxy... 
+description: There are APIs offering free/free-trial access to AI APIs via reverse proxy...
 weight: -6
 ---
 
@@ -24,11 +24,11 @@ Once you have the API key, you should adjust your .env file like this:
 
 ```bash
 ##########################
-# OpenAI Endpoint: 
+# OpenAI Endpoint:
 ##########################
 
 OPENAI_API_KEY=your-naga-ai-api-key
-# Reverse proxy settings for OpenAI: 
+# Reverse proxy settings for OpenAI:
 OPENAI_REVERSE_PROXY=https://api.naga.ac/v1/chat/completions
 
 # OPENAI_MODELS=gpt-3.5-turbo,gpt-3.5-turbo-16k,gpt-3.5-turbo-0301,gpt-4,gpt-4-0314,gpt-4-0613
@@ -49,8 +49,9 @@ You can set `OPENAI_API_KEY=user_provided` if you would like the user to add the
 ![Screenshot 2023-07-23 201709](https://github.com/danny-avila/LibreChat/assets/110412045/f3ce0226-152c-4d53-9a6e-6370156b0735)
 
 ### Plugins also work with this reverse proxy (OpenAI models). [More info on plugins here](https://docs.librechat.ai/features/plugins/introduction.html)
+
 ![Screenshot 2023-07-23 202426](https://github.com/danny-avila/LibreChat/assets/110412045/45d0f79f-0963-49c0-9d1c-c292d1c25588)
 
 ---
 
->⚠️ Note: If you're having trouble, before creating a new issue, please search for similar ones on our [#issues thread on our discord](https://discord.librechat.ai) or our [troubleshooting discussion](https://github.com/danny-avila/LibreChat/discussions/categories/troubleshooting) on our Discussions page. If you don't find a relevant issue, feel free to create a new one and provide as much detail as possible.
+> ⚠️ Note: If you're having trouble, before creating a new issue, please search for similar ones on our [#issues thread on our discord](https://discord.librechat.ai) or our [troubleshooting discussion](https://github.com/danny-avila/LibreChat/discussions/categories/troubleshooting) on our Discussions page. If you don't find a relevant issue, feel free to create a new one and provide as much detail as possible.

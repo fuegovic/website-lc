@@ -5,6 +5,7 @@ weight: -12
 ---
 
 # .env File Configuration
+
 Welcome to the comprehensive guide for configuring your application's environment with the `.env` file. This document is your one-stop resource for understanding and customizing the environment variables that will shape your application's behavior in different contexts.
 
 While the default settings provide a solid foundation for a standard `docker` installation, delving into this guide will unveil the full potential of LibreChat. This guide empowers you to tailor LibreChat to your precise needs. Discover how to adjust language model availability, integrate social logins, manage the automatic moderation system, and much more. It's all about giving you the control to fine-tune LibreChat for an optimal user experience.
@@ -13,18 +14,20 @@ While the default settings provide a solid foundation for a standard `docker` in
 
 Alternatively, you can create a new file named `docker-compose.override.yml` in the same directory as your main `docker-compose.yml` file for LibreChat, where you can set your .env variables as needed under `environment`, or modify the default configuration provided by the main `docker-compose.yml`, without the need to directly edit or duplicate the whole file.
 
-For more info see: 
+For more info see:
 
-- Our quick guide: 
-    - **[Docker Override](./docker_override.md)**
+- Our quick guide:
 
-- The official docker documentation: 
-    - **[docker docs - understanding-multiple-compose-files](https://docs.docker.com/compose/multiple-compose-files/extends/#understanding-multiple-compose-files)**
-    - **[docker docs - merge-compose-files](https://docs.docker.com/compose/multiple-compose-files/merge/#merge-compose-files)**
-    - **[docker docs - specifying-multiple-compose-files](https://docs.docker.com/compose/reference/#specifying-multiple-compose-files)**
+  - **[Docker Override](./docker_override.md)**
 
-- You can also view an example of an override file for LibreChat in your LibreChat folder and on GitHub: 
-    - **[docker-compose.override.example](https://github.com/danny-avila/LibreChat/blob/main/docker-compose.override.yml.example)**
+- The official docker documentation:
+
+  - **[docker docs - understanding-multiple-compose-files](https://docs.docker.com/compose/multiple-compose-files/extends/#understanding-multiple-compose-files)**
+  - **[docker docs - merge-compose-files](https://docs.docker.com/compose/multiple-compose-files/merge/#merge-compose-files)**
+  - **[docker docs - specifying-multiple-compose-files](https://docs.docker.com/compose/reference/#specifying-multiple-compose-files)**
+
+- You can also view an example of an override file for LibreChat in your LibreChat folder and on GitHub:
+  - **[docker-compose.override.example](https://github.com/danny-avila/LibreChat/blob/main/docker-compose.override.yml.example)**
 
 ---
 
@@ -32,7 +35,7 @@ For more info see:
 
 ### Port
 
-- The server will listen to localhost:3080 by default. You can change the target IP as you want. If you want to make this server available externally, for example to share the server with others or expose this from a Docker container, set host to 0.0.0.0 or your external IP interface. 
+- The server will listen to localhost:3080 by default. You can change the target IP as you want. If you want to make this server available externally, for example to share the server with others or expose this from a Docker container, set host to 0.0.0.0 or your external IP interface.
 
 > Tips: Setting host to 0.0.0.0 means listening on all interfaces. It's not a real IP.
 
@@ -49,9 +52,9 @@ PORT=3080
   - if you are using docker, the URI format is `mongodb://<ip>:<port>/<database>`. Your `MONGO_URI` should look like this: `mongodb://127.0.0.1:27018/LibreChat`
   - if you are using an online db, the URI format is `mongodb+srv://<username>:<password>@<host>/<database>?<options>`. Your `MONGO_URI` should look like this: `mongodb+srv://username:password@host.mongodb.net/LibreChat?retryWrites=true` (`retryWrites=true` is the only option you need when using the online db)
 - Instruction on how to create an online MongoDB database (useful for use without docker):
-    - [Online MongoDB](./mongodb.md)
+  - [Online MongoDB](./mongodb.md)
 - Securely access your docker MongoDB database:
-    - [Manage your database](../../features/manage_your_database.md)
+  - [Manage your database](../../features/manage_your_database.md)
 
 ```bash
 MONGO_URI=mongodb://127.0.0.1:27018/LibreChat
@@ -60,7 +63,7 @@ MONGO_URI=mongodb://127.0.0.1:27018/LibreChat
 ### Application Domains
 
 - To use LibreChat locally, set `DOMAIN_CLIENT` and `DOMAIN_SERVER` to `http://localhost:3080` (3080 being the port previously configured)
-- When deploying LibreChat to a custom domain, set `DOMAIN_CLIENT` and `DOMAIN_SERVER` to your deployed URL, e.g. `https://librechat.example.com` 
+- When deploying LibreChat to a custom domain, set `DOMAIN_CLIENT` and `DOMAIN_SERVER` to your deployed URL, e.g. `https://librechat.example.com`
 
 ```bash
 DOMAIN_CLIENT=http://localhost:3080
@@ -68,6 +71,7 @@ DOMAIN_SERVER=http://localhost:3080
 ```
 
 ### Prevent Public Search Engines Indexing
+
 By default, your website will not be indexed by public search engines (e.g. Google, Bing, …). This means that people will not be able to find your website through these search engines. If you want to make your website more visible and searchable, you can change the following setting to `false`
 
 ```bash
@@ -118,6 +122,7 @@ CONSOLE_JSON=false
 This is not recommend, however, as the outputs can be quite verbose, and so it's disabled by default.
 
 ### Permission
+
 > UID and GID are numbers assigned by Linux to each user and group on the system. If you have permission problems, set here the UID and GID of the user running the docker compose command. The applications in the container will run with these uid/gid.
 
 ```bash
@@ -126,7 +131,8 @@ GID=1000
 ```
 
 ### Configuration Path - `librechat.yaml`
-Specify an alternative location for the LibreChat configuration file. 
+
+Specify an alternative location for the LibreChat configuration file.
 You may specify an **absolute path**, a **relative path**, or a **URL**. The filename in the path is flexible and does not have to be `librechat.yaml`; any valid configuration file will work.
 
 > **Note**: If you prefer LibreChat to search for the configuration file in the root directory (which is the default behavior), simply leave this option commented out.
@@ -137,9 +143,11 @@ You may specify an **absolute path**, a **relative path**, or a **URL**. The fil
 ```
 
 ## Endpoints
-In this section you can configure the endpoints and models selection, their API keys, and the proxy and reverse proxy settings for the endpoints that support it. 
+
+In this section you can configure the endpoints and models selection, their API keys, and the proxy and reverse proxy settings for the endpoints that support it.
 
 ### General Config
+
 - Uncomment `ENDPOINTS` to customize the available endpoints in LibreChat
 - `PROXY` is to be used by all endpoints (leave blank by default)
 
@@ -149,15 +157,16 @@ PROXY=
 ```
 
 - Titling is enabled by default for all Endpoints when initiating a conversation (proceeding the first AI response).
-    - Set to `false` to disable this feature.
-    - Not all endpoints support titling.
-    - You can configure this feature on an Endpoint-level using [the `librechat.yaml` config file](./custom_config.md)
+  - Set to `false` to disable this feature.
+  - Not all endpoints support titling.
+  - You can configure this feature on an Endpoint-level using [the `librechat.yaml` config file](./custom_config.md)
 
 ```bash
 TITLE_CONVO=true
 ```
 
 ### Known Endpoints - librechat.yaml
+
 - see: [AI Endpoints](./ai_endpoints.md)
 - see also: [Custom Configuration](./custom_config.md)
 
@@ -173,12 +182,14 @@ TOGETHERAI_API_KEY=
 ```
 
 ### Anthropic
+
 see: [Anthropic Endpoint](./ai_setup.md#anthropic)
+
 - You can request an access key from https://console.anthropic.com/
 - Leave `ANTHROPIC_API_KEY=` blank to disable this endpoint
 - Set `ANTHROPIC_API_KEY=` to "user_provided" to allow users to provide their own API key from the WebUI
 - If you have access to a reverse proxy for `Anthropic`, you can set it with `ANTHROPIC_REVERSE_PROXY=`
-    - leave blank or comment it out to use default base url
+  - leave blank or comment it out to use default base url
 
 ```bash
 ANTHROPIC_API_KEY=user_provided
@@ -186,8 +197,8 @@ ANTHROPIC_MODELS=claude-3-opus-20240229,claude-3-sonnet-20240229,claude-2.1,clau
 ANTHROPIC_REVERSE_PROXY=
 ```
 
-- Titling is enabled by default but is configured with the environment variable 
-`TITLE_CONVO` for all Endpoints. The default model used for Anthropic titling is "claude-3-haiku-20240307". You can change it by uncommenting the following and setting the desired model. **(Optional)** 
+- Titling is enabled by default but is configured with the environment variable
+  `TITLE_CONVO` for all Endpoints. The default model used for Anthropic titling is "claude-3-haiku-20240307". You can change it by uncommenting the following and setting the desired model. **(Optional)**
 
 > **Note:** Must be compatible with the Anthropic Endpoint. Also, Claude 2 and Claude 3 models perform best at this task, with `claude-3-haiku` models being the cheapest.
 
@@ -196,6 +207,7 @@ ANTHROPIC_TITLE_MODEL=claude-3-haiku-20240307
 ```
 
 ### Azure
+
 **Important:** See [the complete Azure OpenAI setup guide](./ai_setup.md#azure-openai) for thorough instructions on enabling Azure OpenAI
 
 - To use Azure with this project, set the following variables. These will be used to build the API URL.
@@ -208,6 +220,7 @@ AZURE_OPENAI_API_VERSION=
 AZURE_OPENAI_API_COMPLETIONS_DEPLOYMENT_NAME=
 AZURE_OPENAI_API_EMBEDDINGS_DEPLOYMENT_NAME=
 ```
+
 > Note: As of 2023-11-10, the Azure API only allows one model per deployment,
 
 - Chat completion: `https://{AZURE_OPENAI_API_INSTANCE_NAME}.openai.azure.com/openai/deployments/{AZURE_OPENAI_API_DEPLOYMENT_NAME}/chat/completions?api-version={AZURE_OPENAI_API_VERSION}`
@@ -217,7 +230,7 @@ AZURE_OPENAI_API_EMBEDDINGS_DEPLOYMENT_NAME=
 
 - It's recommended to name your deployments after the model name, e.g. `gpt-35-turbo,` which allows for fast deployment switching and `AZURE_USE_MODEL_AS_DEPLOYMENT_NAME` **enabled**. However, you can use non-model deployment names and setting the `AZURE_OPENAI_DEFAULT_MODEL` to ensure it works as expected.
 
-- Identify the available models, separated by commas *without spaces*. The first will be default. Leave it blank or as is to use internal settings.
+- Identify the available models, separated by commas _without spaces_. The first will be default. Leave it blank or as is to use internal settings.
 
 - **The base URL for Azure OpenAI API requests can be dynamically configured.**
 
@@ -228,6 +241,7 @@ AZURE_OPENAI_BASEURL=https://${INSTANCE_NAME}.openai.azure.com/openai/deployment
 # Cloudflare example
 AZURE_OPENAI_BASEURL=https://gateway.ai.cloudflare.com/v1/ACCOUNT_TAG/GATEWAY/azure-openai/${INSTANCE_NAME}/${DEPLOYMENT_NAME}
 ```
+
 - Sets the base URL for Azure OpenAI API requests.
 - Can include `${INSTANCE_NAME}` and `${DEPLOYMENT_NAME}` placeholders or specific credentials.
 - Example: "https://gateway.ai.cloudflare.com/v1/ACCOUNT_TAG/GATEWAY/azure-openai/${INSTANCE_NAME}/${DEPLOYMENT_NAME}"
@@ -250,9 +264,10 @@ AZURE_USE_MODEL_AS_DEPLOYMENT_NAME=TRUE
 > Note: This may not work as expected and Azure OpenAI may not support OpenAI Functions yet
 > Omit/leave it commented to use the default OpenAI API
 
-```bash 
+```bash
 PLUGINS_USE_AZURE="true"
 ```
+
 ** Generate images with Azure OpenAI Service**
 
 - For DALL-E-3:
@@ -272,9 +287,10 @@ DALLE2_API_KEY=your-azure-api-key-for-dall-e-2
 ```
 
 ### BingAI
+
 Bing, also used for Sydney, jailbreak, and Bing Image Creator, see: [Bing Access token](./ai_setup.md#bingai) and [Bing Jailbreak](../../features/bing_jailbreak.md)
 
-- Follow these instructions to get your bing access token (it's best to use the full cookie string for that purpose): **[Bing Access Token](./ai_setup.md#bingai)**  
+- Follow these instructions to get your bing access token (it's best to use the full cookie string for that purpose): **[Bing Access Token](./ai_setup.md#bingai)**
 - Leave `BINGAI_TOKEN=` blank to disable this endpoint
 - Set `BINGAI_TOKEN=` to "user_provided" to allow users to provide their own API key from the WebUI
 
@@ -288,6 +304,7 @@ BINGAI_HOST=
 ```
 
 ### Google
+
 Follow these instructions to setup the [Google Endpoint](./ai_setup.md#google)
 
 ```bash
@@ -296,8 +313,8 @@ GOOGLE_REVERSE_PROXY=
 ```
 
 - Customize the available models, separated by commas, **without spaces**.
-    - The first will be default.
-    - Leave it blank or commented out to use internal settings (default: all listed below).
+  - The first will be default.
+  - Leave it blank or commented out to use internal settings (default: all listed below).
 
 ```bash
 # all available models as of 12/16/23
@@ -307,10 +324,11 @@ GOOGLE_MODELS=gemini-pro,gemini-pro-vision,chat-bison,chat-bison-32k,codechat-bi
 ### OpenAI
 
 - To get your OpenAI API key, you need to:
-    - Go to https://platform.openai.com/account/api-keys
-    - Create an account or log in with your existing one
-    - Add a payment method to your account (this is not free, sorry 😬)
-    - Copy your secret key (sk-...) to `OPENAI_API_KEY`
+
+  - Go to https://platform.openai.com/account/api-keys
+  - Create an account or log in with your existing one
+  - Add a payment method to your account (this is not free, sorry 😬)
+  - Copy your secret key (sk-...) to `OPENAI_API_KEY`
 
 - Leave `OPENAI_API_KEY=` blank to disable this endpoint
 - Set `OPENAI_API_KEY=` to "user_provided" to allow users to provide their own API key from the WebUI
@@ -333,15 +351,15 @@ DEBUG_OPENAI=false
 ```
 
 - Customize the available models, separated by commas, **without spaces**.
-    - The first will be default.
-    - Leave it blank or commented out to use internal settings.
+  - The first will be default.
+  - Leave it blank or commented out to use internal settings.
 
 ```bash
 OPENAI_MODELS=gpt-3.5-turbo-0125,gpt-3.5-turbo-0301,gpt-3.5-turbo,gpt-4,gpt-4-0613,gpt-4-vision-preview,gpt-3.5-turbo-0613,gpt-3.5-turbo-16k-0613,gpt-4-0125-preview,gpt-4-turbo-preview,gpt-4-1106-preview,gpt-3.5-turbo-1106,gpt-3.5-turbo-instruct,gpt-3.5-turbo-instruct-0914,gpt-3.5-turbo-16k
 ```
 
-- Titling is enabled by default but is configured with the environment variable 
-`TITLE_CONVO` for all Endpoints. The default model used for OpenAI titling is gpt-3.5-turbo. You can change it by uncommenting the following and setting the desired model. **(Optional)** 
+- Titling is enabled by default but is configured with the environment variable
+  `TITLE_CONVO` for all Endpoints. The default model used for OpenAI titling is gpt-3.5-turbo. You can change it by uncommenting the following and setting the desired model. **(Optional)**
 
 > **Note:** Must be compatible with the OpenAI Endpoint.
 
@@ -349,7 +367,7 @@ OPENAI_MODELS=gpt-3.5-turbo-0125,gpt-3.5-turbo-0301,gpt-3.5-turbo,gpt-4,gpt-4-06
 OPENAI_TITLE_MODEL=gpt-3.5-turbo
 ```
 
-- Enable message summarization by uncommenting the following **(Optional/Experimental)** 
+- Enable message summarization by uncommenting the following **(Optional/Experimental)**
 
 > **Note:** this may affect response time when a summary is being generated.
 
@@ -360,8 +378,8 @@ OPENAI_SUMMARIZE=true
 > **Experimental**: We are using the ConversationSummaryBufferMemory method to summarize messages. To learn more about this, see this article: [https://www.pinecone.io/learn/series/langchain/langchain-conversational-memory/](https://www.pinecone.io/learn/series/langchain/langchain-conversational-memory/)
 
 - Reverse proxy settings for OpenAI:
-    - see: [LiteLLM](./litellm.md) 
-    - see also: [Free AI APIs](./free_ai_apis.md#nagaai)
+  - see: [LiteLLM](./litellm.md)
+  - see also: [Free AI APIs](./free_ai_apis.md#nagaai)
 
 **Important**: As of v0.6.6, it's recommend you use the `librechat.yaml` [Configuration file (guide here)](./custom_config.md) to add Reverse Proxies as separate endpoints.
 
@@ -369,7 +387,7 @@ OPENAI_SUMMARIZE=true
 OPENAI_REVERSE_PROXY=
 ```
 
-- Sometimes when using Local LLM APIs, you may need to force the API to be called with a `prompt` payload instead of a `messages` payload; to mimic the `/v1/completions` request instead of `/v1/chat/completions`. This may be the case for LocalAI with some models. To do so, uncomment the following **(Advanced)** 
+- Sometimes when using Local LLM APIs, you may need to force the API to be called with a `prompt` payload instead of a `messages` payload; to mimic the `/v1/completions` request instead of `/v1/chat/completions`. This may be the case for LocalAI with some models. To do so, uncomment the following **(Advanced)**
 
 ```bash
 OPENAI_FORCE_PROMPT=true
@@ -379,10 +397,11 @@ OPENAI_FORCE_PROMPT=true
 
 - The [Assistants API by OpenAI](https://platform.openai.com/docs/assistants/overview) has a dedicated endpoint.
 - To get your OpenAI API key, you need to:
-    - Go to [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)
-    - Create an account or log in with your existing one
-    - Add a payment method to your account (this is not free, sorry 😬)
-    - Copy your secret key (sk-...) to `ASSISTANTS_API_KEY`
+
+  - Go to [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)
+  - Create an account or log in with your existing one
+  - Add a payment method to your account (this is not free, sorry 😬)
+  - Copy your secret key (sk-...) to `ASSISTANTS_API_KEY`
 
 - Leave `ASSISTANTS_API_KEY=` blank to disable this endpoint
 - Set `ASSISTANTS_API_KEY=` to `user_provided` to allow users to provide their own API key from the WebUI
@@ -392,9 +411,9 @@ ASSISTANTS_API_KEY=user_provided
 ```
 
 - Customize the available models, separated by commas, **without spaces**.
-    - The first will be default.
-    - Leave it blank or commented out to use internal settings:
-        - The models list will be fetched from OpenAI but only Assistants-API-compatible models will be shown; at the time of writing, they are as shown in the example below.
+  - The first will be default.
+  - Leave it blank or commented out to use internal settings:
+    - The models list will be fetched from OpenAI but only Assistants-API-compatible models will be shown; at the time of writing, they are as shown in the example below.
 
 ```bash
 ASSISTANTS_MODELS=gpt-3.5-turbo-0125,gpt-3.5-turbo-16k-0613,gpt-3.5-turbo-16k,gpt-3.5-turbo,gpt-4,gpt-4-0314,gpt-4-32k-0314,gpt-4-0613,gpt-3.5-turbo-0613,gpt-3.5-turbo-1106,gpt-4-0125-preview,gpt-4-turbo-preview,gpt-4-1106-preview
@@ -411,6 +430,7 @@ ASSISTANTS_BASE_URL=http://your-alt-baseURL:3080/
 - There is additional, optional configuration, depending on your needs, such as disabling the assistant builder UI, and determining which assistants can be used, that are available via the [`librechat.yaml` custom config file](./custom_config.md#assistants-endpoint-object-structure).
 
 ### OpenRouter
+
 See [OpenRouter](./free_ai_apis.md#openrouter-preferred) for more info.
 
 - OpenRouter is a legitimate proxy service to a multitude of LLMs, both closed and open source, including: OpenAI models, Anthropic models, Meta's Llama models, pygmalionai/mythalion-13b and many more open source models. Newer integrations are usually discounted, too!
@@ -422,6 +442,7 @@ OPENROUTER_API_KEY=
 ```
 
 ### Plugins
+
 Here are some useful documentation about plugins:
 
 - [Introduction](../../features/plugins/introduction.md)
@@ -429,6 +450,7 @@ Here are some useful documentation about plugins:
 - [Using official ChatGPT Plugins](../../features/plugins/chatgpt_plugins_openapi.md)
 
 #### General Configuration:
+
 - Identify the available models, separated by commas **without spaces**. The first model in the list will be set as default. Leave it blank or commented out to use internal settings.
 
 ```bash
@@ -442,7 +464,7 @@ DEBUG_PLUGINS=true
 ```
 
 - For securely storing credentials, you need a fixed key and IV. You can set them here for prod and dev environments.
-    - You need a 32-byte key (64 characters in hex) and 16-byte IV (32 characters in hex) You can use this replit to generate some quickly: **[Key Generator](https://replit.com/@daavila/crypto#index.js)**
+  - You need a 32-byte key (64 characters in hex) and 16-byte IV (32 characters in hex) You can use this replit to generate some quickly: **[Key Generator](https://replit.com/@daavila/crypto#index.js)**
 
 > Warning: If you don't set them, the app will crash on startup.
 
@@ -452,6 +474,7 @@ CREDS_IV=e2341419ec3dd3d19b13a1a87fafcbfb
 ```
 
 #### Azure AI Search
+
 This plugin supports searching Azure AI Search for answers to your questions. See: [Azure AI Search](../../features/plugins/azure_ai_search.md)
 
 ```bash
@@ -470,6 +493,7 @@ AZURE_AI_SEARCH_SEARCH_OPTION_SELECT=
 **Note:** Make sure the `gptPlugins` endpoint is set in the [`ENDPOINTS`](#endpoints) environment variable if it was configured before.
 
 **API Keys:**
+
 - `DALLE_API_KEY`: This environment variable is intended for storing the OpenAI API key that grants access to both DALL-E 2 and DALL-E 3 services. Typically, this key should be kept private. If you are distributing a plugin or software that integrates with DALL-E, you may choose to leave this commented out, requiring the end user to input their own API key. If you have a shared API key you want to distribute with your software (not recommended for security reasons), you can uncomment this and provide the key.
 
 ```bash
@@ -484,6 +508,7 @@ DALLE2_API_KEY=
 ```
 
 **System Prompts:**
+
 - `DALLE3_SYSTEM_PROMPT` and `DALLE2_SYSTEM_PROMPT`: These variables allow users to set system prompts that can preconfigure or guide the image generation process for DALL-E 3 and DALL-E 2, respectively. Use these to set default prompts or special instructions that affect how the AI interprets the user's input prompts.
 
 ```bash
@@ -492,6 +517,7 @@ DALLE2_SYSTEM_PROMPT="Your DALL-E-2 System Prompt here"
 ```
 
 **Reverse Proxy Settings:**
+
 - `DALLE_REVERSE_PROXY`: This setting enables the specification of a reverse proxy for DALL-E API requests. This can be useful for routing traffic through a specific server, potentially for purposes like caching, logging, or adding additional layers of security. Ensure that the URL follows the required pattern and is appropriately configured to handle DALL-E requests.
 
 ```bash
@@ -499,6 +525,7 @@ DALLE_REVERSE_PROXY=
 ```
 
 **Base URLs:**
+
 - `DALLE3_BASEURL` and `DALLE2_BASEURL`: These variables define the base URLs for DALL-E 3 and DALL-E 2 API endpoints, respectively. These might need to be set if you are using a custom proxy or a specific regional endpoint provided by OpenAI.
 
 ```bash
@@ -507,6 +534,7 @@ DALLE2_BASEURL=
 ```
 
 **Azure OpenAI Integration (Optional):**
+
 - `DALLE3_AZURE_API_VERSION` and `DALLE2_AZURE_API_VERSION`: If you are using Azure's OpenAI service to access DALL-E, these environment variables specify the API version for DALL-E 3 and DALL-E 2, respectively. Azure may have specific API version strings that need to be set to ensure compatibility with their services.
 
 ```bash
@@ -517,9 +545,11 @@ DALLE2_AZURE_API_VERSION=
 ---
 
 Remember to replace placeholder text such as "Your DALL-E-3 System Prompt here" with actual prompts or instructions and provide your actual API keys if you choose to include them directly in the file (though managing sensitive keys outside of the codebase is a best practice). Always review and respect OpenAI's usage policies when embedding API keys in software.
+
 > Note: if you have PROXY set, it will be used for DALL-E calls also, which is universal for the app
 
 #### Google Search
+
 See detailed instructions here: [Google Search](../../features/plugins/google_search.md)
 
 ```bash
@@ -528,6 +558,7 @@ GOOGLE_CSE_ID=
 ```
 
 #### SerpAPI
+
 SerpApi is a real-time API to access Google search results (not as performant)
 
 ```bash
@@ -535,6 +566,7 @@ SERPAPI_API_KEY=
 ```
 
 #### Stable Diffusion (Automatic1111)
+
 See detailed instructions here: **[Stable Diffusion](../../features/plugins/stable_diffusion.md)**
 
 - Use `http://127.0.0.1:7860` with local install and `http://host.docker.internal:7860` for docker
@@ -544,6 +576,7 @@ SD_WEBUI_URL=http://host.docker.internal:7860
 ```
 
 ### Tavily
+
 Get your API key here: [https://tavily.com/#api](https://tavily.com/#api)
 
 ```bash
@@ -551,6 +584,7 @@ TAVILY_API_KEY=
 ```
 
 ### Traversaal
+
 LLM-enhanced search tool.
 Get API key here: https://api.traversaal.ai/dashboard
 
@@ -559,6 +593,7 @@ TRAVERSAAL_API_KEY=
 ```
 
 #### WolframAlpha
+
 See detailed instructions here: **[Wolfram Alpha](../../features/plugins/wolfram.md)**
 
 ```bash
@@ -566,6 +601,7 @@ WOLFRAM_APP_ID=
 ```
 
 #### Zapier
+
 - You need a Zapier account. Get your API key from here: **[Zapier](https://nla.zapier.com/credentials/)**
 - Create allowed actions - Follow step 3 in this getting start guide from Zapier
 
@@ -604,14 +640,16 @@ MEILI_MASTER_KEY=DrhYf7zENyR6AlUCKmnz0eYASOQdl6zxH7s7MKFSfFCt
 ```
 
 ## User System
+
 This section contains the configuration for:
 
-  - [Automated Moderation](#moderation)
-  - [Balance/Token Usage](#balance)
-  - [Registration and Social Logins](#registration-and-login)
-  - [Email Password Reset](#email-password-reset)
-     
+- [Automated Moderation](#moderation)
+- [Balance/Token Usage](#balance)
+- [Registration and Social Logins](#registration-and-login)
+- [Email Password Reset](#email-password-reset)
+
 ### Moderation
+
 The Automated Moderation System uses a scoring mechanism to track user violations. As users commit actions like excessive logins, registrations, or messaging, they accumulate violation scores. Upon reaching a set threshold, the user and their IP are temporarily banned. This system ensures platform security by monitoring and penalizing rapid or suspicious activities.
 
 see: **[Automated Moderation](../../features/mod_system.md)**
@@ -635,7 +673,7 @@ OPENAI_MODERATION_REVERSE_PROXY=
 ```bash
 BAN_VIOLATIONS=true
 BAN_DURATION=1000 * 60 * 60 * 2
-BAN_INTERVAL=20 
+BAN_INTERVAL=20
 ```
 
 #### Score for each violation
@@ -652,6 +690,7 @@ ILLEGAL_MODEL_REQ_SCORE=5
 > Note: Non-browser access and Illegal model requests are almost always nefarious as it means a 3rd party is attempting to access the server through an automated script.
 
 #### Login and registration rate limiting.
+
 - `LOGIN_MAX`: The max amount of logins allowed per IP per `LOGIN_WINDOW`
 - `LOGIN_WINDOW`: In minutes, determines the window of time for `LOGIN_MAX` logins
 - `REGISTER_MAX`: The max amount of registrations allowed per IP per `REGISTER_WINDOW`
@@ -694,7 +733,6 @@ MESSAGE_IP_WINDOW=1
 - `MESSAGE_USER_MAX`: The max amount of messages an IP can send per `MESSAGE_USER_WINDOW`
 - `MESSAGE_USER_WINDOW`: In minutes, determines the window of time for `MESSAGE_USER_MAX` messages
 
-
 ```bash
 LIMIT_MESSAGE_USER=false
 MESSAGE_USER_MAX=40
@@ -702,6 +740,7 @@ MESSAGE_USER_WINDOW=1
 ```
 
 ### Balance
+
 The following enables user balances for the OpenAI/Plugins endpoints, which you can add manually or you will need to build out a balance accruing system for users.
 
 see: **[Token Usage](../../features/token_usage.md)**
@@ -719,15 +758,16 @@ CHECK_BALANCE=false
 ```
 
 ### Registration and Login
+
 see: **[User/Auth System](./user_auth_system.md)**
 
 ![image](https://github.com/danny-avila/LibreChat/assets/81851188/52a37d1d-7392-4a9a-a79f-90ed2da7f841)
 
-- General Settings: 
-    - `ALLOW_EMAIL_LOGIN`: Email login. Set to `true` or `false` to enable or disable ONLY email login.
-    - `ALLOW_REGISTRATION`: Email registration of new users. Set to `true` or `false` to enable or disable Email registration.
-    - `ALLOW_SOCIAL_LOGIN`: Allow users to connect to LibreChat with various social networks, see below. Set to `true` or `false` to enable or disable.
-    - `ALLOW_SOCIAL_REGISTRATION`: Enable or disable registration of new user using various social network. Set to `true` or `false` to enable or disable.
+- General Settings:
+  - `ALLOW_EMAIL_LOGIN`: Email login. Set to `true` or `false` to enable or disable ONLY email login.
+  - `ALLOW_REGISTRATION`: Email registration of new users. Set to `true` or `false` to enable or disable Email registration.
+  - `ALLOW_SOCIAL_LOGIN`: Allow users to connect to LibreChat with various social networks, see below. Set to `true` or `false` to enable or disable.
+  - `ALLOW_SOCIAL_REGISTRATION`: Enable or disable registration of new user using various social network. Set to `true` or `false` to enable or disable.
 
 > **Quick Tip:** Even with registration disabled, add users directly to the database using `npm run create-user`.
 > **Quick Tip:** With registration disabled, you can delete a user with `npm run delete-user email@domain.com`.
@@ -747,7 +787,7 @@ SESSION_EXPIRY=1000 * 60 * 15
 REFRESH_TOKEN_EXPIRY=(1000 * 60 * 60 * 24) * 7
 ```
 
-- You should use new secure values. The examples given are 32-byte keys (64 characters in hex). 
+- You should use new secure values. The examples given are 32-byte keys (64 characters in hex).
   - Use this replit to generate some quickly: **[JWT Keys](https://replit.com/@daavila/crypto#index.js)**
 
 ```bash
@@ -779,6 +819,7 @@ FACEBOOK_CLIENT_SECRET=
 FACEBOOK_CALLBACK_URL=/oauth/facebook/callback
 
 ```
+
 #### [GitHub Authentication](./OAuth2-and-OIDC/github.md)
 
 for more information: **[GitHub Authentication](./OAuth2-and-OIDC/github.md)**
@@ -821,14 +862,15 @@ OPENID_REQUIRED_ROLE_PARAMETER_PATH=
 ```
 
 ### Email Password Reset
+
 Email is used for password reset. See: **[Email Password Reset](./user_auth_system.md#email-and-password-reset)**
 
 - Note that all either service or host, username and password and the From address must be set for email to work.
 
 > If using `EMAIL_SERVICE`, **do NOT** set the extended connection parameters:
-> 
+>
 > `HOST`, `PORT`, `ENCRYPTION`, `ENCRYPTION_HOSTNAME`, `ALLOW_SELFSIGNED`
-> 
+>
 > Failing to set valid values here will result in LibreChat using the unsecured password reset!
 
 See: **[nodemailer well-known-services](https://community.nodemailer.com/2-0-0-beta/setup-smtp/well-known-services/)**
@@ -888,11 +930,12 @@ EMAIL_FROM_NAME=
 Mail address for from field. It is **REQUIRED** to set a value here (even if it's not porperly working):
 
 ```bash
-EMAIL_FROM=noreply@librechat.ai 
+EMAIL_FROM=noreply@librechat.ai
 ```
+
 ### UI
 
-- **Help and FAQ button:** 
+- **Help and FAQ button:**
 
 Empty or commented `HELP_AND_FAQ_URL`, button enabled
 
@@ -918,7 +961,7 @@ CUSTOM_FOOTER="My custom footer"
 - **Birthday Hat:** Give the AI Icon a Birthday Hat 🥳
 
 > Will show automatically on February 11th (LibreChat's birthday)
- 
+
 > Set this to `false` to disable the birthday hat
 
 > Set to `true` to enable all the time.
@@ -929,7 +972,7 @@ SHOW_BIRTHDAY_ICON=true
 
 ### Other
 
-- **Redis:** Redis support is experimental, you may encounter some problems when using it. 
+- **Redis:** Redis support is experimental, you may encounter some problems when using it.
 
 > If using Redis, you should flush the cache after changing any LibreChat settings
 

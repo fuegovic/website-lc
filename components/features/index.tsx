@@ -1,4 +1,4 @@
-import ArrowRight from "../svg/ArrowRight"
+import ArrowRight from '../svg/ArrowRight'
 import cn from 'clsx'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
@@ -20,14 +20,14 @@ export function Feature({
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: false, margin: '-20px' }}
-      transition={{ duration: 0.5  }}
+      transition={{ duration: 0.5 }}
       className={cn(
         styles.feature,
         large && styles.large,
         medium && styles.medium,
         centered && styles.centered,
         lightOnly && styles['light-only'],
-        className
+        className,
       )}
       {...props}
     >

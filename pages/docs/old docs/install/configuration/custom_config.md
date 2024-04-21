@@ -64,6 +64,7 @@ services:
 - **Note:** If you are using `CONFIG_PATH` for an alternative filepath for this file, make sure to specify it accordingly.
 
 - Start docker again, and you should see your config file settings apply
+
 ```bash
 docker compose up # no need to rebuild
 ```
@@ -81,13 +82,13 @@ fileConfig:
       # Maximum size for an individual file in MB
       fileSizeLimit: 10
       # Maximum total size for all files in a single request in MB
-      totalSizeLimit: 50 
+      totalSizeLimit: 50
       # In case you wish to limit certain filetypes
-      # supportedMimeTypes: 
+      # supportedMimeTypes:
       #   - "image/.*"
       #   - "application/pdf"
     openAI:
-    # Disables file uploading to the OpenAI endpoint
+      # Disables file uploading to the OpenAI endpoint
       disabled: true
     default:
       totalSizeLimit: 20
@@ -96,95 +97,96 @@ fileConfig:
     #   fileLimit: 2
     #   fileSizeLimit: 5
   # Global server file size limit in MB
-  serverFileSizeLimit: 100  
+  serverFileSizeLimit: 100
   # Limit for user avatar image size in MB, default: 2 MB
-  avatarSizeLimit: 4 
+  avatarSizeLimit: 4
 rateLimits:
   fileUploads:
     ipMax: 100
     # Rate limit window for file uploads per IP
-    ipWindowInMinutes: 60 
+    ipWindowInMinutes: 60
     userMax: 50
     # Rate limit window for file uploads per user
-    userWindowInMinutes: 60  
+    userWindowInMinutes: 60
 registration:
-  socialLogins: ["google", "facebook", "github", "discord", "openid"]
+  socialLogins: ['google', 'facebook', 'github', 'discord', 'openid']
   allowedDomains:
-    - "example.com"
-    - "anotherdomain.com"
+    - 'example.com'
+    - 'anotherdomain.com'
 endpoints:
   assistants:
     # Disable Assistants Builder Interface by setting to `true`
-    disableBuilder: false 
+    disableBuilder: false
     # Polling interval for checking assistant updates
-    pollIntervalMs: 750  
+    pollIntervalMs: 750
     # Timeout for assistant operations
-    timeoutMs: 180000  
+    timeoutMs: 180000
     # Should only be one or the other, either `supportedIds` or `excludedIds`
-    supportedIds: ["asst_supportedAssistantId1", "asst_supportedAssistantId2"]
+    supportedIds: ['asst_supportedAssistantId1', 'asst_supportedAssistantId2']
     # excludedIds: ["asst_excludedAssistantId"]
     # (optional) Models that support retrieval, will default to latest known OpenAI models that support the feature
     # retrievalModels: ["gpt-4-turbo-preview"]
     # (optional) Assistant Capabilities available to all users. Omit the ones you wish to exclude. Defaults to list below.
     # capabilities: ["code_interpreter", "retrieval", "actions", "tools", "image_vision"]
   custom:
-    - name: "Mistral"
-      apiKey: "${MISTRAL_API_KEY}"
-      baseURL: "https://api.mistral.ai/v1"
+    - name: 'Mistral'
+      apiKey: '${MISTRAL_API_KEY}'
+      baseURL: 'https://api.mistral.ai/v1'
       models:
-        default: ["mistral-tiny", "mistral-small", "mistral-medium", "mistral-large-latest"]
+        default: ['mistral-tiny', 'mistral-small', 'mistral-medium', 'mistral-large-latest']
         # Attempt to dynamically fetch available models
-        fetch: true  
+        fetch: true
         userIdQuery: false
-      iconURL: "https://example.com/mistral-icon.png"
+      iconURL: 'https://example.com/mistral-icon.png'
       titleConvo: true
-      titleModel: "mistral-tiny"
-      modelDisplayLabel: "Mistral AI"
+      titleModel: 'mistral-tiny'
+      modelDisplayLabel: 'Mistral AI'
       # addParams:
       # Mistral API specific value for moderating messages
-      #   safe_prompt: true 
+      #   safe_prompt: true
       dropParams:
-        - "stop"
-        - "user"
-        - "presence_penalty"
-        - "frequency_penalty"
+        - 'stop'
+        - 'user'
+        - 'presence_penalty'
+        - 'frequency_penalty'
       # headers:
       #    x-custom-header: "${CUSTOM_HEADER_VALUE}"
-    - name: "OpenRouter"
-      apiKey: "${OPENROUTER_API_KEY}"
-      baseURL: "https://openrouter.ai/api/v1"
+    - name: 'OpenRouter'
+      apiKey: '${OPENROUTER_API_KEY}'
+      baseURL: 'https://openrouter.ai/api/v1'
       models:
-        default: ["gpt-3.5-turbo"]
+        default: ['gpt-3.5-turbo']
         fetch: false
       titleConvo: true
-      titleModel: "gpt-3.5-turbo"
-      modelDisplayLabel: "OpenRouter"
+      titleModel: 'gpt-3.5-turbo'
+      modelDisplayLabel: 'OpenRouter'
       dropParams:
-        - "stop"
-        - "frequency_penalty"
+        - 'stop'
+        - 'frequency_penalty'
 ```
 
 This example configuration file sets up LibreChat with detailed options across several key areas:
 
 - **Caching**: Enabled to improve performance.
 - **File Handling**:
-    - **File Strategy**: Commented out but hints at possible integration with Firebase for file storage.
-    - **File Configurations**: Customizes file upload limits and allowed MIME types for different endpoints, including a global server file size limit and a specific limit for user avatar images.
+  - **File Strategy**: Commented out but hints at possible integration with Firebase for file storage.
+  - **File Configurations**: Customizes file upload limits and allowed MIME types for different endpoints, including a global server file size limit and a specific limit for user avatar images.
 - **Rate Limiting**: Defines thresholds for the maximum number of file uploads allowed per IP and user within a specified time window, aiming to prevent abuse.
 - **Registration**:
-    - Allows registration from specified social login providers and email domains, enhancing security and user management.
+  - Allows registration from specified social login providers and email domains, enhancing security and user management.
 - **Endpoints**:
-    - **Assistants**: Configures the assistants' endpoint with a polling interval and a timeout for operations, and provides an option to disable the builder interface.
-    - **Custom Endpoints**:
-        - Configures two external AI service endpoints, Mistral and OpenRouter, including API keys, base URLs, model handling, and specific feature toggles like conversation titles, summarization, and parameter adjustments.
-        - For Mistral, it enables dynamic model fetching, applies additional parameters for safe prompts, and explicitly drops unsupported parameters.
-        - For OpenRouter, it sets up a basic configuration without dynamic model fetching and specifies a model for conversation titles.
+  - **Assistants**: Configures the assistants' endpoint with a polling interval and a timeout for operations, and provides an option to disable the builder interface.
+  - **Custom Endpoints**:
+    - Configures two external AI service endpoints, Mistral and OpenRouter, including API keys, base URLs, model handling, and specific feature toggles like conversation titles, summarization, and parameter adjustments.
+    - For Mistral, it enables dynamic model fetching, applies additional parameters for safe prompts, and explicitly drops unsupported parameters.
+    - For OpenRouter, it sets up a basic configuration without dynamic model fetching and specifies a model for conversation titles.
 
 ## Config Structure
 
 **Note:** Fields not specifically mentioned as required are optional.
 
 ### Version
+
 - **Key**: `version`
 - **Type**: String
 - **Description**: Specifies the version of the configuration file.
@@ -192,24 +194,28 @@ This example configuration file sets up LibreChat with detailed options across s
 - **Required**
 
 ### Cache Settings
+
 - **Key**: `cache`
 - **Type**: Boolean
 - **Description**: Toggles caching on or off. Set to `true` to enable caching.
 - **Example**: `cache: true`
 
 ### File Strategy
+
 - **Key**: `fileStrategy`
 - **Type**: String = "local" | ["firebase"](../../features/firebase.md)
 - **Description**: Determines where to save user uploaded/generated files. Defaults to `"local"` if omitted.
 - **Example**: `fileStrategy: "firebase"`
 
 ### Image Links
+
 - **Key**: `secureImageLinks`
 - **Type**: Boolean
 - **Description**: Whether or not to secure access to image links that are hosted locally by the app. Default: false.
 - **Example**: `secureImageLinks: true`
 
 ### Image Output Type
+
 - **Key**: `imageOutputType`
 - **Type**: String, "png" | "webp" | "jpeg"
 - **Description**: The image output type for image responses. Defaults to "png" if omitted.
@@ -217,19 +223,18 @@ This example configuration file sets up LibreChat with detailed options across s
 - **Example**: `imageOutputType: "webp"`
 
 ### File Configuration
+
 - **Key**: `fileConfig`
 - **Type**: Object
 - **Description**: Configures file handling settings for the application, including size limits and MIME type restrictions.
-  
+
   - **Sub-Key**: `endpoints`
     - **Type**: Record/Object
     - **Description**: Specifies file handling configurations for individual endpoints, allowing customization per endpoint basis.
     - [Endpoint File Config Object Structure](#endpoint-file-config-object-structure)
-  
   - **Sub-Key**: `serverFileSizeLimit`
     - **Type**: Number
     - **Description**: The maximum file size (in MB) that the server will accept. Applies globally across all endpoints unless overridden by endpoint-specific settings.
-  
   - **Sub-Key**: `avatarSizeLimit`
     - **Type**: Number
     - **Description**: Maximum size (in MB) for user avatar images.
@@ -239,6 +244,7 @@ This example configuration file sets up LibreChat with detailed options across s
 - **Key**: `rateLimits`
 - **Type**: Object
 - **Description**: Defines rate limiting policies to prevent abuse by limiting the number of requests.
+
   - **Sub-Key**: `fileUploads`
   - **Type**: Object
   - **Description**: Configures rate limits specifically for file upload operations.
@@ -256,6 +262,7 @@ This example configuration file sets up LibreChat with detailed options across s
       - **Description**: Time window in minutes for the user-based upload limit.
 
 - **Example**:
+
 ```yaml
 rateLimits:
   fileUploads:
@@ -266,6 +273,7 @@ rateLimits:
 ```
 
 ### Registration
+
 - **Key**: `registration`
 - **Type**: Object
 - **Description**: Configures registration-related settings for the application.
@@ -276,6 +284,7 @@ rateLimits:
 - [Registration Object Structure](#registration-object-structure)
 
 ### Endpoints
+
 - **Key**: `endpoints`
 - **Type**: Object
 - **Description**: Defines custom API endpoints for the application.
@@ -296,11 +305,11 @@ rateLimits:
 
 ### **Overview**
 
-  - `disabled`: Whether file handling is disabled for the endpoint.
-  - `fileLimit`: The maximum number of files allowed per upload request.
-  - `fileSizeLimit`: The maximum size for a single file. In units of MB (e.g. use `20` for 20 megabytes)
-  - `totalSizeLimit`: The total maximum size for all files in a single request. In units of MB (e.g. use `20` for 20 megabytes)
-  - `supportedMimeTypes`: A list of [Regular Expressions](https://en.wikipedia.org/wiki/Regular_expression) specifying what MIME types are allowed for upload. This can be customized to restrict file types.
+- `disabled`: Whether file handling is disabled for the endpoint.
+- `fileLimit`: The maximum number of files allowed per upload request.
+- `fileSizeLimit`: The maximum size for a single file. In units of MB (e.g. use `20` for 20 megabytes)
+- `totalSizeLimit`: The total maximum size for all files in a single request. In units of MB (e.g. use `20` for 20 megabytes)
+- `supportedMimeTypes`: A list of [Regular Expressions](https://en.wikipedia.org/wiki/Regular_expression) specifying what MIME types are allowed for upload. This can be customized to restrict file types.
 
 **Notes:**
 
@@ -328,8 +337,8 @@ fileConfig:
       fileSizeLimit: 10
       totalSizeLimit: 50
       supportedMimeTypes:
-        - "image/.*"
-        - "application/pdf"
+        - 'image/.*'
+        - 'application/pdf'
     openAI:
       disabled: true
     default:
@@ -338,7 +347,7 @@ fileConfig:
       fileLimit: 5
       fileSizeLimit: 1000
       supportedMimeTypes:
-        - "image/.*"
+        - 'image/.*'
   serverFileSizeLimit: 1000
   avatarSizeLimit: 2
 ```
@@ -349,7 +358,7 @@ fileConfig:
 
 - Type: Boolean
 - Default: `false` (i.e., uploading is enabled by default)
-- Example: 
+- Example:
   ```yaml
   openAI:
     disabled: true
@@ -362,7 +371,7 @@ fileConfig:
 
 - Type: Integer
 - Default: Varies by endpoint
-- Example: 
+- Example:
   ```yaml
   assistants:
     fileLimit: 5
@@ -375,7 +384,7 @@ fileConfig:
 
 - Type: Integer
 - Default: Varies by endpoint
-- Example: 
+- Example:
   ```yaml
   YourCustomEndpointName:
     fileSizeLimit: 1000
@@ -388,7 +397,7 @@ fileConfig:
 
 - Type: Integer
 - Default: Varies by endpoint
-- Example: 
+- Example:
   ```yaml
   assistants:
     totalSizeLimit: 50
@@ -401,12 +410,12 @@ fileConfig:
 
 - Type: Array of Strings
 - Default: Varies by endpoint
-- Example: 
+- Example:
   ```yaml
   assistants:
     supportedMimeTypes:
-      - "image/.*"
-      - "application/pdf"
+      - 'image/.*'
+      - 'application/pdf'
   ```
 - **Note**: This allows for precise control over the types of files that can be uploaded. Invalid regex is ignored.
 
@@ -415,7 +424,7 @@ fileConfig:
 > The global maximum size for any file uploaded to the server, specified in megabytes (MB).
 
 - Type: Integer
-- Example: 
+- Example:
   ```yaml
   fileConfig:
     serverFileSizeLimit: 1000
@@ -427,7 +436,7 @@ fileConfig:
 > The maximum size allowed for avatar images, specified in megabytes (MB).
 
 - Type: Integer
-- Example: 
+- Example:
   ```yaml
   fileConfig:
     avatarSizeLimit: 2
@@ -439,36 +448,36 @@ fileConfig:
 ```yaml
 # Example Registration Object Structure
 registration:
-  socialLogins: ["google", "facebook", "github", "discord", "openid"]
+  socialLogins: ['google', 'facebook', 'github', 'discord', 'openid']
   allowedDomains:
-    - "gmail.com"
-    - "protonmail.com"
+    - 'gmail.com'
+    - 'protonmail.com'
 ```
 
 ### **socialLogins**:
 
-  > Defines the available social login providers and their display order.
+> Defines the available social login providers and their display order.
 
-  - Type: Array of Strings
-  - Example: 
-    ```yaml
-    socialLogins: ["google", "facebook", "github", "discord", "openid"]
-    ```
-  - **Note**: The order of the providers in the list determines their appearance order on the login/registration page. Each provider listed must be [properly configured](./user_auth_system.md#social-authentication-setup-and-configuration) within the system to be active and available for users. This configuration allows for a tailored authentication experience, emphasizing the most relevant or preferred social login options for your user base.
+- Type: Array of Strings
+- Example:
+  ```yaml
+  socialLogins: ['google', 'facebook', 'github', 'discord', 'openid']
+  ```
+- **Note**: The order of the providers in the list determines their appearance order on the login/registration page. Each provider listed must be [properly configured](./user_auth_system.md#social-authentication-setup-and-configuration) within the system to be active and available for users. This configuration allows for a tailored authentication experience, emphasizing the most relevant or preferred social login options for your user base.
 
 ### **allowedDomains**:
 
-  > A list specifying allowed email domains for registration.
+> A list specifying allowed email domains for registration.
 
-  - Type: Array of Strings
-  - Example: 
-    ```yaml
-    allowedDomains:
-      - "gmail.com"
-      - "protonmail.com"
-    ```
-  - **Required**
-  - **Note**: Users with email domains not listed will be restricted from registering.
+- Type: Array of Strings
+- Example:
+  ```yaml
+  allowedDomains:
+    - 'gmail.com'
+    - 'protonmail.com'
+  ```
+- **Required**
+- **Note**: Users with email domains not listed will be restricted from registering.
 
 Given the additional details and correction regarding `supportedMimeTypes` being a list of regex strings and the omission of the `assistantEndpoint` configuration, let's revise and add the necessary documentation sections.
 
@@ -483,13 +492,14 @@ endpoints:
     pollIntervalMs: 500
     timeoutMs: 10000
     # Use either `supportedIds` or `excludedIds` but not both
-    supportedIds: ["asst_supportedAssistantId1", "asst_supportedAssistantId2"]
+    supportedIds: ['asst_supportedAssistantId1', 'asst_supportedAssistantId2']
     # excludedIds: ["asst_excludedAssistantId"]
     # (optional) Models that support retrieval, will default to latest known OpenAI models that support the feature
     # retrievalModels: ["gpt-4-turbo-preview"]
     # (optional) Assistant Capabilities available to all users. Omit the ones you wish to exclude. Defaults to list below.
     # capabilities: ["code_interpreter", "retrieval", "actions", "tools", "image_vision"]
 ```
+
 > This configuration enables the builder interface for assistants, sets a polling interval of 500ms to check for run updates, and establishes a timeout of 10 seconds for assistant run operations.
 
 In addition to custom endpoints, you can configure settings specific to the assistants endpoint.
@@ -523,19 +533,19 @@ In addition to custom endpoints, you can configure settings specific to the assi
 
 ### **supportedIds**:
 
-  > List of supported assistant Ids
+> List of supported assistant Ids
 
-  - Type: Array/List of Strings
-  - **Description**: List of supported assistant Ids. Use this or `excludedIds` but not both (the `excludedIds` field will be ignored if so).
-  - **Example**: `supportedIds: ["asst_supportedAssistantId1", "asst_supportedAssistantId2"]`
+- Type: Array/List of Strings
+- **Description**: List of supported assistant Ids. Use this or `excludedIds` but not both (the `excludedIds` field will be ignored if so).
+- **Example**: `supportedIds: ["asst_supportedAssistantId1", "asst_supportedAssistantId2"]`
 
 ### **excludedIds**:
 
-  > List of excluded assistant Ids
+> List of excluded assistant Ids
 
-  - Type: Array/List of Strings
-  - **Description**: List of excluded assistant Ids. Use this or `supportedIds` but not both (the `excludedIds` field will be ignored if so).
-  - **Example**: `excludedIds: ["asst_excludedAssistantId1", "asst_excludedAssistantId2"]`
+- Type: Array/List of Strings
+- **Description**: List of excluded assistant Ids. Use this or `supportedIds` but not both (the `excludedIds` field will be ignored if so).
+- **Example**: `excludedIds: ["asst_excludedAssistantId1", "asst_excludedAssistantId2"]`
 
 ### **retrievalModels**:
 
@@ -561,185 +571,189 @@ In addition to custom endpoints, you can configure settings specific to the assi
 - **Note**: This field is optional. If omitted, the default behavior is to include all the capabilities listed in the example.
 
 ## Custom Endpoint Object Structure
+
 Each endpoint in the `custom` array should have the following structure:
 
-### Example 
+### Example
 
 ```yaml
 # Example Endpoint Object Structure
 endpoints:
   custom:
-      # Example using Mistral AI API
-    - name: "Mistral"
-      apiKey: "${YOUR_ENV_VAR_KEY}"
-      baseURL: "https://api.mistral.ai/v1"
-      models: 
-        default: ["mistral-tiny", "mistral-small", "mistral-medium", "mistral-large-latest"]
+    # Example using Mistral AI API
+    - name: 'Mistral'
+      apiKey: '${YOUR_ENV_VAR_KEY}'
+      baseURL: 'https://api.mistral.ai/v1'
+      models:
+        default: ['mistral-tiny', 'mistral-small', 'mistral-medium', 'mistral-large-latest']
       titleConvo: true
-      titleModel: "mistral-tiny" 
-      modelDisplayLabel: "Mistral"
+      titleModel: 'mistral-tiny'
+      modelDisplayLabel: 'Mistral'
       # addParams:
       #   safe_prompt: true # Mistral specific value for moderating messages
       # NOTE: For Mistral, it is necessary to drop the following parameters or you will encounter a 422 Error:
-      dropParams: ["stop", "user", "frequency_penalty", "presence_penalty"]
+      dropParams: ['stop', 'user', 'frequency_penalty', 'presence_penalty']
 ```
 
 ### **name**:
 
-  > A unique name for the endpoint.
+> A unique name for the endpoint.
 
-  - Type: String
-  - Example: `name: "Mistral"`
-  - **Required**
-  - **Note**: Will be used as the "title" in the Endpoints Selector
+- Type: String
+- Example: `name: "Mistral"`
+- **Required**
+- **Note**: Will be used as the "title" in the Endpoints Selector
 
-### **apiKey**: 
+### **apiKey**:
 
-  > Your API key for the service. Can reference an environment variable, or allow user to provide the value.
+> Your API key for the service. Can reference an environment variable, or allow user to provide the value.
 
-  - Type: String (apiKey | `"user_provided"`)
-  - Example: `apiKey: "${MISTRAL_API_KEY}"` | `apiKey: "your_api_key"` | `apiKey: "user_provided"`
-  - **Required**
-  - **Note**: It's highly recommended to use the env. variable reference for this field, i.e. `${YOUR_VARIABLE}`
+- Type: String (apiKey | `"user_provided"`)
+- Example: `apiKey: "${MISTRAL_API_KEY}"` | `apiKey: "your_api_key"` | `apiKey: "user_provided"`
+- **Required**
+- **Note**: It's highly recommended to use the env. variable reference for this field, i.e. `${YOUR_VARIABLE}`
 
-### **baseURL**: 
+### **baseURL**:
 
-  > Base URL for the API. Can reference an environment variable, or allow user to provide the value.
+> Base URL for the API. Can reference an environment variable, or allow user to provide the value.
 
-  - Type: String (baseURL | `"user_provided"`)
-  - Example: `baseURL: "https://api.mistral.ai/v1"` | `baseURL: "${MISTRAL_BASE_URL}"` | `baseURL: "user_provided"`
-  - **Required**
-  - **Note**: It's highly recommended to use the env. variable reference for this field, i.e. `${YOUR_VARIABLE}`
+- Type: String (baseURL | `"user_provided"`)
+- Example: `baseURL: "https://api.mistral.ai/v1"` | `baseURL: "${MISTRAL_BASE_URL}"` | `baseURL: "user_provided"`
+- **Required**
+- **Note**: It's highly recommended to use the env. variable reference for this field, i.e. `${YOUR_VARIABLE}`
 
 ### **iconURL**:
 
-  > The URL to use as the Endpoint Icon.
+> The URL to use as the Endpoint Icon.
 
-  - Type: Boolean
-  - Example: `iconURL: https://github.com/danny-avila/LibreChat/raw/main/docs/assets/LibreChat.svg`
-  - **Note**: The following are "known endpoints" (case-insensitive), which have icons provided for them. If your endpoint `name` matches the following names, you should omit this field:
-    - "Mistral"
-    - "OpenRouter"
-    - "Groq"
-    - "Anyscale"
-    - "Fireworks"
-    - "Perplexity"
-    - "together.ai"
-    - "Ollama"
+- Type: Boolean
+- Example: `iconURL: https://github.com/danny-avila/LibreChat/raw/main/docs/assets/LibreChat.svg`
+- **Note**: The following are "known endpoints" (case-insensitive), which have icons provided for them. If your endpoint `name` matches the following names, you should omit this field:
+  - "Mistral"
+  - "OpenRouter"
+  - "Groq"
+  - "Anyscale"
+  - "Fireworks"
+  - "Perplexity"
+  - "together.ai"
+  - "Ollama"
 
 ### **models**:
 
-  > Configuration for models.
+> Configuration for models.
 
-  - **Required**
-  - **default**: An array of strings indicating the default models to use. At least one value is required.
-    - Type: Array of Strings
-    - Example: `default: ["mistral-tiny", "mistral-small", "mistral-medium"]`
-    - **Note**: If fetching models fails, these defaults are used as a fallback.
-  - **fetch**: When set to `true`, attempts to fetch a list of models from the API.
-    - Type: Boolean
-    - Example: `fetch: true`
-    - **Note**: May cause slowdowns during initial use of the app if the response is delayed. Defaults to `false`.
-  - **userIdQuery**: When set to `true`, adds the LibreChat user ID as a query parameter to the API models request.
-    - Type: Boolean
-    - Example: `userIdQuery: true`
+- **Required**
+- **default**: An array of strings indicating the default models to use. At least one value is required.
+  - Type: Array of Strings
+  - Example: `default: ["mistral-tiny", "mistral-small", "mistral-medium"]`
+  - **Note**: If fetching models fails, these defaults are used as a fallback.
+- **fetch**: When set to `true`, attempts to fetch a list of models from the API.
+  - Type: Boolean
+  - Example: `fetch: true`
+  - **Note**: May cause slowdowns during initial use of the app if the response is delayed. Defaults to `false`.
+- **userIdQuery**: When set to `true`, adds the LibreChat user ID as a query parameter to the API models request.
+  - Type: Boolean
+  - Example: `userIdQuery: true`
 
 ### **titleConvo**:
 
-  > Enables title conversation when set to `true`.
+> Enables title conversation when set to `true`.
 
-  - Type: Boolean
-  - Example: `titleConvo: true`
+- Type: Boolean
+- Example: `titleConvo: true`
 
-### **titleMethod**: 
+### **titleMethod**:
 
-  > Chooses between "completion" or "functions" for title method.
+> Chooses between "completion" or "functions" for title method.
 
-  - Type: String (`"completion"` | `"functions"`)
-  - Example: `titleMethod: "completion"`
-  - **Note**: Defaults to "completion" if omitted.
+- Type: String (`"completion"` | `"functions"`)
+- Example: `titleMethod: "completion"`
+- **Note**: Defaults to "completion" if omitted.
 
-### **titleModel**: 
+### **titleModel**:
 
-  > Specifies the model to use for titles.
+> Specifies the model to use for titles.
 
-  - Type: String
-  - Example: `titleModel: "mistral-tiny"`
-  - **Note**: Defaults to "gpt-3.5-turbo" if omitted. May cause issues if "gpt-3.5-turbo" is not available.
+- Type: String
+- Example: `titleModel: "mistral-tiny"`
+- **Note**: Defaults to "gpt-3.5-turbo" if omitted. May cause issues if "gpt-3.5-turbo" is not available.
 
-### **summarize**: 
+### **summarize**:
 
-  > Enables summarization when set to `true`.
+> Enables summarization when set to `true`.
 
-  - Type: Boolean
-  - Example: `summarize: false`
-  - **Note**: This feature requires an OpenAI Functions compatible API
+- Type: Boolean
+- Example: `summarize: false`
+- **Note**: This feature requires an OpenAI Functions compatible API
 
 ### **summaryModel**:
 
-  > Specifies the model to use if summarization is enabled.
+> Specifies the model to use if summarization is enabled.
 
-  - Type: String
-  - Example: `summaryModel: "mistral-tiny"`
-  - **Note**: Defaults to "gpt-3.5-turbo" if omitted. May cause issues if "gpt-3.5-turbo" is not available.
+- Type: String
+- Example: `summaryModel: "mistral-tiny"`
+- **Note**: Defaults to "gpt-3.5-turbo" if omitted. May cause issues if "gpt-3.5-turbo" is not available.
 
 ### **forcePrompt**:
 
-  > If `true`, sends a `prompt` parameter instead of `messages`.
+> If `true`, sends a `prompt` parameter instead of `messages`.
 
-  - Type: Boolean
-  - Example: `forcePrompt: false`
-  - **Note**: This combines all messages into a single text payload, [following OpenAI format](https://github.com/pvicente/openai-python/blob/main/chatml.md), and
+- Type: Boolean
+- Example: `forcePrompt: false`
+- **Note**: This combines all messages into a single text payload, [following OpenAI format](https://github.com/pvicente/openai-python/blob/main/chatml.md), and
 
- uses the `/completions` endpoint of your baseURL rather than `/chat/completions`.
+uses the `/completions` endpoint of your baseURL rather than `/chat/completions`.
 
 ### **modelDisplayLabel**:
 
-  > The label displayed in messages next to the Icon for the current AI model.
+> The label displayed in messages next to the Icon for the current AI model.
 
-  - Type: String
-  - Example: `modelDisplayLabel: "Mistral"`
-  - **Note**: The display order is:
-    - 1. Custom name set via preset (if available) 
-    - 2. Label derived from the model name (if applicable)
-    - 3. This value, `modelDisplayLabel`, is used if the above are not specified. Defaults to "AI".
+- Type: String
+- Example: `modelDisplayLabel: "Mistral"`
+- **Note**: The display order is:
+  - 1. Custom name set via preset (if available)
+  - 2. Label derived from the model name (if applicable)
+  - 3. This value, `modelDisplayLabel`, is used if the above are not specified. Defaults to "AI".
 
 ### **addParams**:
 
-  > Adds additional parameters to requests.
+> Adds additional parameters to requests.
 
-  - Type: Object/Dictionary
-  - **Description**: Adds/Overrides parameters. Useful for specifying API-specific options.
-  - **Example**: 
+- Type: Object/Dictionary
+- **Description**: Adds/Overrides parameters. Useful for specifying API-specific options.
+- **Example**:
+
 ```yaml
-    addParams:
-      safe_prompt: true
+addParams:
+  safe_prompt: true
 ```
 
 ### **dropParams**:
 
-  > Removes [default parameters](#default-parameters) from requests.
+> Removes [default parameters](#default-parameters) from requests.
 
-  - Type: Array/List of Strings
-  - **Description**: Excludes specified [default parameters](#default-parameters). Useful for APIs that do not accept or recognize certain parameters.
-  - **Example**: `dropParams: ["stop", "user", "frequency_penalty", "presence_penalty"]`
-  - **Note**: For a list of default parameters sent with every request, see the ["Default Parameters"](#default-parameters) Section below.
+- Type: Array/List of Strings
+- **Description**: Excludes specified [default parameters](#default-parameters). Useful for APIs that do not accept or recognize certain parameters.
+- **Example**: `dropParams: ["stop", "user", "frequency_penalty", "presence_penalty"]`
+- **Note**: For a list of default parameters sent with every request, see the ["Default Parameters"](#default-parameters) Section below.
 
 ### **headers**:
 
-  > Adds additional headers to requests. Can reference an environment variable
+> Adds additional headers to requests. Can reference an environment variable
 
-  - Type: Object/Dictionary
-  - **Description**: The `headers` object specifies custom headers for requests. Useful for authentication and setting content types.
-  - **Example**: 
-  - **Note**: Supports dynamic environment variable values, which use the format: `"${VARIABLE_NAME}"`
+- Type: Object/Dictionary
+- **Description**: The `headers` object specifies custom headers for requests. Useful for authentication and setting content types.
+- **Example**:
+- **Note**: Supports dynamic environment variable values, which use the format: `"${VARIABLE_NAME}"`
+
 ```yaml
-    headers:
-      x-api-key: "${ENVIRONMENT_VARIABLE}"
-      Content-Type: "application/json"
+headers:
+  x-api-key: '${ENVIRONMENT_VARIABLE}'
+  Content-Type: 'application/json'
 ```
 
 ### Additional Notes
+
 - Ensure that all URLs and keys are correctly specified to avoid connectivity issues.
 
 ### Default Parameters
@@ -753,22 +767,20 @@ Custom endpoints share logic with the OpenAI endpoint, and thus have default par
   "top_p": 1,
   "presence_penalty": 0,
   "frequency_penalty": 0,
-  "stop": [
-    "||>",
-    "\nUser:",
-    "<|diff_marker|>",
-  ],
+  "stop": ["||>", "\nUser:", "<|diff_marker|>"],
   "user": "LibreChat_User_ID",
   "stream": true,
   "messages": [
     {
       "role": "user",
-      "content": "hi how are you",
-    },
-  ],
+      "content": "hi how are you"
+    }
+  ]
 }
 ```
+
 ### Breakdown of Default Params
+
 - `model`: The selected model from list of models.
 - `temperature`: Defaults to `1` if not provided via preset,
 - `top_p`: Defaults to `1` if not provided via preset,
@@ -783,7 +795,7 @@ Custom endpoints share logic with the OpenAI endpoint, and thus have default par
 
 ## Azure OpenAI Object Structure
 
-Integrating Azure OpenAI Service with your application allows you to seamlessly utilize multiple deployments and region models hosted by Azure OpenAI. This section details how to configure the Azure OpenAI endpoint for your needs. 
+Integrating Azure OpenAI Service with your application allows you to seamlessly utilize multiple deployments and region models hosted by Azure OpenAI. This section details how to configure the Azure OpenAI endpoint for your needs.
 
 **[For a detailed guide on setting up Azure OpenAI configurations, click here](./azure_openai.md)**
 
@@ -793,20 +805,20 @@ Integrating Azure OpenAI Service with your application allows you to seamlessly 
 # Example Azure OpenAI Object Structure
 endpoints:
   azureOpenAI:
-    titleModel: "gpt-4-turbo"
+    titleModel: 'gpt-4-turbo'
     plugins: true
     groups:
-      - group: "my-westus" # arbitrary name
-        apiKey: "${WESTUS_API_KEY}"
-        instanceName: "actual-instance-name" # name of the resource group or instance
-        version: "2023-12-01-preview"
+      - group: 'my-westus' # arbitrary name
+        apiKey: '${WESTUS_API_KEY}'
+        instanceName: 'actual-instance-name' # name of the resource group or instance
+        version: '2023-12-01-preview'
         # baseURL: https://prod.example.com
         # additionalHeaders:
         #   X-Custom-Header: value
         models:
           gpt-4-vision-preview:
             deploymentName: gpt-4-vision-preview
-            version: "2024-02-15-preview"
+            version: '2024-02-15-preview'
           gpt-3.5-turbo:
             deploymentName: gpt-35-turbo
           gpt-3.5-turbo-1106:
@@ -815,12 +827,12 @@ endpoints:
             deploymentName: gpt-4
           gpt-4-1106-preview:
             deploymentName: gpt-4-1106-preview
-      - group: "my-eastus"
-        apiKey: "${EASTUS_API_KEY}"
-        instanceName: "actual-eastus-instance-name"
+      - group: 'my-eastus'
+        apiKey: '${EASTUS_API_KEY}'
+        instanceName: 'actual-eastus-instance-name'
         deploymentName: gpt-4-turbo
-        version: "2024-02-15-preview"
-        baseURL: "https://gateway.ai.cloudflare.com/v1/cloudflareId/azure/azure-openai/${INSTANCE_NAME}/${DEPLOYMENT_NAME}" # uses env variables
+        version: '2024-02-15-preview'
+        baseURL: 'https://gateway.ai.cloudflare.com/v1/cloudflareId/azure/azure-openai/${INSTANCE_NAME}/${DEPLOYMENT_NAME}' # uses env variables
         additionalHeaders:
           X-Custom-Header: value
         models:
@@ -847,104 +859,103 @@ endpoints:
 
 #### **group**:
 
-  > Identifier for a group of models.
+> Identifier for a group of models.
 
-  - Type: String
-  - **Required**
-  - **Example**: `"my-westus"`
+- Type: String
+- **Required**
+- **Example**: `"my-westus"`
 
 #### **apiKey**:
 
-  > The API key for accessing the Azure OpenAI Service.
+> The API key for accessing the Azure OpenAI Service.
 
-  - Type: String
-  - **Required**
-  - **Example**: `"${WESTUS_API_KEY}"`
-  - **Note**: It's highly recommended to use a custom env. variable reference for this field, i.e. `${YOUR_VARIABLE}`
-
+- Type: String
+- **Required**
+- **Example**: `"${WESTUS_API_KEY}"`
+- **Note**: It's highly recommended to use a custom env. variable reference for this field, i.e. `${YOUR_VARIABLE}`
 
 #### **instanceName**:
 
-  > Name of the Azure instance.
+> Name of the Azure instance.
 
-  - Type: String
-  - **Required**
-  - **Example**: `"my-westus"`
-  - **Note**: It's recommended to use a custom env. variable reference for this field, i.e. `${YOUR_VARIABLE}`
-
+- Type: String
+- **Required**
+- **Example**: `"my-westus"`
+- **Note**: It's recommended to use a custom env. variable reference for this field, i.e. `${YOUR_VARIABLE}`
 
 #### **version**:
 
-  > API version.
+> API version.
 
-  - Type: String
-  - **Optional**
-  - **Example**: `"2023-12-01-preview"`
-  - **Note**: It's recommended to use a custom env. variable reference for this field, i.e. `${YOUR_VARIABLE}`
+- Type: String
+- **Optional**
+- **Example**: `"2023-12-01-preview"`
+- **Note**: It's recommended to use a custom env. variable reference for this field, i.e. `${YOUR_VARIABLE}`
 
 #### **baseURL**:
 
-  > The base URL for the Azure OpenAI Service.
+> The base URL for the Azure OpenAI Service.
 
-  - Type: String
-  - **Optional**
-  - **Example**: `"https://prod.example.com"`
-  - **Note**: It's recommended to use a custom env. variable reference for this field, i.e. `${YOUR_VARIABLE}`
+- Type: String
+- **Optional**
+- **Example**: `"https://prod.example.com"`
+- **Note**: It's recommended to use a custom env. variable reference for this field, i.e. `${YOUR_VARIABLE}`
 
 #### **additionalHeaders**:
 
-  > Additional headers for API requests.
+> Additional headers for API requests.
 
-  - Type: Dictionary
-  - **Optional**
-  - **Example**:
-    ```yaml
-    additionalHeaders:
-      X-Custom-Header: ${YOUR_SECRET_CUSTOM_VARIABLE}
-    ```
-  - **Note**: It's recommended to use a custom env. variable reference for the values of field, as shown in the example.
-  - **Note**: `api-key` header value is sent on every request
+- Type: Dictionary
+- **Optional**
+- **Example**:
+  ```yaml
+  additionalHeaders:
+    X-Custom-Header: ${YOUR_SECRET_CUSTOM_VARIABLE}
+  ```
+- **Note**: It's recommended to use a custom env. variable reference for the values of field, as shown in the example.
+- **Note**: `api-key` header value is sent on every request
 
 #### **serverless**:
 
-  > Indicates the use of a serverless inference endpoint for Azure OpenAI chat completions.
+> Indicates the use of a serverless inference endpoint for Azure OpenAI chat completions.
 
-  - Type: Boolean
-  - **Optional**
-  - **Description**: When set to `true`, specifies that the group is configured to use serverless inference endpoints as an Azure "Models as a Service" model.
-  - **Example**: `serverless: true`
-  - **Note**: [More info here](./azure_openai.md#serverless-inference-endpoints)
+- Type: Boolean
+- **Optional**
+- **Description**: When set to `true`, specifies that the group is configured to use serverless inference endpoints as an Azure "Models as a Service" model.
+- **Example**: `serverless: true`
+- **Note**: [More info here](./azure_openai.md#serverless-inference-endpoints)
 
 #### **addParams**:
 
-  > Adds additional parameters to requests.
+> Adds additional parameters to requests.
 
-  - Type: Object/Dictionary
-  - **Description**: Adds/Overrides parameters. Useful for specifying API-specific options.
-  - **Example**: 
+- Type: Object/Dictionary
+- **Description**: Adds/Overrides parameters. Useful for specifying API-specific options.
+- **Example**:
+
 ```yaml
-    addParams:
-      safe_prompt: true
+addParams:
+  safe_prompt: true
 ```
 
 #### **dropParams**:
 
-  > Removes [default parameters](#default-parameters) from requests.
+> Removes [default parameters](#default-parameters) from requests.
 
-  - Type: Array/List of Strings
-  - **Description**: Excludes specified [default parameters](#default-parameters). Useful for APIs that do not accept or recognize certain parameters.
-  - **Example**: `dropParams: ["stop", "user", "frequency_penalty", "presence_penalty"]`
-  - **Note**: For a list of default parameters sent with every request, see the ["Default Parameters"](#default-parameters) Section below.
+- Type: Array/List of Strings
+- **Description**: Excludes specified [default parameters](#default-parameters). Useful for APIs that do not accept or recognize certain parameters.
+- **Example**: `dropParams: ["stop", "user", "frequency_penalty", "presence_penalty"]`
+- **Note**: For a list of default parameters sent with every request, see the ["Default Parameters"](#default-parameters) Section below.
 
 #### **forcePrompt**:
 
-  > If `true`, sends a `prompt` parameter instead of `messages`.
+> If `true`, sends a `prompt` parameter instead of `messages`.
 
-  - Type: Boolean
-  - Example: `forcePrompt: false`
-  - **Note**: This combines all messages into a single text payload, [following OpenAI format](https://github.com/pvicente/openai-python/blob/main/chatml.md), and
+- Type: Boolean
+- Example: `forcePrompt: false`
+- **Note**: This combines all messages into a single text payload, [following OpenAI format](https://github.com/pvicente/openai-python/blob/main/chatml.md), and
 
- uses the `/completions` endpoint of your baseURL rather than `/chat/completions`.
+uses the `/completions` endpoint of your baseURL rather than `/chat/completions`.
 
 #### **models**:
 
@@ -958,8 +969,8 @@ Within each group, models are records, either set to true, or set with a specifi
 ```yaml
 models:
   gpt-4-vision-preview: # matching OpenAI Model name
-    deploymentName: "arbitrary-deployment-name"
-    version: "2024-02-15-preview" # version can be any that supports vision
+    deploymentName: 'arbitrary-deployment-name'
+    version: '2024-02-15-preview' # version can be any that supports vision
 ```
 
 ### Model Configuration Parameters
@@ -988,6 +999,7 @@ models:
 When a model is enabled (`true`) without using an object, it uses the group's configuration values for deployment name and version.
 
 **Example**:
+
 ```yaml
 models:
   gpt-4-turbo: true
@@ -998,12 +1010,14 @@ models:
 An object allows for detailed configuration of the model, including its `deploymentName` and/or `version`. This mode is used for more granular control over the models, especially when working with multiple versions or deployments under one instance or resource group.
 
 **Example**:
+
 ```yaml
 models:
   gpt-4-vision-preview:
-    deploymentName: "gpt-4-vision-preview"
-    version: "2024-02-15-preview"
+    deploymentName: 'gpt-4-vision-preview'
+    version: '2024-02-15-preview'
 ```
 
 ### Notes:
+
 - **Deployment Names** and **Versions** are critical for ensuring that the correct model is used. Double-check these values for accuracy to prevent unexpected behavior.
