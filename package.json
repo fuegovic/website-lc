@@ -109,8 +109,7 @@
       "eslint --fix"
     ],
     "*.json": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   }
 }
