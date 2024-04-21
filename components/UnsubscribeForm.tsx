@@ -1,10 +1,8 @@
-/* eslint-disable no-undef */
-
 import { useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
 import validator from 'validator'
 
-const NewsletterForm = () => {
+const UnsubscribeForm = () => {
   const [email, setEmail] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
@@ -12,14 +10,14 @@ const NewsletterForm = () => {
     e.preventDefault()
 
     if (!validator.isEmail(email)) {
-      toast.error('Valid email is required')
+      toast.error('Invalid email format')
       return
     }
 
     setIsLoading(true)
 
     try {
-      const response = await fetch('/api/subscribe', {
+      const response = await fetch('/api/unsubscribe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -27,16 +25,16 @@ const NewsletterForm = () => {
         body: JSON.stringify({ email }),
       })
 
-      if (response.status === 201) {
-        toast.success('Subscription successful')
+      if (response.status === 200) {
+        toast.success('Unsubscription successful')
         setEmail('')
-      } else if (response.status === 409) {
-        toast.error('Email already subscribed')
+      } else if (response.status === 404) {
+        toast.error('Subscriber not found')
       } else {
-        toast.error('Subscription failed')
+        toast.error('Unsubscription failed')
       }
-    } catch (error) {
-      toast.error('Subscription failed')
+    } catch {
+      toast.error('Unsubscription failed')
     } finally {
       setIsLoading(false)
     }
@@ -46,7 +44,7 @@ const NewsletterForm = () => {
     <div className="newsletter-container">
       <Toaster position="bottom-center" reverseOrder={false} />
       <div className="form-wrapper">
-        <h2 className="form-title">Subscribe to Our Newsletter</h2>
+        <h2 className="form-title">Unsubscribe From Our Newsletter</h2>
         <form onSubmit={handleSubmit} className="form-container">
           <input
             type="email"
@@ -56,7 +54,7 @@ const NewsletterForm = () => {
             className="email-input"
           />
           <button type="submit" className="subscribe-button" disabled={isLoading}>
-            {isLoading ? 'Subscribing...' : 'Subscribe'}
+            {isLoading ? 'Unsubscribing...' : 'Unsubscribe'}
           </button>
         </form>
       </div>
@@ -125,4 +123,4 @@ const NewsletterForm = () => {
   )
 }
 
-export default NewsletterForm
+export default UnsubscribeForm
