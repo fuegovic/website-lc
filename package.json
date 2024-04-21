@@ -107,9 +107,12 @@
     "showDetails": true
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx,md,mdx}": [
+    "*.{ts,tsx,js,jsx}": [
       "prettier --write",
       "eslint --fix"
+    ],
+    "*.{md,mdx}": [
+      "prettier --write"
     ],
     "*.json": [
       "prettier --write"

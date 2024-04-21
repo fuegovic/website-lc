@@ -3,6 +3,7 @@ import { getPagesUnderRoute } from 'nextra/context'
 import { type Page } from 'nextra'
 import { SocialIcon } from 'react-social-icons'
 import BlogCard from '../blog/BlogCard'
+import Image from 'next/image'
 
 //TODO: Fix Mobile view to better handle more than 4 socials;
 //TODO: Better fallback social icon (the default one is the "share" icon)
@@ -61,7 +62,9 @@ const AuthorProfile: React.FC<AuthorProfileProps> = ({ authorId }) => {
         </div>
 
         <div className="max-md:order-first flex md:flex-col gap-4 shrink-0">
-          <img
+          <Image
+            width={512}
+            height={512}
             src={author.ogImage}
             alt={author.name}
             className="rounded-box w-[12rem] md:w-[16rem] h-[12rem] md:h-[16rem] rounded-square"

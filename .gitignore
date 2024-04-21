@@ -18,7 +18,5 @@ yarn.lock
 # Mac
 .DS_Store
 
-# Cookbook
-*.ipynb_checkpoints
-poetry.lock
-.venv
+# eslint
+.eslintcache

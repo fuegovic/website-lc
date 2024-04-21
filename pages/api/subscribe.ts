@@ -1,6 +1,6 @@
 import validator from 'validator'
-import dbConnect from '../../utils/dbConnect'
-import Subscriber from '../../utils/Subscriber'
+import dbConnect from '@/utils/dbConnect'
+import Subscriber from '@/utils/Subscriber'
 
 export default async function handler(req, res) {
   const { method, body } = req

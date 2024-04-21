@@ -8,6 +8,7 @@ import { Callout } from '@/components/callouts/callout'
 import Carousel from '@/components/carousel/Carousel'
 import { Logo } from '@/components/logo'
 import { Frame } from './components/Frame'
+import { OptionTable } from 'components/table'
 import FooterMenu from './components/FooterMenu'
 
 const config: DocsThemeConfig = {
@@ -112,6 +113,7 @@ const config: DocsThemeConfig = {
     Callout,
     Button,
     Carousel,
+    OptionTable,
   },
   banner: {
     key: 'new-docs',

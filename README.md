@@ -63,7 +63,6 @@ import { ChangelogHeader } from "@/components/changelog/ChangelogHeader";
 
 ```js
 import NewsletterForm from '@/components/NewsletterForm'
-
 ;<NewsletterForm />
 ```
 
@@ -138,7 +137,6 @@ import NewsletterForm from '@/components/NewsletterForm'
 - // add and organize docs (once the base properly is set)
 - // Add proper screenshots in `about`
 - // update github URLs (when it's ready, before publishing)
-
 
 broken icon in light mode
 //TODO!!!!!!!!!!!!!!!
