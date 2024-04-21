@@ -320,66 +320,79 @@ Metus imperdiet fusce id rhoncus urna ridiculus sem.
       <Tabs.Tab>
 
 {' '}
+
 <Callout type="" title="undefined callout" emoji="💀">
   undefined or unsupported `type` default to this color scheme
 </Callout>
 
 {' '}
+
 <Callout type="default" title="default">
   this is a default callout
 </Callout>
 
 {' '}
+
 <Callout type="example" title="example">
   this is a example callout
 </Callout>
 
 {' '}
+
 <Callout type="note" title="note">
   this is a note callout
 </Callout>
 
 {' '}
+
 <Callout type="abstract" title="abstract">
   this is a abstract callout
 </Callout>
 
 {' '}
+
 <Callout type="info" title="info">
   this is a info callout
 </Callout>
 
 {' '}
+
 <Callout type="tip" title="tip">
   this is a tip callout
 </Callout>
 
 {' '}
+
 <Callout type="success" title="success">
   this is a success callout
 </Callout>
 
 {' '}
+
 <Callout type="question" title="question">
   this is a question callout
 </Callout>
 
 {' '}
+
 <Callout type="warning" title="warning">
   this is a warning callout
 </Callout>
 
 {' '}
+
 <Callout type="error" title="error">
   this is a error callout
 </Callout>
 
 {' '}
+
 <Callout type="danger" title="danger">
   this is a danger callout
 </Callout>
 
 {' '}
+
 <Callout type="bug" title="bug">
   this is a bug callout
 </Callout>
@@ -399,6 +412,28 @@ Metus imperdiet fusce id rhoncus urna ridiculus sem.
 ```
       </Tabs.Tab>
     </Tabs>
+  </Tabs.Tab>
+</Tabs>
+
+## Option Table
+
+<Tabs items={['Example', 'Code']}>
+  <Tabs.Tab>
+    <OptionTable
+      options={[
+        ['Example', 'boolean', 'This is an example. Defaults to `true`.'],
+      ]}
+    />
+  </Tabs.Tab>
+
+  <Tabs.Tab>
+```mdx filename="Option Table"
+<OptionTable
+  options={[
+    ['Example', 'boolean', 'This is an example. Defaults to `true`.'],
+  ]}
+/>
+```
   </Tabs.Tab>
 </Tabs>
 
@@ -457,6 +492,7 @@ Metus imperdiet fusce id rhoncus urna ridiculus sem.
       <Tabs.Tab>
 
 {' '}
+
 <Cards>
   <Cards.Card icon={<ArrowRight />} title="ArrowRight" href="/" />
   <Cards.Card icon={<ArrowUp />} title="ArrowUp" href="/" />
@@ -498,7 +534,6 @@ Metus imperdiet fusce id rhoncus urna ridiculus sem.
 
 ```tsx copy filename="Card Array"
 import { Code } from '@/components/svg/'
-
 ;<Cards>
   <Cards.Card icon={<Code />} title="Code" href="/" />
 </Cards>
@@ -513,6 +548,7 @@ import { Code } from '@/components/svg/'
       <Tabs.Tab>
 
 {' '}
+
 <Cards.Card icon={<ArrowRight />} title="ArrowRight" href="/" />
 <Cards.Card icon={<ArrowUp />} title="ArrowUp" href="/" />
 <Cards.Card icon={<SvgBox />} title="SvgBox" href="/" />
@@ -552,7 +588,6 @@ import { Code } from '@/components/svg/'
 
 ```tsx copy filename="Single Cards"
 import { Code } from '@/components/svg/'
-
 ;<Cards.Card icon={<Code />} title="Code" href="/" />
 ```
 
@@ -569,11 +604,13 @@ import { Code } from '@/components/svg/'
   Open LibreChat's website in a new tab:
 
 {' '}
+
 <Button onClick={() => window.open('https://librechat.ai', '_blank')}>🪶 librechat.ai</Button>
 
 Open LibreChat's website in the current tab:
 
 {' '}
+
 <Button onClick={() => window.open('https://librechat.ai', '_self')}>🪶 librechat.ai</Button>
 
 And here's a button with Alert:
@@ -588,6 +625,7 @@ And here's a button with Alert:
   <Button onClick={() => window.open("https://librechat.ai", '_blank')}>🪶 librechat.ai</Button>
 
 {' '}
+
 <Button onClick={() => window.open('https://librechat.ai', '_self')}>🪶 librechat.ai</Button>
 
   <Button className="my-extra-class" onClick={() => alert('This is an Alert')}>
@@ -628,7 +666,6 @@ The provided code includes a mix of Markdown content and the `<Features>` sectio
 
 ```tsx copy filename="features"
 import { Feature, Features } from '@/components/features'
-
 ;<Features>
   <Feature href="https://example.com">This is a feature with a link.</Feature>
   <Feature medium lightOnly>
@@ -637,7 +674,7 @@ import { Feature, Features } from '@/components/features'
   <Feature large centered>
     This is a large feature with "centered" attribute.
   </Feature>
-  <Feature large>![](../../public/images/banner.png)</Feature>
+  <Feature large>![](/images/banner.png)</Feature>
 </Features>
 ```
 

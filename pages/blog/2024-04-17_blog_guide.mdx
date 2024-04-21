@@ -88,19 +88,20 @@ For more info, see: https://mdxjs.com/
 
   ```mdx filename="metadata and header"
   ---
-
+  
   title: Your Awesome Title
   date: 2024/01/01
   description: "Short description of the blog post"
   tags: - tag1 - tag2
   authorid: your-authorid
   ogImage: /images/blog/2024-01-01_your_awesome_title.png
-
+  
   ---
 
-  import { BlogHeader } from "@/components/blog/BlogHeader";
+  import { BlogHeader } from '@/components/blog/BlogHeader'
 
   {' '}
+
   <BlogHeader />
   ```
 
@@ -147,17 +148,16 @@ The procedure is basically the same as with the blog posts, with a couple of not
 
   ```mdx filename="changelog metadata and header"
   ---
-
   date: 1999/01/01
   title: 🚀 LibreChat v0.0.0
   description: The v0.0.0 release of LibreChat
   ogImage: /images/changelog/v0.0.0.png
-
   ---
 
-  import { ChangelogHeader } from "@/components/changelog/ChangelogHeader";
+  import { ChangelogHeader } from '@/components/changelog/ChangelogHeader'
 
   {' '}
+
   <ChangelogHeader />
 
   ---
@@ -167,16 +167,15 @@ The procedure is basically the same as with the blog posts, with a couple of not
 
   ```mdx filename="breaking changes metadata and header"
   ---
-
   date: 1999/01/02
   title: ⚠️ Breaking Changes v0.0.0+
   description: Breaking Changes for the v0.0.0+ release of LibreChat
-
   ---
 
-  import { ChangelogHeader } from "@/components/changelog/ChangelogHeader";
+  import { ChangelogHeader } from '@/components/changelog/ChangelogHeader'
 
   {' '}
+
   <ChangelogHeader />
 
   ---
