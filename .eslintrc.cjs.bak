@@ -1,0 +1,40 @@
+module.exports = {
+  parser: '@typescript-eslint/parser',
+  extends: [
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
+    'plugin:mdx/recommended',
+    'plugin:prettier/recommended',
+    'prettier'
+  ],
+  plugins: ['@typescript-eslint', 'react', 'mdx', 'prettier'],
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 2020,
+    sourceType: 'module',
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
+  rules: {
+    'react/react-in-jsx-scope': 'off',
+  },
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx'],
+      rules: {
+        // TypeScript-specific rules
+      },
+    },
+    {
+      files: ['*.md', '*.mdx'],
+      rules: {
+        // Markdown/MDX-specific rules
+      },
+    },
+  ],
+};

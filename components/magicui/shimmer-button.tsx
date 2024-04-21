@@ -1,23 +1,23 @@
-import { cn } from "@/lib/utils";
-import { CSSProperties } from "react";
+import { cn } from '@/lib/utils'
+import { CSSProperties } from 'react'
 
 interface ShimmerButtonProps {
-  shimmerColor?: string;
-  shimmerSize?: string;
-  borderRadius?: string;
-  shimmerDuration?: string;
-  background?: string;
-  className?: string;
-  children?: React.ReactNode;
-  [key: string]: any; // ...props
+  shimmerColor?: string
+  shimmerSize?: string
+  borderRadius?: string
+  shimmerDuration?: string
+  background?: string
+  className?: string
+  children?: React.ReactNode
+  [key: string]: any // ...props
 }
 
 const ShimmerButton = ({
-  shimmerColor = "#ffffff",
-  shimmerSize = "0.1em",
-  shimmerDuration = "1.5s",
-  borderRadius = "100px",
-  background = "radial-gradient(ellipse 80% 50% at 50% 120%,rgba(62, 61, 117),rgba(18, 18, 38))",
+  shimmerColor = '#ffffff',
+  shimmerSize = '0.1em',
+  shimmerDuration = '1.5s',
+  borderRadius = '100px',
+  background = 'radial-gradient(ellipse 80% 50% at 50% 120%,rgba(62, 61, 117),rgba(18, 18, 38))',
   className,
   children,
   ...props
@@ -26,18 +26,18 @@ const ShimmerButton = ({
     <button
       style={
         {
-          "--spread": "90deg",
-          "--shimmer-color": shimmerColor,
-          "--radius": borderRadius,
-          "--speed": shimmerDuration,
-          "--cut": shimmerSize,
-          "--bg": background,
+          '--spread': '90deg',
+          '--shimmer-color': shimmerColor,
+          '--radius': borderRadius,
+          '--speed': shimmerDuration,
+          '--cut': shimmerSize,
+          '--bg': background,
         } as CSSProperties
       }
       className={cn(
-        "group relative cursor-pointer overflow-hidden whitespace-nowrap px-6 py-4 [background:var(--bg)] [border-radius:var(--radius)] ",
-        "transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_8px_rgba(62,61,117,0.7)]",
-        className
+        'group relative cursor-pointer overflow-hidden whitespace-nowrap px-6 py-4 [background:var(--bg)] [border-radius:var(--radius)] ',
+        'transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_8px_rgba(62,61,117,0.7)]',
+        className,
       )}
       {...props}
     >
@@ -54,11 +54,9 @@ const ShimmerButton = ({
       <div className="absolute [background:var(--bg)] [border-radius:var(--radius)] [inset:var(--cut)]" />
       {/* content */}
 
-      <div className="pointer-events-none relative z-10 flex text-primary">
-        {children}
-      </div>
+      <div className="pointer-events-none relative z-10 flex text-primary">{children}</div>
     </button>
-  );
-};
+  )
+}
 
-export default ShimmerButton;
+export default ShimmerButton

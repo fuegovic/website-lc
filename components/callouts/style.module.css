@@ -19,7 +19,7 @@
   user-select: none;
   font-size: 1rem;
   padding-right: 0.25rem; /* Adjusted padding */
-  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 }
 
 .callout-content {
@@ -34,7 +34,8 @@
   color: #000;
 }
 
-.callout-content p, .callout-content ul {
+.callout-content p,
+.callout-content ul {
   margin-bottom: 0;
   margin-top: 0;
 }
@@ -71,7 +72,6 @@
   font-size: 0.8rem;
 }
 
-
 .callout {
   --content-background-color: #ffffff;
 
@@ -80,13 +80,13 @@
 
   --note-border-color: #488bfb;
   --note-background-color: #ecf3ff;
-  
+
   --abstract-border-color: #1cb1fc;
   --abstract-background-color: #e8f7ff;
-  
+
   --info-border-color: #1cb9d2;
   --info-background-color: #e8f8fa;
-  
+
   --tip-border-color: #1cbfa5;
   --tip-background-color: #e8f9f6;
 

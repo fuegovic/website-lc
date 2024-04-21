@@ -1,5 +1,7 @@
-import remarkGfm from 'remark-gfm';
-import nextra from 'nextra';
+/* eslint-disable no-undef */
+
+import remarkGfm from 'remark-gfm'
+import nextra from 'nextra'
 import NextBundleAnalyzer from '@next/bundle-analyzer'
 
 const withBundleAnalyzer = NextBundleAnalyzer({
@@ -25,21 +27,21 @@ const cspHeader = `
   frame-ancestors 'none';
   upgrade-insecure-requests;
   block-all-mixed-content;
-`;
+`
 
 const nonPermanentRedirects = [
   // Up to date Redirects:
-  ["/discord", "https://discord.librechat.ai"],
-  ["/demo", "https://demo.librechat.cfd"],
-  ["/issue", "https://github.com/danny-avila/LibreChat/issues/new/choose"],
-  ["/new-issue", "https://github.com/danny-avila/LibreChat/issues/new/choose"],
-  ["/issues", "https://github.com/danny-avila/LibreChat/issues"],
-  ["/gh-support", "https://github.com/danny-avila/LibreChat/discussions/categories/support"],
-  ["/gh-discussions", "https://github.com/danny-avila/LibreChat/discussions"],
-  ["/roadmap", "/docs/roadmap"],
+  ['/discord', 'https://discord.librechat.ai'],
+  ['/demo', 'https://demo.librechat.cfd'],
+  ['/issue', 'https://github.com/danny-avila/LibreChat/issues/new/choose'],
+  ['/new-issue', 'https://github.com/danny-avila/LibreChat/issues/new/choose'],
+  ['/issues', 'https://github.com/danny-avila/LibreChat/issues'],
+  ['/gh-support', 'https://github.com/danny-avila/LibreChat/discussions/categories/support'],
+  ['/gh-discussions', 'https://github.com/danny-avila/LibreChat/discussions'],
+  ['/roadmap', '/docs/roadmap'],
   // Redirect to overview pages
-  ...[].map((path) => [path, path + "/overview"]),
-];
+  ...[].map((path) => [path, path + '/overview']),
+]
 
 const permanentRedirects = []
 
@@ -56,15 +58,11 @@ const withNextra = nextra({
 // next config
 const nextraConfig = withNextra({
   experimental: {
-    esmExternals: "loose", // <-- add this
-    serverComponentsExternalPackages: ["mongoose"],
+    esmExternals: 'loose', // <-- add this
+    serverComponentsExternalPackages: ['mongoose'],
     scrollRestoration: true,
   },
-  transpilePackages: [
-    'react-tweet',
-    'react-syntax-highlighter',
-    'geist'
-  ],
+  transpilePackages: ['react-tweet', 'react-syntax-highlighter', 'geist'],
   images: {
     remotePatterns: [
       {
@@ -84,32 +82,32 @@ const nextraConfig = withNextra({
   headers() {
     return [
       {
-        source: "/:path*",
+        source: '/:path*',
         headers: [
           {
-            key: "x-frame-options",
-            value: "SAMEORIGIN",
+            key: 'x-frame-options',
+            value: 'SAMEORIGIN',
           },
           {
-            key: "X-Content-Type-Options",
-            value: "nosniff",
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
           },
           {
-            key: "Referrer-Policy",
-            value: "strict-origin-when-cross-origin",
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
           },
           {
-            key: "Permissions-Policy",
-            value: "autoplay=*, fullscreen=*, microphone=*",
+            key: 'Permissions-Policy',
+            value: 'autoplay=*, fullscreen=*, microphone=*',
           },
         ],
       },
       {
-        source: "/:path((?!api).*)*",
+        source: '/:path((?!api).*)*',
         headers: [
           {
-            key: "Content-Security-Policy",
-            value: cspHeader.replace(/\n/g, ""),
+            key: 'Content-Security-Policy',
+            value: cspHeader.replaceAll('\n', ''),
           },
         ],
       },
@@ -126,7 +124,7 @@ const nextraConfig = withNextra({
       destination,
       permanent: false,
     })),
-  ]
-});
+  ],
+})
 
-export default withBundleAnalyzer(nextraConfig);
+export default withBundleAnalyzer(nextraConfig)

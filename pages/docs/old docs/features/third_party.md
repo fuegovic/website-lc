@@ -9,6 +9,7 @@ weight: -2
 > ⚠️ Warning: The tools featured here are not officially maintained or supported by the LibreChat team
 
 #### ❗Note: If you would like to include your own tool in the list, you're welcome to submit a Pull Request.
+
 ---
 
 ## [LibreChat Discord Bot](https://github.com/Berry-13/LibreChat-DiscordBot)
@@ -54,11 +55,10 @@ A Terraform setup to deploy LibreChat to Azure and setup all the necessary servi
 
 This repository offers an advanced example of deploying LibreChat with Docker Compose. It includes several benefits but is more complex to configure.
 
-It serves as a valuable reference for those requiring sophisticated configurations for their setup. 
+It serves as a valuable reference for those requiring sophisticated configurations for their setup.
 
 For simpler setups, consider using [the `docker-compose.override.yml` file](../install/configuration/docker_override.md) for an easier LibreChat deployment process.
 
 ![Screenshot 2024-02-13 175651](https://github.com/CXwudi/LibreChat-doc/assets/17377423/53dfb88f-ea1e-4fc2-8952-4069b281a272)
 
 ---
-

@@ -20,7 +20,7 @@ For **custom endpoint** configuration, such as adding [Mistral AI](https://docs.
 
 **Reminder: If you use docker, you should [rebuild the docker image (here's how)](dotenv.md) each time you update your credentials**
 
-*Note: Configuring pre-made Endpoint/model/conversation settings as singular options for your users is a planned feature. See the related discussion here: [System-wide custom model settings (lightweight GPTs) #1291](https://github.com/danny-avila/LibreChat/discussions/1291)*
+_Note: Configuring pre-made Endpoint/model/conversation settings as singular options for your users is a planned feature. See the related discussion here: [System-wide custom model settings (lightweight GPTs) #1291](https://github.com/danny-avila/LibreChat/discussions/1291)_
 
 ## General
 
@@ -33,7 +33,7 @@ In the case where you have multiple endpoints setup, but want a specific one to 
 ```bash
 # .env file
 # No spaces between values
-ENDPOINTS=azureOpenAI,openAI,assistants,google 
+ENDPOINTS=azureOpenAI,openAI,assistants,google
 ```
 
 Note that LibreChat will use your last selected endpoint when creating a new conversation. So if Azure OpenAI is first in the order, but you used or view an OpenAI conversation last, when you hit "New Chat," OpenAI will be selected with its default conversation settings.
@@ -41,6 +41,7 @@ Note that LibreChat will use your last selected endpoint when creating a new con
 To override this behavior, you need a preset and you need to set that specific preset as the default one to use on every new chat.
 
 ### Setting a Default Preset
+
 See the **[Presets Guide](../../features/presets.md)** for more details
 
 A preset refers to a specific Endpoint/Model/Conversation Settings that you can save.
@@ -49,7 +50,7 @@ The default preset will always be used when creating a new conversation.
 
 Here's a video to demonstrate: **[Setting a Default Preset](https://github.com/danny-avila/LibreChat/assets/110412045/bbde830f-18d9-4884-88e5-1bd8f7ac585d)**
 
---- 
+---
 
 ## OpenAI
 
@@ -71,7 +72,7 @@ To get your OpenAI API key, you need to:
 
 - The [Assistants API by OpenAI](https://platform.openai.com/docs/assistants/overview) has a dedicated endpoint.
 - The Assistants API enables the creation of AI assistants, offering functionalities like code interpreter, knowledge retrieval of files, and function execution.
-    - [Read here for an in-depth documentation](https://platform.openai.com/docs/assistants/overview) of the feature, how it works, what it's capable of.
+  - [Read here for an in-depth documentation](https://platform.openai.com/docs/assistants/overview) of the feature, how it works, what it's capable of.
 - As with the regular [OpenAI API](#openai), go to **[https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)** to get a key.
 - You will need to set the following environment variable to your key or you can set it to `user_provided` for users to provide their own.
 
@@ -93,19 +94,19 @@ ASSISTANTS_BASE_URL=http://your-alt-baseURL:3080/
 ```
 
 - There is additional, optional configuration, depending on your needs, such as disabling the assistant builder UI, that are available via the [`librechat.yaml` custom config file](./custom_config.md#assistants-endpoint-object-structure):
-    - Control the visibility and use of the builder interface for assistants. [More info](./custom_config.md#disablebuilder)
-    - Specify the polling interval in milliseconds for checking run updates or changes in assistant run states. [More info](./custom_config.md#pollintervalms)
-    - Set the timeout period in milliseconds for assistant runs. Helps manage system load by limiting total run operation time. [More info](./custom_config.md#timeoutms)
-    - Specify which assistant Ids are supported or excluded [More info](./custom_config.md#supportedids)
+  - Control the visibility and use of the builder interface for assistants. [More info](./custom_config.md#disablebuilder)
+  - Specify the polling interval in milliseconds for checking run updates or changes in assistant run states. [More info](./custom_config.md#pollintervalms)
+  - Set the timeout period in milliseconds for assistant runs. Helps manage system load by limiting total run operation time. [More info](./custom_config.md#timeoutms)
+  - Specify which assistant Ids are supported or excluded [More info](./custom_config.md#supportedids)
 
 **Notes:**
 
 - At the time of writing, only the following models support the [Retrieval](https://platform.openai.com/docs/assistants/tools/knowledge-retrieval) capability:
-    - gpt-3.5-turbo-0125
-    - gpt-4-0125-preview
-    - gpt-4-turbo-preview
-    - gpt-4-1106-preview
-    - gpt-3.5-turbo-1106
+  - gpt-3.5-turbo-0125
+  - gpt-4-0125-preview
+  - gpt-4-turbo-preview
+  - gpt-4-1106-preview
+  - gpt-3.5-turbo-1106
 - Vision capability is not yet supported.
 - If you have previously set the [`ENDPOINTS` value in your .env file](./dotenv.md#endpoints), you will need to add the value `assistants`
 
@@ -147,6 +148,7 @@ GOOGLE_KEY=mY_SeCreT_w9347w8_kEY
 ```
 
 Or, you can make users provide it from the frontend by setting the following:
+
 ```bash
 GOOGLE_KEY=user_provided
 ```
@@ -160,9 +162,10 @@ GOOGLE_MODELS=gemini-1.0-pro,gemini-1.0-pro-001,gemini-1.0-pro-latest,gemini-1.0
 ```
 
 Notes:
+
 - A gemini-pro model or `gemini-pro-vision` are required in your list for attaching images.
 - Using LibreChat, PaLM2 and Codey models can only be accessed through Vertex AI, not the Generative Language API.
-    - Only models that support the `generateContent` method can be used natively with LibreChat + the Gen AI API.
+  - Only models that support the `generateContent` method can be used natively with LibreChat + the Gen AI API.
 - Selecting `gemini-pro-vision` for messages with attachments is not necessary as it will be switched behind the scenes for you
 - Since `gemini-pro-vision`does not accept non-attachment messages, messages without attachments are automatically switched to use `gemini-pro` (otherwise, Google responds with an error)
 - With the Google endpoint, you cannot use both Vertex AI and Generative Language API at the same time. You must choose one or the other.
@@ -181,27 +184,32 @@ To setup Google LLMs (via Google Cloud Vertex AI), first, signup for Google Clou
 You can usually get **$300 starting credit**, which makes this option free for 90 days.
 
 ### 1. Once signed up, Enable the Vertex AI API on Google Cloud:
-  - Go to **[Vertex AI page on Google Cloud console](https://console.cloud.google.com/vertex-ai)**
-  - Click on `Enable API` if prompted
+
+- Go to **[Vertex AI page on Google Cloud console](https://console.cloud.google.com/vertex-ai)**
+- Click on `Enable API` if prompted
+
 ### 2. Create a Service Account with Vertex AI role:
-  - **[Click here to create a Service Account](https://console.cloud.google.com/projectselector/iam-admin/serviceaccounts/create?walkthrough_id=iam--create-service-account#step_index=1)**
-  - **Select or create a project**
-  - ### Enter a service account ID (required), name and description are optional
-      - ![image](https://github.com/danny-avila/LibreChat/assets/110412045/0c5cd177-029b-44fa-a398-a794aeb09de6)
-  - ### Click on "Create and Continue" to give at least the "Vertex AI User" role
-      - ![image](https://github.com/danny-avila/LibreChat/assets/110412045/22d3a080-e71e-446e-8485-bcc5bf558dbb)
-  - **Click on "Continue/Done"**
+
+- **[Click here to create a Service Account](https://console.cloud.google.com/projectselector/iam-admin/serviceaccounts/create?walkthrough_id=iam--create-service-account#step_index=1)**
+- **Select or create a project**
+- ### Enter a service account ID (required), name and description are optional
+  - ![image](https://github.com/danny-avila/LibreChat/assets/110412045/0c5cd177-029b-44fa-a398-a794aeb09de6)
+- ### Click on "Create and Continue" to give at least the "Vertex AI User" role
+  - ![image](https://github.com/danny-avila/LibreChat/assets/110412045/22d3a080-e71e-446e-8485-bcc5bf558dbb)
+- **Click on "Continue/Done"**
+
 ### 3. Create a JSON key to Save in your Project Directory:
-  - **Go back to [the Service Accounts page](https://console.cloud.google.com/projectselector/iam-admin/serviceaccounts)**
-  - **Select your service account**
-  - ### Click on "Keys"
-       - ![image](https://github.com/danny-avila/LibreChat/assets/110412045/735a7bbe-25a6-4b4c-9bb5-e0d8aa91be3d)
-  - ### Click on "Add Key" and then "Create new key"
-       - ![image](https://github.com/danny-avila/LibreChat/assets/110412045/cfbb20d3-94a8-4cd1-ac39-f9cd8c2fceaa)
-  - **Choose JSON as the key type and click on "Create"**
-  - **Download the key file and rename it as 'auth.json'**
-  - **Save it within the project directory, in `/api/data/`**
-       - ![image](https://github.com/danny-avila/LibreChat/assets/110412045/f5b8bcb5-1b20-4751-81a1-d3757a4b3f2f)
+
+- **Go back to [the Service Accounts page](https://console.cloud.google.com/projectselector/iam-admin/serviceaccounts)**
+- **Select your service account**
+- ### Click on "Keys"
+  - ![image](https://github.com/danny-avila/LibreChat/assets/110412045/735a7bbe-25a6-4b4c-9bb5-e0d8aa91be3d)
+- ### Click on "Add Key" and then "Create new key"
+  - ![image](https://github.com/danny-avila/LibreChat/assets/110412045/cfbb20d3-94a8-4cd1-ac39-f9cd8c2fceaa)
+- **Choose JSON as the key type and click on "Create"**
+- **Download the key file and rename it as 'auth.json'**
+- **Save it within the project directory, in `/api/data/`**
+  - ![image](https://github.com/danny-avila/LibreChat/assets/110412045/f5b8bcb5-1b20-4751-81a1-d3757a4b3f2f)
 
 **Saving your JSON key file in the project directory which allows all users of your LibreChat instance to use it.**
 
@@ -259,7 +267,7 @@ As noted earlier, [review the Custom Config Guide (click here)](./custom_config.
 
 - Signup to **[OpenRouter](https://openrouter.ai/)** and create a key. You should name it and set a limit as well.
 - Set the environment variable `OPENROUTER_API_KEY` in your .env file to the key you just created.
-- Set something in the `OPENAI_API_KEY`, it can be anyting, but **do not** leave it blank or set to `user_provided`  
+- Set something in the `OPENAI_API_KEY`, it can be anyting, but **do not** leave it blank or set to `user_provided`
 - Restart your LibreChat server and use the OpenAI or Plugins endpoints.
 
 #### Notes (legacy):
@@ -277,6 +285,7 @@ As noted earlier, [review the Custom Config Guide (click here)](./custom_config.
 **Important:** Stability for Unofficial APIs are not guaranteed. Access methods to these APIs are hacky, prone to errors, and patching, and are marked lowest in priority in LibreChat's development.
 
 ### BingAI
+
 I recommend using Microsoft Edge for this:
 
 - Navigate to **[Bing Chat](https://www.bing.com/chat)**
@@ -284,7 +293,7 @@ I recommend using Microsoft Edge for this:
 - Initiate a conversation with Bing
 - Open `Dev Tools`, usually with `F12` or `Ctrl + Shift + C`
 - Navigate to the `Network` tab
-- Look for `lsp.asx` (if it's not there look into the other entries for one with a **very long** cookie) 
+- Look for `lsp.asx` (if it's not there look into the other entries for one with a **very long** cookie)
 - Copy the whole cookie value. (Yes it's very long 😉)
 - Use this **"full cookie string"** for your "BingAI Token"
 
@@ -293,70 +302,76 @@ I recommend using Microsoft Edge for this:
 </p>
 
 ### copilot-gpt4-service
+
 For this setup, an additional docker container will need to be setup.
 
-***It is necessary to obtain your token first.***
+**_It is necessary to obtain your token first._**
 
-Follow these instructions provided at **[copilot-gpt4-service#obtaining-token](https://github.com/aaamoon/copilot-gpt4-service#obtaining-copilot-token)** and keep your token for use within the service. Additionally, more detailed instructions for setting copilot-gpt4-service are available at the [GitHub repo](https://github.com/aaamoon/copilot-gpt4-service). 
+Follow these instructions provided at **[copilot-gpt4-service#obtaining-token](https://github.com/aaamoon/copilot-gpt4-service#obtaining-copilot-token)** and keep your token for use within the service. Additionally, more detailed instructions for setting copilot-gpt4-service are available at the [GitHub repo](https://github.com/aaamoon/copilot-gpt4-service).
 
-It is *not* recommended to use the copilot token obtained directly, instead use the `SUPER_TOKEN` variable. (You can generate your own `SUPER_TOKEN` with the OpenSSL command `openssl rand -hex 16` and set the `ENABLE_SUPER_TOKEN` variable to `true`)
+It is _not_ recommended to use the copilot token obtained directly, instead use the `SUPER_TOKEN` variable. (You can generate your own `SUPER_TOKEN` with the OpenSSL command `openssl rand -hex 16` and set the `ENABLE_SUPER_TOKEN` variable to `true`)
 
 1. Once your Docker environment is ready and your tokens are generated, proceed with this Docker run command to start the service:
-    ```
-    docker run -d \
-      --name copilot-gpt4-service \
-      -e HOST=0.0.0.0 \
-      -e COPILOT_TOKEN=ghp_xxxxxxx \
-      -e SUPER_TOKEN=your_super_token \
-      -e ENABLE_SUPER_TOKEN=true \
-      --restart always \
-      -p 8080:8080 \
-      aaamoon/copilot-gpt4-service:latest
-    ```
+
+   ```
+   docker run -d \
+     --name copilot-gpt4-service \
+     -e HOST=0.0.0.0 \
+     -e COPILOT_TOKEN=ghp_xxxxxxx \
+     -e SUPER_TOKEN=your_super_token \
+     -e ENABLE_SUPER_TOKEN=true \
+     --restart always \
+     -p 8080:8080 \
+     aaamoon/copilot-gpt4-service:latest
+   ```
 
 2. For Docker Compose users, use the equivalent yaml configuration provided below:
-    ```yaml
-    version: '3.8'
-    services:
-      copilot-gpt4-service:
-        image: aaamoon/copilot-gpt4-service:latest
-        environment:
-          - HOST=0.0.0.0
-          - COPILOT_TOKEN=ghp_xxxxxxx # Default GitHub Copilot Token, if this item is set, the Token carried with the request will be ignored. Default is empty.
-          - SUPER_TOKEN=your_super_token # Super Token is a user-defined standalone token that can access COPILOT_TOKEN above. This allows you to share the service without exposing your COPILOT_TOKEN. Multiple tokens are separated by commas. Default is empty.
-          - ENABLE_SUPER_TOKEN=true # Whether to enable SUPER_TOKEN, default is false. If false, but COPILOT_TOKEN is not empty, COPILOT_TOKEN will be used without any authentication for all requests.
-        ports:
-          - 8080:8080
-        restart: unless-stopped
-        container_name: copilot-gpt4-service
-    ```
+
+   ```yaml
+   version: '3.8'
+   services:
+     copilot-gpt4-service:
+       image: aaamoon/copilot-gpt4-service:latest
+       environment:
+         - HOST=0.0.0.0
+         - COPILOT_TOKEN=ghp_xxxxxxx # Default GitHub Copilot Token, if this item is set, the Token carried with the request will be ignored. Default is empty.
+         - SUPER_TOKEN=your_super_token # Super Token is a user-defined standalone token that can access COPILOT_TOKEN above. This allows you to share the service without exposing your COPILOT_TOKEN. Multiple tokens are separated by commas. Default is empty.
+         - ENABLE_SUPER_TOKEN=true # Whether to enable SUPER_TOKEN, default is false. If false, but COPILOT_TOKEN is not empty, COPILOT_TOKEN will be used without any authentication for all requests.
+       ports:
+         - 8080:8080
+       restart: unless-stopped
+       container_name: copilot-gpt4-service
+   ```
 
 3. After setting up the Docker container for `copilot-gpt4-service`, you can add it to your `librechat.yaml` configuration. Here is an example configuration:
-    ```yaml
-    version: 1.0.1
-    cache: true
-    endpoints:
-      custom:
-        - name: "OpenAI via Copilot"
-          apiKey: "your_super_token"
-          baseURL: "http://[copilotgpt4service_host_ip]:8080/v1"
-          models:
-            default: ["gpt-4", "gpt-3.5-turbo"] # *See Notes
-          titleConvo: true
-          titleModel: "gpt-3.5-turbo"
-          summarize: true
-          summaryModel: "gpt-3.5-turbo"
-          forcePrompt: false
-          modelDisplayLabel: "OpenAI"
-          dropParams: ["user"]
-    ```
-    Replace `your_super_token` with the token you obtained following the instructions highlighted above and `[copilotgpt4service_host_ip]` with the IP of your Docker host. *****See Notes***
 
-    Restart Librechat after adding the needed configuration, and select `OpenAI via Copilot` to start using!
+   ```yaml
+   version: 1.0.1
+   cache: true
+   endpoints:
+     custom:
+       - name: 'OpenAI via Copilot'
+         apiKey: 'your_super_token'
+         baseURL: 'http://[copilotgpt4service_host_ip]:8080/v1'
+         models:
+           default: ['gpt-4', 'gpt-3.5-turbo'] # *See Notes
+         titleConvo: true
+         titleModel: 'gpt-3.5-turbo'
+         summarize: true
+         summaryModel: 'gpt-3.5-turbo'
+         forcePrompt: false
+         modelDisplayLabel: 'OpenAI'
+         dropParams: ['user']
+   ```
 
-    >Notes: 
-    > - *Only allowed models are `gpt-4` and `gpt-3.5-turbo`. 
-    > - **Advanced users can add this to their existing docker-compose file/existing docker network and avoid having to expose port 8080 (or any port) to the copilot-gpt4-service container. 
+   Replace `your_super_token` with the token you obtained following the instructions highlighted above and `[copilotgpt4service_host_ip]` with the IP of your Docker host. **\***See Notes\*\*\*
+
+   Restart Librechat after adding the needed configuration, and select `OpenAI via Copilot` to start using!
+
+   > Notes:
+   >
+   > - \*Only allowed models are `gpt-4` and `gpt-3.5-turbo`.
+   > - \*\*Advanced users can add this to their existing docker-compose file/existing docker network and avoid having to expose port 8080 (or any port) to the copilot-gpt4-service container.
 
 ---
 
@@ -366,5 +381,4 @@ It is *not* recommended to use the copilot token obtained directly, instead use 
 
 ---
 
->⚠️ Note: If you're having trouble, before creating a new issue, please search for similar ones on our [#issues thread on our discord](https://discord.librechat.ai) or our [troubleshooting discussion](https://github.com/danny-avila/LibreChat/discussions/categories/troubleshooting) on our Discussions page. If you don't find a relevant issue, feel free to create a new one and provide as much detail as possible.
-
+> ⚠️ Note: If you're having trouble, before creating a new issue, please search for similar ones on our [#issues thread on our discord](https://discord.librechat.ai) or our [troubleshooting discussion](https://github.com/danny-avila/LibreChat/discussions/categories/troubleshooting) on our Discussions page. If you don't find a relevant issue, feel free to create a new one and provide as much detail as possible.

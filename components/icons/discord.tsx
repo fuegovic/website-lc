@@ -6,12 +6,7 @@ export default function Discord({
   props?: React.SVGProps<SVGSVGElement>
 }) {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 48 48"
-      className={className}
-      {...props}
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" className={className} {...props}>
       <g>
         <g>
           <path

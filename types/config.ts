@@ -20,48 +20,48 @@ export type Theme =
   | 'black'
   | 'luxury'
   | 'dracula'
-  | '';
+  | ''
 
 export interface ConfigProps {
-  appName: string;
-  bgImage: string;
-  appDescription: string;
-  domainName: string;
+  appName: string
+  bgImage: string
+  appDescription: string
+  domainName: string
   crisp: {
-    id?: string;
-    onlyShowOnRoutes?: string[];
-  };
+    id?: string
+    onlyShowOnRoutes?: string[]
+  }
   stripe: {
     plans: {
-      isFeatured?: boolean;
-      priceId: string;
-      name: string;
-      description?: string;
-      price: number;
-      priceAnchor?: number;
+      isFeatured?: boolean
+      priceId: string
+      name: string
+      description?: string
+      price: number
+      priceAnchor?: number
       features: {
-        name: string;
-      }[];
-    }[];
-  };
+        name: string
+      }[]
+    }[]
+  }
   aws?: {
-    bucket?: string;
-    bucketUrl?: string;
-    cdn?: string;
-  };
+    bucket?: string
+    bucketUrl?: string
+    cdn?: string
+  }
   mailgun: {
-    subdomain: string;
-    fromNoReply: string;
-    fromAdmin: string;
-    supportEmail?: string;
-    forwardRepliesTo?: string;
-  };
+    subdomain: string
+    fromNoReply: string
+    fromAdmin: string
+    supportEmail?: string
+    forwardRepliesTo?: string
+  }
   colors: {
-    theme: Theme;
-    main: string;
-  };
+    theme: Theme
+    main: string
+  }
   auth: {
-    loginUrl: string;
-    callbackUrl: string;
-  };
+    loginUrl: string
+    callbackUrl: string
+  }
 }

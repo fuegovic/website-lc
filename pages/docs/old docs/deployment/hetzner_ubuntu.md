@@ -3,13 +3,14 @@ title: 🏗️ Hetzner
 description: LibreChat Ubuntu installation from scratch on Hetzner.
 weight: -2
 ---
+
 # Hetzner Ubuntu Setup
 
-*These instructions are designed for someone starting from scratch for a Ubuntu Installation. You can skip to any point that is useful for you.*
+_These instructions are designed for someone starting from scratch for a Ubuntu Installation. You can skip to any point that is useful for you._
 
 ## Starting from Zero:
 
-1. Login to Hetzner Cloud Console (**[https://console.hetzner.cloud/projects](https://console.hetzner.cloud/projects)**) and Create a new Ubuntu 20 Project with 4GB Ram. Do not worry about SSH keys *yet*.
+1. Login to Hetzner Cloud Console (**[https://console.hetzner.cloud/projects](https://console.hetzner.cloud/projects)**) and Create a new Ubuntu 20 Project with 4GB Ram. Do not worry about SSH keys _yet_.
 
 Hetzner will email you the root password.
 
@@ -41,11 +42,13 @@ ssh-keygen -t ed25519
 ```
 
 Copy the key from your local computer to the server:
+
 ```
 ssh-copy-id -i <locationto>/id_rsa.pub <yourusername>@<yourserverip>
 ```
 
 And then login to the server with that key:
+
 ```
 ssh <yourusername>@<yourserverip>
 ```
@@ -57,8 +60,8 @@ When you login, now and going forward, it will ask you for the password for your
 - Run `sudo ufw allow OpenSSH`
 - Run `sudo ufw enable`
 
-
 7. Then, we need to install docker, update the system packages, and reboot the server:
+
 ```
 sudo apt install docker
 sudo apt install docker-compose
@@ -72,14 +75,19 @@ sudo reboot
 ---
 
 ## Tokens/Apis/etc:
+
 - Make sure you have all the needed variables for the following before moving forward
 
 ### [Setup your AI Endpoints](../install/configuration/ai_setup.md) (Required)
+
 - At least one AI endpoint should be setup for use.
+
 ### [User/Auth System](../install/configuration/user_auth_system.md) (Optional)
 
 - How to set up the user/auth system and Google login.
+
 ### [Plugins](../features/plugins/introduction.md)
+
 - Optional plugins available to enhance the application.
 
 ---
@@ -87,7 +95,8 @@ sudo reboot
 ## Using Docker to Install the Service
 
 ### 1. **Recommended: [Docker Install](../install/installation/docker_compose_install.md)**
-From the *server* commandline (as your user, not root):
+
+From the _server_ commandline (as your user, not root):
 
 ```
 git clone https://github.com/danny-avila/LibreChat.git
@@ -104,6 +113,7 @@ nano docker-compose.yml
 ```
 
 ### 2. Create a global environment file and open it up to begin adding the tokens/keys you prepared in the PreReqs section.
+
 ```
 cp .env.example .env
 nano .env
@@ -114,7 +124,9 @@ nano .env
 ```
 HOST=Localhost
 ```
+
 to
+
 ```
 HOST=<yourserverip>
 ```
@@ -126,8 +138,7 @@ SEARCH=true
 MEILI_HOST=meilisearch
 ```
 
-### 5. After everything file has been updated, run  `docker compose build` then `docker compose up`
-
+### 5. After everything file has been updated, run `docker compose build` then `docker compose up`
 
 **NOTE: You may need to run these commands with sudo permissions.**
 
@@ -135,7 +146,8 @@ MEILI_HOST=meilisearch
 
 It is safe to close the terminal -- the docker app will continue to run.
 
-*To disable external signups, after you have created your admin account, make sure you set
+\*To disable external signups, after you have created your admin account, make sure you set
+
 ```
 ALLOW_REGISTRATION:False
 ```

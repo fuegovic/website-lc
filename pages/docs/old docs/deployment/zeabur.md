@@ -1,8 +1,9 @@
 ---
-title: 🦓 Zeabur 
-description: Instructions for deploying LibreChat on Zeabur 
+title: 🦓 Zeabur
+description: Instructions for deploying LibreChat on Zeabur
 weight: -1
 ---
+
 # Zeabur Deployment
 
 This guide will walk you through deploying LibreChat on Zeabur.
@@ -24,7 +25,7 @@ In the template page, select the region where you want to deploy LibreChat, and 
 
 ![Select Region and Deploy](https://github.com/danny-avila/LibreChat/assets/32828263/3676170b-9d59-46bf-81ca-48a5c7f1d657)
 
-## Bind a domain 
+## Bind a domain
 
 After the deployment is complete, you will find that there is a new project in your Zeabur account, which contains three services: a MongoDB, a Meilisearch, and a LibreChat.
 

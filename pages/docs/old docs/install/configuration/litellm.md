@@ -1,21 +1,25 @@
 ---
 title: 🚅 LiteLLM
-description: Using LibreChat with LiteLLM Proxy 
+description: Using LibreChat with LiteLLM Proxy
 weight: -7
 ---
 
-# Using LibreChat with LiteLLM Proxy 
-Use **[LiteLLM Proxy](https://docs.litellm.ai/docs/simple_proxy)** for: 
+# Using LibreChat with LiteLLM Proxy
 
-* Calling 100+ LLMs Huggingface/Bedrock/TogetherAI/etc. in the OpenAI ChatCompletions & Completions format
-* Load balancing - between Multiple Models + Deployments of the same model LiteLLM proxy can handle 1k+ requests/second during load tests
-* Authentication & Spend Tracking Virtual Keys
+Use **[LiteLLM Proxy](https://docs.litellm.ai/docs/simple_proxy)** for:
 
-## Start LiteLLM Proxy Server 
+- Calling 100+ LLMs Huggingface/Bedrock/TogetherAI/etc. in the OpenAI ChatCompletions & Completions format
+- Load balancing - between Multiple Models + Deployments of the same model LiteLLM proxy can handle 1k+ requests/second during load tests
+- Authentication & Spend Tracking Virtual Keys
+
+## Start LiteLLM Proxy Server
+
 ### 1. Uncomment desired sections in docker-compose.override.yml
+
 The override file contains sections for the below LiteLLM features
 
 Minimum working `docker-compose.override.yml` Example:
+
 ```
 litellm:
     image: ghcr.io/berriai/litellm:main-latest
@@ -33,13 +37,16 @@ litellm:
 ```
 
 #### Caching with Redis
+
 Litellm supports in-memory, redis, and s3 caching. Note: Caching currently only works with exact matching.
 
 #### Performance Monitoring with Langfuse
-Litellm supports various logging and observability options.  The settings below will enable Langfuse which will provide a cache_hit tag showing which conversations used cache.
 
-### 2. Create a Config for LiteLLM proxy 
-LiteLLM requires a configuration file in addition to the override file. Within LibreChat, this will be `litellm/litellm-config.yml`. The file 
+Litellm supports various logging and observability options. The settings below will enable Langfuse which will provide a cache_hit tag showing which conversations used cache.
+
+### 2. Create a Config for LiteLLM proxy
+
+LiteLLM requires a configuration file in addition to the override file. Within LibreChat, this will be `litellm/litellm-config.yml`. The file
 below has the options to enable llm proxy to various providers, load balancing, Redis caching, and Langfuse monitoring. Review documentation for other configuration options.
 More information on LiteLLM configurations here: **[docs.litellm.ai/docs/simple_proxy](https://docs.litellm.ai/docs/simple_proxy)**
 
@@ -47,6 +54,7 @@ More information on LiteLLM configurations here: **[docs.litellm.ai/docs/simple_
 
 Please note the `...` being a secret or a value you should not share (API key, custom tenant endpoint, etc)
 You can potentially use env variables for these too, ex: `api_key: "os.environ/AZURE_API_KEY" # does os.getenv("AZURE_API_KEY")`
+
 ```yaml
 model_list:
   # https://litellm.vercel.app/docs/proxy/quick_start
@@ -106,7 +114,6 @@ model_list:
       aws_access_key_id: A...
       aws_secret_access_key: ...
 
-
   - model_name: azure-gpt-4-turbo-preview
     litellm_params:
       model: azure/gpt-4-turbo-preview
@@ -136,7 +143,6 @@ model_list:
       model: azure/gpt-4-32k
       api_base: https://tenant.openai.azure.com/
       api_key: ...
-
 
   - model_name: openai-gpt-4-turbo-preview
     litellm_params:
@@ -190,58 +196,56 @@ model_list:
       vertex_location: us-central1
 
 litellm_settings:
-  success_callback: ["langfuse"]
+  success_callback: ['langfuse']
   cache: True
   cache_params:
-    type: "redis"
-    supported_call_types: ["acompletion", "completion", "embedding", "aembedding"]
+    type: 'redis'
+    supported_call_types: ['acompletion', 'completion', 'embedding', 'aembedding']
 general_settings:
   master_key: sk_live_SetToRandomValue
 ```
 
 #### Example of a few Different Options (ex: rpm, stream, ollama)
-```yaml
 
+```yaml
 model_list:
   - model_name: gpt-3.5-turbo
     litellm_params:
       model: azure/gpt-turbo-small-eu
       api_base: https://my-endpoint-europe-berri-992.openai.azure.com/
-      api_key: 
-      rpm: 6      # Rate limit for this deployment: in requests per minute (rpm)
+      api_key:
+      rpm: 6 # Rate limit for this deployment: in requests per minute (rpm)
   - model_name: gpt-3.5-turbo
     litellm_params:
       model: azure/gpt-turbo-small-ca
       api_base: https://my-endpoint-canada-berri992.openai.azure.com/
-      api_key: 
+      api_key:
       rpm: 6
   - model_name: gpt-3.5-turbo
     litellm_params:
       model: azure/gpt-turbo-large
       api_base: https://openai-france-1234.openai.azure.com/
-      api_key: 
+      api_key:
       rpm: 1440
   - model_name: mixtral
     litellm_params:
-      model: openai/mixtral:8x7b-instruct-v0.1-q5_K_M      # use openai/* for ollama's openai api compatibility
+      model: openai/mixtral:8x7b-instruct-v0.1-q5_K_M # use openai/* for ollama's openai api compatibility
       api_base: http://ollama:11434/v1
       stream: True
   - model_name: mistral
     litellm_params:
-      model: openai/mistral                                # use openai/* for ollama's openai api compatibility
+      model: openai/mistral # use openai/* for ollama's openai api compatibility
       api_base: http://ollama:11434/v1
       stream: True
 litellm_settings:
-  success_callback: ["langfuse"]
+  success_callback: ['langfuse']
   cache: True
   cache_params:
-    type: "redis"
-    supported_call_types: ["acompletion", "completion", "embedding", "aembedding"]
+    type: 'redis'
+    supported_call_types: ['acompletion', 'completion', 'embedding', 'aembedding']
 general_settings:
   master_key: sk_live_SetToRandomValue
 ```
-
-
 
 ### 3. Configure LibreChat
 
@@ -269,6 +273,7 @@ custom:
       forcePrompt: false
       modelDisplayLabel: "Lite LLM"
 ```
+
 ---
 
 ### Why use LiteLLM?

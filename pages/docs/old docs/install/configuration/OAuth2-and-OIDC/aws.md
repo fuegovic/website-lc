@@ -55,6 +55,7 @@ Under `Advanced app client settings` make sure `Profile` is included in the `Ope
 ![image](https://github.com/danny-avila/LibreChat/assets/32828263/5b035eae-4a8e-482c-abd5-29cee6502eeb)
 
 ## Review and create
+
 You can now make last minute changes, click on `Create user pool` when you're done reviewing the configuration
 
 ![image](https://github.com/danny-avila/LibreChat/assets/32828263/dc8b2374-9adb-4065-85dc-a087d625372d)
@@ -109,6 +110,7 @@ OPENID_SESSION_SECRET=Any random string
 OPENID_SCOPE=openid profile email
 OPENID_CALLBACK_URL=/oauth/openid/callback
 ```
+
 7. Save the .env file
 
 > Note: If using docker, run `docker compose up -d` to apply the .env configuration changes

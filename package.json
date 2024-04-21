@@ -8,7 +8,10 @@
     "postbuild": "node scripts/clean-cache.ts",
     "start": "next start -p 3333",
     "analyze": "cross-env ANALYZE=true next build",
-    "postbuild:old": "next-sitemap && echo 'Removing .next/cache to resolve Nextra caching bug' && rm -rf .next/cache"
+    "postbuild:old": "next-sitemap && echo 'Removing .next/cache to resolve Nextra caching bug' && rm -rf .next/cache",
+    "lint": "eslint --cache --ignore-path .gitignore --max-warnings 0 .",
+    "lint:prettier": "prettier --cache --check --ignore-path .gitignore --ignore-path .prettierignore .",
+    "prettier": "pnpm lint:prettier --write"
   },
   "homepage": "https://librechat.ai",
   "dependencies": {
@@ -35,6 +38,8 @@
     "axios": "^1.6.8",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "eslint-config-next": "13.4.19",
+    "eslint-plugin-unicorn": "^52.0.0",
     "framer-motion": "^11.0.28",
     "geist": "^1.3.0",
     "gpt3-tokenizer": "^1.1.5",
@@ -74,7 +79,18 @@
   "devDependencies": {
     "@next/bundle-analyzer": "^14.2.1",
     "@types/node": "18.16.0",
+    "@typescript-eslint/eslint-plugin": "^7.7.0",
+    "@typescript-eslint/parser": "^7.7.0",
     "cross-env": "^7.0.3",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-mdx": "^3.1.5",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-tailwindcss": "^3.15.1",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5",
     "typescript": "^5.4.5"
   },
   "optionalDependencies": {
@@ -85,5 +101,12 @@
     "budgetPercentIncreaseRed": 20,
     "minimumChangeThreshold": 50,
     "showDetails": true
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,json,md,mdx}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
   }
 }

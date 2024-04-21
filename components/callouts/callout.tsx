@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import styles from './style.module.css';
+import React, { useState } from 'react'
+import styles from './style.module.css'
 
 const TypeToEmoji = {
   default: '🪶',
@@ -15,17 +15,17 @@ const TypeToEmoji = {
   bug: '🐞',
   example: '👾',
   quote: '🪽',
-};
+}
 
-type CalloutType = keyof typeof TypeToEmoji;
+type CalloutType = keyof typeof TypeToEmoji
 
 type CalloutProps = {
-  type?: CalloutType;
-  emoji?: string | React.ReactNode;
-  title?: string;
-  collapsible?: boolean;
-  children: React.ReactNode;
-};
+  type?: CalloutType
+  emoji?: string | React.ReactNode
+  title?: string
+  collapsible?: boolean
+  children: React.ReactNode
+}
 
 export function Callout({
   children,
@@ -34,47 +34,45 @@ export function Callout({
   title,
   collapsible = false,
 }: CalloutProps): React.ReactElement {
-  const [isCollapsed, setIsCollapsed] = useState(collapsible);
-  const [maxHeight, setMaxHeight] = useState<string | number>(0);
+  const [isCollapsed, setIsCollapsed] = useState(collapsible)
+  const [maxHeight, setMaxHeight] = useState<string | number>(0)
 
-  const contentRef = React.useRef<HTMLDivElement>(null);
+  const contentRef = React.useRef<HTMLDivElement>(null)
 
   const toggleCollapse = () => {
-    setIsCollapsed(!isCollapsed);
-  };
+    setIsCollapsed(!isCollapsed)
+  }
 
-  const [initialMaxHeight, setInitialMaxHeight] = useState(null);
+  const [initialMaxHeight, setInitialMaxHeight] = useState(null)
 
   React.useEffect(() => {
     if (contentRef.current) {
-      const contentHeight = contentRef.current.scrollHeight;
+      const contentHeight = contentRef.current.scrollHeight
       if (initialMaxHeight === null) {
         if (collapsible) {
-          setMaxHeight(0);
+          setMaxHeight(0)
         } else {
-          setMaxHeight(contentHeight);
+          setMaxHeight(contentHeight)
         }
-        setInitialMaxHeight(collapsible ? 0 : contentHeight);
+        setInitialMaxHeight(collapsible ? 0 : contentHeight)
       } else {
-        setMaxHeight(isCollapsed ? 0 : contentHeight);
+        setMaxHeight(isCollapsed ? 0 : contentHeight)
       }
     }
-  }, [isCollapsed, collapsible, initialMaxHeight]);
+  }, [isCollapsed, collapsible, initialMaxHeight])
 
   const contentStyle = {
     maxHeight: initialMaxHeight === null ? (collapsible ? 0 : 'auto') : `${maxHeight}px`,
     overflow: 'hidden',
     transition: 'max-height 0.8s ease',
-  };
+  }
 
   return (
     <div className={`${styles.callout} ${styles[`callout-${type}`]}`}>
       <div className={styles['callout-header']}>
         <div className={styles['callout-emoji']}>{emoji}</div>
         <div
-          className={`${styles['callout-title']} ${
-            collapsible ? styles.collapsible : ''
-          }`}
+          className={`${styles['callout-title']} ${collapsible ? styles.collapsible : ''}`}
           onClick={collapsible ? toggleCollapse : undefined}
         >
           {title ? (
@@ -82,9 +80,7 @@ export function Callout({
           ) : (
             <span className={styles['title-spacer']} style={{ flexGrow: 1 }}></span>
           )}
-          {collapsible && (
-            <span className={styles.arrow}>{isCollapsed ? '▷' : '▽'}</span>
-          )}
+          {collapsible && <span className={styles.arrow}>{isCollapsed ? '▷' : '▽'}</span>}
         </div>
       </div>
       <div style={contentStyle}>
@@ -93,5 +89,5 @@ export function Callout({
         </div>
       </div>
     </div>
-  );
+  )
 }

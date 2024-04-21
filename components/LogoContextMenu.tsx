@@ -4,12 +4,12 @@ import {
   DropdownMenu,
   DropdownMenuItem,
   DropdownMenuSeparator,
-} from "./ui/dropdown-menu";
-import { Download, ExternalLink } from "lucide-react";
+} from './ui/dropdown-menu'
+import { Download, ExternalLink } from 'lucide-react'
 
 const LogoContextMenu: React.FC<{
-  open: boolean;
-  setOpen: (open: boolean) => void;
+  open: boolean
+  setOpen: (open: boolean) => void
 }> = ({ open, setOpen }) => {
   return (
     <DropdownMenu open={open} onOpenChange={setOpen} modal={false}>
@@ -17,8 +17,8 @@ const LogoContextMenu: React.FC<{
       <DropdownMenuContent>
         <DropdownMenuItem
           onClick={(e) => {
-            e.preventDefault();
-            window.open("/", "_blank");
+            e.preventDefault()
+            window.open('/', '_blank')
           }}
         >
           <ExternalLink size={14} className="mr-2" />
@@ -27,8 +27,8 @@ const LogoContextMenu: React.FC<{
         <DropdownMenuSeparator />
         <DropdownMenuItem
           onClick={(e) => {
-            e.preventDefault();
-            window.open("/librechat.png", "_blank");
+            e.preventDefault()
+            window.open('/librechat.png', '_blank')
           }}
         >
           <Download size={14} className="mr-2" />
@@ -36,8 +36,8 @@ const LogoContextMenu: React.FC<{
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={(e) => {
-            e.preventDefault();
-            window.open("/librechat.svg", "_blank");
+            e.preventDefault()
+            window.open('/librechat.svg', '_blank')
           }}
         >
           <Download size={14} className="mr-2" />
@@ -46,8 +46,8 @@ const LogoContextMenu: React.FC<{
         <DropdownMenuSeparator />
         <DropdownMenuItem
           onClick={(e) => {
-            e.preventDefault();
-            window.open("/librechat_docs.png", "_blank");
+            e.preventDefault()
+            window.open('/librechat_docs.png', '_blank')
           }}
         >
           <Download size={14} className="mr-2" />
@@ -55,8 +55,8 @@ const LogoContextMenu: React.FC<{
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={(e) => {
-            e.preventDefault();
-            window.open("/librechat_docs.svg", "_blank");
+            e.preventDefault()
+            window.open('/librechat_docs.svg', '_blank')
           }}
         >
           <Download size={14} className="mr-2" />
@@ -64,7 +64,7 @@ const LogoContextMenu: React.FC<{
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  );
-};
+  )
+}
 
-export default LogoContextMenu;
+export default LogoContextMenu

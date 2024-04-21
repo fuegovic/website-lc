@@ -1,44 +1,46 @@
-import { useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
-import validator from "validator";
+/* eslint-disable no-undef */
+
+import { useState } from 'react'
+import toast, { Toaster } from 'react-hot-toast'
+import validator from 'validator'
 
 const NewsletterForm = () => {
-  const [email, setEmail] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [email, setEmail] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     if (!validator.isEmail(email)) {
-      toast.error("Valid email is required");
-      return;
+      toast.error('Valid email is required')
+      return
     }
 
-    setIsLoading(true);
+    setIsLoading(true)
 
     try {
-      const response = await fetch("/api/subscribe", {
-        method: "POST",
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email }),
-      });
+      })
 
       if (response.status === 201) {
-        toast.success("Subscription successful");
-        setEmail("");
+        toast.success('Subscription successful')
+        setEmail('')
       } else if (response.status === 409) {
-        toast.error("Email already subscribed");
+        toast.error('Email already subscribed')
       } else {
-        toast.error("Subscription failed");
+        toast.error('Subscription failed')
       }
     } catch (error) {
-      toast.error("Subscription failed");
+      toast.error('Subscription failed')
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  };
+  }
 
   return (
     <div className="newsletter-container">
@@ -53,12 +55,8 @@ const NewsletterForm = () => {
             onChange={(e) => setEmail(e.target.value)}
             className="email-input"
           />
-          <button
-            type="submit"
-            className="subscribe-button"
-            disabled={isLoading}
-          >
-            {isLoading ? "Subscribing..." : "Subscribe"}
+          <button type="submit" className="subscribe-button" disabled={isLoading}>
+            {isLoading ? 'Subscribing...' : 'Subscribe'}
           </button>
         </form>
       </div>
@@ -124,7 +122,7 @@ const NewsletterForm = () => {
                 }
             `}</style>
     </div>
-  );
-};
+  )
+}
 
-export default NewsletterForm;
+export default NewsletterForm

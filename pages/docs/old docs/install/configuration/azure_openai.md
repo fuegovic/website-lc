@@ -18,42 +18,42 @@ Here's a quick snapshot of what a comprehensive configuration might look like, i
 endpoints:
   azureOpenAI:
     # Endpoint-level configuration
-    titleModel: "llama-70b-chat"
+    titleModel: 'llama-70b-chat'
     plugins: true
     assistants: true
     groups:
-    # Group-level configuration
-    - group: "my-resource-westus"
-      apiKey: "${WESTUS_API_KEY}"
-      instanceName: "my-resource-westus"
-      version: "2024-03-01-preview"
-      # Model-level configuration
-      models:
-        gpt-4-vision-preview:
-          deploymentName: gpt-4-vision-preview
-          version: "2024-03-01-preview"
-        gpt-3.5-turbo:
-          deploymentName: gpt-35-turbo
-        gpt-4-1106-preview:
-          deploymentName: gpt-4-1106-preview
-    # Group-level configuration
-    - group: "mistral-inference"
-      apiKey: "${AZURE_MISTRAL_API_KEY}"
-      baseURL: "https://Mistral-large-vnpet-serverless.region.inference.ai.azure.com/v1/chat/completions"
-      serverless: true
-      # Model-level configuration
-      models:
-        mistral-large: true
-    # Group-level configuration
-    - group: "my-resource-sweden"
-      apiKey: "${SWEDEN_API_KEY}"
-      instanceName: "my-resource-sweden"
-      deploymentName: gpt-4-1106-preview
-      version: "2024-03-01-preview"
-      assistants: true
-      # Model-level configuration
-      models:
-        gpt-4-turbo: true
+      # Group-level configuration
+      - group: 'my-resource-westus'
+        apiKey: '${WESTUS_API_KEY}'
+        instanceName: 'my-resource-westus'
+        version: '2024-03-01-preview'
+        # Model-level configuration
+        models:
+          gpt-4-vision-preview:
+            deploymentName: gpt-4-vision-preview
+            version: '2024-03-01-preview'
+          gpt-3.5-turbo:
+            deploymentName: gpt-35-turbo
+          gpt-4-1106-preview:
+            deploymentName: gpt-4-1106-preview
+      # Group-level configuration
+      - group: 'mistral-inference'
+        apiKey: '${AZURE_MISTRAL_API_KEY}'
+        baseURL: 'https://Mistral-large-vnpet-serverless.region.inference.ai.azure.com/v1/chat/completions'
+        serverless: true
+        # Model-level configuration
+        models:
+          mistral-large: true
+      # Group-level configuration
+      - group: 'my-resource-sweden'
+        apiKey: '${SWEDEN_API_KEY}'
+        instanceName: 'my-resource-sweden'
+        deploymentName: gpt-4-1106-preview
+        version: '2024-03-01-preview'
+        assistants: true
+        # Model-level configuration
+        models:
+          gpt-4-turbo: true
 ```
 
 Here's another working example configured according to the specifications of the [Azure OpenAI Endpoint Configuration Docs:](./custom_config.md#azure-openai-object-structure)
@@ -70,11 +70,11 @@ Each level of configuration is extensively detailed in their respective sections
 
 1. **Open `librechat.yaml` for Editing**: Use your preferred text editor or IDE to open and edit the `librechat.yaml` file.
 
-    - Optional: use a remote or custom file path with the following environment variable:
+   - Optional: use a remote or custom file path with the following environment variable:
 
-    ```.env
-    CONFIG_PATH="/alternative/path/to/librechat.yaml"
-    ```
+   ```.env
+   CONFIG_PATH="/alternative/path/to/librechat.yaml"
+   ```
 
 2. **Configure Azure OpenAI Settings**: Follow the detailed structure outlined below to populate your Azure OpenAI settings appropriately. This includes specifying API keys, instance names, model groups, and other essential configurations.
 
@@ -108,21 +108,20 @@ These settings apply globally to all Azure models and groups within the endpoint
 
 8. **groups** (Array/List, Required): Specifies the list of Azure OpenAI model groups. Each group represents a set of models with shared configurations. The groups field is an array of objects, where each object defines the settings for a specific group. This is a required field at the endpoint level, and at least one group must be defined. The group-level configurations are detailed in the Group-Level Configuration section.
 
-[ 9. **customOrder** (Number, Optional): Allows you to specify a custom order for the Azure endpoint in the user interface. Higher numbers will appear lower in the list. If not provided, the default order is determined by the order in which the endpoints are defined in the `librechat.yaml` file.
-]: # 
+[ 9. **customOrder** (Number, Optional): Allows you to specify a custom order for the Azure endpoint in the user interface. Higher numbers will appear lower in the list. If not provided, the default order is determined by the order in which the endpoints are defined in the `librechat.yaml` file. ]: #
 
 Here's an example of how you can configure these endpoint-level settings in your `librechat.yaml` file:
 
 ```yaml
 endpoints:
   azureOpenAI:
-    titleModel: "gpt-3.5-turbo-1106"
+    titleModel: 'gpt-3.5-turbo-1106'
     plugins: true
     assistants: true
     summarize: true
-    summaryModel: "gpt-3.5-turbo-1106"
+    summaryModel: 'gpt-3.5-turbo-1106'
     titleConvo: true
-    titleMethod: "functions"
+    titleMethod: 'functions'
     groups:
       # ... (group-level and model-level configurations)
 ```
@@ -132,7 +131,6 @@ endpoints:
 This is a breakdown of the fields configurable as defined for the Custom Config (`librechat.yaml`) file. For more information on each field, see the [Azure OpenAI section in the Custom Config Docs](./custom_config.md#azure-openai-object-structure).
 
 1. **group** (String, Required): Unique identifier name for a group of models. Duplicate group names are not allowed and will result in validation errors.
-   
 2. **apiKey** (String, Required): Must be a valid API key for Azure OpenAI services. It could be a direct key string or an environment variable reference (e.g., `${WESTUS_API_KEY}`).
 
 3. **instanceName** (String, Required): Name of the Azure OpenAI instance. This field can also support environment variable references.
@@ -162,20 +160,20 @@ endpoints:
   azureOpenAI:
     # ... (endpoint-level configurations)
     groups:
-      - group: "my-resource-group"
-        apiKey: "${AZURE_API_KEY}"
-        instanceName: "my-instance"
-        deploymentName: "gpt-35-turbo"
-        version: "2023-03-15-preview"
-        baseURL: "https://my-instance.openai.azure.com/"
+      - group: 'my-resource-group'
+        apiKey: '${AZURE_API_KEY}'
+        instanceName: 'my-instance'
+        deploymentName: 'gpt-35-turbo'
+        version: '2023-03-15-preview'
+        baseURL: 'https://my-instance.openai.azure.com/'
         additionalHeaders:
-          CustomHeader: "HeaderValue"
+          CustomHeader: 'HeaderValue'
         addParams:
           max_tokens: 2048
           temperature: 0.7
         dropParams:
-          - "frequency_penalty"
-          - "presence_penalty"
+          - 'frequency_penalty'
+          - 'presence_penalty'
         forcePrompt: false
         models:
         # ... (model-level configurations)
@@ -188,10 +186,11 @@ Within each group, the `models` field contains a mapping of model identifiers to
 1. **Model Identifier** (String, Required): Must match the corresponding OpenAI model name. Can be a partial match.
 
 2. **Model Configuration** (Boolean or Object, Required):
+
    - Boolean `true`: Uses the group-level `deploymentName` and `version`.
    - Object: Specifies model-specific `deploymentName` and `version`. If not provided, inherits from the group.
-      - **deploymentName** (String, Optional): The deployment name for this specific model.
-      - **version** (String, Optional): The Azure OpenAI API version for this specific model.
+     - **deploymentName** (String, Optional): The deployment name for this specific model.
+     - **version** (String, Optional): The Azure OpenAI API version for this specific model.
 
 3. **Serverless Inference Endpoints**: For serverless models, set the model to `true`.
 
@@ -202,14 +201,14 @@ endpoints:
   azureOpenAI:
     # ... (endpoint-level configurations)
     groups:
-    # ... (group-level configurations)
-    - group: "example_group"
+      # ... (group-level configurations)
+      - group: 'example_group'
     models:
-     # Model identifiers must match OpenAI Model name (can be a partial match)
+      # Model identifiers must match OpenAI Model name (can be a partial match)
       gpt-4-vision-preview:
-      # Object setting: must include at least "deploymentName" and/or "version"
-        deploymentName: "arbitrary-deployment-name"
-        version: "2024-02-15-preview" # version can be any that supports vision
+        # Object setting: must include at least "deploymentName" and/or "version"
+        deploymentName: 'arbitrary-deployment-name'
+        version: '2024-02-15-preview' # version can be any that supports vision
       # Boolean setting, must be "true"
       gpt-4-turbo: true
 ```
@@ -217,7 +216,6 @@ endpoints:
 - See [Model Deployments](#model-deployments) for more examples.
 
 - If a model is set to `true`, it implies using the group-level `deploymentName` and `version` for this model. Both must be defined at the group level in this case.
-  
 - If a model is configured as an object, it can specify its own `deploymentName` and `version`. If these are not provided, the model inherits the group's `deploymentName` and `version`.
 
 - If the group represents a [serverless inference endpoint](#serverless-inference-endpoints), the singular model should be set to `true` to add it to the models list.
@@ -236,7 +234,6 @@ endpoints:
 
 Applying these setup requirements thoughtfully will ensure a correct and efficient integration of Azure OpenAI services with LibreChat through the `librechat.yaml` configuration. Always validate your configuration against the latest schema definitions and guidelines to maintain compatibility and functionality.
 
-
 ### Model Deployments
 
 The list of models available to your users are determined by the model groupings specified in your [`azureOpenAI` endpoint config.](./custom_config.md#models-1)
@@ -248,20 +245,20 @@ For example:
 endpoints:
   azureOpenAI:
     groups:
-      - group: "my-westus" # arbitrary name
-        apiKey: "${WESTUS_API_KEY}"
-        instanceName: "actual-instance-name" # name of the resource group or instance
-        version: "2023-12-01-preview"
+      - group: 'my-westus' # arbitrary name
+        apiKey: '${WESTUS_API_KEY}'
+        instanceName: 'actual-instance-name' # name of the resource group or instance
+        version: '2023-12-01-preview'
         models:
           gpt-4-vision-preview:
             deploymentName: gpt-4-vision-preview
-            version: "2024-02-15-preview"
+            version: '2024-02-15-preview'
           gpt-3.5-turbo: true
-      - group: "my-eastus"
-        apiKey: "${EASTUS_API_KEY}"
-        instanceName: "actual-eastus-instance-name"
+      - group: 'my-eastus'
+        apiKey: '${EASTUS_API_KEY}'
+        instanceName: 'actual-eastus-instance-name'
         deploymentName: gpt-4-turbo
-        version: "2024-02-15-preview"
+        version: '2024-02-15-preview'
         models:
           gpt-4-turbo: true
 ```
@@ -272,16 +269,16 @@ The above configuration would enable `gpt-4-vision-preview`, `gpt-3.5-turbo` and
 
 To enable use of Assistants with Azure OpenAI, there are 2 main steps.
 
-1) Set the `assistants` field at the [Endpoint-level](#endpoint-level-configuration) to `true`, like so:
+1. Set the `assistants` field at the [Endpoint-level](#endpoint-level-configuration) to `true`, like so:
 
 ```yaml
 endpoints:
   azureOpenAI:
-  # Enable use of Assistants with Azure
+    # Enable use of Assistants with Azure
     assistants: true
 ```
 
-2) Add the `assistants` field to all groups compatible with Azure's Assistants API integration.
+2. Add the `assistants` field to all groups compatible with Azure's Assistants API integration.
 
 - At least one of your group configurations must be compatible.
 - You can check the [compatible regions and models in the Azure docs here](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models#assistants-preview).
@@ -292,13 +289,13 @@ endpoints:
   azureOpenAI:
     assistants: true
     groups:
-      - group: "my-sweden-group"
-        apiKey: "${SWEDEN_API_KEY}"
-        instanceName: "actual-instance-name"
-      # Mark this group as assistants compatible
+      - group: 'my-sweden-group'
+        apiKey: '${SWEDEN_API_KEY}'
+        instanceName: 'actual-instance-name'
+        # Mark this group as assistants compatible
         assistants: true
-      # version must be "2024-02-15-preview" or later
-        version: "2024-03-01-preview"
+        # version must be "2024-02-15-preview" or later
+        version: '2024-03-01-preview'
         models:
           # ... (model-level configuration)
 ```
@@ -307,21 +304,22 @@ endpoints:
 
 - If you mark multiple regions as assistants-compatible, assistants you create will be aggregated across regions to the main assistant selection list.
 - Files you upload to Azure OpenAI, whether at the message or assistant level, will only be available in the region the current assistant's model is part of.
-    - For this reason, it's recommended you use only one region or resource group for Azure OpenAI Assistants, or you will experience an error.
-    - Uploading to "OpenAI" is the default behavior for official `code_interpeter` and `retrieval` capabilities.
+  - For this reason, it's recommended you use only one region or resource group for Azure OpenAI Assistants, or you will experience an error.
+  - Uploading to "OpenAI" is the default behavior for official `code_interpeter` and `retrieval` capabilities.
 - Downloading files that assistants generate will soon be supported.
 - If the `ASSISTANTS_API_KEY` is still set to `user_provided` in your environment file `.env`, comment it out.
 - As of March 14th 2024, retrieval and streaming are not supported through Azure OpenAI.
-    - To avoid any errors with retrieval while it's not supported, it's recommended to disable the capability altogether through the `assistants` endpoint config:
 
-    ```yaml
-    endpoints:
-      assistants:
+  - To avoid any errors with retrieval while it's not supported, it's recommended to disable the capability altogether through the `assistants` endpoint config:
+
+  ```yaml
+  endpoints:
+    assistants:
       # "retrieval" omitted.
-        capabilities: ["code_interpreter", "actions", "tools"]
-    ```
+      capabilities: ['code_interpreter', 'actions', 'tools']
+  ```
 
-    - By default, all capabilities are enabled.
+  - By default, all capabilities are enabled.
 
 ### Using Plugins with Azure
 
@@ -370,14 +368,14 @@ endpoints:
 **You can also omit the placeholders completely and simply construct the baseURL with your credentials:**
 
 ```yaml
-      baseURL: "https://gateway.ai.cloudflare.com/v1/ACCOUNT_TAG/GATEWAY/azure-openai/my-secret-instance/my-deployment"
+baseURL: 'https://gateway.ai.cloudflare.com/v1/ACCOUNT_TAG/GATEWAY/azure-openai/my-secret-instance/my-deployment'
 ```
+
 **Lastly, you can specify the entire baseURL through a custom environment variable**
 
 ```yaml
-      baseURL: "${MY_CUSTOM_BASEURL}"
+baseURL: '${MY_CUSTOM_BASEURL}'
 ```
-
 
 ### Enabling Auto-Generated Titles with Azure
 
@@ -395,11 +393,10 @@ endpoints:
 **You can also specify the model to use for titling, with `titleModel`** provided you have configured it in your group(s).
 
 ```yaml
-    titleModel: "gpt-3.5-turbo"
+titleModel: 'gpt-3.5-turbo'
 ```
 
 **Note**: "gpt-3.5-turbo" is the default value, so you can omit it if you want to use this exact model and have it configured. If not configured and `titleConvo` is set to `true`, the titling process will result in an error and no title will be generated.
-
 
 ### Using GPT-4 Vision with Azure
 
@@ -410,14 +407,14 @@ This will work seamlessly as it does with the [OpenAI endpoint](#openai) (no nee
 ### Generate images with Azure OpenAI Service (DALL-E)
 
 | Model ID | Feature Availability | Max Request (characters) |
-|----------|----------------------|-------------------------|
-| dalle2   | East US              | 1000                    |
-| dalle3   | Sweden Central       | 4000                    |
+| -------- | -------------------- | ------------------------ |
+| dalle2   | East US              | 1000                     |
+| dalle3   | Sweden Central       | 4000                     |
 
 - First you need to create an Azure resource that hosts DALL-E
-    - At the time of writing, dall-e-3 is available in the `SwedenCentral` region, dall-e-2 in the `EastUS` region.
+  - At the time of writing, dall-e-3 is available in the `SwedenCentral` region, dall-e-2 in the `EastUS` region.
 - Then, you need to deploy the image generation model in one of the above regions.
-    - Read the [Azure OpenAI Image Generation Quickstart Guide](https://learn.microsoft.com/en-us/azure/ai-services/openai/dall-e-quickstart) for further assistance
+  - Read the [Azure OpenAI Image Generation Quickstart Guide](https://learn.microsoft.com/en-us/azure/ai-services/openai/dall-e-quickstart) for further assistance
 - Configure your environment variables based on Azure credentials:
 
 **- For DALL-E-3:**
@@ -455,9 +452,9 @@ Through the `librechat.yaml` file, you can configure Azure AI Studio serverless 
 
 - You will need to follow the instructions in the compatible model cards to set up **MaaS** ("Models as a Service") access on Azure AI Studio.
 
-    - For reference, here are 2 known compatible model cards:
+  - For reference, here are 2 known compatible model cards:
 
-    - [Mistral-large](https://aka.ms/aistudio/landing/mistral-large) | [Llama-2-70b-chat](https://aka.ms/aistudio/landing/Llama-2-70b-chat)
+  - [Mistral-large](https://aka.ms/aistudio/landing/mistral-large) | [Llama-2-70b-chat](https://aka.ms/aistudio/landing/Llama-2-70b-chat)
 
 - You can also review [the technical blog for the "Mistral-large" model release](https://techcommunity.microsoft.com/t5/ai-machine-learning-blog/mistral-large-mistral-ai-s-flagship-llm-debuts-on-azure-ai/ba-p/4066996) for more info.
 
@@ -469,19 +466,19 @@ Through the `librechat.yaml` file, you can configure Azure AI Studio serverless 
 endpoints:
   azureOpenAI:
     groups:
-# serverless examples
-    - group: "mistral-inference"
-      apiKey: "${AZURE_MISTRAL_API_KEY}" # arbitrary env var name
-      baseURL: "https://Mistral-large-vnpet-serverless.region.inference.ai.azure.com/v1/chat/completions"
-      serverless: true
-      models:
-        mistral-large: true
-    - group: "llama-70b-chat"
-      apiKey: "${AZURE_LLAMA2_70B_API_KEY}" # arbitrary env var name
-      baseURL: "https://Llama-2-70b-chat-qmvyb-serverless.region.inference.ai.azure.com/v1/chat/completions"
-      serverless: true
-      models:
-        llama-70b-chat: true
+      # serverless examples
+      - group: 'mistral-inference'
+        apiKey: '${AZURE_MISTRAL_API_KEY}' # arbitrary env var name
+        baseURL: 'https://Mistral-large-vnpet-serverless.region.inference.ai.azure.com/v1/chat/completions'
+        serverless: true
+        models:
+          mistral-large: true
+      - group: 'llama-70b-chat'
+        apiKey: '${AZURE_LLAMA2_70B_API_KEY}' # arbitrary env var name
+        baseURL: 'https://Llama-2-70b-chat-qmvyb-serverless.region.inference.ai.azure.com/v1/chat/completions'
+        serverless: true
+        models:
+          llama-70b-chat: true
 ```
 
 **Notes**:
@@ -491,7 +488,6 @@ endpoints:
 - Compatibility with LibreChat relies on parity with OpenAI API specs, which at the time of writing, are typically **"Pay-as-you-go"** or "Models as a Service" (MaaS) deployments on Azure AI Studio, that are OpenAI-SDK-compatible with either v1/completions or v1/chat/completions endpoint handling.
 - At the moment, only ["Mistral-large"](https://azure.microsoft.com/en-us/blog/microsoft-and-mistral-ai-announce-new-partnership-to-accelerate-ai-innovation-and-introduce-mistral-large-first-on-azure/) and [LLama-2 Chat models](https://techcommunity.microsoft.com/t5/ai-machine-learning-blog/announcing-llama-2-inference-apis-and-hosted-fine-tuning-through/ba-p/3979227) are compatible from the Azure model catalog. You can filter by "Chat completion" under inference tasks to see the full list; however, real time endpoint models have not been tested.
 - These serverless inference endpoint/models are likely not compatible with OpenAI function calling, which enables the use of Plugins. As they have yet been tested, they are available on the Plugins endpoint, although they are not expected to work.
-
 
 ---
 
@@ -507,15 +503,17 @@ endpoints:
 
 These variables construct the API URL for Azure OpenAI.
 
-* `AZURE_API_KEY`: Your Azure OpenAI API key.
-* `AZURE_OPENAI_API_INSTANCE_NAME`: The instance name of your Azure OpenAI API.
-* `AZURE_OPENAI_API_DEPLOYMENT_NAME`: The deployment name of your Azure OpenAI API. 
-* `AZURE_OPENAI_API_VERSION`: The version of your Azure OpenAI API.
+- `AZURE_API_KEY`: Your Azure OpenAI API key.
+- `AZURE_OPENAI_API_INSTANCE_NAME`: The instance name of your Azure OpenAI API.
+- `AZURE_OPENAI_API_DEPLOYMENT_NAME`: The deployment name of your Azure OpenAI API.
+- `AZURE_OPENAI_API_VERSION`: The version of your Azure OpenAI API.
 
 For example, with these variables, the URL for chat completion would look something like:
+
 ```plaintext
 https://{AZURE_OPENAI_API_INSTANCE_NAME}.openai.azure.com/openai/deployments/{AZURE_OPENAI_API_DEPLOYMENT_NAME}/chat/completions?api-version={AZURE_OPENAI_API_VERSION}
 ```
+
 You should also consider changing the `AZURE_OPENAI_MODELS` variable to the models available in your deployment.
 
 ```bash
@@ -531,7 +529,7 @@ Overriding the construction of the API URL is possible as of implementing **[Iss
 
 As of 2023-12-18, the Azure API allows only one model per deployment.
 
-**It's highly recommended** to name your deployments *after* the model name (e.g., "gpt-3.5-turbo") for easy deployment switching.
+**It's highly recommended** to name your deployments _after_ the model name (e.g., "gpt-3.5-turbo") for easy deployment switching.
 
 When you do so, LibreChat will correctly switch the deployment, while associating the correct max context per model, if you have the following environment variable set:
 
@@ -542,7 +540,6 @@ AZURE_USE_MODEL_AS_DEPLOYMENT_NAME=TRUE
 For example, when you have set `AZURE_USE_MODEL_AS_DEPLOYMENT_NAME=TRUE`, the following deployment configuration provides the most seamless, error-free experience for LibreChat, including Vision support and tracking the correct max context tokens:
 
 ![Screenshot 2023-12-18 111742](https://github.com/danny-avila/LibreChat/assets/110412045/4aa8a61c-0317-4681-8262-a6382dcaa7b0)
-
 
 Alternatively, you can use custom deployment names and set `AZURE_OPENAI_DEFAULT_MODEL` for expected functionality.
 
@@ -619,6 +616,7 @@ AZURE_OPENAI_BASEURL=https://gateway.ai.cloudflare.com/v1/ACCOUNT_TAG/GATEWAY/az
 Setting these values will override all of the application's internal handling of the instance and deployment names and use your specified base URL.
 
 **Notes:**
+
 - You should still provide the `AZURE_OPENAI_API_VERSION` and `AZURE_API_KEY` via the .env file as they are programmatically added to the requests.
 - When specifying instance and deployment names in the `AZURE_OPENAI_BASEURL`, their respective environment variables can be omitted (`AZURE_OPENAI_API_INSTANCE_NAME` and `AZURE_OPENAI_API_DEPLOYMENT_NAME`) except for use with Plugins.
 - Specifying instance and deployment names in the `AZURE_OPENAI_BASEURL` instead of placeholders creates conflicts with "plugins," "vision," "default-model," and "model-as-deployment-name" support.
@@ -640,7 +638,6 @@ This will work seamlessly as it does with the [OpenAI endpoint](#openai) (no nee
 
 Alternatively, you can set the [required variables](#required-variables) to explicitly use your vision deployment, but this may limit you to exclusively using your vision deployment for all Azure chat settings.
 
-
 **Notes:**
 
 - If using `AZURE_OPENAI_BASEURL`, you should not specify instance and deployment names instead of placeholders as the vision request will fail.
@@ -648,15 +645,14 @@ Alternatively, you can set the [required variables](#required-variables) to expl
 
 ![image](https://github.com/danny-avila/LibreChat/assets/110412045/7306185f-c32c-4483-9167-af514cc1c2dd)
 
-
 > Note: a change will be developed to improve current configuration settings, to allow multiple deployments/model configurations setup with ease: **[#1390](https://github.com/danny-avila/LibreChat/issues/1390)**
 
 **Optional Variables (legacy)**
 
-*These variables are currently not used by LibreChat*
+_These variables are currently not used by LibreChat_
 
-* `AZURE_OPENAI_API_COMPLETIONS_DEPLOYMENT_NAME`: The deployment name for completion. This is currently not in use but may be used in future.
-* `AZURE_OPENAI_API_EMBEDDINGS_DEPLOYMENT_NAME`: The deployment name for embedding. This is currently not in use but may be used in future.
+- `AZURE_OPENAI_API_COMPLETIONS_DEPLOYMENT_NAME`: The deployment name for completion. This is currently not in use but may be used in future.
+- `AZURE_OPENAI_API_EMBEDDINGS_DEPLOYMENT_NAME`: The deployment name for embedding. This is currently not in use but may be used in future.
 
 These two variables are optional but may be used in future updates of this project.
 
@@ -666,8 +662,8 @@ Note: To use the Plugins endpoint with Azure OpenAI, you need a deployment suppo
 
 To use Azure with the Plugins endpoint, make sure the following environment variables are set:
 
-* `PLUGINS_USE_AZURE`: If set to "true" or any truthy value, this will enable the program to use Azure with the Plugins endpoint.
-* `AZURE_API_KEY`: Your Azure API key must be set with an environment variable.
+- `PLUGINS_USE_AZURE`: If set to "true" or any truthy value, this will enable the program to use Azure with the Plugins endpoint.
+- `AZURE_API_KEY`: Your Azure API key must be set with an environment variable.
 
 **Important:**
 

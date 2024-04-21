@@ -11,7 +11,7 @@ As LibreChat has varying use cases and environment possibilities, this page will
 
 ### Basic Authentication (Basic Auth)
 
-Basic Authentication is a simple authentication scheme built into the HTTP protocol. When a client sends a request to a server, the server can respond with a `401 Unauthorized` status code, prompting the client to provide a username and password. This username and password are then sent with subsequent requests in the HTTP header, encoded in Base64 format. 
+Basic Authentication is a simple authentication scheme built into the HTTP protocol. When a client sends a request to a server, the server can respond with a `401 Unauthorized` status code, prompting the client to provide a username and password. This username and password are then sent with subsequent requests in the HTTP header, encoded in Base64 format.
 
 For example, if the username is `Aladdin` and the password is `open sesame`, the client sends:
 
@@ -35,7 +35,7 @@ The reason is that LibreChat uses Bearer authentication when calling the backend
 
 The solution is to enable Basic Auth, but disable it specifically for the /api/ endpoint. (it's safe because the API calls still require an authenticated user)
 
-You will therefore need to create a new rule that disables Basic Auth for /api/. This rule must be higher priority than the rule activating Basic Auth. 
+You will therefore need to create a new rule that disables Basic Auth for /api/. This rule must be higher priority than the rule activating Basic Auth.
 
 ### Nginx Configuration
 

@@ -1,45 +1,31 @@
-import React from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { GeistSans } from "geist/font/sans";
-import {
-  DocsThemeConfig,
-  useConfig,
-  ThemeSwitch,
-} from "nextra-theme-docs";
-import { 
-  Steps,
-  Tabs,
-  Cards,
-  FileTree,
-  Button,
-} from 'nextra/components'
+import React from 'react'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { GeistSans } from 'geist/font/sans'
+import { DocsThemeConfig, useConfig, ThemeSwitch } from 'nextra-theme-docs'
+import { Steps, Tabs, Cards, FileTree, Button } from 'nextra/components'
 import { Callout } from '@/components/callouts/callout'
 import Carousel from '@/components/carousel/Carousel'
-import { Logo } from "@/components/logo";
-import { Frame } from "./components/Frame";
-import FooterMenu from "./components/FooterMenu";
+import { Logo } from '@/components/logo'
+import { Frame } from './components/Frame'
+import FooterMenu from './components/FooterMenu'
 
 const config: DocsThemeConfig = {
   logo: <Logo />,
-  logoLink: "/",
+  logoLink: '/',
   project: {
     link: 'https://github.com/danny-avila/LibreChat',
   },
   chat: {
-    link: 'https:discord.librechat.ai'
+    link: 'https:discord.librechat.ai',
   },
   search: {
-    placeholder: "Search...",
+    placeholder: 'Search...',
   },
   navbar: {
     extraContent: () => {
-      return (
-        <>
-          {ThemeSwitch({ lite: true, className: 'button-switch theme-switch' })}
-        </>
-      )
-    }
+      return <>{ThemeSwitch({ lite: true, className: 'button-switch theme-switch' })}</>
+    },
   },
   sidebar: {
     defaultMenuCollapseLevel: 1,
@@ -47,42 +33,42 @@ const config: DocsThemeConfig = {
   },
 
   editLink: {
-    content: "Edit this page on GitHub",
+    content: 'Edit this page on GitHub',
   },
   toc: {
-    backToTop: true
+    backToTop: true,
   },
-  docsRepositoryBase: "https://github.com/danny-avila/LibreChat-Docs/tree/main", //TODO: Update URL
+  docsRepositoryBase: 'https://github.com/danny-avila/LibreChat-Docs/tree/main', //TODO: Update URL
   footer: {
     content: <FooterMenu />,
   },
 
   head: () => {
-    const { asPath, defaultLocale, locale } = useRouter();
-    const { frontMatter, title: pageTitle } = useConfig();
-    const url =
-      "https://librechat.ai" +
-      (defaultLocale === locale ? asPath : `/${locale}${asPath}`);
+    const { asPath, defaultLocale, locale } = useRouter()
+    const { frontMatter, title: pageTitle } = useConfig()
+    const url = 'https://librechat.ai' + (defaultLocale === locale ? asPath : `/${locale}${asPath}`)
 
-    const description = frontMatter.description ?? "";
+    const description = frontMatter.description ?? ''
 
-    const title = frontMatter.title ?? pageTitle;
+    const title = frontMatter.title ?? pageTitle
 
-    const section = asPath.startsWith("/docs")
-      ? "Docs"
-      : asPath.startsWith("/blog/")
-      ? "Blog"
-      : asPath.startsWith("/changelog/")
-      ? "Changelog"
-      : "";
+    //TODO: use or remove:
+    // eslint-disable-next-line
+    const section = asPath.startsWith('/docs')
+      ? 'Docs'
+      : asPath.startsWith('/blog/')
+        ? 'Blog'
+        : asPath.startsWith('/changelog/')
+          ? 'Changelog'
+          : ''
 
     const image = frontMatter.ogImage
-      ? "https://nextra.librechat.cfd" + frontMatter.ogImage //TODO Update URL
-      : `/images/banner.png`;
+      ? 'https://nextra.librechat.cfd' + frontMatter.ogImage //TODO Update URL
+      : `/images/banner.png`
 
     const video = frontMatter.ogVideo
-      ? "https://nextra.librechat.cfd" + frontMatter.ogVideo //TODO Update URL
-      : null;
+      ? 'https://nextra.librechat.cfd' + frontMatter.ogVideo //TODO Update URL
+      : null
 
     return (
       <>
@@ -111,25 +97,11 @@ const config: DocsThemeConfig = {
           }}
         />
 
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
-        />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
       </>
-    );
+    )
   },
   components: {
     Frame,
@@ -142,19 +114,17 @@ const config: DocsThemeConfig = {
     Carousel,
   },
   banner: {
-    key: "new-docs",
+    key: 'new-docs',
     dismissible: true,
     content: (
       <Link href="#">
         {/* mobile */}
         <span className="sm:hidden">Welcome to the new LibreChat home! 👋</span>
         {/* desktop */}
-        <span className="hidden sm:inline">
-          Welcome to the new LibreChat home! 👋
-        </span>
+        <span className="hidden sm:inline">Welcome to the new LibreChat home! 👋</span>
       </Link>
     ),
   },
-};
+}
 
-export default config;
+export default config

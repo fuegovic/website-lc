@@ -4,24 +4,29 @@ title: ⚠️ Breaking Changes v0.6.10+
 description: Breaking Changes for the v0.6.10+ release of LibreChat
 ---
 
-import { ChangelogHeader } from "@/components/changelog/ChangelogHeader";
+import { ChangelogHeader } from '@/components/changelog/ChangelogHeader'
 
 <ChangelogHeader />
 
 ---
 
-<Callout type="info" title="Meilisearch v1.7" emoji='🔍'>
-- **Meilisearch Update**: Following the recent update to Meilisearch, an unused folder named `meili_data_v1.6` may be present in your root directory. This folder is no longer required and **can be safely deleted** to free up space.
-- **New Indexing Data Location**: With the current Meilisearch version `1.7.3`, the new indexing data location folder will be `meili_data_v1.7`.
+<Callout type="info" title="Meilisearch v1.7" emoji="🔍">
+  - **Meilisearch Update**: Following the recent update to Meilisearch, an unused folder named
+  `meili_data_v1.6` may be present in your root directory. This folder is no longer required and
+  **can be safely deleted** to free up space. - **New Indexing Data Location**: With the current
+  Meilisearch version `1.7.3`, the new indexing data location folder will be `meili_data_v1.7`.
 </Callout>
 
-<Callout type="info" title="Meilisearch v1.6" emoji='🔍'>
-- **Meilisearch Update**: Following the recent update to Meilisearch, an unused folder named `meili_data_v1.5` may be present in your root directory. This folder is no longer required and **can be safely deleted** to free up space.
-- **New Indexing Data Location**: With the current Meilisearch version `1.6`, the new indexing data location folder will be `meili_data_v1.6`.
+<Callout type="info" title="Meilisearch v1.6" emoji="🔍">
+  - **Meilisearch Update**: Following the recent update to Meilisearch, an unused folder named
+  `meili_data_v1.5` may be present in your root directory. This folder is no longer required and
+  **can be safely deleted** to free up space. - **New Indexing Data Location**: With the current
+  Meilisearch version `1.6`, the new indexing data location folder will be `meili_data_v1.6`.
 </Callout>
 
 <Callout type="error" title="Ninja 🥷🪦">
-- Following to the shut down of "Ninja", the ChatGPTbrowser endpoint is no longer available in LibreChat.
+  - Following to the shut down of "Ninja", the ChatGPTbrowser endpoint is no longer available in
+  LibreChat.
 </Callout>
 
 <Callout type="warning" title="`docker-compose.yml` Update" emoji='🐋'>
@@ -33,14 +38,15 @@ Here's an example of the `docker-compose.override.yml`:
 version: '3.4'
 
 services:
-    api:
-    image: librechat
-    build:
-        context: .
-        target: node
+  api:
+  image: librechat
+  build:
+    context: .
+    target: node
 ```
 
 For more detailed information on using the `docker-compose.override.yaml`, please refer to our documentation: [docker_override](https://docs.librechat.ai/install/configuration/docker_override.html)
+
 </Callout>
 
 <Callout type="note" title="Söhne Font Licensing Issue">
@@ -55,4 +61,5 @@ LibreChat remains committed to ensuring compliance, accessibility, and continuou
 We appreciate your understanding and cooperation in making these necessary adjustments. For updates or guidance on implementing these changes, please reach out.
 
 Thank you for your continued support of LibreChat.
+
 </Callout>

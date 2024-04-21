@@ -1,8 +1,8 @@
 ---
 title: Contributing to Blog (and Changelog)
 date: 2024/04/17
-description: "Quick guide to get you started with the Blog (and Changelog)"
-tags: 
+description: 'Quick guide to get you started with the Blog (and Changelog)'
+tags:
   - website
   - blog
   - tutorial
@@ -10,7 +10,7 @@ authorid: fuegovic
 ogImage: /images/blog/2024-04-17_blog_guide.png
 ---
 
-import { BlogHeader } from "@/components/blog/BlogHeader";
+import { BlogHeader } from '@/components/blog/BlogHeader'
 
 <BlogHeader />
 
@@ -27,14 +27,16 @@ import { BlogHeader } from "@/components/blog/BlogHeader";
 Everyone is welcome to contribute to the blog! It is the perfect place to gather information that might change over time, or that can't be maintained by the team. Here's how to get started.
 
 ### Author Profile
+
 Before creating your first post, you'll need an author profile.
 
-<Callout title="Prefer to stay anonymous?"> 
-If you really don't want to create a user profile, there's an "anon" profile you can attach to your blog post:
-- `authorid: anon`
+<Callout title="Prefer to stay anonymous?">
+  If you really don't want to create a user profile, there's an "anon" profile you can attach to
+  your blog post: - `authorid: anon`
 </Callout>
 
 To create an author profile:
+
 - Create the profile page in `pages/authors`.
 - Name the file following this format: `authorid.mdx`.
 - Add your profile picture in `public/images/people`.
@@ -47,7 +49,7 @@ authorid: your-authorid
 subtitle: Job Title or Short Description
 name: Your Name
 bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla litora ridiculus magna et etiam mi. Dolor etiam id elit morbi ipsum mauris. Non dapibus urna platea elementum fusce vulputate.
-ogImage: "/images/people/your-image.png"
+ogImage: '/images/people/your-image.png'
 socials:
   GitHub: https://github.librechat.ai
   LinkedIn: https://linkedin.librechat.ai/
@@ -56,46 +58,50 @@ socials:
   YouTube: https://www.youtube.com/@LibreChat
 ---
 
-import AuthorProfile from "@/components/Author/AuthorProfile";
+import AuthorProfile from '@/components/Author/AuthorProfile'
 
 <AuthorProfile authorId="your-authorid" />
 ```
 
 <Callout type="tip" title="Tip">
-Use the other authorid files in `pages/authors` as reference.
+  Use the other authorid files in `pages/authors` as reference.
 </Callout>
 
 ### Make your first blog post!
+
 We are using MDX for the blog. MDX allows you to use JSX in your markdown content. You can import components, such as interactive charts or alerts, and embed them within your content.
 
 For more info, see: https://mdxjs.com/
 
 - Blog post thumbnail image (required)
+
   - Use either an image hosted on GitHub or place your image(s) in `public/images/blog`.
   - Use the same name for your thumbnail image and your blog post file.
   - If you want to include more images than just the thumbnail, make a folder with the same name as your blog post MDX file and put all images (including the thumbnail) in that folder.
 
 - The blog posts are placed in `pages/blog`.
 - Use the following naming scheme to keep it organized: "date-short_title".
+
   - `yyyy-mm-dd_short_title.mdx`
 
 - Add the metadata and the header to your new document:
 
   ```mdx filename="metadata and header"
-    ---
-    title: Your Awesome Title
-    date: 2024/01/01
-    description: "Short description of the blog post"
-    tags: 
-      - tag1
-      - tag2
-    authorid: your-authorid
-    ogImage: /images/blog/2024-01-01_your_awesome_title.png
-    ---
+  ---
 
-    import { BlogHeader } from "@/components/blog/BlogHeader";
+  title: Your Awesome Title
+  date: 2024/01/01
+  description: "Short description of the blog post"
+  tags: - tag1 - tag2
+  authorid: your-authorid
+  ogImage: /images/blog/2024-01-01_your_awesome_title.png
 
-    <BlogHeader />
+  ---
+
+  import { BlogHeader } from "@/components/blog/BlogHeader";
+
+  {' '}
+  <BlogHeader />
   ```
 
 - **Start writing!** 🧑‍💻
@@ -106,11 +112,13 @@ For more info, see: https://mdxjs.com/
 ### Before you submit a PR for your blog post, **always** test to make sure everything looks fine.
 
 #### Look at:
-- Your author profile 
+
+- Your author profile
 - The blog landing page
 - Your blog post
 
 #### How to test:
+
 - Prepare the environment
   - `pnpm install`
 - Run the dev server
@@ -130,7 +138,7 @@ The procedure is basically the same as with the blog posts, with a couple of not
 - Post location: `pages/changelog`.
 - Thumbnail: optional, but should be included for major releases.
   - Thumbnail location: `public/images/changelog`.
-- Filename: 
+- Filename:
   - Changelog: `v0.0.0.mdx`.
   - Breaking changes: `v0.0.0-breaking-changes.mdx`.
 - No author profile necessary.
@@ -138,37 +146,44 @@ The procedure is basically the same as with the blog posts, with a couple of not
 - Changelog Metadata and Header:
 
   ```mdx filename="changelog metadata and header"
-    ---
-    date: 1999/01/01
-    title: 🚀 LibreChat v0.0.0
-    description: The v0.0.0 release of LibreChat
-    ogImage: /images/changelog/v0.0.0.png
-    ---
+  ---
 
-    import { ChangelogHeader } from "@/components/changelog/ChangelogHeader";
+  date: 1999/01/01
+  title: 🚀 LibreChat v0.0.0
+  description: The v0.0.0 release of LibreChat
+  ogImage: /images/changelog/v0.0.0.png
 
-    <ChangelogHeader />
+  ---
 
-    ---
+  import { ChangelogHeader } from "@/components/changelog/ChangelogHeader";
+
+  {' '}
+  <ChangelogHeader />
+
+  ---
   ```
 
 - Breaking Changes Metadata and Header:
 
   ```mdx filename="breaking changes metadata and header"
-    ---
-    date: 1999/01/02
-    title: ⚠️ Breaking Changes v0.0.0+
-    description: Breaking Changes for the v0.0.0+ release of LibreChat
-    ---
+  ---
 
-    import { ChangelogHeader } from "@/components/changelog/ChangelogHeader";
+  date: 1999/01/02
+  title: ⚠️ Breaking Changes v0.0.0+
+  description: Breaking Changes for the v0.0.0+ release of LibreChat
 
-    <ChangelogHeader />
+  ---
 
-    ---
+  import { ChangelogHeader } from "@/components/changelog/ChangelogHeader";
+
+  {' '}
+  <ChangelogHeader />
+
+  ---
   ```
 
 <Callout type="note" title="Notes:">
-- Breaking changes posts are dated one day after the changelog posts.
-- Use a separator: `---` after the header: `<ChangelogHeader />`.
+  - Breaking changes posts are dated one day after the changelog posts. - Use a separator: `---`
+  after the header: `<ChangelogHeader />
+  `.
 </Callout>

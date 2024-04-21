@@ -9,6 +9,7 @@ weight: 10
 This guide covers the essential steps for securing your LibreChat deployment with an SSL/TLS certificate for HTTPS, setting up Nginx as a reverse proxy, and configuring your domain.
 
 ## FAQ
+
 ### Why do I need reverse proxy?
 
 A reverse proxy is a server that sits between clients and the web servers that host actual applications. It forwards client requests to the back-end servers and returns the server's response to the client. Using a reverse proxy in deployment can enhance security, load balancing, and caching. It hides the characteristics and origins of the back-end servers, providing an additional layer of defense against attacks. Additionally, it can distribute traffic among several servers, improving performance and scalability.
@@ -35,19 +36,21 @@ By configuring HTTPS in Nginx, you ensure that your application benefits from en
 4. Node.js and NPM installed on your server.
 
 ## Initial Setup
+
 ### Pointing Your Domain to Your Website
 
 Before proceeding with certificate acquisition, it's crucial to direct your domain to your cloud server. This step is foundational and must precede SSL certificate setup due to the time DNS records may require to propagate globally. Ensure that this DNS configuration is fully operational before moving forward.
 
 ### Configure DNS:
 
-   - Log in to your domain registrar's control panel.
-   - Navigate to DNS settings.
-   - Create an `A record` pointing your domain to the IP address of your cloud server.
+- Log in to your domain registrar's control panel.
+- Navigate to DNS settings.
+- Create an `A record` pointing your domain to the IP address of your cloud server.
 
 ### Verify Domain Propagation
-   - It may take some time for DNS changes to propagate.
-   - You can check the status by pinging your domain: `ping your_domain.com`
+
+- It may take some time for DNS changes to propagate.
+- You can check the status by pinging your domain: `ping your_domain.com`
 
 Comment: remember to replace `your_domain.com` with your actual domain name.
 
@@ -56,13 +59,15 @@ Comment: remember to replace `your_domain.com` with your actual domain name.
 To secure your LibreChat application with HTTPS, you'll need an SSL/TLS certificate. Let's Encrypt offers free certificates:
 
 ### Install Certbot
-   - For Ubuntu: `sudo apt-get install certbot python3-certbot-nginx` (You might need to run 'sudo apt update' for this to work)
-   - For CentOS: `sudo yum install certbot python2-certbot-nginx`
+
+- For Ubuntu: `sudo apt-get install certbot python3-certbot-nginx` (You might need to run 'sudo apt update' for this to work)
+- For CentOS: `sudo yum install certbot python2-certbot-nginx`
 
 ### Obtain the Certificate
-   - Run `sudo certbot --nginx` to obtain and install the certificate automatically for NGINX.
-   - Follow the on-screen instructions. Certbot will ask for information and complete the validation process.
-   - Once successful, Certbot will store your certificate files.
+
+- Run `sudo certbot --nginx` to obtain and install the certificate automatically for NGINX.
+- Follow the on-screen instructions. Certbot will ask for information and complete the validation process.
+- Once successful, Certbot will store your certificate files.
 
 ## Set Up NGINX as a Reverse Proxy
 
@@ -294,8 +299,8 @@ server {
 
 **Check NGINX Configuration & Restart**:
 
-   - Validate the configuration: `sudo nginx -t`
-   - Reload NGINX: `sudo systemctl reload nginx`
+- Validate the configuration: `sudo nginx -t`
+- Reload NGINX: `sudo systemctl reload nginx`
 
 ## Run the application
 

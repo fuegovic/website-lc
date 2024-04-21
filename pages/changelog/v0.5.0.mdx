@@ -5,7 +5,7 @@ description: Introducing Plugins via LangChain 🦜️
 ogImage: /images/changelog/v0.5.0.png
 ---
 
-import { ChangelogHeader } from "@/components/changelog/ChangelogHeader";
+import { ChangelogHeader } from '@/components/changelog/ChangelogHeader'
 
 <ChangelogHeader />
 
@@ -13,7 +13,7 @@ import { ChangelogHeader } from "@/components/changelog/ChangelogHeader";
 
 **Full Changelog**: https://github.com/danny-avila/LibreChat/compare/v0.4.8...v0.5.0
 
-#### The following contributors were crucial for this release: [@danny-avila](https://github.com/danny-avila) [@fuegovic](https://github.com/fuegovic) [@danorlando](https://github.com/danorlando) [@ClaraLeigh](https://github.com/ClaraLeigh) [@dncc89](https://github.com/dncc89) 
+#### The following contributors were crucial for this release: [@danny-avila](https://github.com/danny-avila) [@fuegovic](https://github.com/fuegovic) [@danorlando](https://github.com/danorlando) [@ClaraLeigh](https://github.com/ClaraLeigh) [@dncc89](https://github.com/dncc89)
 
 ---
 
@@ -21,37 +21,39 @@ import { ChangelogHeader } from "@/components/changelog/ChangelogHeader";
 
 The first step is using chain-of-thought prompting for using plugins/tools in a fashion mimicing the official ChatGPT Plugins feature.
 
-**More than this, you can use this endpoint for changing your conversation settings mid-conversation.** Unlike the official ChatGPT site and all other endpoints, you can switch models, presets, and settings mid-convo, even when you have no plugins selected. This is useful if you first want a creative response from GPT-4, and then a deterministic, lower cost response from GPT-3. 
+**More than this, you can use this endpoint for changing your conversation settings mid-conversation.** Unlike the official ChatGPT site and all other endpoints, you can switch models, presets, and settings mid-convo, even when you have no plugins selected. This is useful if you first want a creative response from GPT-4, and then a deterministic, lower cost response from GPT-3.
 
 Soon, you will be able to use Local LLMs, PaLM2 and HuggingFace models, all in this endpoint in the same modular manner.
 
 ---
 
 ## Immediate Roadmap
+
 - **Vector Indexing & Memory - Chat with Documents**
-    - Starting work
+  - Starting work
 - **Python API to utilize Most up-to-date Python Features/Tools (including Langchain & more)**
-    - already in progress: https://github.com/danny-avila/ai-services
+  - already in progress: https://github.com/danny-avila/ai-services
 - **OpenAPI Support (ChatGPT plugins)**
-    - already in progress, testing working method
+  - already in progress, testing working method
 - **Local LLM Support**
-    - in planning phase, methods already outlined
+  - in planning phase, methods already outlined
 - **HuggingFace Models Support**
-    - in planning phase, methods already outlined
+  - in planning phase, methods already outlined
 - **Code-Bison Compatibility**
-    - in planning phase, methods already outlined
+  - in planning phase, methods already outlined
 - **More tests and CI/CD pipeline**
-    - already in progress, multiple test suites across the full stack are added with this update
+  - already in progress, multiple test suites across the full stack are added with this update
 
 ℹ️ If you would like to contribute to any of the above or in any other capacity, we will be adding all of these tasks & more to our GitHub Projects tab very soon. Please also join our [discord](https://discord.gg/CEe6vDg9Ky) for developer discussion.
 
-**Note:** You can now close registration by either omitting this env variable or setting it to false 
+**Note:** You can now close registration by either omitting this env variable or setting it to false
 
 ```sh
 ALLOW_REGISTRATION=true
 ```
 
 ## ⚠️ **Breaking Changes** ⚠️
+
 Note: These changes only apply to users who are updating from a previous version of the app.
 
 - We have simplified the configuration process by using a single `.env` file in the root folder instead of separate `/api/.env` and `/client/.env` files.

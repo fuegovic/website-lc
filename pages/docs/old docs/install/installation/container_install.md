@@ -12,12 +12,13 @@ If you don't like docker compose, don't want a bare-metal installation, but stil
 
 **Important:** `docker` and `podman` commands are for the most part, interoperable and interchangeable. The code instructions below will use (and heavily favor) `podman`.
 
-##  Creating the base image
+## Creating the base image
 
 Since LibreChat is very active in development, it's recommended for now to build
 the image locally for the container you plan on using. Thankfully this is easy enough to do.
 
 In your target directory, run the following:
+
 ```bash
 git clone https://github.com/danny-avila/LibreChat
 ```
@@ -88,7 +89,7 @@ podman run \
   mongod --noauth;
 ```
 
-## Meilisearch 
+## Meilisearch
 
 Install and boot the melisearch container with the following command:
 
@@ -103,6 +104,7 @@ podman run \
 ```
 
 ## Starting LibreChat
+
 ```bash
 podman run \
   --name="librechat" \
@@ -130,6 +132,7 @@ To use this method you need to run the following commands:
 
 First, let's stop any running containers related to LibreChat:
 s
+
 ```bash
 podman stop librechat librechat-mongodb librechat-meilisearch
 ```
@@ -160,9 +163,9 @@ chmod +x ./install.sh
 Assuming we aren't running those LibreChat containers from before, we can enable on-boot services for each of them using the following:
 
 ```bash
-./install.sh librechat-mongodb 
-./install.sh librechat-meilisearch 
-./install.sh librechat 
+./install.sh librechat-mongodb
+./install.sh librechat-meilisearch
+./install.sh librechat
 ```
 
 The containers (assuming everything was done to par), will be now running using the systemd layer instead of the podman layer. This means services will load on boot, but also means managing these containers is a little more manual and requires interacting with systemd instead of podman directly.
@@ -224,7 +227,7 @@ podman stop librechat && systemctl --user start container-librechat
 
 ## Integrating the Configuration File in Podman Setup
 
-When using Podman for setting up LibreChat, you can also integrate the [`librechat.yaml` configuration file](../configuration/custom_config.md). 
+When using Podman for setting up LibreChat, you can also integrate the [`librechat.yaml` configuration file](../configuration/custom_config.md).
 
 This file allows you to define specific settings and AI endpoints, such as Mistral AI, tailoring the application to your needs.
 
@@ -252,10 +255,10 @@ podman run \
 
 By mapping the `librechat.yaml` file into the container, Podman ensures that your custom configurations are applied to LibreChat, enabling a tailored AI experience.
 
-Ensure that the `librechat.yaml` file is correctly formatted and contains valid settings. 
+Ensure that the `librechat.yaml` file is correctly formatted and contains valid settings.
 
 Any errors in this file might affect the functionality of LibreChat. For more information on configuring `librechat.yaml`, refer to the [configuration guide](../configuration/custom_config.md).
 
 ---
 
->⚠️ Note: If you're having trouble, before creating a new issue, please search for similar ones on our [#issues thread on our discord](https://discord.librechat.ai) or our [troubleshooting discussion](https://github.com/danny-avila/LibreChat/discussions/categories/troubleshooting) on our Discussions page. If you don't find a relevant issue, feel free to create a new one and provide as much detail as possible.
+> ⚠️ Note: If you're having trouble, before creating a new issue, please search for similar ones on our [#issues thread on our discord](https://discord.librechat.ai) or our [troubleshooting discussion](https://github.com/danny-avila/LibreChat/discussions/categories/troubleshooting) on our Discussions page. If you don't find a relevant issue, feel free to create a new one and provide as much detail as possible.

@@ -1,4 +1,3 @@
-
 .feature {
   position: relative;
   padding: 1.5rem 1.75rem;
@@ -100,7 +99,7 @@
     max-width: 80vw;
     width: 100%;
   }
-  .feature.medium{
+  .feature.medium {
     grid-column: span 1;
   }
   .feature.large {

@@ -1,15 +1,15 @@
-import { cn } from "@/lib/utils";
-import { useId } from "react";
+import { cn } from '@/lib/utils'
+import { useId } from 'react'
 
 interface GridPatternProps {
-  width?: any;
-  height?: any;
-  x?: any;
-  y?: any;
-  squares?: Array<[x: number, y: number]>;
-  strokeDasharray?: any;
-  className?: string;
-  [key: string]: any;
+  width?: any
+  height?: any
+  x?: any
+  y?: any
+  squares?: Array<[x: number, y: number]>
+  strokeDasharray?: any
+  className?: string
+  [key: string]: any
 }
 
 export function GridPattern({
@@ -22,31 +22,20 @@ export function GridPattern({
   className,
   ...props
 }: GridPatternProps) {
-  const id = useId();
+  const id = useId()
 
   return (
     <svg
       aria-hidden="true"
       className={cn(
-        "pointer-events-none absolute inset-0 h-full w-full fill-gray-400/30 stroke-gray-400/30",
-        className
+        'pointer-events-none absolute inset-0 h-full w-full fill-gray-400/30 stroke-gray-400/30',
+        className,
       )}
       {...props}
     >
       <defs>
-        <pattern
-          id={id}
-          width={width}
-          height={height}
-          patternUnits="userSpaceOnUse"
-          x={x}
-          y={y}
-        >
-          <path
-            d={`M.5 ${height}V.5H${width}`}
-            fill="none"
-            strokeDasharray={strokeDasharray}
-          />
+        <pattern id={id} width={width} height={height} patternUnits="userSpaceOnUse" x={x} y={y}>
+          <path d={`M.5 ${height}V.5H${width}`} fill="none" strokeDasharray={strokeDasharray} />
         </pattern>
       </defs>
       <rect width="100%" height="100%" strokeWidth={0} fill={`url(#${id})`} />
@@ -65,5 +54,5 @@ export function GridPattern({
         </svg>
       )}
     </svg>
-  );
+  )
 }

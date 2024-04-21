@@ -3,6 +3,7 @@ title: 🔖 Presets
 description: The "presets" feature in our app is a powerful tool that allows users to save and load predefined settings for their conversations. Users can import and export these presets as JSON files, set a default preset, and share them with others on Discord.
 weight: -9
 ---
+
 # Guide to Using the "Presets" Feature
 
 The "presets" feature in our app is a powerful tool that allows users to save and load predefined settings for their conversations. Users can import and export these presets as JSON files, set a default preset, and share them with others on Discord.
@@ -31,38 +32,46 @@ The "presets" feature in our app is a powerful tool that allows users to save an
 
 ![image](https://github.com/danny-avila/LibreChat/assets/32828263/76ad8db4-a949-4633-8a5f-f9e8358d57f3)
 
-- Now you can select it from the preset menu! 
+- Now you can select it from the preset menu!
 
 ![image](https://github.com/danny-avila/LibreChat/assets/32828263/81271990-2739-4f5c-b1a5-7d7deeaa385c)
 
 ## Parameters Explained:
 
 - **Preset Name:**
+
   - This is where you name your preset for easy identification.
 
 - **Endpoint:**
+
   - Choose the endpoint, such as openAI, that you want to use for processing the conversation.
 
 - **Model:**
+
   - Select the model like `gpt-3.5-turbo` that will be used for generating responses.
 
 - **Custom Name:**
+
   - Optionally provide a custom name for your preset. This is the name that will be shown in the UI when using it.
 
 - **Custom Instructions:**
+
   - Define instructions or guidelines that will be displayed before each prompt to guide the user in providing input.
 
 - **Temperature:**
+
   - Adjust this parameter to control the randomness of the model's output. A higher value makes the output more random, while a lower value makes it more focused and deterministic.
 
 - **Top P:**
+
   - Control the nucleus sampling parameter to influence the diversity of generated text. Lower values make text more focused while higher values increase diversity.
 
 - **Frequency Penalty:**
+
   - Use this setting to penalize frequently occurring tokens and promote diversity in responses.
 
 - **Presence Penalty:**
-   - Adjust this parameter to penalize new tokens that are introduced into responses, controlling repetition and promoting consistency.
+  - Adjust this parameter to penalize new tokens that are introduced into responses, controlling repetition and promoting consistency.
 
 ## Importing/Exporting Presets
 

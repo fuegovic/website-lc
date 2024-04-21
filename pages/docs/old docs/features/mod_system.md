@@ -3,7 +3,9 @@ title: 🔨 Automated Moderation
 description: The Automated Moderation System uses a scoring mechanism to track user violations. As users commit actions like excessive logins, registrations, or messaging, they accumulate violation scores. Upon reaching a set threshold, the user and their IP are temporarily banned. This system ensures platform security by monitoring and penalizing rapid or suspicious activities.
 weight: -7
 ---
+
 ## Automated Moderation System (optional)
+
 The Automated Moderation System uses a scoring mechanism to track user violations. As users commit actions like excessive logins, registrations, or messaging, they accumulate violation scores. Upon reaching a set threshold, the user and their IP are temporarily banned. This system ensures platform security by monitoring and penalizing rapid or suspicious activities.
 
 In production, you should have Cloudflare or some other DDoS protection in place to really protect the server from excessive requests, but these changes will largely protect you from the single or several bad actors targeting your deployed instance for proxying.
@@ -11,7 +13,7 @@ In production, you should have Cloudflare or some other DDoS protection in place
 ### Notes
 
 - Uses Caching for basic security and violation logging (bans, concurrent messages, exceeding rate limits)
-    - In the near future, I will add **Redis** support for production instances, which can be easily injected into the current caching setup
+  - In the near future, I will add **Redis** support for production instances, which can be easily injected into the current caching setup
 - Exceeding any of the rate limiters (login/registration/messaging) is considered a violation, default score is 1
 - Non-browser origin is a violation
 - Default score for each violation is configurable
@@ -21,8 +23,8 @@ In production, you should have Cloudflare or some other DDoS protection in place
   - `violations.json` keeps track of the total count for each violation per user
   - `logs.json` records each individual violation per user
 - Ban logs are stored in MongoDB under the `logs` collection. They are transient as they only exist for the ban duration
-    - If you would like to remove a ban manually, you would have to remove them from the database manually and restart the server
-    - **Redis** support is also planned for this.
+  - If you would like to remove a ban manually, you would have to remove them from the database manually and restart the server
+  - **Redis** support is also planned for this.
 
 ### Rate Limiters
 
@@ -82,6 +84,7 @@ ILLEGAL_MODEL_REQ_SCORE=5 #Violation score to accrue if a user attempts to use a
 ## OpenAI moderation text
 
 ### OPENAI_MODERATION
+
 enable or disable OpenAI moderation
 
 Values:
@@ -89,9 +92,11 @@ Values:
 `false`: OpenAI moderation is disabled
 
 ### OPENAI_MODERATION_API_KEY
+
 Specify your OpenAI moderation API key here
 
 ### OPENAI_MODERATION_REVERSE_PROXY
+
 enable or disable reverse proxy compatibility for OpenAI moderation. Note that it may not work with some reverse proxies
 
 Values:

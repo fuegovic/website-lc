@@ -17,9 +17,9 @@ weight: 10
 
 ### **Create a Docker network for Traefik**
 
-   ```bash
-   docker network create web
-   ```
+```bash
+docker network create web
+```
 
 ### **Configure Traefik and LibreChat**
 
@@ -29,38 +29,38 @@ weight: 10
 version: '3'
 
 services:
-   api:
-     labels:
-       - "traefik.enable=true"
-       - "traefik.http.routers.librechat.rule=Host(`your.domain.name`)"
-       - "traefik.http.routers.librechat.entrypoints=websecure"
-       - "traefik.http.routers.librechat.tls.certresolver=leresolver"
-       - "traefik.http.services.librechat.loadbalancer.server.port=3080"
-     networks:
-       - librechat_default
-     volumes:
-       - ./librechat.yaml:/app/librechat.yaml
-  
-   traefik:
-     image: traefik:v2.9
-     ports:
-      - "80:80"
-      - "443:443"
-     volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock:ro"
-      - "./letsencrypt:/letsencrypt"
-     networks:
+  api:
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.librechat.rule=Host(`your.domain.name`)'
+      - 'traefik.http.routers.librechat.entrypoints=websecure'
+      - 'traefik.http.routers.librechat.tls.certresolver=leresolver'
+      - 'traefik.http.services.librechat.loadbalancer.server.port=3080'
+    networks:
       - librechat_default
-     command:
-      - "--log.level=DEBUG"
-      - "--api.insecure=true"
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
-      - "--entrypoints.web.address=:80"
-      - "--entrypoints.websecure.address=:443"
-      - "--certificatesresolvers.leresolver.acme.tlschallenge=true"
-      - "--certificatesresolvers.leresolver.acme.email=your@email.com"
-      - "--certificatesresolvers.leresolver.acme.storage=/letsencrypt/acme.json"
+    volumes:
+      - ./librechat.yaml:/app/librechat.yaml
+
+  traefik:
+    image: traefik:v2.9
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock:ro'
+      - './letsencrypt:/letsencrypt'
+    networks:
+      - librechat_default
+    command:
+      - '--log.level=DEBUG'
+      - '--api.insecure=true'
+      - '--providers.docker=true'
+      - '--providers.docker.exposedbydefault=false'
+      - '--entrypoints.web.address=:80'
+      - '--entrypoints.websecure.address=:443'
+      - '--certificatesresolvers.leresolver.acme.tlschallenge=true'
+      - '--certificatesresolvers.leresolver.acme.email=your@email.com'
+      - '--certificatesresolvers.leresolver.acme.storage=/letsencrypt/acme.json'
 
 # other configs here #
 
@@ -72,15 +72,15 @@ networks:
     external: true
 ```
 
-   Replace `your@email.com` with your email address for Let's Encrypt certificate notifications.
+Replace `your@email.com` with your email address for Let's Encrypt certificate notifications.
 
 ### **Start the containers**
 
-   ```bash
-   docker-compose up -d
-   ```
+```bash
+docker-compose up -d
+```
 
-   This will start Traefik and LibreChat containers. Traefik will automatically obtain an SSL/TLS certificate from Let's Encrypt and expose your LibreChat instance securely over HTTPS.
+This will start Traefik and LibreChat containers. Traefik will automatically obtain an SSL/TLS certificate from Let's Encrypt and expose your LibreChat instance securely over HTTPS.
 
 You can now access your LibreChat instance at `https://your.domain.name`. Traefik will handle SSL/TLS termination and reverse proxy requests to your LibreChat container.
 

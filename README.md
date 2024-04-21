@@ -27,12 +27,13 @@ Interested in stack of Q&A docs chatbot? Checkout the [blog post](https://langfu
 ## Notes / TODOs
 
 ### Author profiles
+
 - Profiles located in `pages\authors`
   - create a mdx file named with your authorid
   - look at the other profiles for examples
 - Authors Profile pics in: `public\images\people`
 - Supported socials for authors (react-social-icons):
-![Socials](https://camo.githubusercontent.com/bb10ce76806a2db855ae9411682342b31f2857ce8ab62b8c0a46d3c3cdb77fdf/68747470733a2f2f7374617469632e72656163742d736f6369616c2d69636f6e732e636f6d2f726561646d652d696d6167652e706e67)
+  ![Socials](https://camo.githubusercontent.com/bb10ce76806a2db855ae9411682342b31f2857ce8ab62b8c0a46d3c3cdb77fdf/68747470733a2f2f7374617469632e72656163742d736f6369616c2d69636f6e732e636f6d2f726561646d652d696d6167652e706e67)
 
 ### Changelogs/Blog Headers example
 
@@ -52,33 +53,34 @@ import { ChangelogHeader } from "@/components/changelog/ChangelogHeader";
 <ChangelogHeader />
 ```
 
-
 ### Email
+
 - ❌ UI: `pages\api\productUpdateSignup.ts`
 - ❌ sends a POST request to `pages\api\productUpdateSignup.ts` with the email and source data, and handles the response accordingly.
   - ❌ emails are sends to: `process.env.SLACK_WEBHOOK_URL`
 
-✅ Replaced with: `utils\dbConnect.js`, `utils\Subscriber.js`, `pages/api/subscribe.js`, 
-        - component: `components\NewsletterForm.js`
+✅ Replaced with: `utils\dbConnect.js`, `utils\Subscriber.js`, `pages/api/subscribe.js`, - component: `components\NewsletterForm.js`
+
 ```js
 import NewsletterForm from '@/components/NewsletterForm'
 
-<NewsletterForm />
+;<NewsletterForm />
 ```
 
 ### Q&A Chatbot
+
 - see: `pages\api\qa-chatbot.ts`
 
-
-
 ## //TODO:
+
 //TODO:
 
-### global 
-- ✔️  ~~fix tests 💀~~ (removed broken tests, lol)
+### global
+
+- ✔️ ~~fix tests 💀~~ (removed broken tests, lol)
 - ✔️ ~~Import authors for changelogs~~
 - ✔️ ~~clean up `/public`~~
-- ✔️ ~~double check mobile view (*authors)~~
+- ✔️ ~~double check mobile view (\*authors)~~
 - ✔️ ~~global import useful components~~
 - ✔️ ~~tweak 404~~
 - ✔️ ~~fix social cards in `about`~~
@@ -90,17 +92,20 @@ import NewsletterForm from '@/components/NewsletterForm'
 - // 📱 Double check mobile view
 
 ### newsletter
-- ✔️ ~~`ProductUpdateSignup` -subscribe to newsletter (unsubscribe)~~  
-- ✔️ ~~provide unsubscribe mechanism,~~ 
+
+- ✔️ ~~`ProductUpdateSignup` -subscribe to newsletter (unsubscribe)~~
+- ✔️ ~~provide unsubscribe mechanism,~~
 - ✔️ ~~make it pretty~~
 - ✔️ ~~Prevent multiple entries~~
 
 ### Pricing template page
+
 - ✔️ ~~template pricing page~~
-- ❔add payment support 💰 (Stripe?) 
+- ❔add payment support 💰 (Stripe?)
   - ❓ might be best to keep admin+payment on a separate private website
 
 ### WIP: // Blog update
+
 - ✔️ ~~fix "blog header" (make it look basically like the changelog header)~~
 - ✔️ ~~blog index~~
 - ✔️ ~~multiple tag support~~
@@ -114,19 +119,26 @@ import NewsletterForm from '@/components/NewsletterForm'
 - ✔️ ~~🥸 anon author profile~~
 
 ### Authors
+
 - ✔️ ~~👀 show blog posts by under bio~~
 - ❌ ~~🪁 tweak fallback icon for author's socials~~ Can't get any other icons to display properly 🤷‍♂️
 - ✔️ ~~☀️ light mode~~
-- // 🤷‍♂️ fix profile pic position when no bio  
+- // 🤷‍♂️ fix profile pic position when no bio
 
 ### changelogs
+
 - ✔️ ~~use transform on images instead of whatever is in place, see blogindex for example~~
 
 ### random docs //TODO and Notes:
+
 - // Contact Page?
 - // Footer update
 - // 📝 instruction for blog posts, (basically the same as the changelogs)
 - ✔️ ~~Hide "Pricing"~~
 - // add and organize docs (once the base properly is set)
-- // Add proper screenshots in `about` 
+- // Add proper screenshots in `about`
 - // update github URLs (when it's ready, before publishing)
+
+
+broken icon in light mode
+//TODO!!!!!!!!!!!!!!!

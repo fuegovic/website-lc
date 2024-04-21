@@ -3,13 +3,14 @@ title: 🧑‍💻 Tech Stack
 description: This doc describes the technologies and frameworks that LibreChat uses.
 weight: -8
 ---
+
 # Tech Stack
 
 ## This project uses:
 
-- JavaScript/TypeScript: The project was initially developed entirely in JavaScript (JS). The frontend is in the process of transitioning from JS to TypeScript (TS). The backend is currently in JS, and there are considerations for transitioning it to TS in the future. 
+- JavaScript/TypeScript: The project was initially developed entirely in JavaScript (JS). The frontend is in the process of transitioning from JS to TypeScript (TS). The backend is currently in JS, and there are considerations for transitioning it to TS in the future.
 
-- React: The frontend UI is built using React. 
+- React: The frontend UI is built using React.
 
 - Express.js: The backend server is built using Express.js.
 
@@ -34,4 +35,3 @@ weight: -8
 - Discord: Discord is used for community engagement and discussions.
 
 - Various Cloud Deployment Options: The project supports deployment on multiple cloud platforms including DigitalOcean, Azure, Linode, Cloudflare, Ngrok, HuggingFace, and Render.
-

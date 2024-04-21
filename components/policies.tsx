@@ -1,21 +1,18 @@
-import { Link } from "nextra-theme-docs";
+import { Link } from 'nextra-theme-docs'
 import { Button } from 'nextra/components'
 
 const PrivacyPolicy = () => {
   return (
     <main className="max-w-xl mx-auto">
       <div className="p-5">
-        <h1 className="text-3xl font-extrabold pb-6">
-          Privacy Policy for LibreChat
-        </h1>
+        <h1 className="text-3xl font-extrabold pb-6">Privacy Policy for LibreChat</h1>
 
-        <pre
-          className="leading-relaxed whitespace-pre-wrap"
-          style={{ fontFamily: 'sans-serif' }}
-        >
+        <pre className="leading-relaxed whitespace-pre-wrap" style={{ fontFamily: 'sans-serif' }}>
           {`Effective Date: February 18, 2024
 
-This Privacy Policy outlines the types of personal information that is received and collected by LibreChat`} <Link href="https://librechat.ai">https://librechat.ai</Link>{` and how it is used.
+This Privacy Policy outlines the types of personal information that is received and collected by LibreChat`}{' '}
+          <Link href="https://librechat.ai">https://librechat.ai</Link>
+          {` and how it is used.
 
 1. Information Collection
 
@@ -37,31 +34,32 @@ We may update this privacy policy from time to time. When we do, we will notify 
 
 5. Contact Us
 
-If you have any questions about this Privacy Policy, please contact us at`} <Link href="mailto:contact@librechat.ai">contact@librechat.ai</Link>{`. 
+If you have any questions about this Privacy Policy, please contact us at`}{' '}
+          <Link href="mailto:contact@librechat.ai">contact@librechat.ai</Link>
+          {`. 
 
 Your use of LibreChat indicates your agreement to this Privacy Policy.`}
         </pre>
       </div>
-      <Button onClick={() => window.open("/", '_self')}>← Go Back</Button>
+      <Button onClick={() => window.open('/', '_self')}>← Go Back</Button>
     </main>
-  );
-};
+  )
+}
 
 const TermsOfServices = () => {
   return (
     <main className="max-w-xl mx-auto">
       <div className="p-5">
-        <h1 className="text-3xl font-extrabold pb-6">
-        Terms and Conditions for LibreChat
-        </h1>
+        <h1 className="text-3xl font-extrabold pb-6">Terms and Conditions for LibreChat</h1>
 
-        <pre
-          className="leading-relaxed whitespace-pre-wrap"
-          style={{ fontFamily: 'sans-serif' }}
-        >
+        <pre className="leading-relaxed whitespace-pre-wrap" style={{ fontFamily: 'sans-serif' }}>
           {`Effective Date: February 18, 2024
 
-Welcome to LibreChat, the informational website for the open-source AI chat platform, available at `} <Link href="https://librechat.ai">https://librechat.ai</Link>{`. These Terms of Service ("Terms") govern your use of our website and the services we offer. By accessing or using the Website, you agree to be bound by these Terms and our Privacy Policy, accessible at `} <Link href="https://librechat.ai/privacy">https://librechat.ai//privacy</Link>{`.
+Welcome to LibreChat, the informational website for the open-source AI chat platform, available at `}{' '}
+          <Link href="https://librechat.ai">https://librechat.ai</Link>
+          {`. These Terms of Service ("Terms") govern your use of our website and the services we offer. By accessing or using the Website, you agree to be bound by these Terms and our Privacy Policy, accessible at `}{' '}
+          <Link href="https://librechat.ai/privacy">https://librechat.ai//privacy</Link>
+          {`.
 
 1. Ownership
 Upon purchasing a package from LibreChat, you are granted the right to download and use the code for accessing an admin panel for LibreChat. While you own the downloaded code, you are expressly prohibited from reselling, redistributing, or otherwise transferring the code to third parties without explicit permission from LibreChat.
@@ -82,29 +80,25 @@ These Terms shall be governed by and construed in accordance with the laws of th
 We reserve the right to modify these Terms at any time. We will notify users of any changes by email. Your continued use of the Website after such changes have been notified will constitute your consent to such changes.
 
 7. Contact Information
-If you have any questions about these Terms, please contact us at `} <Link href="mailto:contact@librechat.ai">contact@librechat.ai</Link>{`.
+If you have any questions about these Terms, please contact us at `}{' '}
+          <Link href="mailto:contact@librechat.ai">contact@librechat.ai</Link>
+          {`.
 
 By using the Website, you acknowledge that you have read these Terms of Service and agree to be bound by them.`}
         </pre>
       </div>
-      <Button onClick={() => window.open("/", '_self')}>← Go Back</Button>
+      <Button onClick={() => window.open('/', '_self')}>← Go Back</Button>
     </main>
-  );
-};
-
+  )
+}
 
 const CookiePolicy = () => {
   return (
     <main className="max-w-xl mx-auto">
       <div className="p-5">
-        <h1 className="text-3xl font-extrabold pb-6">
-        Cookie Policy for LibreChat
-        </h1>
+        <h1 className="text-3xl font-extrabold pb-6">Cookie Policy for LibreChat</h1>
 
-        <pre
-          className="leading-relaxed whitespace-pre-wrap"
-          style={{ fontFamily: 'sans-serif' }}
-        >
+        <pre className="leading-relaxed whitespace-pre-wrap" style={{ fontFamily: 'sans-serif' }}>
           {`Effective Date: February 18, 2024
 
 1. What Are Cookies
@@ -121,18 +115,17 @@ You can prevent the setting of cookies by adjusting the settings on your browser
   - Third-party cookies: In some special cases, we also use cookies provided by trusted third parties. The following section details which third-party cookies you might encounter through this site.
 
   5. Contact Information
-If you have any questions about these policies, please contact us at `} <Link href="mailto:contact@librechat.ai">contact@librechat.ai</Link>{`.
+If you have any questions about these policies, please contact us at `}{' '}
+          <Link href="mailto:contact@librechat.ai">contact@librechat.ai</Link>
+          {`.
 `}
-</pre>
-</div>
-<Button onClick={() => window.open("/", '_self')}>← Go Back</Button>
-</main>
-);
-};
+        </pre>
+      </div>
+      <Button onClick={() => window.open('/', '_self')}>← Go Back</Button>
+    </main>
+  )
+}
 
-
-
-
-export { TermsOfServices };
-export { PrivacyPolicy };
-export { CookiePolicy };
+export { TermsOfServices }
+export { PrivacyPolicy }
+export { CookiePolicy }

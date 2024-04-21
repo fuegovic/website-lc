@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react'
 
 function ArrowRight(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -9,7 +9,7 @@ function ArrowRight(props: React.SVGProps<SVGSVGElement>) {
         clipRule="evenodd"
       />
     </svg>
-  );
+  )
 }
 
-export default ArrowRight;
+export default ArrowRight

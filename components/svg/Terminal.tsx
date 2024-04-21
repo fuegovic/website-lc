@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react'
 
 function SvgTerminal(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -11,12 +11,7 @@ function SvgTerminal(props: React.SVGProps<SVGSVGElement>) {
         strokeWidth={16}
         d="M80 96l40 32-40 32"
       />
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={16}
-        d="M136 160h40"
-      />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={16} d="M136 160h40" />
       <rect
         fill="none"
         height={160}
@@ -29,7 +24,7 @@ function SvgTerminal(props: React.SVGProps<SVGSVGElement>) {
         y={48}
       />
     </svg>
-  );
+  )
 }
 
-export default SvgTerminal;
+export default SvgTerminal

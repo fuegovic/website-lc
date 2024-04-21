@@ -2,7 +2,7 @@
 title: 🛂 Authentication System
 description: This guide explains how to use the user authentication system of LibreChat, which offers secure and easy email and social logins. You will learn how to set up sign up, log in, password reset, and more.
 weight: -5
---- 
+---
 
 # User Authentication System
 
@@ -12,9 +12,9 @@ By default, we have email signup and login enabled, which means users can create
 
 Additionally, our system can integrate social logins from various platforms such as Google, GitHub, Discord, OpenID, and more. This means users can log in using their existing accounts on these platforms, without having to create a new account or remember another password.
 
->❗**Important:** When you run the app for the first time, you need to create a new account by clicking on "Sign up" on the login page. The first account you make will be the admin account. The admin account doesn't have any special features right now, but it might be useful if you want to make an admin dashboard to manage other users later. 
+> ❗**Important:** When you run the app for the first time, you need to create a new account by clicking on "Sign up" on the login page. The first account you make will be the admin account. The admin account doesn't have any special features right now, but it might be useful if you want to make an admin dashboard to manage other users later.
 
->> **Note:** The first account created should ideally be a local account (email and password).
+> > **Note:** The first account created should ideally be a local account (email and password).
 
 ## Basic Configuration:
 
@@ -22,21 +22,21 @@ Additionally, our system can integrate social logins from various platforms such
 
 Here's an overview of the general configuration, located in the `.env` file at the root of the LibreChat folder.
 
-  - `ALLOW_EMAIL_LOGIN`: Email login. Set to `true` or `false` to enable or disable ONLY email login.
-  - `ALLOW_REGISTRATION`: Email registration of new users. Set to `true` or `false` to enable or disable Email registration.
-  - `ALLOW_SOCIAL_LOGIN`: Allow users to connect to LibreChat with various social networks, see below. Set to `true` or `false` to enable or disable.
-  - `ALLOW_SOCIAL_REGISTRATION`: Enable or disable registration of new user using various social network. Set to `true` or `false` to enable or disable.
+- `ALLOW_EMAIL_LOGIN`: Email login. Set to `true` or `false` to enable or disable ONLY email login.
+- `ALLOW_REGISTRATION`: Email registration of new users. Set to `true` or `false` to enable or disable Email registration.
+- `ALLOW_SOCIAL_LOGIN`: Allow users to connect to LibreChat with various social networks, see below. Set to `true` or `false` to enable or disable.
+- `ALLOW_SOCIAL_REGISTRATION`: Enable or disable registration of new user using various social network. Set to `true` or `false` to enable or disable.
 
 > **Note:** OpenID does not support the ability to disable only registration.
 
->> **Quick Tip:** Even with registration disabled, add users directly to the database using `npm run create-user`. If you can't get npm to work, try `sudo docker exec -ti LibreChat sh` first to "ssh" into the container.
->> **Quick Tip:** To delete a user, you can run `docker-compose exec api npm run delete-user email@domain.com` 
+> > **Quick Tip:** Even with registration disabled, add users directly to the database using `npm run create-user`. If you can't get npm to work, try `sudo docker exec -ti LibreChat sh` first to "ssh" into the container.
+> > **Quick Tip:** To delete a user, you can run `docker-compose exec api npm run delete-user email@domain.com`
 
 ![image](https://github.com/danny-avila/LibreChat/assets/81851188/52a37d1d-7392-4a9a-a79f-90ed2da7f841)
 
 ```bash
 ALLOW_EMAIL_LOGIN=true
-ALLOW_REGISTRATION=true       
+ALLOW_REGISTRATION=true
 ALLOW_SOCIAL_LOGIN=false
 ALLOW_SOCIAL_REGISTRATION=false
 ```
@@ -51,7 +51,7 @@ SESSION_EXPIRY=1000 * 60 * 15
 REFRESH_TOKEN_EXPIRY=(1000 * 60 * 60 * 24) * 7
 ```
 
-``` mermaid
+```mermaid
 sequenceDiagram
     Client->>Server: Login request with credentials
     Server->>Passport: Use authentication strategy (e.g., 'local', 'google', etc.)
@@ -77,7 +77,7 @@ sequenceDiagram
 
 ### JWT Secret and Refresh Secret
 
-- You should use new secure values. The examples given are 32-byte keys (64 characters in hex). 
+- You should use new secure values. The examples given are 32-byte keys (64 characters in hex).
   - Use this replit to generate some quickly: **[JWT Keys](https://replit.com/@daavila/crypto#index.js)**
 
 ```bash
@@ -93,7 +93,7 @@ The Automated Moderation System is enabled by default. It uses a scoring mechani
 
 To set up the mod system, review [the setup guide](../../features/mod_system.md).
 
-> *Please Note: If you want this to work in development mode, you will need to create a file called `.env.development` in the root directory and set `DOMAIN_CLIENT` to `http://localhost:3090` or whatever port  is provided by vite when runnning `npm run frontend-dev`*
+> _Please Note: If you want this to work in development mode, you will need to create a file called `.env.development` in the root directory and set `DOMAIN_CLIENT` to `http://localhost:3090` or whatever port is provided by vite when runnning `npm run frontend-dev`_
 
 ---
 
@@ -117,21 +117,21 @@ EMAIL_FROM_NAME=                # eg. LibreChat - the human-readable address in 
 
 If you want to use one of the predefined services, configure only these variables:
 
-EMAIL\_SERVICE is the name of the email service you are using (Gmail, Outlook, Yahoo Mail, ProtonMail, iCloud Mail, etc.) as defined in the NodeMailer well-known services linked above.
-EMAIL\_USERNAME is the username of the email service (usually, it will be the email address, but in some cases, it can be an actual username used to access the account).
-EMAIL\_PASSWORD is the password used to access the email service. This is not the password to access the email account directly, but a password specifically generated for this service.
-EMAIL\_FROM is the email address that will appear in the "from" field when a user receives an email.
-EMAIL\_FROM\_NAME is the name that will appear in the "from" field when a user receives an email. If left unset, it defaults to the app title.
+EMAIL_SERVICE is the name of the email service you are using (Gmail, Outlook, Yahoo Mail, ProtonMail, iCloud Mail, etc.) as defined in the NodeMailer well-known services linked above.
+EMAIL_USERNAME is the username of the email service (usually, it will be the email address, but in some cases, it can be an actual username used to access the account).
+EMAIL_PASSWORD is the password used to access the email service. This is not the password to access the email account directly, but a password specifically generated for this service.
+EMAIL_FROM is the email address that will appear in the "from" field when a user receives an email.
+EMAIL_FROM_NAME is the name that will appear in the "from" field when a user receives an email. If left unset, it defaults to the app title.
 
 If you want to use a generic SMTP service or need advanced configuration for one of the predefined providers, configure these variables:
 
-EMAIL\_HOST is the hostname to connect to, or an IP address.
-EMAIL\_PORT is the port to connect to. Be aware that different ports usually come with different requirements - 25 is for mailserver-to-mailserver, 465 requires encryption at the start of the connection, and 587 allows submission of mail as a user.
-EMAIL\_ENCRYPTION defines if encryption is required at the start (`tls`) or started after the connection is set up (`starttls`). If either of these values are set, they are enforced. If they are not set, an encrypted connection is started if available.
-EMAIL\_ENCRYPTION\_HOSTNAME allows specification of a hostname against which the certificate is validated. Use this if the mail server does have a valid certificate, but you are connecting with an IP or a different name for some reason.
-EMAIL\_ALLOW\_SELFSIGNED defines whether self-signed certificates can be accepted from the server. As the mails being sent contain sensitive information, ONLY use this for testing.
+EMAIL_HOST is the hostname to connect to, or an IP address.
+EMAIL_PORT is the port to connect to. Be aware that different ports usually come with different requirements - 25 is for mailserver-to-mailserver, 465 requires encryption at the start of the connection, and 587 allows submission of mail as a user.
+EMAIL_ENCRYPTION defines if encryption is required at the start (`tls`) or started after the connection is set up (`starttls`). If either of these values are set, they are enforced. If they are not set, an encrypted connection is started if available.
+EMAIL_ENCRYPTION_HOSTNAME allows specification of a hostname against which the certificate is validated. Use this if the mail server does have a valid certificate, but you are connecting with an IP or a different name for some reason.
+EMAIL_ALLOW_SELFSIGNED defines whether self-signed certificates can be accepted from the server. As the mails being sent contain sensitive information, ONLY use this for testing.
 
-NOTE: ⚠️ **Failing to perform either of the below setups will result in LibreChat using the unsecured password reset! This allows anyone to reset any password on your server immediately, without mail being sent at all!** The variable EMAIL\_FROM does not support all email providers **but is still required**. To stay updated, check the bug fixes: **[here](https://github.com/danny-avila/LibreChat/tags)**
+NOTE: ⚠️ **Failing to perform either of the below setups will result in LibreChat using the unsecured password reset! This allows anyone to reset any password on your server immediately, without mail being sent at all!** The variable EMAIL_FROM does not support all email providers **but is still required**. To stay updated, check the bug fixes: **[here](https://github.com/danny-avila/LibreChat/tags)**
 
 ### Setup with Gmail
 
@@ -171,11 +171,14 @@ EMAIL_FROM_NAME="My LibreChat Server"
 ![image](https://github.com/danny-avila/LibreChat/assets/138638445/cacc2ee0-acf9-4d05-883a-ca9952de1165)
 
 ### OAuth2
-  - [Discord](./OAuth2-and-OIDC/discord.md)
-  - [GitHub](./OAuth2-and-OIDC/github.md)
-  - [Google](./OAuth2-and-OIDC/google.md)
-  - [Facebook](./OAuth2-and-OIDC/facebook.md)
+
+- [Discord](./OAuth2-and-OIDC/discord.md)
+- [GitHub](./OAuth2-and-OIDC/github.md)
+- [Google](./OAuth2-and-OIDC/google.md)
+- [Facebook](./OAuth2-and-OIDC/facebook.md)
+
 ### OpenID Connect
-  - [AWS Cognito](./OAuth2-and-OIDC/aws.md)
-  - [Azure Entra/AD](./OAuth2-and-OIDC/azure.md)
-  - [Keycloak](./OAuth2-and-OIDC/keycloak.md)
+
+- [AWS Cognito](./OAuth2-and-OIDC/aws.md)
+- [Azure Entra/AD](./OAuth2-and-OIDC/azure.md)
+- [Keycloak](./OAuth2-and-OIDC/keycloak.md)

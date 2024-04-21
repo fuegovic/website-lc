@@ -1,44 +1,46 @@
-import { useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
-import validator from "validator";
+/* eslint-disable no-undef */
+
+import { useState } from 'react'
+import toast, { Toaster } from 'react-hot-toast'
+import validator from 'validator'
 
 const UnsubscribeForm = () => {
-  const [email, setEmail] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [email, setEmail] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     if (!validator.isEmail(email)) {
-      toast.error("Invalid email format");
-      return;
+      toast.error('Invalid email format')
+      return
     }
 
-    setIsLoading(true);
+    setIsLoading(true)
 
     try {
-      const response = await fetch("/api/unsubscribe", {
-        method: "POST",
+      const response = await fetch('/api/unsubscribe', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email }),
-      });
+      })
 
       if (response.status === 200) {
-        toast.success("Unsubscription successful");
-        setEmail("");
+        toast.success('Unsubscription successful')
+        setEmail('')
       } else if (response.status === 404) {
-        toast.error("Subscriber not found");
+        toast.error('Subscriber not found')
       } else {
-        toast.error("Unsubscription failed");
+        toast.error('Unsubscription failed')
       }
     } catch {
-      toast.error("Unsubscription failed");
+      toast.error('Unsubscription failed')
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  };
+  }
 
   return (
     <div className="newsletter-container">
@@ -53,12 +55,8 @@ const UnsubscribeForm = () => {
             onChange={(e) => setEmail(e.target.value)}
             className="email-input"
           />
-          <button
-            type="submit"
-            className="subscribe-button"
-            disabled={isLoading}
-          >
-            {isLoading ? "Unsubscribing..." : "Unsubscribe"}
+          <button type="submit" className="subscribe-button" disabled={isLoading}>
+            {isLoading ? 'Unsubscribing...' : 'Unsubscribe'}
           </button>
         </form>
       </div>
@@ -124,7 +122,7 @@ const UnsubscribeForm = () => {
                 }
             `}</style>
     </div>
-  );
-};
+  )
+}
 
-export default UnsubscribeForm;
+export default UnsubscribeForm
