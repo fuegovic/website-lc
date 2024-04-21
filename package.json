@@ -1,6 +1,6 @@
 {
   "name": "librechat.ai",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "librechat.ai",
   "scripts": {
     "dev": "next dev -p 3333",
@@ -11,7 +11,8 @@
     "postbuild:old": "next-sitemap && echo 'Removing .next/cache to resolve Nextra caching bug' && rm -rf .next/cache",
     "lint": "eslint --cache --ignore-path .gitignore --max-warnings 0 .",
     "lint:prettier": "prettier --cache --check --ignore-path .gitignore --ignore-path .prettierignore .",
-    "prettier": "pnpm lint:prettier --write"
+    "prettier": "pnpm lint:prettier --write",
+    "prepare": "husky"
   },
   "homepage": "https://librechat.ai",
   "dependencies": {
@@ -103,9 +104,12 @@
     "showDetails": true
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx,json,md,mdx}": [
+    "*.{ts,tsx,js,jsx,md,mdx}": [
       "prettier --write",
-      "eslint --fix",
+      "eslint --fix"
+    ],
+    "*.json": [
+      "prettier --write",
       "git add"
     ]
   }
