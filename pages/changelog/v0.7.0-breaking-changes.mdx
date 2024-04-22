@@ -10,6 +10,20 @@ import { ChangelogHeader } from '@/components/changelog/ChangelogHeader'
 
 ---
 
+<Callout type="error" title="Error Messages (UI)" emoji="⚠️">
+Client-facing error messages now display this warning asking to contact the admin.
+
+For the full error consult the console logs or the additional logs located in `./logs`
+
+![image](https://github.com/danny-avila/LibreChat/assets/32828263/93c9ad18-c2cb-4862-9e76-546e84671411)
+
+</Callout>
+
+<Callout type="warning" title="Logs Location" emoji="🪵">
+  - The full logs are now in `./logs` (they are still in `./api/logs` for local, non-docker
+  installations)
+</Callout>
+
 <Callout type="warning" title="Google Search Plugin" emoji="🔍">
   - **[Google Search Plugin]()**: Changed the environment variable for this plugin from
   `GOOGLE_API_KEY` to `GOOGLE_SEARCH_API_KEY` due to a conflict with the Google Generative AI
