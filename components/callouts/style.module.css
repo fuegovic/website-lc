@@ -28,7 +28,7 @@
   width: 100%;
   padding: 0.5rem 1rem; /* Add padding for content */
   min-width: 0;
-  line-height: 0.75rem;
+  line-height: 1.25rem;
   border-radius: 0 0 0.5rem 0.5rem; /* Round bottom corners */
   background-color: #ffffffcc; /* Separate background color for content */
   color: #000;
