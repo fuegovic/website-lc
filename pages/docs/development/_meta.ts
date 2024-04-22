@@ -1,6 +1,8 @@
 export default {
   index: 'Intro',
   get_started: 'Get Started',
+  translation: 'Contribute a Translation',
+  architecture: 'Project Architecture (WIP)',
   conventions: 'Coding Conventions',
   guidelines: {
     type: 'page',
@@ -9,6 +11,7 @@ export default {
     newWindow: true,
   },
   testing: 'Testing',
+  debugging: 'Debugging (WIP)',
   security: {
     type: 'page',
     title: 'Security Policy',
