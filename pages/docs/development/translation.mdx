@@ -1,7 +1,6 @@
 ---
-title: 🌍 Contribute a Translation
+title: Contribute a Translation
 description: How to add a new language to LibreChat.
-weight: -8
 ---
 
 # How to add a new language to LibreChat 🌍
@@ -15,7 +14,7 @@ weight: -8
 
 ### Preparation
 
-Fork the [LibreChat repository](https://github.librechat.ai) and download it using git clone. See: [Getting Started for Contributors - GitHub](/docs/development/get_started#github)
+Fork the [LibreChat repository](https://github.librechat.ai) and download it using git clone. See: [Getting Started - GitHub](/docs/development/get_started#github)
 
 ### Add your language to `Translation.ts`:
 
@@ -32,7 +31,6 @@ Fork the [LibreChat repository](https://github.librechat.ai) and download it usi
   `'**-**': LanguageName,`
 
 > Replace `**-**` with the local identifier of your language (ask ChatGPT or search it on Google).
-
 > Replace `LanguageName` with the name of your language.
 
 Example (English): `'en-US': English,`
@@ -65,10 +63,15 @@ Example (English): `'en-US': English,`
   }
   ```
 
-!!! warning
-Do not modify the `com_...` part
+<Callout type="warning" title="Note:">
+  Do not modify the `com_...` part
+</Callout>
 
-!!! success "Important:" - Delete the Language list after `com_nav_setting_general: 'General',` near the bottom of the file (You do not need to translate the individual language names) - Do not delete `com_nav_setting_data: 'Data controls'` (you need to translate it)
+<Callout type="success" title="Important:">
+  - Delete the Language list after `com_nav_setting_general: 'General',` near the bottom of the file
+  (You do not need to translate the individual language names) - Do not delete
+  `com_nav_setting_data: 'Data controls'` (you need to translate it)
+</Callout>
 
 ### Add your language to `Eng.tsx`
 
@@ -117,7 +120,7 @@ If you followed everything you should have **one new file** and **3 modified fil
 
 ### Commit and create a new PR
 
-See: [Make a PR](./how_to_contribute.md#make-a-pull-request-pr)
+See: [Make a PR](/docs/development/get_started#create-a-pull-request-pr)
 
 <Callout type="success" tytle="Pull Request">
   - Answer all the questions, and in the "Type of Change" section, check `- [x] Translation update`
