@@ -2,8 +2,8 @@ export default {
   index: 'Get Started',
   local: 'Local Installation',
   remote: 'Remote Hosting',
-  config: 'Configuration',
-  features: 'Features',
+  configuration: 'Configuration',
+  user_guides: 'User Guides',
   contributing: {
     // "title": "Contributing",
     type: 'separator',
