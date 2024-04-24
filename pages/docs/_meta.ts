@@ -10,7 +10,4 @@ export default {
   },
   development: 'Development',
   documentation: 'Documentation',
-  'old docs': {
-    display: 'hidden',
-  },
 }
