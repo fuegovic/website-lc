@@ -1,0 +1,108 @@
+---
+title: Automated Moderation
+description: Configuration of the Automated Moderation System. This uses a scoring mechanism to track user violations. As users commit actions like excessive logins, registrations, or messaging, they accumulate violation scores. Upon reaching a set threshold, the user and their IP are temporarily banned. This system ensures platform security by monitoring and penalizing rapid or suspicious activities.
+---
+## Automated Moderation System (optional)
+The Automated Moderation System uses a scoring mechanism to track user violations. As users commit actions like excessive logins, registrations, or messaging, they accumulate violation scores. Upon reaching a set threshold, the user and their IP are temporarily banned. This system ensures platform security by monitoring and penalizing rapid or suspicious activities.
+
+In production, you should have Cloudflare or some other DDoS protection in place to really protect the server from excessive requests, but these changes will largely protect you from the single or several bad actors targeting your deployed instance for proxying.
+
+**For further details, refer to the user guide provided here: [Automated Moderation](/docs/user_guides/mod_system)**
+
+## Setup
+
+The following are all of the related env variables to make use of and configure the mod system. Note this is also found in the [/.env.example](https://github.com/danny-avila/LibreChat/blob/main/.env.example) file, to be set in your own `.env` file.
+
+**Note:** currently, most of these values are configured through the .env file, but they may soon migrate to be exclusively configured from the [`librechat.yaml` config file](https://docs.librechat.ai/install/configuration/custom_config.html#rate-limiting).//TODO
+
+### Violation, Interval, Duration
+
+<OptionTable
+  options={[
+    ['BAN_VIOLATIONS', 'boolean', 'Whether or not to enable banning users for violations (they will still be logged). Defaults to `true`.'],
+    ['BAN_DURATION', 'number', 'How long the user and associated IP are banned for in milliseconds. Defaults to `7200000`.'],
+    ['BAN_INTERVAL', 'number', 'A user will be banned every time their score reaches or exceeds the interval threshold. Defaults to `20`.'],
+  ]}
+/>
+
+### The score for each violation
+
+<OptionTable
+  options={[    
+    ['LOGIN_VIOLATION_SCORE', 'number', 'The score assigned for each login violation. Defaults to `1`.'],
+    ['REGISTRATION_VIOLATION_SCORE', 'number', 'The score assigned for each registration violation. Defaults to `1`.'],
+    ['CONCURRENT_VIOLATION_SCORE', 'number', 'The score assigned for each concurrent violation. Defaults to `1`.'],
+    ['MESSAGE_VIOLATION_SCORE', 'number', 'The score assigned for each message violation. Defaults to `1`.'],
+    ['NON_BROWSER_VIOLATION_SCORE', 'number', 'The score assigned for each non-browser violation. Defaults to `20`.'],
+  ]}
+/>
+
+### Login and registration rate limiting.
+
+<OptionTable
+  options={[    
+    ['LOGIN_MAX', 'number', 'The max amount of logins allowed per IP per LOGIN_WINDOW. Defaults to `7`.'],
+    ['LOGIN_WINDOW', 'number', 'In minutes, determines the window of time for LOGIN_MAX logins. Defaults to `5`.'],
+    ['REGISTER_MAX', 'number', 'The max amount of registrations allowed per IP per REGISTER_WINDOW. Defaults to `5`.'],
+    ['REGISTER_WINDOW', 'number', 'In minutes, determines the window of time for REGISTER_MAX registrations. Defaults to `60`.'],
+  ]}
+/>
+
+### Message rate limiting
+
+<OptionTable
+  options={[    
+    ['LIMIT_CONCURRENT_MESSAGES', 'boolean', 'Whether to limit the amount of messages a user can send per request. Defaults to `true`.'],
+    ['CONCURRENT_MESSAGE_MAX', 'number', 'The max amount of messages a user can send per request. Defaults to `2`.'],
+  ]}
+/>
+
+> Note: You can utilize both limiters, but default is to limit by IP only.
+
+#### Message rate limiting (per IP)
+
+<OptionTable
+  options={[    
+    ['LIMIT_MESSAGE_IP', 'boolean', 'Whether to limit the amount of messages an IP can send per MESSAGE_IP_WINDOW. Defaults to `true`.'],
+    ['MESSAGE_IP_MAX', 'number', 'The max amount of messages an IP can send per MESSAGE_IP_WINDOW. Defaults to `40`.'],
+    ['MESSAGE_IP_WINDOW', 'number', 'In minutes, determines the window of time for MESSAGE_IP_MAX messages. Defaults to `1`.'],
+  ]}
+/>
+
+#### Message rate limiting (per User)
+<OptionTable
+  options={[    
+    ['LIMIT_MESSAGE_USER', 'boolean', 'Whether to limit the amount of messages an IP can send per MESSAGE_USER_WINDOW. Defaults to `false`.'],
+    ['MESSAGE_USER_MAX', 'number', 'The max amount of messages an IP can send per MESSAGE_USER_WINDOW. Defaults to `40`.'],
+    ['MESSAGE_USER_WINDOW', 'number', 'In minutes, determines the window of time for MESSAGE_USER_MAX messages. Defaults to `1`.'],
+  ]}
+/>
+
+
+#### Illegal model requests
+
+> Note: Illegal model requests are almost always nefarious as it means a 3rd party is attempting to access the server through an automated script. For this, I recommend a relatively high score, no less than 5.
+
+<OptionTable
+  options={[    
+    ['ILLEGAL_MODEL_REQ_SCORE', 'number', 'Violation score to accrue if a user attempts to use an unlisted model. Defaults to `5`.'],
+  ]}
+/>
+
+## OpenAI text moderation
+
+<OptionTable
+  options={[    
+    ['OPENAI_MODERATION', 'boolean', 'Enable or disable OpenAI moderation. Defaults to `true`.'],
+    ['OPENAI_MODERATION_API_KEY', 'string', 'Specify your OpenAI moderation API key here.'],
+  ]}
+/>
+
+
+Note that this might not work with all reverse proxies:
+
+<OptionTable
+  options={[    
+    ['OPENAI_MODERATION_REVERSE_PROXY', 'boolean', 'Enable or disable reverse proxy compatibility for OpenAI moderation. Commented out by default. Defaults to `false`.'],
+  ]}
+/>
