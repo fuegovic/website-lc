@@ -52,6 +52,9 @@ const withNextra = nextra({
   mdxOptions: {
     remarkPlugins: [remarkGfm],
   },
+  latex: {
+    renderer: 'mathjax'
+  },
   defaultShowCopyCode: true,
 })
 
@@ -126,5 +129,6 @@ const nextraConfig = withNextra({
     })),
   ],
 })
+
 
 export default withBundleAnalyzer(nextraConfig)
