@@ -15,20 +15,20 @@ In this guide, you will explore various options to efficiently deploy LibreChat 
 
 ### Hosting Services
 
-| **Service**                        | **Domain**                | **Pros**                                                   | **Cons**                               | **Comments**                                            |      **Recommended**    |
-|------------------------------------|---------------------------|------------------------------------------------------------|----------------------------------------|---------------------------------------------------------|-------------------------|
-| [DigitalOcean](./digitalocean.md)  | Cloud Infrastructure      | Intuitive interface, stable pricing                        | Smaller network footprint              | Optimal for enthusiasts & small to medium businesses    | ✅ Well Known, Reliable |
-| [HuggingFace](./huggingface.md)    | AI/ML Solutions           | ML/NLP specialization                                      | Focused on ML applications             | Excellent for AI/ML initiatives                         | ✅ Free                 |
-| [Railway](./railway.md)            | App Deployment            | Simplified app deployment                                  | Limited access to containers           | Very easy to get started                                | ✅ Easy                 |
+| **Service**                                | **Domain**                | **Pros**                                                   | **Cons**                               | **Comments**                                            |      **Recommended**    |
+|--------------------------------------------|---------------------------|------------------------------------------------------------|----------------------------------------|---------------------------------------------------------|-------------------------|
+| [DigitalOcean](/docs/remote/digitalocean)  | Cloud Infrastructure      | Intuitive interface, stable pricing                        | Smaller network footprint              | Optimal for enthusiasts & small to medium businesses    | ✅ Well Known, Reliable |
+| [HuggingFace](/docs/remote/huggingface)    | AI/ML Solutions           | ML/NLP specialization                                      | Focused on ML applications             | Excellent for AI/ML initiatives                         | ✅ Free                 |
+| [Railway](/docs/remote/railway)            | App Deployment            | Simplified app deployment                                  | Limited access to containers           | Very easy to get started                                | ✅ Easy                 |
 
 ### Network Services 
 
-| **Service**                   | **Domain**                  | **Pros**                                            | **Cons**                                         | **Comments**                                    |
-|-------------------------------|-----------------------------|-----------------------------------------------------|--------------------------------------------------|-------------------------------------------------|
-| [Cloudflare]()                | Web Performance & Security  | Global CDN, DDoS protection, ease of use            | Customer support can be slow                     | Top choice for security enhancements            |
-| [Ngrok]()                     | Secure Tunneling            | Easy to use, free tier available, secure tunneling  | Requires client download, complex domain routing | Handy for local development tests               |
-| [Nginx]()                     | Web Server, Reverse Proxy   | High performance, stability, resource efficiency    | Manual setup, limited extensions                 | Widely used for hosting due to its performance  |
-| [Traefik]()                   | Reverse Proxy, Load Balancer| Automatic service discovery, native cluster support | Configuration can be complex for beginners       | Ideal for microservices and dynamic environments|
+| **Service**                           | **Domain**                  | **Pros**                                            | **Cons**                                         | **Comments**                                    |
+|---------------------------------------|-----------------------------|-----------------------------------------------------|--------------------------------------------------|-------------------------------------------------|
+| [Cloudflare](/docs/remote/cloudflare) | Web Performance & Security  | Global CDN, DDoS protection, ease of use            | Customer support can be slow                     | Top choice for security enhancements            |
+| [Nginx](/docs/remote/nginx)           | Web Server, Reverse Proxy   | High performance, stability, resource efficiency    | Manual setup, limited extensions                 | Widely used for hosting due to its performance  |
+| [ngrok](/docs/remote/ngrok)           | Secure Tunneling            | Easy to use, free tier available, secure tunneling  | Requires client download, complex domain routing | Handy for local development tests               |
+| [Traefik](/docs/remote/traefik)       | Reverse Proxy, Load Balancer| Automatic service discovery, native cluster support | Configuration can be complex for beginners       | Ideal for microservices and dynamic environments|
 
 
 
@@ -38,9 +38,11 @@ In this guide, you will explore various options to efficiently deploy LibreChat 
 
 **Nginx** is a high-performance web server that is efficient in handling resources and offers stability. It does, however, require manual setup and has fewer modules and extensions compared to other servers.
 
+**Traefik**  is renowned for its automatic configuration updates and ease of deployment in container environments, appealing to DevOps for its integration with various back-ends and dynamic reconfiguration. It thrives in microservices architectures but may pose challenges for those new to cloud-native technologies.
+
 ## Cloud Vendor Integration and Configuration
 
-The integration level with cloud vendors varies: from platforms enabling single-click LibreChat deployments like [Railway](./railway.md), through platforms leveraging Infrastructure as Code tools such as Azure with Terraform, to more traditional VM setups requiring manual configuration, exemplified by [DigitalOcean](digitalocean.md), Linode, and Hetzner.
+The integration level with cloud vendors varies: from platforms enabling single-click LibreChat deployments like [Railway](/docs/remote/railway), through platforms leveraging Infrastructure as Code tools such as Azure with Terraform, to more traditional VM setups requiring manual configuration, exemplified by [DigitalOcean](digitalocean.md), Linode, and Hetzner.
 
 ## Essential Security Considerations
 
@@ -52,7 +54,7 @@ When deploying applications on a global scale, it is essential to consider the f
 2. Global accessibility implications: Understand the implications of deploying your application globally, including the legal and compliance requirements that vary by region.
 3. Secure configuration: Ensure that your application is configured securely, including the use of secure protocols, secure authentication, and authorization mechanisms.
 
-If you choose to use IaaS or Tunnel services for your deployment, you may need to utilize a reverse proxy such as [Nginx](./nginx.md), [Traefik](./traefik.md) or [Cloudflare](./cloudflare.md) to name a few.
+If you choose to use IaaS or Tunnel services for your deployment, you may need to utilize a reverse proxy such as [Nginx](/docs/remote/nginx), [Traefik](/docs/remote/traefik) or [Cloudflare](/docs/remote/cloudflare) to name a few.
 
 Investing in the appropriate security measures is crucial to safeguarding your digital assets and ensuring the success of your global deployment.
 
@@ -75,13 +77,13 @@ The deployment options are listed in order from most effort and control to least
 
 Infrastructure as a Service (IaaS) refers to a model of cloud computing that provides fundamental computing resources, such as virtual servers, network, and storage, on a pay-per-use basis. IaaS allows organizations to rent and access these resources over the internet, without the need for investing in and maintaining physical hardware. This model provides scalability, flexibility, and cost savings, as well as the ability to quickly and easily deploy and manage infrastructure resources in response to changing business needs.
 
-- [DigitalOcean](digitalocean.md): User-friendly interface with predictable pricing.
-- [Linode](): Renowned for excellent customer support and straightforward pricing.
-- [Hetzner](): Prioritizes privacy and cost-effectiveness, ideal for European-centric deployments.
+- [DigitalOcean](/docs/remote/digitalocean): User-friendly interface with predictable pricing.
+- Linode: Renowned for excellent customer support and straightforward pricing.
+- Hetzner: Prioritizes privacy and cost-effectiveness, ideal for European-centric deployments.
 
 #### For Iaas we recommend Docker Compose
 
-**Why Docker Compose?** We recommend Docker Compose for consistent deployments. This guide clearly outlines each step for easy deployment: [Ubuntu Docker Deployment Guide](./docker_ubuntu_deploy.md)
+**Why Docker Compose?** We recommend Docker Compose for consistent deployments. This guide clearly outlines each step for easy deployment: [Docker - Linux remote install guide](/docs/remote/docker_linux)
 
 **Note:** There are two docker compose files in the repo
 
@@ -90,7 +92,7 @@ Infrastructure as a Service (IaaS) refers to a model of cloud computing that pro
 
 The main difference is that `deploy-compose.yml` includes Nginx, making its configuration internal to Docker.
 
-> Look at the [Nginx Guide](nginx.md) for more information
+> Look at the [Nginx Guide](/docs/remote/nginx) for more information
 
 ### 2. IaC (Infrastructure as Code)
 
@@ -104,13 +106,13 @@ Infrastructure as Code (IaC) refers to the practice of managing and provisioning
 
 Platform as a Service (PaaS) is a model of cloud computing that offers a development and deployment environment in the cloud. It provides a platform for developers to build, test, and deploy applications, without the need for managing the underlying infrastructure. PaaS typically includes a range of resources such as databases, middleware, and development tools, enabling users to deliver simple cloud-based apps to sophisticated enterprise applications. This model allows for faster time-to-market, lower costs, and easier maintenance and scaling, as the service provider is responsible for maintaining the infrastructure, and the customer can focus on building, deploying and managing their applications.
 
-- [Hugging Face](huggingface.md): Tailored for machine learning and NLP projects.
+- [Hugging Face](/docs/remote/huggingface): Tailored for machine learning and NLP projects.
 - Render: Simplifies deployments with integrated CI/CD pipelines.
 - Heroku: Optimal for startups and quick deployment scenarios.
 
 ### 4. One Click Deployment (PaaS)
 
-- [Railway](./railway.md): Popular one-click deployment solution
+- [Railway](/docs/remote/railway): Popular one-click deployment solution
 - Zeabur: Pioneering effortless one-click deployment solutions.
 
 ## Other / Network Services
@@ -119,19 +121,17 @@ Platform as a Service (PaaS) is a model of cloud computing that offers a develop
 
 Tunneling services allow you to expose a local development server to the internet, making it accessible via a public URL. This is particularly useful for sharing work, testing, and integrating with third-party services. It allows you to deploy your development computer for testing or for on-prem installation.
 
-- [Ngrok](ngrok.md): Facilitates secure local tunneling to the internet.
-- [Cloudflare](cloudflare.md): Enhances web performance and security.
+- [Ngrok](/docs/remote/ngrok): Facilitates secure local tunneling to the internet.
+- [Cloudflare](/docs/remote/cloudflare): Enhances web performance and security.
 
 ### 2. DNS Service
 
 - Cloudflare DNS service is used to manage and route internet traffic to the correct destinations, by translating human-readable domain names into machine-readable IP addresses. Cloudflare is a provider of this service, offering a wide range of features such as security, performance, and reliability. The Cloudflare DNS service provides a user-friendly interface for managing DNS records, and offers advanced features such as traffic management, DNSSEC, and DDoS protection.
 
-see also: [Cloudflare Guide](./cloudflare.md)
+see also: [Cloudflare Guide](/docs/remote/cloudflare)
 
 ## Conclusion
 
 In conclusion, the introduction of our deployment guide provides an overview of the various options and considerations for deploying LibreChat. It is important to carefully evaluate your needs and choose the path that best aligns with your organization's goals and objectives. Whether you prioritize ease of use, security, or affordability, our guide provides the necessary information to help you successfully deploy LibreChat and achieve your desired outcome. We hope that this guide will serve as a valuable resource for you throughout your deployment journey.
 
 Remember, our community is here to assist. Should you encounter challenges or have queries, our [Discord channel](https://discord.librechat.ai) and [troubleshooting discussion](https://github.com/danny-avila/LibreChat/discussions/categories/troubleshooting) are excellent resources for support and advice.
-
-//TODO: update URLs

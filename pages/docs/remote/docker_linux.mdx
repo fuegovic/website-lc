@@ -3,13 +3,11 @@ title: Docker (Remote Linux)
 description: These instructions are designed for someone starting from scratch for a Docker Installation on a remote Ubuntu server
 ---
 
-//TODO: update URLs
-
 # Ubuntu Docker Deployment Guide
 
 In order to use this guide you need a remote computer or VM deployed. While you can use this guide with a local installation, keep in mind that it was originally written for cloud deployment.
 
-> ⚠️ This guide was originally designed for [Digital Ocean](./digitalocean.md), so you may have to modify the instruction for other platforms, but the main idea remains unchanged.
+> ⚠️ This guide was originally designed for [Digital Ocean](/docs/remote/digitalocean), so you may have to modify the instruction for other platforms, but the main idea remains unchanged.
 
 ## Part I: Installing Docker and Other Dependencies:
 
@@ -269,7 +267,7 @@ ALLOW_REGISTRATION=false
 ```
 
 **Resources:**
-
+//TODO: URLs
 - [Tokens/Apis/etc](../install/configuration/ai_setup.md)
 - [User/Auth System](../install/configuration/user_auth_system.md)
 
@@ -343,21 +341,21 @@ npm run start:deployed
 docker ps
 ```
 
-You can update manually without the scripts if you encounter issues, refer to the [Docker Compose Guide](../install/installation/docker_compose_install.md)
+You can update manually without the scripts if you encounter issues.
 
-The commands are the same, except you append the `-f ./deploy-compose.yml` flag to the docker compose commands.
-
-```bash
-# Stop the running container(s)
+```bash filename="Stop the running container(s)""
 docker compose -f ./deploy-compose.yml down
+```
 
-# Pull latest project changes
-git pull
+```bash filename="Pull latest project changes"
+git pull 
+```
 
-# Pull the latest LibreChat image (default setup)
+```bash filename="Pull the latest LibreChat image""
 docker compose -f ./deploy-compose.yml pull
+```
 
-# Start LibreChat
+```bash filename="Start LibreChat"
 docker compose -f ./deploy-compose.yml up
 ```
 
@@ -365,15 +363,14 @@ docker compose -f ./deploy-compose.yml up
 
 In case you would like to edit the NGINX file for whatever reason, such as pointing your server to a custom domain, use the following:
 
-```bash
-# First, stop the active instance if running
+```bash filename="First, stop the active instance if running"
 npm run stop:deployed
-
-# now you can safely edit
+```
+```bash filename="now you can safely edit"
 nano client/nginx.conf
 ```
 
-I won't be walking you through custom domain setup or any other changes to NGINX, you can look into the [Cloudflare guide](./cloudflare.md) or the [NGINX guide](./nginx.md) to get you started with custom domains.
+I won't be walking you through custom domain setup or any other changes to NGINX, you can look into the [Cloudflare guide](/docs/remote/cloudflare), the [Traefik guide](/docs/remote/traefik) or the [NGINX guide](/docs/remote/nginx) to get you started with custom domains.
 
 However, I will show you what to edit on the LibreChat side for a custom domain with this setup.
 
@@ -386,8 +383,6 @@ server_name localhost;
 # after
 server_name custom.domain.com;
 ```
-
-Exit nano with
 
 > Note: this works because the deploy-compose.yml file is using NGINX by default, unlike the main docker-compose.yml file. As always, you can configure the compose files as you need.
 
@@ -421,7 +416,7 @@ npm run rebase:deployed
 
 You should be all set!
 
-> :warning: You will experience merge conflicts if you start significantly editing the branch and this is not recommended unless you know what you're doing
+> **Warning** You will experience merge conflicts if you start significantly editing the branch and this is not recommended unless you know what you're doing
 
 > Note that any changes to the code in this environment won't be reflected because the compose file is pulling the docker images built automatically by GitHub
 

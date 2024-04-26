@@ -3,8 +3,6 @@ title: DigitalOcean
 description: These instructions are designed for someone starting from scratch for a Docker Installation on a remote Ubuntu server using one of the cheapest tiers (6 USD/mo)
 ---
 
-//TODO: update URLs
-
 # Digital Ocean Setup
 
 > These instructions + the [docker guide]() are designed for someone starting from scratch for a Docker Installation on a remote Ubuntu server. You can skip to any point that is useful for you. There are probably more efficient/scalable ways, but this guide works really great for my personal use case.
@@ -58,7 +56,7 @@ Adjust these settings based on your needs, as I'm selecting the bare minimum/che
   - CPU options: Regular, 6 USD/mo option (0.009 USD/hour, 1 GB RAM / 1 CPU / 25 GB SSD / 1000 GB transfer)
   - No additional storage
 - **Choose Authentication Method:** Password option is easiest but up to you
-  - Alternatively, you can setup traditional SSH. The [Hetzner guide](./hetzner_ubuntu.md) has good instructions for this that can apply here
+  - Alternatively, you can setup traditional SSH.
 - **Recommended:** Add improved metrics monitoring and alerting (free)
   - You might be able to get away with the $4/mo option by not selecting this, but not yet tested
 - **Finalize Details:**
@@ -125,4 +123,4 @@ Create a firewall, add your droplet to it, and add these inbound rules (will wor
 
 ---
 
-This concludes the initial setup. For the subsequent steps, please proceed to the next guide:**[Docker Deployment Guide](./docker_ubuntu_deploy.md)**, which will walk you through the remaining installation process.
+This concludes the initial setup. For the subsequent steps, please proceed to the next guide:**[Docker Deployment Guide](/docs/remote/docker_linux)**, which will walk you through the remaining installation process.
