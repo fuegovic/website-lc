@@ -1,5 +1,5 @@
 ---
-title: ⚙️ Environment Variables
+title: Environment Variables
 description: Comprehensive guide for configuring your application's environment with the `.env` file. This document is your one-stop resource for understanding and customizing the environment variables that will shape your application's behavior in different contexts.
 ---
 
@@ -101,7 +101,7 @@ When handling console logs in cloud deployments (such as GCP or AWS), enabling t
 
 ### Logging
 
-LibreChat has built-in central logging, see [Logging System](../../features/logging_system.md) for more info.
+LibreChat has built-in central logging, see [Logging System](/docs/configuration/logging) for more info.
 
 #### Log Files
 
@@ -368,9 +368,8 @@ Here is the rewritten documentation in MDX format with improvements applied:
 ### Plugins
 Here are some useful resources about plugins:
 
-* [Introduction](../../features/plugins/introduction.md)
-* [Make Your Own](../../features/plugins/make_your_own.md)
-* [Using official ChatGPT Plugins](../../features/plugins/chatgpt_plugins_openapi.md)
+* [Introduction](https://nextra.librechat.cfd/docs/user_guides/plugins)
+* [Make Your Own](https://nextra.librechat.cfd/docs/development/tools_and_plugins)
 
 #### General Configuration
 
@@ -402,7 +401,7 @@ To securely store credentials, you need a fixed key and IV. You can set them her
 > **Warning:** If you don't set `CREDS_KEY` and `CREDS_IV`, the app will crash on startup. You can use this [Key Generator](https://replit.com/@daavila/crypto#index.js) to generate them quickly.
 
 #### Azure AI Search
-This plugin supports searching Azure AI Search for answers to your questions. See: [Azure AI Search](../../features/plugins/azure_ai_search.md)
+This plugin supports searching Azure AI Search for answers to your questions. See: [Azure AI Search](/docs/configuration/tools/azure_ai_search)
 
 <OptionTable
   options={[    ['AZURE_AI_SEARCH_SERVICE_ENDPOINT', 'string', 'The service endpoint for Azure AI Search.'],
@@ -471,7 +470,7 @@ Remember to replace placeholder text with actual prompts or instructions and pro
 
 #### Google Search
 
-See detailed instructions here: **[Google Search](../../features/plugins/google_search.md)**
+See detailed instructions here: **[Google Search](/docs/configuration/tools/google_search)**
 
 **Environment Variables:**
 
@@ -497,7 +496,7 @@ See detailed instructions here: **[Google Search](../../features/plugins/google_
 
 #### Stable Diffusion (Automatic1111)
 
-See detailed instructions here: **[Stable Diffusion](../../features/plugins/stable_diffusion.md)**
+See detailed instructions here: **[Stable Diffusion](/docs/configuration/tools/stable_diffusion)**
 
 **Description:** Use `http://127.0.0.1:7860` with local install and `http://host.docker.internal:7860` for docker
 
@@ -536,7 +535,7 @@ Get API key here: **https://api.traversaal.ai/dashboard**
 
 #### WolframAlpha
 
-See detailed instructions here: **[Wolfram Alpha](../../features/plugins/wolfram.md)**
+See detailed instructions here: **[Wolfram Alpha](/docs/configuration/tools/wolfram)**
 
 **Environment Variables:**
 
@@ -610,7 +609,7 @@ Here is the rewritten content in MDX format with improvements:
 ### Moderation
 The Automated Moderation System uses a scoring mechanism to track user violations. As users commit actions like excessive logins, registrations, or messaging, they accumulate violation scores. Upon reaching a set threshold, the user and their IP are temporarily banned. This system ensures platform security by monitoring and penalizing rapid or suspicious activities.
 
-see: **[Automated Moderation](../../features/mod_system.md)**
+see: **[Automated Moderation](/docs/configuration/mod_system)**
 
 #### Basic Moderation Settings
 <OptionTable
@@ -649,7 +648,7 @@ Here is the rewritten content in MDX format with improvements:
 ### Moderation
 The Automated Moderation System uses a scoring mechanism to track user violations. As users commit actions like excessive logins, registrations, or messaging, they accumulate violation scores. Upon reaching a set threshold, the user and their IP are temporarily banned. This system ensures platform security by monitoring and penalizing rapid or suspicious activities.
 
-see: **[Automated Moderation](../../features/mod_system.md)**
+see: **[Automated Moderation](/docs/configuration/mod_system)**
 
 #### Basic Moderation Settings
 <OptionTable
@@ -717,7 +716,7 @@ see: **[Automated Moderation](../../features/mod_system.md)**
 
 The following enables user balances for the OpenAI/Plugins endpoints, which you can add manually or you will need to build out a balance accruing system for users.
 
-see: **[Token Usage](../../features/token_usage.md)**
+see: **[Token Usage](/docs/configuration/token_usage)**
 
 <OptionTable
   options={[
@@ -736,9 +735,17 @@ see: **[Token Usage](../../features/token_usage.md)**
 Here is the improved document:
 
 ### Registration and Login
-see: **[User/Auth System](./user_auth_system.md)**
+see: **[Authentication System](/docs/configuration/authentication)**
 
-![image](https://github.com/danny-avila/LibreChat/assets/81851188/52a37d1d-7392-4a9a-a79f-90ed2da7f841)
+<div style={{display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column"}}>
+  <div className="image-light-theme">
+    <img src="https://github.com/danny-avila/LibreChat/assets/32828263/4c51dc25-31d3-4c51-8c2a-0cdfb5a25033" style={{ width: "75%", height: "75%" }} alt="Image for Light Theme" />
+  </div>
+
+  <div className="image-dark-theme">
+    <img src="https://github.com/danny-avila/LibreChat/assets/32828263/3bc5371d-e51d-4e91-ac68-56db6e85bb2c" style={{ width: "75%", height: "75%" }} alt="Image for Dark Theme" />
+  </div>
+</div>
 
 - General Settings: 
 
@@ -778,10 +785,11 @@ Use this replit to generate some quickly: **[JWT Keys](https://replit.com/@daavi
 />
 
 ### Social Logins
+For more details: [OAuth2-OIDC](/docs/configuration/authentication/OAuth2-OIDC)
 
-#### [Discord Authentication](./OAuth2-and-OIDC/discord.md)
+#### [Discord Authentication](/docs/configuration/authentication/OAuth2-OIDC/discord)
 
-For more information: **[Discord](./OAuth2-and-OIDC/discord.md)**
+For more information: **[Discord](/docs/configuration/authentication/OAuth2-OIDC/discord)**
 
 <OptionTable
   options={[
@@ -791,9 +799,9 @@ For more information: **[Discord](./OAuth2-and-OIDC/discord.md)**
   ]}
 />
 
-#### [Facebook Authentication](./OAuth2-and-OIDC/facebook.md)
+#### [Facebook Authentication](/docs/configuration/authentication/OAuth2-OIDC/facebook)
 
-For more information: **[Facebook Authentication](./OAuth2-and-OIDC/facebook.md)**
+For more information: **[Facebook Authentication](/docs/configuration/authentication/OAuth2-OIDC/facebook)**
 
 <OptionTable
   options={[
@@ -803,9 +811,9 @@ For more information: **[Facebook Authentication](./OAuth2-and-OIDC/facebook.md)
   ]}
 />
 
-#### [GitHub Authentication](./OAuth2-and-OIDC/github.md)
+#### [GitHub Authentication](/docs/configuration/authentication/OAuth2-OIDC/github)
 
-For more information: **[GitHub Authentication](./OAuth2-and-OIDC/github.md)**
+For more information: **[GitHub Authentication](/docs/configuration/authentication/OAuth2-OIDC/github)**
 
 <OptionTable
   options={[
@@ -815,9 +823,9 @@ For more information: **[GitHub Authentication](./OAuth2-and-OIDC/github.md)**
   ]}
 />
 
-#### [Google Authentication](./OAuth2-and-OIDC/google.md)
+#### [Google Authentication](/docs/configuration/authentication/OAuth2-OIDC/google)
 
-For more information: **[Google Authentication](./OAuth2-and-OIDC/google.md)**
+For more information: **[Google Authentication](/docs/configuration/authentication/OAuth2-OIDC/google)**
 
 <OptionTable
   options={[
@@ -827,9 +835,12 @@ For more information: **[Google Authentication](./OAuth2-and-OIDC/google.md)**
   ]}
 />
 
-#### [OpenID Authentication](./OAuth2-and-OIDC/aws.md)
+#### [OpenID Connect](/docs/configuration/authentication/OAuth2-OIDC#openid-connect)
 
-For more information: **[Azure OpenID Authentication](./OAuth2-and-OIDC/azure.md)** or **[AWS Cognito OpenID Authentication](./OAuth2-and-OIDC/aws.md)**
+For more information: 
+  - [AWS Cognito](/docs/configuration/authentication/OAuth2-OIDC/aws)
+  - [Azure Entra/AD](/docs/configuration/authentication/OAuth2-OIDC/azure)
+  - [Keycloak](/docs/configuration/authentication/OAuth2-OIDC/keycloak)
 
 <OptionTable
   options={[
@@ -849,7 +860,7 @@ For more information: **[Azure OpenID Authentication](./OAuth2-and-OIDC/azure.md
 
 ### Email Password Reset
 
-Email is used for password reset. See: **[Email Password Reset](./user_auth_system.md#email-and-password-reset)**
+Email is used for password reset. See: **[Email Password Reset](/docs/configuration/authentication/password_reset)**
 
 **Important Note**: All of the service or host, username, and password, and the From address must be set for email to work.
 

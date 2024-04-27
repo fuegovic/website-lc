@@ -5,7 +5,7 @@ export default {
   tools_and_plugins: 'Tools and Plugins',
   testing: 'Testing',
   debugging: 'Debugging (WIP)',
-  technical: {
+  technical_docs: {
     // "title": "Contributing",
     type: 'separator',
   },

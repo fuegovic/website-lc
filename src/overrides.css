@@ -53,3 +53,22 @@ svg .edgeLabel {
 .nextra-callout ul {
   margin-top: 0;
 }
+
+
+/* Default to light theme */
+html .image-light-theme {
+  display: block;
+}
+
+html .image-dark-theme {
+  display: none;
+}
+
+/* Switch to dark theme */
+html.dark .image-light-theme {
+  display: none;
+}
+
+html.dark .image-dark-theme {
+  display: block;
+}
