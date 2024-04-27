@@ -17,22 +17,7 @@ export function Logo() {
           setMenuOpen(true)
         }}
       >
-        {/* Image */}
-        <Image
-          src="/librechat_docs.svg"
-          alt="LibreChat Docs Logo"
-          width={30}
-          height={30}
-          className="hidden dark:block"
-        />
-        <Image
-          src="/libreChat_docs.svg"
-          alt="LibreChat Docs Logo"
-          width={30}
-          height={30}
-          className="block dark:hidden"
-        />
-        {/* Text */}
+        <Image src="/librechat_docs.svg" alt="LibreChat Docs Logo" width={30} height={30} />
         <span className="ml-2 text-lg font-bold text-gray-600 dark:text-gray-300">LibreChat</span>
         {/* CSS for hover effect */}
         <style jsx>{`
