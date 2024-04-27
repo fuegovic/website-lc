@@ -61,7 +61,7 @@ export default {
     type: 'page',
     display: 'hidden',
   },
-  'cookie-policy': {
+  cookie: {
     title: 'Cookie Policy',
     type: 'page',
     display: 'hidden',

@@ -8,8 +8,16 @@ const menuItems: {
     heading: 'Documentation',
     items: [
       {
-        name: 'Self-hosting',
-        href: '/docs/deployment/self-host',
+        name: 'Get Started',
+        href: '/docs',
+      },
+      {
+        name: 'Local Install',
+        href: '/docs/local',
+      },
+      {
+        name: 'Remote Install',
+        href: '/docs/remote',
       },
     ],
   },
@@ -23,8 +31,6 @@ const menuItems: {
   {
     heading: 'Resources',
     items: [
-      { name: 'Documentation', href: '/docs' },
-      { name: 'Blog', href: '/blog' },
       {
         name: 'Changelog',
         href: '/changelog',
@@ -66,12 +72,20 @@ const menuItems: {
         href: '/privacy',
       },
       {
+        name: 'Cookie policy',
+        href: '/cookie',
+      },
+      {
         name: '',
         href: '',
       },
       {
         name: '',
         href: '',
+      },
+      {
+        name: 'Subscribe',
+        href: '/subscribe',
       },
       {
         name: 'Unsubscribe',
