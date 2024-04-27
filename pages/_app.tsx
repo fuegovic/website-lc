@@ -9,6 +9,7 @@ import { PostHogProvider } from 'posthog-js/react'
 import { CrispWidget } from '@/components/supportChat'
 import { Hubspot, hsPageView } from '@/components/analytics/hubspot'
 import { GeistSans } from 'geist/font/sans'
+import { Analytics } from '@vercel/analytics/react';
 // import { GeistMono } from "geist/font/mono";
 
 export default function App({ Component, pageProps }) {
@@ -39,6 +40,7 @@ export default function App({ Component, pageProps }) {
     <div className={`${GeistSans.variable}`}>
       <PostHogProvider client={posthog}>
         <Component {...pageProps} />
+        <Analytics />
         {process.env.NEXT_PUBLIC_CRISP_WEBSITE_ID ? <CrispWidget /> : null}
       </PostHogProvider>
       <Hubspot />
