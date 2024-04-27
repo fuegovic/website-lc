@@ -9,10 +9,12 @@ description: How to locally test the app during development.
 
 Before submitting your updates, it's crucial to verify they pass all unit tests. Follow these steps to run tests locally:
 
-- ```sh filename="copy your `.env.example` file in the `/api` folder and rename it to `.env`"
+- Copy your `.env.example` file in the `/api` folder and rename it to `.env`
+  ```bash filename="create a /api/.env file"
   cp .env.example ./api/.env
   ```
-- add `NODE_ENV=CI` to your `/api/.env` file
+
+- Add `NODE_ENV=CI` to your `/api/.env` file
 - `npm run test:client`
 - `npm run test:api`
 
