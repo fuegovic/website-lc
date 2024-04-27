@@ -60,6 +60,7 @@ import { ChangelogHeader } from "@/components/changelog/ChangelogHeader";
   - ❌ emails are sends to: `process.env.SLACK_WEBHOOK_URL`
 
 ✅ Replaced with: `utils\dbConnect.js`, `utils\Subscriber.js`, `pages/api/subscribe.js`, - component: `components\NewsletterForm.js`
+  - Updated to ts by berry
 
 ```js
 import NewsletterForm from '@/components/NewsletterForm'
@@ -88,7 +89,7 @@ import NewsletterForm from '@/components/NewsletterForm'
 - ✔️ ~~callouts bg in light mode~~
 - ✔️ ~~🖼️ add logo.svg + docs-logo.png~~
 - ✔️ ~~🧑‍🦯 fix Light Mode (sub/unnsub forms)~~
-- // 📱 Double check mobile view
+- ✔️ ~~📱 Double check mobile view~~ (looks fine afaik)
 
 ### newsletter
 
@@ -131,12 +132,13 @@ import NewsletterForm from '@/components/NewsletterForm'
 ### random docs //TODO and Notes:
 
 - // Contact Page?
-- // Footer update
-- // 📝 instruction for blog posts, (basically the same as the changelogs)
+- ✔️ ~~Footer update~~
+- ✔️ ~~📝 instruction for blog posts~~ provided in the blog
 - ✔️ ~~Hide "Pricing"~~
-- // add and organize docs (once the base properly is set)
+- ✔️ ~~broken header logo in light mode~~
+- ⭕ WIP - add and organize docs
 - // Add proper screenshots in `about`
 - // update github URLs (when it's ready, before publishing)
 
-broken icon in light mode
-//TODO!!!!!!!!!!!!!!!
+- YAML checker
+- Cred keys generator
