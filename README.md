@@ -140,5 +140,5 @@ import NewsletterForm from '@/components/NewsletterForm'
 - // Add proper screenshots in `about`
 - // update github URLs (when it's ready, before publishing)
 
-- YAML checker
-- Cred keys generator
+- // YAML checker
+- // Cred keys generator
