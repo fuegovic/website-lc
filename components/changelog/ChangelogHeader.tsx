@@ -56,7 +56,8 @@ export const ChangelogHeader = () => {
           alt={title}
           width={1200}
           height={630}
-          className="rounded border"
+          className="border"
+          style={{ borderRadius: 20 }}
           unoptimized={
             page.frontMatter.gif !== undefined || page.frontMatter.ogImage?.endsWith('.gif')
           }
