@@ -5,6 +5,7 @@ import { GeistSans } from 'geist/font/sans'
 import { DocsThemeConfig, useConfig, ThemeSwitch } from 'nextra-theme-docs'
 import { Steps, Tabs, Cards, FileTree, Button } from 'nextra/components'
 import { Callout } from '@/components/callouts/callout'
+import CredsGenerator from '@/components/tools/CredentialsGeneratorBox'
 import Carousel from '@/components/carousel/Carousel'
 import { Logo } from '@/components/logo'
 import { Frame } from './components/Frame'
@@ -114,6 +115,7 @@ const config: DocsThemeConfig = {
     Button,
     Carousel,
     OptionTable,
+    CredsGenerator,
   },
   banner: {
     key: 'new-docs',
