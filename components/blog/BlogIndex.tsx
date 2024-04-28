@@ -7,13 +7,17 @@ import { AuthorSmall } from '../Author/AuthorsSmall'
 
 export const BlogIndex = ({ maxItems }: { maxItems?: number }) => {
   const [selectedTags, setSelectedTags] = useState<string[]>([])
+
   const [selectedAuthor, setSelectedAuthor] = useState<string | null>(null)
 
   const allPages = getPagesUnderRoute('/blog') as Array<Page & { frontMatter: any }>
-  const allTags = Array.from(
-    new Set(allPages.flatMap((page) => page.frontMatter.tags || [])),
-  ).sort()
+
+  const allTags = Array.from(new Set(allPages.flatMap((page) => page.frontMatter.tags || []))).sort(
+    (a, b) => a.toLowerCase().localeCompare(b.toLowerCase()),
+  )
+
   const allAuthors = Array.from(new Set(allPages.map((page) => page.frontMatter.authorid))).sort()
+
   const sortedPages = allPages
     .sort((a, b) => new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime())
     .slice(0, maxItems)
