@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { SocialIcon } from 'react-social-icons'
 
 const menuItems: {
   heading: string
@@ -109,9 +110,54 @@ const FooterMenu = () => {
             </ul>
           </div>
         ))}
-        <div />
+        <div className="flex items-center justify-between md:col-span-6">
+          <div className="font-mono text-sm">© {new Date().getFullYear()} LibreChat</div>
+          <div className="flex ml-auto">
+            <SocialIcon
+              url="https://github.librechat.ai/"
+              className="absolute inset-0 w-full h-full transform scale-100 transition-transform opacity-100 hover:scale-90"
+              style={{ height: 40, width: 40 }}
+              bgColor="background"
+              fgColor="#9B9B9B80"
+            />
+            <SocialIcon
+              url="https://discord.librechat.ai/"
+              className="absolute inset-0 w-full h-full transform scale-100 transition-transform opacity-100 hover:scale-90"
+              style={{ height: 40, width: 40 }}
+              bgColor="background"
+              fgColor="#9B9B9B80"
+            />
+            <SocialIcon
+              url="https://linkedin.librechat.ai/"
+              className="absolute inset-0 w-full h-full transform scale-100 transition-transform opacity-100 hover:scale-90"
+              style={{ height: 40, width: 40 }}
+              bgColor="background"
+              fgColor="#9B9B9B80"
+            />
+            <SocialIcon
+              url="https://x.com/LibreChatAI"
+              className="absolute inset-0 w-full h-full transform scale-100 transition-transform opacity-100 hover:scale-90"
+              style={{ height: 40, width: 40 }}
+              bgColor="background"
+              fgColor="#9B9B9B80"
+            />
+            <SocialIcon
+              url="https://www.youtube.com/@LibreChat"
+              className="absolute inset-0 w-full h-full transform scale-100 transition-transform opacity-100 hover:scale-90"
+              style={{ height: 40, width: 40 }}
+              bgColor="background"
+              fgColor="#9B9B9B80"
+            />
+            <SocialIcon
+              url="mailto:contact@librechat.ai"
+              className="absolute inset-0 w-full h-full transform scale-100 transition-transform opacity-100 hover:scale-90"
+              style={{ height: 40, width: 40 }}
+              bgColor="background"
+              fgColor="#9B9B9B80"
+            />
+          </div>
+        </div>
       </div>
-      <div className="my-8 font-mono text-sm">© {new Date().getFullYear()} LibreChat</div>
     </div>
   )
 }
