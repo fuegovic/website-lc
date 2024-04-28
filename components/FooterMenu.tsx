@@ -5,27 +5,13 @@ const menuItems: {
   items: { name: string; href: string }[]
 }[] = [
   {
-    heading: 'Documentation',
+    heading: 'About',
     items: [
       {
-        name: 'Get Started',
-        href: '/docs',
+        name: 'About',
+        href: '/about',
       },
-      {
-        name: 'Local Install',
-        href: '/docs/local',
-      },
-      {
-        name: 'Remote Install',
-        href: '/docs/remote',
-      },
-    ],
-  },
-  {
-    heading: 'Blog',
-    items: [
-      { name: 'Blog', href: '/blog' },
-      { name: 'Authors', href: '/authors/librechat' },
+      { name: 'Contact Us', href: '/about#contact-us' },
     ],
   },
   {
@@ -50,13 +36,27 @@ const menuItems: {
     ],
   },
   {
-    heading: 'About',
+    heading: 'Documentation',
     items: [
       {
-        name: 'About',
-        href: '/about',
+        name: 'Get Started',
+        href: '/docs',
       },
-      { name: 'Contact', href: 'mailto:contact@librechat.ai' },
+      {
+        name: 'Local Install',
+        href: '/docs/local',
+      },
+      {
+        name: 'Remote Install',
+        href: '/docs/remote',
+      },
+    ],
+  },
+  {
+    heading: 'Blog',
+    items: [
+      { name: 'Blog', href: '/blog' },
+      { name: 'Blog Authors', href: '/authors/librechat' },
     ],
   },
   {
