@@ -13,7 +13,7 @@ const BlogCard = ({ page, handleTagClick, selectedTags = [] }) => {
   }
 
   useEffect(() => {
-    setMaxDescriptionLength(cardWidth > 260 ? 160 : 46) // Adjust maxLength based on card width
+    setMaxDescriptionLength(cardWidth > 260 ? 145 : 46) // Adjust maxLength based on card width
   }, [cardWidth])
 
   useEffect(() => {
@@ -74,11 +74,12 @@ const BlogCard = ({ page, handleTagClick, selectedTags = [] }) => {
             </span>
           ))}
         </div>
-        <h2 className="font-mono text-xl mb-2 ml-1 mr-1 font-bold">
-          {page.meta?.title || page.frontMatter?.title || page.name}
-        </h2>
-        <div className="mb-2 ml-1 mr-1">
-          {truncateDescription(page.frontMatter?.description || '')}
+        {/* Modified title and description to be clickable */}
+        <div className="mb-2 ml-1 mr-1 cursor-pointer" onClick={handleCardClick}>
+          <h2 className="font-mono text-xl mb-2 font-bold">
+            {page.meta?.title || page.frontMatter?.title || page.name}
+          </h2>
+          <div>{truncateDescription(page.frontMatter?.description || '')}</div>
         </div>
         <div className="flex items-center justify-between absolute bottom-4 left-4 right-4">
           <Author authorid={page.frontMatter.authorid} />
