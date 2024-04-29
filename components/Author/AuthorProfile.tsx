@@ -4,6 +4,7 @@ import { type Page } from 'nextra'
 import { SocialIcon } from 'react-social-icons'
 import BlogCard from '../blog/BlogCard'
 import Image from 'next/image'
+import Link from 'next/link'
 
 //TODO: Fix Mobile view to better handle more than 4 socials;
 //TODO: Better fallback social icon (the default one is the "share" icon)
@@ -96,17 +97,26 @@ const AuthorProfile: React.FC<AuthorProfileProps> = ({ authorId }) => {
         </div>
       </section>
       <section className="max-w-4xl mx-auto mt-8">
-        <h2 className="font-bold text-2xl mb-4 text-center">Recent Posts by {author.name}</h2>
+        <h2 className="font-bold text-2xl mb-6 text-center">Recent Posts by {author.name}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-7">
           {sortedAuthorPosts.map((post) => (
             <BlogCard
               key={post.route}
               page={post}
-              // Define or import these handlers appropriately for BlogCard interaction
               handleTagClick={(tag) => console.log('Tag clicked:', tag)}
               selectedTags={undefined}
             />
           ))}
+        </div>
+        <div className="mb-8"></div>
+        <hr></hr>
+        <div className="flex justify-center mt-8">
+          <Link href="/blog">
+            <button className="btn btn-primary mr-4 custom-btn">Visit the Blog</button>
+          </Link>
+          <Link href="/authors">
+            <button className="btn btn-secondary custom-btn">Our Authors</button>
+          </Link>
         </div>
       </section>
     </>
