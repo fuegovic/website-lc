@@ -5,6 +5,7 @@ const CredsGenerator = () => {
   const { generateCredentials } = useCredentialsGenerator()
   const [credentials, setCredentials] = useState(null)
   const [copyEnabled, setCopyEnabled] = useState(false) // State to track whether copy is enabled
+  const [showTooltip, setShowTooltip] = useState(false) // State to track tooltip visibility
 
   const handleGenerate = () => {
     try {
@@ -19,7 +20,10 @@ const CredsGenerator = () => {
   const handleCopy = (value) => {
     navigator.clipboard
       .writeText(value)
-      .then(() => alert(`${value} copied to clipboard`))
+      .then(() => {
+        setShowTooltip(true) // Show tooltip on successful copy
+        setTimeout(() => setShowTooltip(false), 2000) // Hide tooltip after 2 seconds
+      })
       .catch((err) => console.error('Copy failed:', err))
   }
 
@@ -89,6 +93,7 @@ const CredsGenerator = () => {
           </div>
         </div>
       </div>
+      {showTooltip && <div className="tooltip">Copied to Clipboard</div>}
       <button
         className="generate-button"
         style={{ display: 'block', margin: '0 auto', marginTop: '15px' }}
@@ -98,6 +103,7 @@ const CredsGenerator = () => {
       </button>
       <style jsx>{`
         .credentials-box {
+          position: relative;
           padding: 10px;
           // border: 1px solid #ccc;
           border-radius: 20px;
@@ -138,6 +144,16 @@ const CredsGenerator = () => {
           cursor: pointer;
           width: auto;
           font-size: 1rem; /* Adjusted size */
+        }
+        .tooltip {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          background-color: rgba(30, 163, 128, 0.5);
+          color: #fff;
+          padding: 5px 10px;
+          border-radius: 5px;
+          z-index: 999; /* Ensure a higher z-index */
         }
       `}</style>
     </div>
