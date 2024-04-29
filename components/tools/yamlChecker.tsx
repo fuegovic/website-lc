@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import AceEditor, { IMarker } from 'react-ace'
 import 'ace-builds/src-noconflict/mode-yaml'
 import 'ace-builds/src-noconflict/theme-twilight'
@@ -31,14 +31,18 @@ function YAMLChecker() {
     }
   }
 
-  const handleValidation = () => {
-    const result = validateYAML(yaml)
-    setValidationResult(result)
-  }
-
   const handleYamlChange = (newYaml: string) => {
     setYaml(newYaml)
   }
+
+  useEffect(() => {
+    if (yaml.trim() === '') {
+      setValidationResult(null) // Clear validation result if YAML is empty
+    } else {
+      const result = validateYAML(yaml)
+      setValidationResult(result)
+    }
+  }, [yaml]) // Trigger validation whenever `yaml` changes
 
   const errorMarkers: IMarker[] =
     errorLine === null
@@ -54,8 +58,26 @@ function YAMLChecker() {
           },
         ]
 
+  const textAreaStyle = {
+    width: '100%',
+    minHeight: '50px',
+    // resize: 'vertical', // Use string value for resize
+    padding: '10px',
+    border: '1px solid #ccc',
+    borderRadius: '5px',
+    fontSize: '1rem',
+    backgroundColor: validationResult
+      ? validationResult.valid
+        ? 'rgba(0,255,0,0.2)' // Green background for valid YAML
+        : 'rgba(255,0,0,0.2)' // Red background for invalid YAML
+      : 'transparent', // Transparent background by default
+  }
+
   return (
-    <div>
+    <div style={{ width: '100%', maxWidth: '800px', margin: '0 auto' }}>
+      <h2 style={{ textAlign: 'left', fontSize: '1.5rem', margin: '10px 0' }}>
+        YAML Validator (beta)
+      </h2>
       <AceEditor
         mode="yaml"
         theme="twilight"
@@ -68,34 +90,20 @@ function YAMLChecker() {
           highlightActiveLine: false,
         }}
         markers={errorMarkers}
+        style={{ width: '100%', marginBottom: '10px' }}
       />
-      <button
-        onClick={handleValidation}
-        style={{
-          backgroundColor: 'rgb(30, 163, 128)',
-          color: 'white',
-          padding: '10px 20px',
-          border: 'none',
-          borderRadius: '5px',
-          cursor: 'pointer',
-          marginTop: '10px',
-        }}
-      >
-        Validate YAML
-      </button>
-      {validationResult &&
-        (validationResult.valid ? (
-          <pre>
-            <br />
-            YAML is valid!
-            <br />
-          </pre>
-        ) : (
-          <p>
-            Error: {validationResult.error}
-            {errorLine !== null && ` at line ${errorLine + 1}`}
-          </p>
-        ))}
+      <textarea
+        readOnly
+        style={textAreaStyle}
+        placeholder="Validation Result will be displayed here"
+        value={
+          validationResult
+            ? validationResult.valid
+              ? 'YAML is valid!'
+              : validationResult.error || ''
+            : ''
+        }
+      />
     </div>
   )
 }
