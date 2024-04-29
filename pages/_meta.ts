@@ -74,6 +74,11 @@ export default {
       timestamp: false,
     },
   },
+  subscribe: {
+    title: 'Subscribe',
+    type: 'page',
+    display: 'hidden',
+  },
   unsubscribe: {
     title: 'Unsubscribe',
     type: 'page',
@@ -86,4 +91,5 @@ export default {
       timestamp: false,
     },
   },
+  toolkit: 'ToolKit',
 }

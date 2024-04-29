@@ -10,4 +10,8 @@ export default {
   },
   development: 'Development',
   documentation: 'Documentation',
+  other: {
+    // "title": "Other",
+    type: 'separator',
+  },
 }

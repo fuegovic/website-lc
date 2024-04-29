@@ -14,7 +14,7 @@
     "prettier": "pnpm lint:prettier --write",
     "prepare": "husky"
   },
-  "homepage": "https://librechat.ai",
+  "homepage": "https://www.librechat.cfd",
   "dependencies": {
     "@calcom/embed-react": "^1.4.0",
     "@glidejs/glide": "^3.6.0",
