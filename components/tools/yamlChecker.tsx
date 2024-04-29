@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import AceEditor, { IMarker } from 'react-ace'
 import 'ace-builds/src-noconflict/mode-yaml'
 import 'ace-builds/src-noconflict/theme-twilight'
@@ -12,6 +12,7 @@ function YAMLChecker() {
     error?: string
   } | null>(null)
   const [errorLine, setErrorLine] = useState<number | null>(null)
+  const editorRef = useRef<any>(null)
 
   const validateYAML = (yamlContent: string) => {
     try {
@@ -33,6 +34,17 @@ function YAMLChecker() {
 
   const handleYamlChange = (newYaml: string) => {
     setYaml(newYaml)
+  }
+
+  const handleFileDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault()
+    const file = e.dataTransfer.files[0]
+    const reader = new FileReader()
+    reader.onload = () => {
+      const fileContent = reader.result as string
+      setYaml(fileContent)
+    }
+    reader.readAsText(file)
   }
 
   useEffect(() => {
@@ -61,7 +73,6 @@ function YAMLChecker() {
   const textAreaStyle = {
     width: '100%',
     minHeight: '50px',
-    // resize: 'vertical', // Use string value for resize
     padding: '10px',
     border: '1px solid #ccc',
     borderRadius: '5px',
@@ -78,20 +89,28 @@ function YAMLChecker() {
       <h2 style={{ textAlign: 'left', fontSize: '1.5rem', margin: '10px 0' }}>
         YAML Validator (beta)
       </h2>
-      <AceEditor
-        mode="yaml"
-        theme="twilight"
-        onChange={handleYamlChange}
-        value={yaml}
-        name="YAML_EDITOR"
-        editorProps={{ $blockScrolling: true }}
-        setOptions={{
-          showLineNumbers: true,
-          highlightActiveLine: false,
-        }}
-        markers={errorMarkers}
+      <div
+        onDrop={handleFileDrop}
+        onDragOver={(e) => e.preventDefault()}
         style={{ width: '100%', marginBottom: '10px' }}
-      />
+      >
+        <AceEditor
+          mode="yaml"
+          theme="twilight"
+          onChange={handleYamlChange}
+          value={yaml}
+          name="YAML_EDITOR"
+          editorProps={{ $blockScrolling: true }}
+          setOptions={{
+            showLineNumbers: true,
+            highlightActiveLine: false,
+          }}
+          markers={errorMarkers}
+          style={{ width: '100%' }}
+          placeholder="Paste the content of the YAML file here or drop a file here..."
+          ref={editorRef}
+        />
+      </div>
       <textarea
         readOnly
         style={textAreaStyle}
