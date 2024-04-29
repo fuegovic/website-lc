@@ -57,7 +57,7 @@ const menuItems: {
     heading: 'Blog',
     items: [
       { name: 'Blog', href: '/blog' },
-      { name: 'Blog Authors', href: '/authors/librechat' },
+      { name: 'Blog Authors', href: '/authors' },
     ],
   },
   {
