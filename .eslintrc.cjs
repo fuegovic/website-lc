@@ -98,6 +98,7 @@ module.exports = {
       ],
       parserOptions: {
         project: ['tsconfig.json'],
+        tsconfigRootDir: './'
       },
       rules: {
         '@typescript-eslint/no-unnecessary-type-assertion': 'error',

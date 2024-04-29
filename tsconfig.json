@@ -27,7 +27,8 @@
     "utils/Subscriber.js",
     "utils/dbConnect.js",
     "pages/api/subscribe.js",
-    "components/NewsletterForm.js"
+    "components/NewsletterForm.js",
+    "components/tools/yamlChecker.tsx"
   ],
   "exclude": ["node_modules"]
 }

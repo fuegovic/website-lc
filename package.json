@@ -62,6 +62,7 @@
     "postcss": "^8.4.38",
     "posthog-js": "^1.121.2",
     "react": "^18.2.0",
+    "react-ace": "^11.0.1",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.3",
     "react-hot-toast": "^2.4.1",
