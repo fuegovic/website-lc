@@ -81,13 +81,6 @@ const AuthorPage: React.FC = () => {
           <AuthorCard key={author.frontMatter.authorid} author={author.frontMatter} />
         ))}
       </div>
-      <div className="mb-8"></div>
-      <hr></hr>
-      <div className="flex justify-center mt-8">
-        <Link href="/blog">
-          <button className="btn btn-primary mr-4 custom-btn">Visit the Blog</button>
-        </Link>
-      </div>
     </section>
   )
 }
