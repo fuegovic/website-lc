@@ -14,13 +14,13 @@ description: Learn how to use Traefik as a reverse proxy and load balancer to ex
 
 ## Configuration
 
-### **Create a Docker network for Traefik**
+### Create a Docker network for Traefik
 
-  ```bash
+  ```bash filename="Create a Docker network for Traefik"
   docker network create web
   ```
 
-### **Configure Traefik and LibreChat**
+### Configure Traefik and LibreChat
 
     In your docker-compose.override.yml file, add the following configuration:
 
@@ -75,9 +75,9 @@ networks:
 
   see: [Docker Override](/docs/configuration/docker/docker_override) for more info.
 
-### **Start the containers**
+### Start the containers
 
-  ```bash
+  ```bash filename="Start the containers"
   docker-compose up -d
   ```
 
