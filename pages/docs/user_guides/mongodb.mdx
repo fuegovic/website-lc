@@ -26,3 +26,14 @@ LibreChat aims to provide a seamless experience across multiple devices, allowin
 MongoDB's intuitive query language and rich ecosystem of tools and libraries contribute to faster development cycles and increased developer productivity. This aligns well with LibreChat's goal of being an open-source project, fostering collaboration and contributions from the developer community.
 
 By leveraging MongoDB's strengths, LibreChat can efficiently manage and store diverse data structures, ensure data security and availability, and provide a seamless cross-device experience for its users. MongoDB's flexibility, scalability, and developer-friendly features make it an ideal choice for powering the core functionalities of LibreChat.
+
+
+## Note
+
+<Callout type="warning" title="CPU compatibility">
+**Note:** If you're running LibreChat on a processor that doesn't have SSE4.2, AVX support, or other required CPU features, you'll need to use an older but compatible version of MongoDB with the Docker installation. Specifically, you should use the `mongo:4.4.18` image, which is compatible with processors without these features.
+
+To use this older MongoDB version with the LibreChat Docker installation, you'll need to utilize the `docker-compose.override.yml` file. This override file allows you to specify the MongoDB version you want to use, overriding the default version included in the main `docker-compose.yml` file.
+
+For more information on using the `docker-compose.override.yml` file and configuring an older MongoDB version for your Docker installation, please refer to our [Docker Override Configuration Guide](link-to-docker-override-guide).
+</Callout>
