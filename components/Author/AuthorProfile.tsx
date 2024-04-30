@@ -4,7 +4,9 @@ import { type Page } from 'nextra'
 import { SocialIcon } from 'react-social-icons'
 import BlogCard from '../blog/BlogCard'
 import Image from 'next/image'
-import Link from 'next/link'
+import { Cards } from 'nextra/components'
+import { Blog } from '@/components/CardIcons/Blog'
+import { OurAuthors } from '@/components/CardIcons/OurAuthors'
 
 //TODO: Fix Mobile view to better handle more than 4 socials;
 //TODO: Better fallback social icon (the default one is the "share" icon)
@@ -108,15 +110,16 @@ const AuthorProfile: React.FC<AuthorProfileProps> = ({ authorId }) => {
             />
           ))}
         </div>
-        <div className="mb-8"></div>
-        <hr></hr>
-        <div className="flex justify-center mt-8">
-          <Link href="/blog">
-            <button className="btn btn-primary mr-4 custom-btn">Visit the Blog</button>
-          </Link>
-          <Link href="/authors">
-            <button className="btn btn-secondary custom-btn">Our Authors</button>
-          </Link>
+        <div style={{ marginTop: '75px' }}></div>
+        <div>
+          <Cards num={3}>
+            <Cards.Card title="" href="/blog" icon={<Blog />} image>
+              {null}
+            </Cards.Card>
+            <Cards.Card title="" href="/authors" icon={<OurAuthors />} image>
+              {null}
+            </Cards.Card>
+          </Cards>
         </div>
       </section>
     </>
