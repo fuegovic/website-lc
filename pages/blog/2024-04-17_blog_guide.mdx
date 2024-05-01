@@ -1,10 +1,10 @@
 ---
-title: Contributing to Blog (and Changelog)
+title: A Guide to Contributing to Our Blog
 date: 2024/04/17
-description: 'Quick guide to get you started with the Blog (and Changelog)'
+description: 'Want to share your insights and knowledge with our community? Learn how to contribute to our blog with this step-by-step guide!'
 tags:
-  - website
   - blog
+  - contributing
   - guide
 authorid: fuegovic
 ogImage: /images/blog/2024-04-17_blog_guide.png
@@ -14,33 +14,21 @@ import { BlogHeader } from '@/components/blog/BlogHeader'
 
 <BlogHeader />
 
-# Contributing to the blog!
+# Welcome, Aspiring Blog Contributors! 🙌
 
-- **[Blog Posts](#blog-posts)**
-  - [Author Profile](#author-profile)
-  - [Make your first blog post!](#make-your-first-blog-post)
-  - [Before you submit](#before-you-submit-a-pr-for-your-blog-post-always-test-to-make-sure-everything-looks-fine)
-- **[Changelog and Breaking changes](#changelog-and-breaking-changes)**
+Are you eager to share your expertise and insights with our vibrant community? Contributing to our blog is a fantastic way to do just that! In this beginner-friendly guide, we'll walk you through the process of creating your first blog post and making your mark on our platform. Let's dive in! 🌟
 
-## Blog Posts
+## Step 1: Set Up Your Author Profile 👤
 
-Everyone is welcome to contribute to the blog! It is the perfect place to gather information that might change over time, or that can't be maintained by the team. Here's how to get started.
+Before you start crafting your blog post, you'll need to create an author profile. This helps our readers get to know the brilliant mind behind the content. Here's how:
 
-### Author Profile
+1. Create a new file in the `pages/authors` directory, following the format `authorid.mdx`.
+2. Add your profile picture to the `public/images/people` folder.
+3. Fill in the template with your details, including your name, bio, and social media links.
 
-Before creating your first post, you'll need an author profile.
-
-<Callout title="Prefer to stay anonymous?">
-  If you really don't want to create a user profile, there's an "anon" profile you can attach to
-  your blog post: - `authorid: anon`
+<Callout title="Prefer to Stay Anonymous?">
+  No worries! If you'd rather not create a personal profile, you can use the "anon" profile by adding `authorid: anon` to your blog post metadata.
 </Callout>
-
-To create an author profile:
-
-- Create the profile page in `pages/authors`.
-- Name the file following this format: `authorid.mdx`.
-- Add your profile picture in `public/images/people`.
-- Follow this template:
 
 ```mdx filename="authorid.mdx"
 ---
@@ -55,7 +43,7 @@ socials:
   LinkedIn: https://linkedin.librechat.ai/
   X: https://x.com/LibreChatAI
   Discord: https://discord.librechat.ai
-  YouTube: https://www.youtube.com/@LibreChat
+---
 ---
 
 import AuthorProfile from '@/components/Author/AuthorProfile'
@@ -63,28 +51,16 @@ import AuthorProfile from '@/components/Author/AuthorProfile'
 <AuthorProfile authorId="your-authorid" />
 ```
 
-<Callout type="tip" title="Tip">
-  Use the other authorid files in `pages/authors` as reference.
-</Callout>
+## Step 2: Craft Your Blog Post ✍️
 
-### Make your first blog post!
+Now, it's time to let your creativity flow! We use MDX for our blog posts, which allows you to seamlessly blend markdown and JSX. This means you can create interactive and engaging content by importing components like charts and alerts.
 
-We are using MDX for the blog. MDX allows you to use JSX in your markdown content. You can import components, such as interactive charts or alerts, and embed them within your content.
+To create your blog post:
 
-For more info, see: https://mdxjs.com/
-
-- Blog post thumbnail image (required)
-
-  - Use either an image hosted on GitHub or place your image(s) in `public/images/blog`.
-  - Use the same name for your thumbnail image and your blog post file.
-  - If you want to include more images than just the thumbnail, make a folder with the same name as your blog post MDX file and put all images (including the thumbnail) in that folder.
-
-- The blog posts are placed in `pages/blog`.
-- Use the following naming scheme to keep it organized: "date-short_title".
-
-  - `yyyy-mm-dd_short_title.mdx`
-
-- Add the metadata and the header to your new document:
+1. Place your post in the `pages/blog` directory, using the naming scheme `yyyy-mm-dd_short_title.mdx`.
+2. Add a thumbnail image to the `public/images/blog` folder, using the same name as your blog post file.
+3. Include the necessary metadata and header in your document, as shown in the example.
+4. Let your thoughts and ideas pour onto the page! 🎉
 
   ```mdx filename="metadata and header"
   ---
@@ -100,88 +76,26 @@ For more info, see: https://mdxjs.com/
 
   import { BlogHeader } from '@/components/blog/BlogHeader'
 
-  {' '}
-
   <BlogHeader />
+
+  # Title 
+  ...
   ```
 
-- **Start writing!** 🧑‍💻
+## Step 3: Test and Submit Your Post 🚀
 
----
+Before submitting your blog post, it's crucial to ensure everything looks perfect. Take a moment to review your author profile, the blog landing page, and your post itself.
 
-<Callout type="warning" title="Before you submit">
-### Before you submit a PR for your blog post, **always** test to make sure everything looks fine.
+To test your changes:
 
-#### Look at:
+1. Prepare the environment by running `pnpm install`.
+2. Start the development server with `pnpm dev`.
+3. Build the project using `pnpm build` and `pnpm start`.
 
-- Your author profile
-- The blog landing page
-- Your blog post
+Once you're confident everything is in order, submit a pull request, and our team will review your contribution. We can't wait to see what you've created! 😊
 
-#### How to test:
+## Ready to Make Your Mark? 🎨
 
-- Prepare the environment
-  - `pnpm install`
-- Run the dev server
-  - `pnpm dev`
-- Test the build
-  - `pnpm build`
-  - `pnpm start`
+Contributing to our blog is an exciting opportunity to showcase your knowledge, engage with our community, and make a lasting impact. By following this guide, you'll be well on your way to becoming a valued contributor.
 
-</Callout>
-
-## Changelog and Breaking Changes
-
-Posting changelog and breaking changes should be reserved for the team and frequent contributors.
-
-The procedure is basically the same as with the blog posts, with a couple of notable differences:
-
-- Post location: `pages/changelog`.
-- Thumbnail: optional, but should be included for major releases.
-  - Thumbnail location: `public/images/changelog`.
-- Filename:
-  - Changelog: `v0.0.0.mdx`.
-  - Breaking changes: `v0.0.0-breaking-changes.mdx`.
-- No author profile necessary.
-
-- Changelog Metadata and Header:
-
-  ```mdx filename="changelog metadata and header"
-  ---
-  date: 1999/01/01
-  title: 🚀 LibreChat v0.0.0
-  description: The v0.0.0 release of LibreChat
-  ogImage: /images/changelog/v0.0.0.png
-  ---
-
-  import { ChangelogHeader } from '@/components/changelog/ChangelogHeader'
-
-  {' '}
-
-  <ChangelogHeader />
-
-  ---
-  ```
-
-- Breaking Changes Metadata and Header:
-
-  ```mdx filename="breaking changes metadata and header"
-  ---
-  date: 1999/01/02
-  title: ⚠️ Breaking Changes v0.0.0+
-  description: Breaking Changes for the v0.0.0+ release of LibreChat
-  ---
-
-  import { ChangelogHeader } from '@/components/changelog/ChangelogHeader'
-
-  {' '}
-
-  <ChangelogHeader />
-
-  ---
-  ```
-
-<Callout type="note" title="Notes:">
-  - Breaking changes posts are dated one day after the changelog posts. 
-  - Use a separator: `---` after the header: `<ChangelogHeader />`.
-</Callout>
+So, what are you waiting for? Grab your keyboard, let your ideas flow, and join us in creating content that informs, inspires, and connects. We're thrilled to have you on board! 🚀✨
