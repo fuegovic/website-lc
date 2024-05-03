@@ -1,0 +1,103 @@
+---
+title: Advanced Docker Setup
+description: "A comprehensive guide for installing, configuring, and managing LibreChat using Docker Compose."
+---
+
+# Advanced Docker Guide
+
+This guide provides a detailed walkthrough for installing, configuring, and managing LibreChat using Docker Compose. It covers advanced topics and configurations to help you set up and customize LibreChat according to your needs.
+
+For the short version, please consult: [Docker Install](/docs/local/docker)
+
+## Prerequisites
+
+Before proceeding with this guide, ensure that you have the following prerequisites installed on your system:
+
+- Git
+- Docker
+- Docker Compose
+
+## Cloning the Repository
+
+Start by cloning the LibreChat repository to your desired location:
+
+```sh filename="Clone the repository"
+git clone https://github.com/danny-avila/LibreChat.git
+```
+
+## Configuration
+
+### Creating the .env File
+
+1. Navigate to the cloned repository directory:
+
+   ```sh filename="Navigate to the repository"
+   cd LibreChat
+   ```
+
+2. Create a `.env` file by copying the example file:
+
+   ```sh filename="Create the .env file"
+   cp .env.example .env
+   ```
+
+3. Open the `.env` file in a text editor and provide the necessary configurations. Refer to the [AI Setup](/docs/configuration/pre_configured_ai) and [Custom Endpoints & Configuration](../configuration/custom_config.md#docker-setup) guides for more information. //TODO
+
+### Setting up AI Endpoints (Required)
+
+At least one AI endpoint should be set up for LibreChat to function properly. Follow the [AI Setup](/docs/configuration/pre_configured_ai) guide to configure your desired AI endpoints.
+
+### Customizing Endpoints and Configuration (Optional)
+
+If you want to customize AI endpoints, such as Mistral AI, or other settings, refer to the [Custom Endpoints & Configuration](../configuration/custom_config.md#docker-setup) guide. //TODO
+
+### Managing MongoDB Database (Optional)
+
+LibreChat uses MongoDB as its database. If you want to manage your MongoDB database using Mongo Express, follow the [Manage Your MongoDB Database](/blog/2023-11-30_mongoexpress) guide.
+
+### Setting up User Authentication System (Optional)
+
+If you want to enable user authentication and Google login in LibreChat, follow the [User Authentication System Setup](/docs/configuration/authentication) guide.
+
+## Running LibreChat
+
+Once you have completed the necessary configurations, you can start the LibreChat application by running the following command:
+
+```sh filename="Start LibreChat"
+docker compose up -d
+```
+
+After running this command, you can access the LibreChat application at http://localhost:3080.
+
+## Updating LibreChat
+
+To update LibreChat to the latest version, follow these steps:
+
+```sh filename="Stop the running container(s)"
+docker compose down
+```
+```sh filename="Pull the latest project changes"
+git pull
+```
+```sh filename="Pull the latest LibreChat image"
+docker compose pull
+```
+```sh filename="Start LibreChat"
+docker compose up -d
+```
+
+## Advanced Configuration
+
+### Modifying docker-compose.yml
+
+While you can modify the `docker-compose.yml` file directly, it's recommended to create a `docker-compose.override.yml` file instead. This allows you to override the default configuration without modifying the main `docker-compose.yml` file, making it easier to update LibreChat in the future.
+
+For more information on modifying the `docker-compose.yml` file, refer to the [Docker Override](/docs/configuration/docker/docker_override) guide and the official Docker documentation:
+
+- [Understanding Multiple Compose Files](https://docs.docker.com/compose/multiple-compose-files/extends/#understanding-multiple-compose-files)
+- [Merging Compose Files](https://docs.docker.com/compose/multiple-compose-files/merge/#merge-compose-files)
+- [Specifying Multiple Compose Files](https://docs.docker.com/compose/reference/#specifying-multiple-compose-files)
+
+### Creating a MongoDB Database (Optional)
+
+If you don't want to use the local MongoDB database installed by Docker, you can create a separate MongoDB database. Refer to the [MongoDB Atlas](/docs/configuration/mongodb/mongodb_atlas) or the [MongoDB Community Server](/docs/configuration/mongodb/mongodb_atlas) guide for instructions, as well as the [Docker Override Guide](/docs/configuration/docker/docker_override) for the implementation.
