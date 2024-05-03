@@ -76,31 +76,28 @@ const config: DocsThemeConfig = {
         <meta name="theme-color" content="#000" />
         <meta property="og:url" content={url} />
         <meta httpEquiv="Content-Language" content="en" />
-
         <meta name="title" content={title} />
         <meta property="og:title" content={title} />
-
         <meta name="description" content={description} />
         <meta property="og:description" content={description} />
-
         {video && <meta property="og:video" content={video} />}
-
         <meta property="og:image" content={image} />
         <meta property="twitter:image" content={image} />
-
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site:domain" content="librechat.ai" />
-        <meta name="twitter:url" content="https://librechat.ai" />
-
+        <meta name="twitter:site:domain" content="librechat.ai" /> //TODO Update URL
+        <meta name="twitter:url" content="https://librechat.ai" /> //TODO Update URL
         <style
           dangerouslySetInnerHTML={{
             __html: `html { --font-geist-sans: ${GeistSans.style.fontFamily}; }`,
           }}
         />
-
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="theme-color" content="#ffffff" />
       </>
     )
   },
