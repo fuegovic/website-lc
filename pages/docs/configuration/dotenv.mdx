@@ -370,6 +370,62 @@ Remember to replace placeholder text with actual prompts or instructions and pro
 > Note: if you have PROXY set, it will be used for DALL-E calls also, which is universal for the app.
 
 
+#### DALL-E (Azure)
+
+Here's the updated layout for the DALL-E configuration options:
+
+#### DALL-E:
+
+**API Keys:**
+<OptionTable
+  options={[
+    ['DALLE_API_KEY', 'string', 'The OpenAI API key for DALL-E 2 and DALL-E 3 services.','# DALLE_API_KEY='],
+  ]}
+/>
+
+**API Keys (Version Specific):**
+<OptionTable
+  options={[
+    ['DALLE3_API_KEY', 'string', 'The OpenAI API key for DALL-E 3.','# DALLE3_API_KEY='],
+    ['DALLE2_API_KEY', 'string', 'The OpenAI API key for DALL-E 2.','# DALLE2_API_KEY='],
+  ]}
+/>
+
+**System Prompts:**
+<OptionTable
+  options={[
+    ['DALLE3_SYSTEM_PROMPT', 'string', 'The system prompt for DALL-E 3.','# DALLE3_SYSTEM_PROMPT="Your DALL-E-3 System Prompt here"'],
+    ['DALLE2_SYSTEM_PROMPT', 'string', 'The system prompt for DALL-E 2.','# DALLE2_SYSTEM_PROMPT="Your DALL-E-2 System Prompt here"'],
+  ]}
+/>
+
+**Reverse Proxy Settings:**
+<OptionTable
+  options={[
+    ['DALLE_REVERSE_PROXY', 'string', 'The reverse proxy URL for DALL-E API requests.','# DALLE_REVERSE_PROXY='],
+  ]}
+/>
+
+**Base URLs:**
+<OptionTable
+  options={[
+    ['DALLE3_BASEURL', 'string', 'The base URL for DALL-E 3 API endpoints.','# DALLE3_BASEURL=https://<AZURE_OPENAI_API_INSTANCE_NAME>.openai.azure.com/openai/deployments/<DALLE3_DEPLOYMENT_NAME>/'],
+    ['DALLE2_BASEURL', 'string', 'The base URL for DALL-E 2 API endpoints.','# DALLE2_BASEURL=https://<AZURE_OPENAI_API_INSTANCE_NAME>.openai.azure.com/openai/deployments/<DALLE2_DEPLOYMENT_NAME>/'],
+  ]}
+/>
+
+**Azure OpenAI Integration (Optional):**
+<OptionTable
+  options={[
+    ['DALLE3_AZURE_API_VERSION', 'string', 'The API version for DALL-E 3 with Azure OpenAI service.','# DALLE3_AZURE_API_VERSION=the-api-version # e.g.: 2023-12-01-preview'],
+    ['DALLE2_AZURE_API_VERSION', 'string', 'The API version for DALL-E 2 with Azure OpenAI service.','# DALLE2_AZURE_API_VERSION=the-api-version # e.g.: 2023-12-01-preview'],
+  ]}
+/>
+
+Remember to replace placeholder text with actual prompts or instructions and provide your actual API keys if you choose to include them directly in the file (though managing sensitive keys outside of the codebase is a best practice). Always review and respect OpenAI's usage policies when embedding API keys in software.
+
+> Note: if you have PROXY set, it will be used for DALL-E calls also, which is universal for the app.
+
 #### Google Search
 
 See detailed instructions here: **[Google Search](/docs/configuration/tools/google_search)**
