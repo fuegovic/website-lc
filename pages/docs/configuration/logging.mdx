@@ -69,6 +69,7 @@ Errors will also be present in debug log files as well, but provide stack traces
 This is not recommended however, as the outputs can be quite verbose. It's disabled by default and should be enabled sparingly.
 
 - When handling console logs in cloud deployments (such as GCP or AWS), enabling this will dump the logs with a UTC timestamp and format them as JSON.
+
 <OptionTable
   options={[
     ['CONSOLE_JSON', 'boolean', 'Enable verbose JSON console/stdout logs suitable for cloud deployments like GCP/AWS.', 'CONSOLE_JSON=false'],
