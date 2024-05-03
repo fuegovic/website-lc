@@ -12,11 +12,11 @@ For a quick overview, refer to the user guide provided here: [Authentication](/d
 Here's an overview of the general configuration.
 
 <OptionTable
-  options={[    
-    ['ALLOW_EMAIL_LOGIN', 'boolean', 'Allow email login. Defaults to `true`.'],
-    ['ALLOW_REGISTRATION', 'boolean', 'Allow registration. Defaults to `true`.'],
-    ['ALLOW_SOCIAL_LOGIN', 'boolean', 'Allow social login. Defaults to `false`.'],
-    ['ALLOW_SOCIAL_REGISTRATION', 'boolean', 'Allow social registration. Defaults to `false`.'],
+  options={[
+    ['ALLOW_EMAIL_LOGIN', 'boolean', 'Enable or disable ONLY email login.','ALLOW_EMAIL_LOGIN=true'],
+    ['ALLOW_REGISTRATION', 'boolean', 'Enable or disable Email registration of new users.','ALLOW_REGISTRATION=true'],
+    ['ALLOW_SOCIAL_LOGIN', 'boolean', 'Allow users to connect to LibreChat with various social networks.','ALLOW_SOCIAL_LOGIN=false'],
+    ['ALLOW_SOCIAL_REGISTRATION', 'boolean', 'Enable or disable registration of new users using various social networks.','ALLOW_SOCIAL_REGISTRATION=false'],
   ]}
 />
 
