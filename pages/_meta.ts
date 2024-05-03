@@ -30,18 +30,18 @@ export default {
       timestamp: false,
     },
   },
+  demo: {
+    type: 'page',
+    title: 'Demo',
+    href: 'https://demo.librechat.cfd/',
+    // display: 'hidden',
+  },
   changelog: {
     type: 'page',
     title: 'Changelog',
     theme: {
       layout: 'full',
     },
-  },
-  demo: {
-    type: 'page',
-    title: 'Demo',
-    href: 'https://demo.librechat.cfd/',
-    display: 'hidden',
   },
   pricing: {
     title: 'Pricing',
