@@ -47,7 +47,7 @@ const LogoContextMenu: React.FC<{
         <DropdownMenuItem
           onClick={(e) => {
             e.preventDefault()
-            window.open('/librechat_docs.png', '_blank')
+            window.open('/librechat_alt.png', '_blank')
           }}
         >
           <Download size={14} className="mr-2" />
@@ -56,7 +56,7 @@ const LogoContextMenu: React.FC<{
         <DropdownMenuItem
           onClick={(e) => {
             e.preventDefault()
-            window.open('/librechat_docs.svg', '_blank')
+            window.open('/librechat_alt.svg', '_blank')
           }}
         >
           <Download size={14} className="mr-2" />
