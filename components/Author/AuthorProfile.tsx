@@ -10,7 +10,7 @@ import { OurAuthors } from '@/components/CardIcons/OurAuthors'
 
 //TODO: Fix Mobile view to better handle more than 4 socials;
 //TODO: Better fallback social icon (the default one is the "share" icon)
-//TODO: Tag selection on "Recent Posts by"
+//TODO: Tag selection on "Recent Posts by" (author pages)
 //TODO: fix profile pic position when no bio
 
 interface AuthorMetadata {
