@@ -48,22 +48,29 @@ Errors will also be present in debug log files as well, but provide stack traces
 
 ### Setup
 
-Toggle debug logs with the following environment variable. By default, even if you never set this variable, debug logs will be generated, but you have the option to disable them by setting it to `FALSE`.
+- Toggle debug logs with the following environment variable. By default, even if you never set this variable, debug logs will be generated, but you have the option to disable them by setting it to `FALSE`.
 
 <OptionTable
   options={[
-    ['DEBUG_LOGGING', 'boolean', "Defaults to `TRUE`."],
+    ['DEBUG_LOGGING', 'boolean', 'Keep debug logs active.','DEBUG_LOGGING=true'],
   ]}
 />
 
 > Note: it's recommended to disable debug logs in a production environment.
 
-For verbose server output in the console/terminal, you can set the following to `TRUE`:
+- For verbose server output in the console/terminal, you can set the following to `TRUE`:
 
 <OptionTable
   options={[
-    ['DEBUG_CONSOLE', 'boolean', "Defaults to `FALSE`."],
+    ['DEBUG_CONSOLE', 'boolean', 'Enable verbose console/stdout logs in the same format as file debug logs.', 'DEBUG_CONSOLE=false'],
   ]}
 />
 
 This is not recommended however, as the outputs can be quite verbose. It's disabled by default and should be enabled sparingly.
+
+- When handling console logs in cloud deployments (such as GCP or AWS), enabling this will dump the logs with a UTC timestamp and format them as JSON.
+<OptionTable
+  options={[
+    ['CONSOLE_JSON', 'boolean', 'Enable verbose JSON console/stdout logs suitable for cloud deployments like GCP/AWS.', 'CONSOLE_JSON=false'],
+  ]}
+/>
