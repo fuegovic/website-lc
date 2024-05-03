@@ -13,15 +13,15 @@ In production, you should have Cloudflare or some other DDoS protection in place
 
 The following are all of the related env variables to make use of and configure the mod system. Note this is also found in the [/.env.example](https://github.com/danny-avila/LibreChat/blob/main/.env.example) file, to be set in your own `.env` file.
 
-**Note:** currently, most of these values are configured through the .env file, but they may soon migrate to be exclusively configured from the [`librechat.yaml` config file](https://docs.librechat.ai/install/configuration/custom_config.html#rate-limiting).//TODOupdate URLs
+**Note:** currently, most of these values are configured through the .env file, but they may soon migrate to be exclusively configured from the [`librechat.yaml` config file](https://docs.librechat.ai/install/configuration/custom_config.html#ratelimits).//TODOupdate URLs
 
 ### Violation, Interval, Duration
 
 <OptionTable
   options={[
-    ['BAN_VIOLATIONS', 'boolean', 'Whether or not to enable banning users for violations (they will still be logged). Defaults to `true`.'],
-    ['BAN_DURATION', 'number', 'How long the user and associated IP are banned for in milliseconds. Defaults to `7200000`.'],
-    ['BAN_INTERVAL', 'number', 'A user will be banned every time their score reaches or exceeds the interval threshold. Defaults to `20`.'],
+    ['BAN_VIOLATIONS', 'boolean', 'Whether or not to enable banning users for violations (they will still be logged).','BAN_VIOLATIONS=true'],
+    ['BAN_DURATION', 'integer', 'How long the user and associated IP are banned for (in milliseconds).','BAN_DURATION=1000 * 60 * 60 * 2'],
+    ['BAN_INTERVAL', 'integer', 'The user will be banned every time their score reaches/crosses over the interval threshold.','BAN_INTERVAL=20'],
   ]}
 />
 
@@ -29,11 +29,11 @@ The following are all of the related env variables to make use of and configure 
 
 <OptionTable
   options={[    
-    ['LOGIN_VIOLATION_SCORE', 'number', 'The score assigned for each login violation. Defaults to `1`.'],
-    ['REGISTRATION_VIOLATION_SCORE', 'number', 'The score assigned for each registration violation. Defaults to `1`.'],
-    ['CONCURRENT_VIOLATION_SCORE', 'number', 'The score assigned for each concurrent violation. Defaults to `1`.'],
-    ['MESSAGE_VIOLATION_SCORE', 'number', 'The score assigned for each message violation. Defaults to `1`.'],
-    ['NON_BROWSER_VIOLATION_SCORE', 'number', 'The score assigned for each non-browser violation. Defaults to `20`.'],
+    ['LOGIN_VIOLATION_SCORE', 'integer', 'Score for login violations.','LOGIN_VIOLATION_SCORE=1'],
+    ['REGISTRATION_VIOLATION_SCORE', 'integer', 'Score for registration violations.','REGISTRATION_VIOLATION_SCORE=1'],
+    ['CONCURRENT_VIOLATION_SCORE', 'integer', 'Score for concurrent violations.','CONCURRENT_VIOLATION_SCORE=1'],
+    ['MESSAGE_VIOLATION_SCORE', 'integer', 'Score for message violations.','MESSAGE_VIOLATION_SCORE=1'],
+    ['NON_BROWSER_VIOLATION_SCORE', 'integer', 'Score for non-browser violations.','NON_BROWSER_VIOLATION_SCORE=20'],
   ]}
 />
 
@@ -52,8 +52,8 @@ The following are all of the related env variables to make use of and configure 
 
 <OptionTable
   options={[    
-    ['LIMIT_CONCURRENT_MESSAGES', 'boolean', 'Whether to limit the amount of messages a user can send per request. Defaults to `true`.'],
-    ['CONCURRENT_MESSAGE_MAX', 'number', 'The max amount of messages a user can send per request. Defaults to `2`.'],
+    ['LIMIT_CONCURRENT_MESSAGES', 'boolean', 'Whether to limit the amount of messages a user can send per request.','LIMIT_CONCURRENT_MESSAGES=true'],
+    ['CONCURRENT_MESSAGE_MAX', 'integer', 'The max amount of messages a user can send per request.','CONCURRENT_MESSAGE_MAX=2'],
   ]}
 />
 
@@ -63,18 +63,18 @@ The following are all of the related env variables to make use of and configure 
 
 <OptionTable
   options={[    
-    ['LIMIT_MESSAGE_IP', 'boolean', 'Whether to limit the amount of messages an IP can send per MESSAGE_IP_WINDOW. Defaults to `true`.'],
-    ['MESSAGE_IP_MAX', 'number', 'The max amount of messages an IP can send per MESSAGE_IP_WINDOW. Defaults to `40`.'],
-    ['MESSAGE_IP_WINDOW', 'number', 'In minutes, determines the window of time for MESSAGE_IP_MAX messages. Defaults to `1`.'],
+    ['LIMIT_MESSAGE_IP', 'boolean', 'Whether to limit the amount of messages an IP can send per `MESSAGE_IP_WINDOW`.','LIMIT_MESSAGE_IP=true'],
+    ['MESSAGE_IP_MAX', 'integer', 'The max amount of messages an IP can send per `MESSAGE_IP_WINDOW`.','MESSAGE_IP_MAX=40'],
+    ['MESSAGE_IP_WINDOW', 'integer', 'In minutes, determines the window of time for `MESSAGE_IP_MAX` messages.','MESSAGE_IP_WINDOW=1'],
   ]}
 />
 
 #### Message rate limiting (per User)
 <OptionTable
   options={[    
-    ['LIMIT_MESSAGE_USER', 'boolean', 'Whether to limit the amount of messages an IP can send per MESSAGE_USER_WINDOW. Defaults to `false`.'],
-    ['MESSAGE_USER_MAX', 'number', 'The max amount of messages an IP can send per MESSAGE_USER_WINDOW. Defaults to `40`.'],
-    ['MESSAGE_USER_WINDOW', 'number', 'In minutes, determines the window of time for MESSAGE_USER_MAX messages. Defaults to `1`.'],
+    ['LIMIT_MESSAGE_USER', 'boolean', 'Whether to limit the amount of messages an user can send per `MESSAGE_USER_WINDOW`.','LIMIT_MESSAGE_USER=false'],
+    ['MESSAGE_USER_MAX', 'integer', 'The max amount of messages an user can send per `MESSAGE_USER_WINDOW`.','MESSAGE_USER_MAX=40'],
+    ['MESSAGE_USER_WINDOW', 'integer', 'In minutes, determines the window of time for `MESSAGE_USER_MAX` messages.','MESSAGE_USER_WINDOW=1'],
   ]}
 />
 
@@ -85,7 +85,7 @@ The following are all of the related env variables to make use of and configure 
 
 <OptionTable
   options={[    
-    ['ILLEGAL_MODEL_REQ_SCORE', 'number', 'Violation score to accrue if a user attempts to use an unlisted model. Defaults to `5`.'],
+    ['ILLEGAL_MODEL_REQ_SCORE', 'integer', 'Score for illegal model requests.','ILLEGAL_MODEL_REQ_SCORE=5'],
   ]}
 />
 
@@ -93,8 +93,8 @@ The following are all of the related env variables to make use of and configure 
 
 <OptionTable
   options={[    
-    ['OPENAI_MODERATION', 'boolean', 'Enable or disable OpenAI moderation. Defaults to `true`.'],
-    ['OPENAI_MODERATION_API_KEY', 'string', 'Specify your OpenAI moderation API key here.'],
+    ['OPENAI_MODERATION', 'boolean', 'Whether or not to enable OpenAI moderation on the **OpenAI** and **Plugins** endpoints.','OPENAI_MODERATION=false'],
+    ['OPENAI_MODERATION_API_KEY', 'string', 'Your OpenAI API key.','OPENAI_MODERATION_API_KEY='],
   ]}
 />
 
@@ -103,6 +103,6 @@ Note that this might not work with all reverse proxies:
 
 <OptionTable
   options={[    
-    ['OPENAI_MODERATION_REVERSE_PROXY', 'boolean', 'Enable or disable reverse proxy compatibility for OpenAI moderation. Commented out by default. Defaults to `false`.'],
+    ['OPENAI_MODERATION_REVERSE_PROXY', 'string', 'Note: Commented out by default, this is not working with all reverse proxys.','# OPENAI_MODERATION_REVERSE_PROXY='],
   ]}
 />
