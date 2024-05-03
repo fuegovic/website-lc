@@ -108,13 +108,9 @@ FIREBASE_APP_ID=1:your_app_id #appId
 Finally, to enable the app use Firebase, you must set the following in your `librechat.yaml` config file.
 
 ```yaml
-  version: 1.0.1
+  version: 1.0.8
   cache: true
-  fileStrategy: "firebase" # This is the field and value you need to add
-  endpoints:
-    custom:
-      - name: "Mistral"
-  # Rest of file omitted
+  fileStrategy: "firebase"
 ```
-//TODOupdate URLs
-For more information about the `librechat.yaml` config file, [see the guide here](../install/configuration/custom_config.md).
+
+For more information about the `librechat.yaml` config file, see the guide here: [Custom Endpoints & Configuration](/docs/configuration/librechat_yaml).
