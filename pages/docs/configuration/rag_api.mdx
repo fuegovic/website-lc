@@ -31,7 +31,7 @@ Docker uses the "lite" image of the RAG API by default, which only supports remo
 
 Local embeddings are supported by changing the image used by the default compose file, from `ghcr.io/danny-avila/librechat-rag-api-dev-lite:latest` to `ghcr.io/danny-avila/librechat-rag-api-dev:latest`.
 
-As always, make these changes in your update URLs [Docker Compose Override File](/docs/configuration/docker/docker_override). You can find an example for exactly how to change the image in `docker-compose.override.yml.example` at the root of the project.
+As always, make these changes in your update URLs [Docker Compose Override File](/docs/configuration/docker_override). You can find an example for exactly how to change the image in `docker-compose.override.yml.example` at the root of the project.
 
 If you wish to see an example of a compose file that only includes the PostgresQL + PGVector database and the Python API, see `rag.yml` file at the root of the project.
 
