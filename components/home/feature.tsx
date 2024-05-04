@@ -60,6 +60,29 @@ export default function Feature({ locate }: FeatureProps) {
             </li>
           </ul>
         </div>
+        <div className={styles['feature-plan']}>
+          <a href={`${locate}/changelog`}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+            </svg>
+            <h2 className={styles['feature-header']}>Changelog</h2>
+          </a>
+          <ul className={styles['feature-desc']}>
+            <li key="1" className={styles['feature-desc-item']}>
+              Tracking Progress, One Update at a Time
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   )
