@@ -92,6 +92,21 @@ const CredsGenerator = () => {
             </button>
           </div>
         </div>
+        <div>
+          <p style={{ fontSize: '0.8rem', marginBottom: '5px', marginTop: '10px' }}>
+            MEILI_MASTER_KEY
+          </p>
+          <div className="input-container">
+            <input type="text" value={credentials?.MEILI_KEY || ''} placeholder="" readOnly />
+            <button
+              className="copy-button"
+              onClick={() => handleCopy(credentials?.MEILI_KEY)}
+              disabled={!copyEnabled}
+            >
+              Copy
+            </button>
+          </div>
+        </div>
       </div>
       {showTooltip && <div className="tooltip">Copied to Clipboard</div>}
       <button
