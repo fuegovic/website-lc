@@ -2,7 +2,7 @@
 
 Integrating Azure OpenAI Service with your application allows you to seamlessly utilize multiple deployments and region models hosted by Azure OpenAI. This section details how to configure the Azure OpenAI endpoint for your needs. 
 
-**[For a detailed guide on setting up Azure OpenAI configurations, click here](./azure_openai.md)** //TODO
+**[For a detailed guide on setting up Azure OpenAI configurations, click here](/docs/configuration/librechat_yaml/ai_endpoints/azure)**
 
 ## Example Configuration
 
@@ -274,107 +274,3 @@ models:
     deploymentName: "arbitrary-deployment-name"
     version: "2024-02-15-preview"
 ```
-
-## Model Config Structure
-
-Each item under `models` is part of a list of records, either a boolean value or Object:
-
-**When specifying a model as an object:**
-
-An object allows for detailed configuration of the model, including its `deploymentName` and/or `version`. This mode is used for more granular control over the models, especially when working with multiple versions or deployments under one instance or resource group.
-
-**Example**:
-```yaml filename="endpoints / azureOpenAI / groups / {group_item} / models / {model_item=Object}"
-models:
-  gpt-4-vision-preview:
-    deploymentName: "gpt-4-vision-preview"
-    version: "2024-02-15-preview"
-```
-
-**Notes:**
-- **Deployment Names** and **Versions** are critical for ensuring that the correct model is used.
-    - Double-check these values for accuracy to prevent unexpected behavior.
-
-### deploymentName
-
-**Key:**
-<OptionTable
-  options={[
-    ['deploymentName', 'String', 'The name of the deployment for the model. Identifies the deployment of the model within Azure.', 'This does not have to be the matching OpenAI model name as is convention, but must match the actual name of your deployment on Azure.'],
-  ]}
-/>
-
-**Required:** yes
-
-**Example:**
-```yaml filename="endpoints / azureOpenAI / groups / {group_item} / models / {model_item=Object} / deploymentName"
-deploymentName: "gpt-4-vision-preview"
-```
-
-## version
-
-**Key:**
-<OptionTable
-  options={[
-    ['version', 'String', 'Specifies the version of the model. Defines the version of the model to be used.', ''],
-  ]}
-/>
-
-**Required:** yes
-
-**Example:**
-```yaml filename="endpoints / azureOpenAI / groups / {group_item} / models / {model_item=Object} / version"
-version: "2024-02-15-preview"
-```
-
-**Enabling a Model with Default Group Configuration**
-
-**Key:**
-<OptionTable
-  options={[
-    ['models', 'Boolean', 'Enables a model with default group configuration.', 'When a model is enabled (`true`) without using an object, it uses the group\'s configuration values for deployment name and version.'],
-  ]}
-/>
-
-**Example:**
-```yaml filename="endpoints / azureOpenAI / groups / {group_item} / models"
-models:
-  gpt-4-turbo: true
-```
-
-## Default Parameters
-
-Custom endpoints share logic with the OpenAI endpoint, and thus have default parameters tailored to the OpenAI API.
-
-```yaml filename="Default Parameters"
-{
-  "model": "your-selected-model",
-  "temperature": 1,
-  "top_p": 1,
-  "presence_penalty": 0,
-  "frequency_penalty": 0,
-  "user": "LibreChat_User_ID",
-  "stream": true,
-  "messages": [
-    {
-      "role": "user",
-      "content": "hi how are you",
-    },
-  ],
-}
-```
-### Breakdown
-- `model`: The selected model from list of models.
-- `temperature`: Defaults to `1` if not provided via preset,
-- `top_p`: Defaults to `1` if not provided via preset,
-- `presence_penalty`: Defaults to `0` if not provided via preset,
-- `frequency_penalty`: Defaults to `0` if not provided via preset,
-- `user`: A unique identifier representing your end-user, which can help OpenAI to [monitor and detect abuse](https://platform.openai.com/docs/api-reference/chat/create#chat-create-user).
-- `stream`: If set, partial message deltas will be sent, like in ChatGPT. Otherwise, generation will only be available when completed.
-- `messages`: [OpenAI format for messages](https://platform.openai.com/docs/api-reference/chat/create#chat-create-messages); the `name` field is added to messages with `system` and `assistant` roles when a custom name is specified via preset.
-
-**Note:** The `max_tokens` field is not sent to use the maximum amount of tokens available, which is default OpenAI API behavior. Some alternate APIs require this field, or it may default to a very low value and your responses may appear cut off; in this case, you should add it to `addParams` field as shown in the [Custom Endpoint Object Structure](#custom-endpoint-object-structure).
-
-## Additional Notes
-
-- Ensure that all URLs and keys are correctly specified to avoid connectivity issues.

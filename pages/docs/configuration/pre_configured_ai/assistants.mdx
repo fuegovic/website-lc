@@ -3,7 +3,7 @@
 - The [Assistants API by OpenAI](https://platform.openai.com/docs/assistants/overview) has a dedicated endpoint.
 - The Assistants API enables the creation of AI assistants, offering functionalities like code interpreter, knowledge retrieval of files, and function execution.
     - [Read here for an in-depth documentation](https://platform.openai.com/docs/assistants/overview) of the feature, how it works, what it's capable of.
-- As with the regular [OpenAI API](#openai), go to **[https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)** to get a key.
+- As with the regular [OpenAI API](/docs/configuration/pre_configured_ai/openai), go to **[https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)** to get a key.
 - You will need to set the following environment variable to your key or you can set it to `user_provided` for users to provide their own.
 
 ```bash filename=".env"
@@ -21,12 +21,12 @@ ASSISTANTS_MODELS=gpt-3.5-turbo-0125,gpt-3.5-turbo-16k-0613,gpt-3.5-turbo-16k,gp
 ```bash filename=".env"
 ASSISTANTS_BASE_URL=http://your-alt-baseURL:3080/
 ```
-//TODO
+
 - There is additional, optional configuration, depending on your needs, such as disabling the assistant builder UI, that are available via the [`librechat.yaml` custom config file](./custom_config.md#assistants-endpoint-object-structure):
-    - Control the visibility and use of the builder interface for assistants. [More info](./custom_config.md#disablebuilder)
-    - Specify the polling interval in milliseconds for checking run updates or changes in assistant run states. [More info](./custom_config.md#pollintervalms)
-    - Set the timeout period in milliseconds for assistant runs. Helps manage system load by limiting total run operation time. [More info](./custom_config.md#timeoutms)
-    - Specify which assistant Ids are supported or excluded [More info](./custom_config.md#supportedids)
+    - Control the visibility and use of the builder interface for assistants. [More info](/docs/configuration/librechat_yaml/object_structure/assistants_endpoint#disablebuilder)
+    - Specify the polling interval in milliseconds for checking run updates or changes in assistant run states. [More info](/docs/configuration/librechat_yaml/object_structure/assistants_endpoint#pollintervalms)
+    - Set the timeout period in milliseconds for assistant runs. Helps manage system load by limiting total run operation time. [More info](/docs/configuration/librechat_yaml/object_structure/assistants_endpoint#timeoutms)
+    - Specify which assistant Ids are supported or excluded [More info](/docs/configuration/librechat_yaml/object_structure/assistants_endpoint#supportedids)
 
 
 <Callout type="note" title="Notes">
