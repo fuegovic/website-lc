@@ -47,7 +47,7 @@ export default function App({ Component, pageProps }) {
       </PostHogProvider>
       <Hubspot />
       <Script
-        src="https://app.termly.io/resource-blocker/488cc3b0-ed5a-4e9d-81f2-76014dcae784?autoBlock=on"
+        src="https://app.termly.io/resource-blocker/26739b38-1a89-4742-ab53-d8d724b77f51?autoBlock=on"
         strategy="beforeInteractive"
         type="text/javascript"
       />
