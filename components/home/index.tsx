@@ -1,6 +1,6 @@
 import { Hero } from './Hero'
 import Feature from './feature'
-import NewsletterForm from '@/components/NewsletterForm'
+import NewsletterForm from '@/components/Newsletter/SubscribeForm'
 
 export const Home = () => (
   <>
