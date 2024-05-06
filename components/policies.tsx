@@ -87,7 +87,6 @@ If you have any questions about these Terms, please contact us at `}{' '}
 By using the Website, you acknowledge that you have read these Terms of Service and agree to be bound by them.`}
         </pre>
       </div>
-      <Button onClick={() => window.open('/', '_self')}>← Go Back</Button>
     </main>
   )
 }
