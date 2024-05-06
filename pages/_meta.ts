@@ -92,4 +92,9 @@ export default {
     },
   },
   toolkit: 'ToolKit',
+  README: {
+    title: 'readme.md',
+    type: 'page',
+    display: 'hidden',
+  },
 }
