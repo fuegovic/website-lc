@@ -71,7 +71,29 @@ ogImage: /images/docs/<category>/image.png (optional)
 
 Whenever possible, upload assets (e.g., images) to GitHub instead of storing them in the `/public` folder. This helps keep your repository organized and makes it easier to manage your assets.
 
-### How to Upload Assets on GitHub
+### Images
+
+**Note In the followng example:** 
+  - I provided screenshots for both lihgt and dark mode.
+  - I used `Image from 'next/image'` wich gave me 4x improvement on the image file size for better performances.
+
+see the following example in action here: [User Guides](/docs/user_guides)
+
+```mdx filename="Example"
+import Image from 'next/image'
+
+<div style={{padding: "20px", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column"}}>
+  <div className="image-light-theme">
+    <Image src="https://github.com/danny-avila/LibreChat/assets/32828263/cf0f3231-287a-407f-bd4d-3d5bad94e893" alt="ipad-light" width={1024} height={512} style={{borderRadius: "5px"}} />
+  </div>
+
+  <div className="image-dark-theme">
+    <Image src="https://github.com/danny-avila/LibreChat/assets/32828263/a03ee02d-5099-4220-95b0-bfa2d3b00b4d" alt="ipad-dark" width={1024} height={512} style={{borderRadius: "5px"}} />
+  </div>
+</div>
+```
+
+### How to Upload Images and Videos on GitHub
 
 <Callout title="Method A" emoji="🅰️" collapsible>
     - Go to the LibreChat repository 
