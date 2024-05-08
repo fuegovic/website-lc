@@ -105,8 +105,8 @@ dependencies:
     specifier: ^4.1.0
     version: 4.1.0
   langfuse:
-    specifier: 3.4.0
-    version: 3.4.0
+    specifier: 3.9.0
+    version: 3.9.0
   lucide-react:
     specifier: ^0.367.0
     version: 0.367.0(react@18.3.1)
@@ -5735,8 +5735,8 @@ packages:
       mustache: 4.2.0
     dev: false
 
-  /langfuse@3.4.0:
-    resolution: {integrity: sha512-H2ibEa9hKbTs+M6NFAOaJlDeMhGdIwpjidnWQAoNtFfyyh3UAJ+DsMG3IZXe6gTdBV9UUz4EhynUUeMgWqd8Kg==}
+  /langfuse@3.9.0:
+    resolution: {integrity: sha512-ZJFcG8CLc0BR1ab58w9uSnGZBmlSKqzhWxmul04seIFyKrg7K3S3II4qxmSVqvaxh1qQkbKqpnGTpn7IcQv1fA==}
     engines: {node: '>=18'}
     dependencies:
       langfuse-core: 3.9.0
