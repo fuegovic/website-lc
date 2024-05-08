@@ -4,7 +4,7 @@ import Glide from '@glidejs/glide'
 import '@glidejs/glide/dist/css/glide.core.min.css'
 import styles from './style.module.css'
 
-// TODO: Fix "showControls" and "showBullets" + theme detection and dynamic style (got 🦆'd when moving to nextra v3)
+// TODO: Fix "showControls" and "showBullets" + theme detection and dynamic style (broke when moving to nextra v3)
 
 const Carousel = ({ children, ...props }) => {
   const carouselRef = useRef(null)
