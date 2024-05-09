@@ -51,7 +51,7 @@
     "js-yaml": "^4.1.0",
     "langfuse": "3.9.0",
     "lucide-react": "^0.378.0",
-    "mongodb": "^6.5.0",
+    "mongodb": "^6.6.1",
     "mongoose": "^8.3.4",
     "next": "^14.2.1",
     "next-auth": "^4.24.7",
