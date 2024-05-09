@@ -74,6 +74,12 @@ const nextraConfig = withNextra({
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'github.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
   headers() {
