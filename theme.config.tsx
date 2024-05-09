@@ -53,19 +53,18 @@ const config: DocsThemeConfig = {
 
     const title = frontMatter.title ?? pageTitle
 
-    //TODO: use or remove:
-    // eslint-disable-next-line
-    const section = asPath.startsWith('/docs')
-      ? 'Docs'
-      : asPath.startsWith('/blog/')
-        ? 'Blog'
-        : asPath.startsWith('/changelog/')
-          ? 'Changelog'
-          : ''
+    // Default frontmatter image based on path
+    const defaultImage = asPath.startsWith('/docs')
+      ? '/images/socialcards/default-docs-image.png'
+      : asPath.startsWith('/blog')
+        ? '/images/socialcards/default-blog-image.png'
+        : asPath.startsWith('/changelog')
+          ? '/images/socialcards/default-changelog-image.png'
+          : '/images/socialcards/default-image.png'
 
     const image = frontMatter.ogImage
-      ? 'https://nextra.librechat.cfd' + frontMatter.ogImage //TODO Update URL
-      : `/images/banner.png`
+      ? 'https://nextra.librechat.cfd' + frontMatter.ogImage // Use frontmatter image if available
+      : defaultImage // Use default image based on path if frontmatter image is not available
 
     const video = frontMatter.ogVideo
       ? 'https://nextra.librechat.cfd' + frontMatter.ogVideo //TODO Update URL
@@ -101,6 +100,7 @@ const config: DocsThemeConfig = {
       </>
     )
   },
+
   components: {
     Frame,
     Tabs,
