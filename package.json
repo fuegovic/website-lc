@@ -16,7 +16,7 @@
   },
   "homepage": "https://www.librechat.cfd",
   "dependencies": {
-    "@calcom/embed-react": "^1.4.0",
+    "@calcom/embed-react": "^1.5.0",
     "@glidejs/glide": "^3.6.0",
     "@headlessui/react": "^2.0.3",
     "@hookform/resolvers": "^3.3.4",
@@ -60,7 +60,7 @@
     "nextra-theme-docs": "3.0.0-alpha.22",
     "openai-edge": "^1.2.2",
     "postcss": "^8.4.38",
-    "posthog-js": "^1.131.3",
+    "posthog-js": "^1.131.4",
     "react": "^18.2.0",
     "react-ace": "^11.0.1",
     "react-dom": "^18.2.0",
