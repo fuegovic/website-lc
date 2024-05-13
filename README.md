@@ -1,4 +1,6 @@
-# LibreChat Docs
+ARCHIVED see: https://github.com/LibreChat-AI/librechat.ai
+
+# librechat.ai
 
 Based on [Nextra](https://nextra.site/)
 
